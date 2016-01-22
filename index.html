@@ -324,6 +324,1388 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/29/译-打造atom成为golang开发神器/" itemprop="url">
+                  [译]打造atom成为golang开发神器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-29T00:37:30+08:00" content="2015-12-29">
+              2015-12-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在我在Windows系统上开发的日子里，我使用IDE开发数年之久，例如Visual Basic IDE, Borland Delphi IDE, Visual C&#43;&#43; 和最后的Visual Studio；但当我在大约10年前转到Mac OS X下开发后，我放弃了上述所有的IDE。</p>
+<p><span style="color:rgb(81,81,81); font-family:Raleway,sans-serif; font-size:20px; line-height:30px"></span></p>
+<p>我刚进入Mac编程世界的时候使用的是当时表现极好的Textmate编辑器。它是一个开发代码飞快的编辑器，拥有很好的语法高亮，拓展模块以及代码片段(code snippets)，让我再次感觉非常高产。经过几年的衰退期，由于它没有继续更新了，很多人转向了Sublime Text和传统的VIM编辑器了。</p>
+<p>Atom刚出来的时候我尝试使用了一下，但当时它并没有准备好。而最近几天它正式发布官方1.0版本后我决定再次试用一下，我很高兴我又试用了下atom。</p>
+<p><a href="https://atom.io/" target="_blank" rel="external">https://atom.io/</a></p>
+<p>##<br>安装主题</p>
+<p>你一天将要花大部分时间看着代码，注视着你的编辑器，因此你总是必须要找到一个颜色搭配自然的主题，并且要能够让你的&#30524;睛觉得舒服。我认为这个因人而异，你需要找一个你最喜欢的。</p>
+<p>我现在一直使用的主题是<span style="color:rgb(81,81,81); font-family:Raleway,sans-serif; font-size:20px; line-height:30px">One Dark UI Theme和<span style="color:rgb(81,81,81); font-family:Raleway,sans-serif; font-size:20px; line-height:30px">Monokai-Seti Syntax theme(译者注：atom的主题分为UI主题和语法主题)，我很享受使用这样的主题搭配。</span></span></p>
+<p><img src="http://marcio.io/img/atom-theme.png" alt="atom-theme"></p>
+<p>下图是这样的主题搭配在我的电脑上的效果:</p>
+<p><img src="http://marcio.io/img/atom-editor.png" alt="atom-editor"></p>
+<p>####<br>monokai-seti</p>
+<ul>
+<li><a href="https://atom.io/packages/monokai-seti" target="_blank" rel="external">https://atom.io/packages/monokai-seti</a></li>
+</ul>
+<p>##<br>安装开发专用字体</p>
+<p>我第一次打开atom想做的第一件事情是：安装一个我更喜欢的开发专用字体，我使用免费字体“Inconsolata”有一阵子了。</p>
+<p>你可以通过这个链接查看和下载这个字体：<a href="http://www.levien.com/type/myfonts/inconsolata.html" target="_blank" rel="external">http://www.levien.com/type/myfonts/inconsolata.html</a></p>
+<p>你可以使用标准的编辑器设置很便捷的切换正在使用的字体。</p>
+<p>##<br>安装开发语言包</p>
+<p>Atom自带的标准包里涵盖了大部分开发语言。我做Go开发还差两个语言包，分别是Dockerfile语法和Google Protobuf语法，这两个在我的项目中大量被使用到。</p>
+<ul>
+<li>language-docker:&nbsp;<a href="https://atom.io/packages/language-docker" target="_blank" rel="external">https://atom.io/packages/language-docker</a></li>
+<li>language-protobuf:&nbsp;<a href="https://atom.io/packages/language-protobuf" target="_blank" rel="external">https://atom.io/packages/language-protobuf</a></li>
+</ul>
+<p>##<br>安装插件</p>
+<p>####<br>go-plus</p>
+<ul>
+<li><a href="https://atom.io/packages/go-plus" target="_blank" rel="external">https://atom.io/packages/go-plus</a></li>
+</ul>
+<p>这个插件提供了Atom中几乎所有go语言开发的支持，包括<span style="color:rgb(81,81,81); font-family:Raleway,sans-serif; font-size:20px; line-height:30px">&nbsp;tools, build flows, linters, vet 和 coverage tools。它还包含很多代码片段和一些其它特性。</span></p>
+<p>在你的命令行中输入下面的命令来确保你安装了所有go tools：</p>
+<pre name="code" class="plain">go get -u golang.org/x/tools/cmd/...
+go get -u github.com/golang/lint/golint</pre>
+
+<p>go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时的给我反馈语法错误和编译错误。每当我保存一个文件，go-plus就会在后台运行你提前配置好的要执行的go tools，例如：go vet, go oracle, go build等等，然后将错误和警告在编辑器底部显示出来。这个功能非常赞，而且大大提升了开发速度。</p>
+<p><img src="http://marcio.io/img/atom-go-plus-linter.png" alt="atom-go-plus-linter"></p>
+<p>它同样能够在编辑器的对应行上显示该行的编译错误提示和错误信息，这样你就能很快的定位哪一行有错。错误和警告分别用红色和淡黄色做区分。</p>
+<p><img src="http://marcio.io/img/atom-go-plus-gutter-errors.png" alt="atom-go-plus-gutter-errors"></p>
+<p>####<br>go-rename</p>
+<ul>
+<li><a href="https://atom.io/packages/go-rename" target="_blank" rel="external">https://atom.io/packages/go-rename</a></li>
+</ul>
+<p><span style="color:rgb(81,81,81); font-family:Raleway,sans-serif; font-size:20px">这个插件通过食用Go rename tool，提供非常智能和安全的 变量，方法和结构体重命名功能。当你选中一个目标时，你能够通过快捷键&nbsp;<span style="color:rgb(191,97,106); font-family:Menlo,Monaco,'Courier New',monospace; font-size:17px; line-height:30px; background-color:rgb(249,249,249)">ALT-R</span>&nbsp;很方便的初始化重命名对话框。</span></p>
+<p><span style="color:rgb(49,49,49); font-size:1.5rem; line-height:1.25">让Atom更像VIM</span></p>
+<p>你可能想问我“那为什么不直接使用VIM呢？”情况是这样的，我确实有使用VIM一年多，但是我想尝试使用Atom，我很享受atom的体验，特别是我能够在atom上使用所有的VIM命令。</p>
+<ul>
+<li>vim-mode:&nbsp;<a href="https://atom.io/packages/vim-mode" target="_blank" rel="external">https://atom.io/packages/vim-mode</a></li>
+<li>vim-surround:&nbsp;<a href="https://atom.io/packages/vim-surround" target="_blank" rel="external">https://atom.io/packages/vim-surround</a></li>
+<li>last-cursor-position:&nbsp;<a href="https://atom.io/packages/last-cursor-position" target="_blank" rel="external">https://atom.io/packages/last-cursor-position</a></li>
+</ul>
+<p>#####<br>在 Keymap 文件中定义一些快捷键：</p>
+<div><br><br></div><br><div><pre name="code" class="plain">&#39;atom-text-editor:not(mini).autocomplete-active&#39;:<br>  &#39;ctrl-p&#39;: &#39;core:move-up&#39;<br>  &#39;ctrl-n&#39;: &#39;core:move-down&#39;<br><br>&#39;.vim-mode.command-mode:not(.mini)&#39;:<br>  &#39;ctrl-f&#39;: &#39;core:page-down&#39;<br>  &#39;/&#39;: &#39;find-and-replace:show&#39;</pre><br><br></div><br><div><br><br></div>
+
+<p>还有一个VIM模块Easy-Motion上面没有说到，这是因为它和Atom 1.0不兼容，但是我相信很快就会有人来更新它或者在创建一个新版本。</p>
+<p>##<br>自定义atom的TreeView</p>
+<p>####<br>file-icons</p>
+<ul>
+<li><a href="https://atom.io/packages/file-icons" target="_blank" rel="external">https://atom.io/packages/file-icons</a></li>
+</ul>
+<p>我刚开始想这个插件能够让我的tree view色彩丰富，它提针对不同后缀的文件，文件夹供了大量的icon显示。然后我使用了一下它，发现它确实很酷。并且它能够让我很快的一扫就能找到我要找的文件。它还有些配置，可以让你选择显示哪些文件的icon等。</p>
+<p>下面你可以看到如果你安装了file-icons插件后你的tree view会变成什么样。试试吧，我确定你会喜欢它的。</p>
+<p><img src="http://marcio.io/img/file-icons.png" alt="file-icons"></p>
+<p>####<br>应用一些自定义CSS</p>
+<p>默认的TreeView行距有些过高，所以我想要修改css减少行间的padding。还有一个要修改的地方是，treeview的字体也要修改成我在编辑框中使用的字体，来保持样式的一致性。我通常使用<span style="color:rgb(191,97,106); font-family:Menlo,Monaco,'Courier New',monospace; font-size:17px; line-height:30px; background-color:rgb(249,249,249)">Inconsolata</span><br> 。</p>
+<pre name="code" class="plain">// style the background color of the tree view
+.tree-view {
+    font-family: &quot;Inconsolata&quot;;
+    font-size: 12px;
+}
+
+.list-group li:not(.list-nested-item),
+.list-tree li:not(.list-nested-item),
+.list-group li.list-nested-item &gt; .list-item,
+.list-tree li.list-nested-item &gt; .list-item {
+    line-height:18px;
+}
+
+.list-group .selected:before,
+.list-tree .selected:before {
+    height:18px;
+}
+
+.list-tree.has-collapsable-children .list-nested-item &gt; .list-tree &gt; li,
+.list-tree.has-collapsable-children .list-nested-item &gt; .list-group &gt; li {
+    padding-left:12px;
+}</pre>
+
+<p>###<br>代码片段(Code Snippets)</p>
+<p>大部分流行的编辑器和IDE都会使用code-completion针对不同语言的特定关键字自动补全代码。这样通常能够包含最常用的代码，但是离真正的补全还差一截。</p>
+<p>但是Atom允许你在<span style="color:rgb(191,97,106); font-family:Menlo,Monaco,'Courier New',monospace; font-size:17px; line-height:30px; background-color:rgb(249,249,249)">snippets.cson</span>文件中创建自己的代码片段仓库。在Atom的菜单栏可以打开这个文件，然后你就可以创建自己的代码片段库了。</p>
+<p>你需要使用<span style="color:rgb(191,97,106); font-family:Menlo,Monaco,'Courier New',monospace; font-size:17px; line-height:30px; background-color:rgb(249,249,249)">.source.go</span>&nbsp;作为scope，这样这个片段就只会在你编辑go文件时提示你了。</p>
+<p>下面是我最近添加的一些代码片段：</p>
+<pre name="code" class="plain">&#39;.source.go&#39;:
+    &#39;return nil and error&#39;:
+      &#39;prefix&#39;: &#39;rne&#39;
+      &#39;body&#39;: &#39;return nil, err&#39;
+
+    &#39;return false and error&#39;:
+      &#39;prefix&#39;: &#39;rfe&#39;
+      &#39;body&#39;: &#39;return false, err&#39;
+
+    &#39;Return True and Nil&#39;:
+      &#39;prefix&#39;: &#39;rte&#39;
+      &#39;body&#39;: &#39;return true, nil&#39;
+
+    &#39;Import logrus&#39;:
+      &#39;prefix&#39;: &#39;logrus&#39;
+      &#39;body&#39;: &#39;log &quot;github.com/Sirupsen/logrus&quot;&#39;</pre>
+
+<p>一旦你创建好代码片段，你立马就能在编辑器中使用。我非常喜欢这个功能，他能让我编码速度飞快。</p>
+<p><img src="http://marcio.io/img/atom-complete-snippets.png" alt="atom-complete-snippets"></p>
+<p>###<br>Dash</p>
+<p>Dash是一个Mac OS X下的非常棒的商业软件，它能够让你在离线模式下实时访问150&#43;的API 文档。我在做Ruby开发时使用了几年时间，现在做go开发同样适用它。</p>
+<p>了解Dash：&nbsp;<a href="https://kapeli.com/dash" target="_blank" rel="external">https://kapeli.com/dash</a></p>
+<p><img src="http://marcio.io/img/atom-dash.png" alt="atom-dash"></p>
+<p>有一个Atom插件能够让你通过快捷键<code>CTRL-H</code>&nbsp;直接跳转动dash，这样查询选中方法的方法定义文档就非常方便了。</p>
+<p>####<br>dash</p>
+<p><a href="https://atom.io/packages/dash" target="_blank" rel="external">https://atom.io/packages/dash</a></p>
+<p>##<br>自定义编辑器样式</p>
+<p>Atom有一个相比其它编辑器非常大的优点是，它能够通过食用css完全的自定义编辑器UI。如果你对atom不满意，几乎atom所有方面都能够被你自己修改和提高。</p>
+<p><span style="color:rgb(49,49,49); font-size:1.25rem; line-height:1.25">改变 Symbol View 的样式</span></p>
+<p>atom有一个让我很困扰的区域是原声的Symbols-View对话框，它的行太高了，并且不能很好的在查看窗口适应很多行显示。我更喜欢Sublime的显示方式，所以我把atom的symbol view的样式改成和sublime一样。</p>
+<pre name="code" class="css">.symbols-view {
+  &amp;.select-list ol.list-group li .primary-line,
+  &amp;.select-list ol.list-group li .secondary-line {
+
+    font-family: Inconsolata;
+    font-size: 14px;
+
+    // let lines wrap
+    text-overflow: initial;
+    white-space: initial;
+    overflow: initial;
+
+    // reduce line-height
+    line-height: 1.0em;
+    padding-top: .1em;
+    padding-bottom: .0em;
+
+    // make sure wrapped lines get padding
+    // padding-left: 21px;
+    &amp;.icon:before {
+      margin-left: -21px;
+    }
+
+    .character-match {
+        color: rgb(200, 200, 10) !important;
+    }
+  }
+}
+
+.symbols-view {
+  &amp;.select-list ol.list-group li .secondary-line {
+      float: right;
+      margin-top: -12px;
+      padding-top: 0em;
+      padding-bottom: 0em;
+      font-size: 12px;
+      color: rgba(200, 200, 10, 0.8) !important;
+  }
+}</pre>
+
+<p>这是一个更精简的Symbol View，可以看到行高减少了，行数提示放在了右侧：</p>
+<p><img src="http://marcio.io/img/atom-symbol-view-styles.png" alt="atom-symbol-view-styles"></p>
+<p>###<br>自定义行选中效果</p>
+<p>有个很有趣的插件叫 Hightlight-Line:</p>
+<p><a href="https://atom.io/packages/highlight-line" target="_blank" rel="external">https://atom.io/packages/highlight-line</a></p>
+<p>这个插件允许你修改选中行的样式。在我的例子中，我在选中行上下侧加上了黄色的虚线。我喜欢这样的样式，它能够让我很好的识别我所选中的区域。</p>
+<p><img src="http://marcio.io/img/atom-highlight-selected.png" alt="atom-highlight-selected"></p>
+<p>你可以将‘solid’替换为 ‘dashed’ 或者 ‘dotted’。</p>
+<pre name="code" class="css">atom-text-editor::shadow {
+
+    .line.highlight-line {
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .line.highlight-line-multi-line-dashed-bottom {
+        border-bottom-color: yellow !important;
+    }
+
+    .line.highlight-line-multi-line-dashed-top {
+        border-top-color: yellow !important;
+    }
+}</pre>
+
+<p>##<br>为Go代码生成 Ctags</p>
+<p>自动补全在开发中是一个非常重要的功能，同时也让开发这非常困扰。它的提示必须非常好不然的话经常出现的不对的提示信息会非常的讨厌。当需要提示的时候却没有提示时更是烦上加烦。</p>
+<p>有一个非常棒的插件叫&nbsp;<code>gotags</code>&nbsp;，它能够兼容ctags并且专为go设计。它将AST工具化，并且会解析Go的标准库，非常的智能。它比标准的ctags工具生成的ctags好太多。</p>
+<ul>
+<li>gotags:&nbsp;<a href="https://github.com/jstemmer/gotags" target="_blank" rel="external">https://github.com/jstemmer/gotags</a></li>
+</ul>
+<p>通过下面命令安装gotags</p>
+<pre name="code" class="css">go get -u github.com/jstemmer/gotags</pre>
+
+<p>在你的源码目录下执行下面命令声称ctags：</p>
+<pre name="code" class="plain">gotags -tag-relative=true -R=true -sort=true -f=&quot;tags&quot; -fields=+l .</pre>
+
+<p>这将会在你的项目根目录下生成新的tags文件，让你的代码提示更加智能。</p>
+<p><img src="http://marcio.io/img/atom-go-tags.png" alt="atom-go-tags"></p>
+<p>##<br>总结</p>
+<p>无论你是Sublime Text爱好者还是VIM粉丝，你都应该尝试使用一下1.0版本的atom。</p>
+<p>特别是它还是一个在Github.com上的开源项目，项目非常活跃，并且社区增长的也非常快。</p>
+<p>快试试吧！！</p>
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2015/12/29 0:37:30 [原文链接](http://blog.csdn.net/sweetvvck/article/details/50333327)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：237 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/50333327#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/16/原-Gitflow实践/" itemprop="url">
+                  [原]Gitflow实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-16T01:14:03+08:00" content="2015-12-16">
+              2015-12-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/50245147" target="_blank" rel="external">Gitflow实践</a></p>
+<h1 id="Gitflow_u5B9E_u8DF5"><a href="#Gitflow_u5B9E_u8DF5" class="headerlink" title="Gitflow实践"></a>Gitflow实践</h1><p>这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。</p>
+<hr>
+<h2 id="Git_u5DE5_u4F5C_u6D41"><a href="#Git_u5DE5_u4F5C_u6D41" class="headerlink" title="Git工作流"></a>Git工作流</h2><p>现在越来越多的项目开始使用git做为版本控制工具，我对版本控制工具的最初印象是：能把代码提交到远端让大家一起协作，能开分支，能回滚代码，能看到每次提交的修改等。不过git命令具体如何使用不是本文的重点(熟悉git可以参考<a href="http://blog.csdn.net/sweetvvck/article/details/38414713" target="_blank" rel="external"> GIT基本概念和用法总结</a> 和<a href="http://blog.csdn.net/sweetvvck/article/details/38548985" target="_blank" rel="external"> git - 简易指南</a>)，本文的重点是在项目中如何使用git来高效清晰的处理开发协作，版本控制。Git的工作流其实就是对git在项目上的一个完整的使用方式归纳总结，比较流行的git工作流有：Gitflow Workflow, Centralized Workflow, Feature Branch Workflow, Forking Workflow。</p>
+<p>值得注意的是，这些workflow只是作为如何更好的使用git的指导方针，而非<code>&quot;铁律&quot;</code>，我们也可以根据具体项目来组合使用不同的workflow。本文重点讲解Gitflow Workflow，有想了解其他git工作流的可以参考这篇文章：<a href="https://www.atlassian.com/git/tutorials/comparing-workflows" target="_blank" rel="external">Comparing Workflows</a>。</p>
+<h2 id="Gitflow_workflow"><a href="#Gitflow_workflow" class="headerlink" title="Gitflow workflow"></a>Gitflow workflow</h2><p>Gitflow从功能开发到正式发布再到热修复等都有相应的策略管理，可以说是非常的完善，对于大型的项目也能够很好的管理。</p>
+<h3 id="Gitflow__u5206_u652F"><a href="#Gitflow__u5206_u652F" class="headerlink" title="Gitflow 分支"></a>Gitflow 分支</h3><p>Gitflow使用不同的分支表达了它在工作流中的不同概念：</p>
+<ul>
+<li><strong>Master分支存放所有正式发布的版本，可以作为项目历史版本记录分支</strong></li>
+<li><strong>Develop分支为主开发分支</strong></li>
+<li><strong>Feature/xx分支为新功能分支，feature分支都是基于develop创建的，开发完成后会合并到develop分支上</strong></li>
+<li><strong>Release分支基于最新develop分支创建，当新功能足够发布一个新版本(或者接近新版本发布的截止日期)，从develop分支创建一个release分支作为新版本的起点，开发完成后合并到master并打上版本号，同时也合并到develop，更新最新开发分支</strong></li>
+<li><strong>Hotfix分支基于Master分支创建，对线上版本的bug进行修复，完成后直接合并到master分支和develop分支</strong></li>
+</ul>
+<p><img src="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg" alt="Gitflow分支"></p>
+<h3 id="Gitflow_u5177_u4F53_u6D41_u7A0B"><a href="#Gitflow_u5177_u4F53_u6D41_u7A0B" class="headerlink" title="Gitflow具体流程"></a>Gitflow具体流程</h3><p>上文提到，从项目启动到发布版本都能够使用gitflow管理，具体如何管理，下 main这张图表达的很清楚： </p>
+<p><img src="http://nvie.com/img/git-model@2x.png" alt="这里写图片描述"></p>
+<p>从上图可以看到，随着时间的推移：</p>
+<ol>
+<li>项目启动时只有master分支(图最右侧，蓝色)，开发到0.1版本时给它打上tag:0.1；</li>
+<li>接着创建了develop分支(黄色)开始接下来的开发；</li>
+<li>在开发的过程中发现0.1版本有bug，基于master分支0.1版本创建hotfix分支修复bug，修复完成后同时合并到develop分支和master分支，并在master分支上打上版本号；</li>
+<li>团队成员创建不同的feature分支(红色)开发下个版本的新功能，完成后合并到develop分支上；</li>
+<li>当feature完成情况按照项目计划能够发布新版本1.0时，创建release分支，对该分支进行测试修复，通过测试后release分支将被同时合并到develop分支和master分支，同时master分支打上相应版本号；</li>
+<li>继续上面的流程</li>
+</ol>
+<p>⚠️注意：feature与其它分支互不影响，不必要在发布新版本前完成所有feature，发布版本时也可以有feature开发同时进行。</p>
+<h3 id="u4F7F_u7528"><a href="#u4F7F_u7528" class="headerlink" title="使用"></a>使用</h3><p>Gitflow workflow是由<a href="http://nvie.com/" target="_blank" rel="external">Vincent Driessen</a> 提出来的，要实现上述的工作流程需要使用到他创建的命令行工具<a href="https://github.com/nvie/gitflow" target="_blank" rel="external">git-flow</a> 具体如何使用请参考<a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a>。 </p>
+<p>另外，有一款git客户端软件<a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">sourcetree</a> 集成了gitflow命令，提供了非常便捷的方式使用gitflow流程。</p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>熟练掌握和Gitflow workflow能够团队内项目协作开发流程更加规范化，更加清晰化，但是不必过于拘泥于其定义的流程，这类workflow只是使用git的指导方针，目的都是高效的使用git协作。</p>
+<h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">A successful Git branching model</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows" target="_blank" rel="external">Comparing Workflows</a></li>
+<li><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a><pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2015/12/16 1:14:03 [原文链接](http://blog.csdn.net/sweetvvck/article/details/50245147)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：508 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/50245147#comments)
+&lt;/div&gt;
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/08/原-Koa中间件方式实现API的Undo功能/" itemprop="url">
+                  [原]Koa中间件方式实现API的Undo功能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-08T23:12:05+08:00" content="2015-05-08">
+              2015-05-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Koa_u4E2D_u95F4_u4EF6_u65B9_u5F0F_u5B9E_u73B0API_u7684Undo_u529F_u80FD"><a href="#Koa_u4E2D_u95F4_u4EF6_u65B9_u5F0F_u5B9E_u73B0API_u7684Undo_u529F_u80FD" class="headerlink" title="Koa中间件方式实现API的Undo功能"></a>Koa中间件方式实现API的Undo功能</h1><h2 id="API_u7684Undo_u529F_u80FD"><a href="#API_u7684Undo_u529F_u80FD" class="headerlink" title="API的Undo功能"></a>API的Undo功能</h2><p>使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20150508220504487" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20150508220843186" alt=""></p>
+<p>当点击撤销时，之前执行的操作能够被还原，这种设计对于用户的误操作是一个非常棒的补救方案。</p>
+<p>之前听过一句有关交互设计的话说的非常好，不要在用户每做一步操作时弹出Alert让用户选择”确定”或者”取消”，更好的做法是执行操作，然后让用户能够Undo。</p>
+<h2 id="u5B9E_u73B0API_Undo_u7684_u65B9_u6848"><a href="#u5B9E_u73B0API_Undo_u7684_u65B9_u6848" class="headerlink" title="实现API Undo的方案"></a>实现API Undo的方案</h2><p>其实Undo是很老的技术，在编辑器中无处不在，只是在API设计中使用的还比较少。最近一直在使用Node开发，因此想使用Node实现一下API的Undo。</p>
+<p>首先要明确几点：</p>
+<ul>
+<li>并不是所有的API都需要Undo，比如获取数据的接口就完全没有Undo的必要（而且逻辑上也没办法做）</li>
+<li>只能针对用户最后一次操作进行Undo</li>
+<li>Undo是在用户维度的，用户不能Undo其他用户的操作</li>
+</ul>
+<h3 id="u4F20_u7EDF_u65B9_u6848_28Plan_A_29_uFF1A"><a href="#u4F20_u7EDF_u65B9_u6848_28Plan_A_29_uFF1A" class="headerlink" title="传统方案(Plan A)："></a>传统方案(Plan A)：</h3><ul>
+<li>需要对所有需要Undo的接口提供Undo逻辑;</li>
+<li>当用户要Undo最近一次操作时需要调用这个方法（常常会涉及数据库操作）。</li>
+</ul>
+<h3 id="u65B0_u65B9_u6848_28Plan_B_29_uFF1A"><a href="#u65B0_u65B9_u6848_28Plan_B_29_uFF1A" class="headerlink" title="新方案(Plan B)："></a>新方案(Plan B)：</h3><ul>
+<li>以中间件(类似Java中的拦截器)方式提供Undo服务</li>
+<li>对需要Undo的API逻辑放入指定队列延迟执行</li>
+<li>调用Undo接口时将最近一次操作从延迟执行的队列中移除</li>
+<li>调用其他接口是立即执行延迟队列中的逻辑</li>
+</ul>
+<h2 id="u65B9_u6848_u5BF9_u6BD4"><a href="#u65B9_u6848_u5BF9_u6BD4" class="headerlink" title="方案对比"></a>方案对比</h2><h3 id="u4F18_u70B9_uFF1A"><a href="#u4F18_u70B9_uFF1A" class="headerlink" title="优点："></a>优点：</h3><h4 id="u65B9_u6848A_3A"><a href="#u65B9_u6848A_3A" class="headerlink" title="方案A:"></a>方案A:</h4><ul>
+<li>可以对任意接口进行undo操作；</li>
+<li>逻辑简单，undo时无需操作数据库；</li>
+</ul>
+<h4 id="u65B9_u6848B_3A"><a href="#u65B9_u6848B_3A" class="headerlink" title="方案B:"></a>方案B:</h4><ul>
+<li>操作真实反映到了数据库；</li>
+<li>无需限制undo过期时间；</li>
+</ul>
+<h3 id="u7F3A_u70B9"><a href="#u7F3A_u70B9" class="headerlink" title="缺点"></a>缺点</h3><h4 id="u65B9_u6848A_3A-1"><a href="#u65B9_u6848A_3A-1" class="headerlink" title="方案A:"></a>方案A:</h4><ul>
+<li>访问可undo接口后，再访问非undo接口，之前逻辑不能undo；</li>
+</ul>
+<h4 id="u65B9_u6848B_3A-1"><a href="#u65B9_u6848B_3A-1" class="headerlink" title="方案B:"></a>方案B:</h4><ul>
+<li>逻辑较为复杂，undo需要做数据库操作；</li>
+<li>并非所有操作都能够undo；</li>
+</ul>
+<h2 id="u65B9_u6848_u5B9E_u73B0"><a href="#u65B9_u6848_u5B9E_u73B0" class="headerlink" title="方案实现"></a>方案实现</h2><p>通过上边的方案对比，我发现Plan A更简单、灵活，因此决定实现Plan A。</p>
+<p>使用过Koa的通许都知道，koa的中间件非常强大（类似Java web开发中的拦截器），它能够拦截所有请求并执行一些逻辑，例如计算API请求到响应时长等，这里我们就可以使用这个特性将需要Undo的API延迟执行。</p>
+<p>首先我们要设置Undo的超时时间，以及那些API需要Undo：</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; apis = (options || {}).apis;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; expired = (options || {}).expired || &lt;span class=&quot;hljs-number&quot;&gt;3000&lt;/span&gt;;`&lt;/pre&gt;
+
+还要明确当前访问API的用户：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+ * `x-identify-key` is used to identify the user of this request,
+ * one user can not undo another`s request.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; user = context.header[&lt;span class=&quot;hljs-string&quot;&gt;&apos;x-identify-key&apos;&lt;/span&gt;];`&lt;/pre&gt;
+
+然后延迟执行API逻辑：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undo = &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; delayNext(user, expired, context);`&lt;/pre&gt;
+
+如果用户没有调用Undo接口，则执行逻辑，否则返回’undo’:
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!undo) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.body = &lt;span class=&quot;hljs-string&quot;&gt;&apos;undo&apos;&lt;/span&gt;;`&lt;/pre&gt;
+
+如果用户调用Undo接口，移除延迟执行的逻辑；调用其他接口则立即执行延迟的逻辑：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`clearTimeout(undoObj.timeoutId);
+&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (path === &lt;span class=&quot;hljs-string&quot;&gt;&apos;/undo&apos;&lt;/span&gt; &amp;amp;&amp;amp; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;method&lt;/span&gt; === &apos;&lt;span class=&quot;hljs-title&quot;&gt;POST&lt;/span&gt;&apos;) &lt;span class=&quot;hljs-comment&quot;&gt;{
+  undoObj.delayFn.call(undoObj.context, true);
+  context.body = &apos;done&apos;;
+  return;
+}&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(undoObj.delayFn)&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;{
+  undoObj.delayFn.call(undoObj.context, false);
+}&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt;
+
+具体实现逻辑大概就这些，完整代码如下：
+
+&lt;pre class=&quot;prettyprint&quot;&gt;`
+&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+ * Store users&apos; undo context
+ * 
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@type&lt;/span&gt; {Object}
+ */&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undos = {};
+
+&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+ * Expose `undo`
+ *
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {Object} options Config object for undo
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@example&lt;/span&gt;
+ * {
+ *   expired: 3000
+ * }
+ */&lt;/span&gt;
+module.exports = function (options) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; apis = (options || {}).apis;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; expired = (options || {}).expired || &lt;span class=&quot;hljs-number&quot;&gt;3000&lt;/span&gt;;
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; function* (next) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; context = &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; path = context.path;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; needUndo = &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (apis &amp;amp;&amp;amp; Array.isArray(apis) &amp;amp;&amp;amp; apis.length) {
+      needUndo = apis.filter(function (api) {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; path === api;
+      }).length;
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!needUndo &amp;amp;&amp;amp; path !== &lt;span class=&quot;hljs-string&quot;&gt;&apos;/undo&apos;&lt;/span&gt;) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; method = context.method;
+    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     * Can not undo get request.
+     */&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (method === &lt;span class=&quot;hljs-string&quot;&gt;&apos;GET&apos;&lt;/span&gt;) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     * &apos;x-identify-key&apos; is used to identify the user of this request,
+     * one user can not undo another&apos;s request.
+     */&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; user = context.header[&lt;span class=&quot;hljs-string&quot;&gt;&apos;x-identify-key&apos;&lt;/span&gt;];
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!user) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undoObj = undos[user];
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (undoObj) {
+      clearTimeout(undoObj.timeoutId);
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (path === &lt;span class=&quot;hljs-string&quot;&gt;&apos;/undo&apos;&lt;/span&gt; &amp;amp;&amp;amp; method === &lt;span class=&quot;hljs-string&quot;&gt;&apos;POST&apos;&lt;/span&gt;) {
+        undoObj.delayFn.call(undoObj.context, &lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;);
+        context.body = &lt;span class=&quot;hljs-string&quot;&gt;&apos;done&apos;&lt;/span&gt;;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
+      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (undoObj.delayFn) {
+        undoObj.delayFn.call(undoObj.context, &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;);
+      }
+    }
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undo = &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; delayNext(user, expired, context);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!undo) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.body = &lt;span class=&quot;hljs-string&quot;&gt;&apos;undo&apos;&lt;/span&gt;;
+  };
+};
+
+&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+ * Block the logic for specified ms.
+ *
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {String} user The user&apos;s identity
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {String} expired The expired ms
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {Object} context The koa context object
+ * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@api&lt;/span&gt; private
+ */&lt;/span&gt;
+function delayNext(user, expired, context) {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; function (callback) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; delayFn = function (undo) {
+      delete undos[user];
+      callback(&lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;, undo);
+    };
+    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; timeoutId = setTimeout(delayFn, expired);
+    undos[user] = {
+      timeoutId: timeoutId,
+      delayFn: delayFn,
+      context: context
+    };
+  };
+}
+</code></pre><h2 id="u9879_u76EE_u76F8_u5173"><a href="#u9879_u76EE_u76F8_u5173" class="headerlink" title="项目相关"></a>项目相关</h2><p>目前此项目托管在Github上，<a href="https://github.com/sweetvvck/koa-undo" target="_blank" rel="external">https://github.com/sweetvvck/koa-undo</a>，koa-undo具体使用方法项目主页有详细介绍，感兴趣的同学欢迎提Issue、PR；同时koa-undo也发布到了Npm上，<a href="https://www.npmjs.com/package/koa-undo" target="_blank" rel="external">https://www.npmjs.com/package/koa-undo</a> ，欢迎大家使用。</p>
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2015/5/8 23:12:05 [原文链接](http://blog.csdn.net/sweetvvck/article/details/45585997)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：730 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/45585997#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/31/译-Twemproxy来自Twitter的Redis代理/" itemprop="url">
+                  [译]Twemproxy来自Twitter的Redis代理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-31T22:35:41+08:00" content="2014-12-31">
+              2014-12-31
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre style="margin-top:0px; margin-bottom:10px; padding:0px; border:0px; outline:0px; font-size:18px; font-family:Inconsolata,Courier; vertical-align:baseline; position:relative; left:0px; top:10px; white-space:pre-wrap; word-wrap:break-word; line-height:1.5">在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
+
+关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)
+
+这也是为什么集群会成为Redis在2013年的焦点，并且，最终Redis 2.6的发布表现出了很好的稳定性和成熟度，现在正是时候来关注Redis Cluster, Redis Sentinel, 以及一些其它期待已久的改进。
+
+然而现实状况是，Redis Cluster目前仍然没有发布，正式版还需要几个月的工作。但是我们的用户已经需要将数据分片到不同的实例上来做负载均衡，更重要的是为数据获得更大的内存存储。
+
+目前保底的结局方案是客户端分片。客户端分片有很多好处，例如：在客户端和节点之间没有中间层，这就意味着它是一个扩展性很好的设置（主要是线性扩展）。然而要稳定的实现（客户端分片）需要进行一些优化，需要一个同步客户端配置的方式，也需要客户端支持一致性哈希或其它分区算法。
+
+有一个重大消息来自Twitter，世界最大的Redis集群之一部署在Twitter用于为用户提供时间轴数据。所以毫不奇怪这篇文章讨论的项目来自Twitter Open Source部门。
+
+Twemproxy
+---
+
+Twemproxy是一个快速的单线程代理程序，支持Memcached ASCII协议和更新的Redis协议：&nbsp;
+
+它全部用C写成，使用Apache 2.0 License授权。&nbsp;
+项目在Linux上可以工作，而在OSX上无法编译，因为它依赖了epoll API.
+我的测试环境为Ubuntu 12.04桌面版。&nbsp;
+
+好吧，闲话少叙。twemproxy到底做了什么？（注：我将关注Redis到部分，但是该项目也可以对memcached做相同到事情）&nbsp;
+
+1) 在客户端和众多Redis实例间作为代理。&nbsp;
+2) 在配置的Redis实例之间进行自动到数据分片。&nbsp;
+3) 支持一致性哈希，支持不同到策略和哈希方法。&nbsp;
+
+Twemproxy最了不起的地方就在于它能在节点失败的时候卸载它，然后可以在一段时间以后重新尝试（随即）连接，又或者可以严&#26684;按照配置文件中写的键与服务器之间对应关系进行连接。这意味着Twemproxy能胜任把Redis当做数据存储（不能容忍节点未命中）的场景，也能够胜任当做缓存来使用，那些允许（它意味着少量，不是说低质量）未命中且高可用的场景。
+总结来说就是：如果你能容忍未命中，那么当有节点失败你的数据也许会存储到其他节点，所以它会是弱一致性的。另一方面，如果你不能容忍未命中，那么你需要一个拥有高可用的实例的方案，例如使用Redis监控的失败自动切换功能。
+
+安装 &nbsp;
+---&nbsp;
+
+在深入项目的更多特性之前，有一个好消息，它在Linux上非常容易构建。好吧，没有Redis那么简单，但是……你仅仅需要简单按照下面的几步操作：
+apt-get install automake&nbsp;
+apt-get install libtool&nbsp;
+git clone git://github.com/twitter/twemproxy.git&nbsp;
+cd twemproxy&nbsp;
+autoreconf -fvi&nbsp;
+./configure --enable-debug=log&nbsp;
+make&nbsp;
+src/nutcracker -h&nbsp;
+
+它的配置也非常简单，在项目的github页面上有足够的文档可以让你有一个平滑的初体验。我使用了如下的配置：
+redis1:&nbsp;
+&nbsp; listen: 0.0.0.0:9999&nbsp;
+&nbsp; redis: true&nbsp;
+&nbsp; hash: fnv1a_64&nbsp;
+&nbsp; distribution: ketama&nbsp;
+&nbsp; auto_eject_hosts: true&nbsp;
+&nbsp; timeout: 400&nbsp;
+&nbsp; server_retry_timeout: 2000&nbsp;
+&nbsp; server_failure_limit: 1&nbsp;
+&nbsp; servers:&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6379:1&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6380:1&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6381:1&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6382:1&nbsp;
+
+redis2:&nbsp;
+&nbsp; listen: 0.0.0.0:10000&nbsp;
+&nbsp; redis: true&nbsp;
+&nbsp; hash: fnv1a_64&nbsp;
+&nbsp; distribution: ketama&nbsp;
+&nbsp; auto_eject_hosts: false&nbsp;
+&nbsp; timeout: 400&nbsp;
+&nbsp; servers:&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6379:1&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6380:1&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6381:1&nbsp;
+&nbsp; &nbsp;- 127.0.0.1:6382:1&nbsp;
+
+第一个集群配置为（故障时）节点自动排除，第二个集群则在所有实例上配置了静态映射。&nbsp;
+
+有趣的是，针对同一组服务器你能同时有多个部署。然而在生产环境更适合使用多个示例以利用多核的能力。
+
+<span style="font-family:微软雅黑,Verdana,sans-serif,宋体; font-size:14px; line-height:22.3999996185303px"></span>单点失效？&nbsp;
+---&nbsp;
+
+还有另一件有趣的事情，使用这个部署并不意味着有单点失效问题，你可以通过运行多套twemproxy，让你的客户端连接到第一个可用的实例。&nbsp;
+
+通过使用twemproxy你基本上把分片逻辑和客户端进行了分离。在这种情况下，一个基本的客户端就可以实现目的，分片将完全由代理来处理。
+这是一个直接而安全的方法，个人观点。
+现在Redis Cluster还不成熟，twemproxy是大多数希望利用Redis集群的用户的好方法。也不要太激动，先看看这种方法的限制 ;)<span style="font-family:微软雅黑,Verdana,sans-serif,宋体; font-size:14px; line-height:22.3999996185303px"></span>
+
+不足
+---
+我认为Twemproxy没有支持批量操作的命令和事物是对的。当然，AFAIK甚至比Redis cluster更严&#26684;，反而它对于相同的键允许批量操作。
+但是恕我直言按照这种方式，分散的集群带来分散的效率，并且将这个挑战带给了早期的用户，而且花费了大量的资源，从大量的实例中汇总数据，得到仅仅是“能用”的结果，而且你将很快开始有严重的负载问题，因为你有太多的时间花费在数据的传输上。
+
+可是有一些批量操作命令还是支持了的。MGET和DEL是处理的非常好的。有趣的是MGET命令在不同的服务器之间切分请求并且返回一个结果。这一点相当酷，也许我以后不能有更好的性能（看以后的吧）。
+无论如何，批量操作和事物的不支持的现状意味着Twemproxy不适用于每个人，特别像Redis cluster本身。特别是它显然不支持EVAL（我认为他们应该支持它！它是多通用的，EVAL被设计可以在代理中工作，是因为键的名字已经明确了）。
+
+有待改进的地方
+---
+错误报告机制并不稳定，发送一个Redis不支持的命令会导致连接被关闭。比如从redis-cli只发送一个‘GET‘并不会报&quot;参数个数不正确”的错误，只会导致连接被挂起。
+总体看来，服务器返回的其它错误都可以准确的传给客户端：
+redis metal: 10000 &gt; get list
+(错误)类型操作错误，键匹配了错误的&#20540;类型
+另外一个我想要看到的特性是对自动故障恢复的支持。有很多种替代方案：
+1) twemproxy已经能够监控实例错误信息、错误的数量、在检测出足够多的错误的情况下断开节点。但是很遗憾twemproxy不能够拿从节点作为替代方案，这样就可以发送一个SLAVE OFNOONE命令来弃用备用节点，而不用只是断开错误节点。这种情况下twemproxy才是一个具有高可用性的解决方案。
+2) 或者，我希望twemproxy能够与Redis Sentinel一起协同工作，定期检查Sentinel配置，如果出现故障则更新服务端配置
+3) 另外一种替代方案是提供一种热配置twemproxy的方式，一旦节点出故障，Redis Sentinel就能够切换ASAP代理配置
+有很多种替代方案，总体来说，如果能够提供对HA(高可用性)的底层支持就非常棒了。
+
+性能&nbsp;
+---
+Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说你用的话最多损失20%的性能。
+我对性能唯一的意见是可以有更高效的方法把IMHO MGET命令分发到实例之间
+如果twemproxy与所有Redis实例的延迟很相&#20284;的话(很有可能)，在MGETs命令在同一时间发出的情况下，twemproxy很有可能会在同一时间接收到所有节点的命令，所以我希望看到的是当我在所有实例上运行MGET命令的时候，发送的数量和twemproxy接收到的数量是一致的，但是实际上twemproxy在一秒内只接收到了50%的MGET命令。也许是时候重构twemproxy的应答模块了。
+
+结论
+---
+这是个伟大的项目，鉴于Redis Cluster还未发布，我强烈建议有需求的Redis用户试一下Twemproxy
+我正打算将它链接到Redis项目网站上，因为我认为Twitter的伙计已经用他们的项目为Redis做了不小的贡献，所以...
+这是Twitter赢得荣誉！</pre>
+
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/12/31 22:35:41 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42302675)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1373 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/42302675#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/28/原-设计高可用Web服务/" itemprop="url">
+                  [原]设计高可用Web服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-28T23:22:03+08:00" content="2014-12-28">
+              2014-12-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/42222429" target="_blank" rel="external">设计高可用Web服务</a></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>什么是高可用</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div>
+
+<ul>
+<li>可用性：在应用工作周期中可用时间的百分比</li>
+<li>不可用：应用无法访问，服务中断应用访问非常缓慢</li>
+<li>高可用：服务一直正常可用，快速响应<div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px">
+
+</div></li>
+</ul>
+<p></p>
+<div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>Tags</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div>
+
+<ul>
+<li><p>SPoF：单点故障</p>
+</li>
+<li><p>Failover：故障转移</p>
+</li>
+<li>Disaster Recovery：灾难恢复</li>
+<li>Load Balancing：负载均衡</li>
+<li>……<div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px">
+
+</div></li>
+</ul>
+<p></p>
+<div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>说到高可用，我们常常会提到上面这些标签，也是设计高可用服务需要考虑和解决的点。下面我们来看看如何设计一个高可用的架构，如何来解决上面的问题，实现高可用。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>如何设计</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>在服务架构时，我们不能相信任何一个环节是100%没问题的，服务的每个层级，使用的数据库，缓存，甚至是服务器本身，服务器放置的机房这些硬件环节都不能完全相信。如果我们假设每个环节都有可能出现问题，在每个环节出现问题时都有方案应对，那么这样设计出来的服务一定就是高可用的了。上面这种考虑问题的方式我们称为“假定失效原则”，在设计服务架构时，我们就要坚持这一原则。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>下面我以一个例子从浅入深的为大家讲解如何设计高可用服务：</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>在服务搭建初期，其实并不需要考虑太多，目标是将服务快速搭建，完成功能，验证产品；我们的架构可能是这样的：</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:558px"><br><img src="http://img.blog.csdn.net/20141229004215515?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>但是，与高可用的标准相比，这样的设计最大最直接的问题显而易见。我们可以看到整个架构就只有一个web&nbsp;server和一个数据库，那么要是它们之中任意一个无法访问，整个服务就瘫痪了；这样的故障，我们称之为SPoF—单点故障。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>单点故障可难不倒我们，采用分布式架构，web server放置在不同的数据中心，同时数据库做主备或者复制集；这样就解决了单点故障，此时的架构应该是这样的：</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:478px"><br><img src="http://img.blog.csdn.net/20141229004231609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>在这样的架构中，我们将用户的请求通过一个代理（只能做简单的分发）分发到处于不同数据中心的web&nbsp;server上解决了单点故障。可是另一个问题又来了，如果其中一个数据中心的web server无法访问，虽然另一个web server能够正常工作，但是仍然会有部分请求发送到故障的机器上，整体来说仍然不能达到高可用。面对这样的问题，我们的第一反应是是否能够让请求不要再转发到故障的机器呢？</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>答案是肯定的，这种做法叫failover—故障转移，与failover经常一起出现的还有一种设计方案叫灾难恢复，它们常常一起使用。要达到的效果是，代理发现某台服务器无法访问，便不将请求发往这台机器，同时会启动另外一台机器，当这台机器完成初始化便将部分请求发往新的机器上。此时的架构应该是这样的：</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:437px"><br><img src="http://img.blog.csdn.net/20141229004242666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:427px"><br><img src="http://img.blog.csdn.net/20141229004301090?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>通过上面的设计，我们离高可用又近了一步，但是仍然不能说是高可用的设计。试想，现在我们的服务都是多数据中心的了，而且能够进行故障转移和灾难恢复；然而，如果我们的web server并没有出现故障，能够被访问并且响应请求，但是响应速度非常的慢，每次请求都要过很久才能返回，原因可能是请求量太大，导致机器资源消耗严重无法正常响应。我们前面说过，当一个服务不能够正常的响应，就算它能够处理请求，也算是不可用。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>那么遇到这种情况该怎么处理呢？这里我需要引入一个新的概念：Scaling—伸缩。这个概念在云服务中经常能够看到，AWS，Google cloud都号称自己的计算服务是Auto&nbsp;Scaling的，意思是他们的服务能够自动伸缩，这正是我们解决上述问题的关键。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>我们希望达到的效果是：当web server资源（CPU，内存等）消耗达到很高的&#20540;时，我们能够启动新的web server缓解压力；与此同时，当过了高峰期，请求量降到很低时，我们能够关闭掉多余的服务器，不至于造成资源浪费。此时的架构应该是这样的：</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:426px"><br><img src="http://img.blog.csdn.net/20141229004324084?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:410px"><br><img src="http://img.blog.csdn.net/20141229004345937?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:430px"><br><img src="http://img.blog.csdn.net/20141229004405234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:431px"><br><img src="http://img.blog.csdn.net/20141229004420296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><div class="image-and-hover" style="margin:0px; padding:0px; display:inline-block; max-width:100%; position:relative; border:0px; line-height:1.428571em; width:530px"><br><img src="http://img.blog.csdn.net/20141229004433156?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""><br><div class="image-hover-container" style=""><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="下载" target="_blank" rel="external"></a><a href="https://app.yinxiang.com/shard/s18/sh/92a8e772-0432-4c4f-bbdd-ba4a449bd9fe/83b1eea9519c0456?content=#" title="图片集" target="_blank" rel="external"></a></div><br></div><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>通过上面的设计，这样的架构我们已经基本上可以称之为高可用的了。我们对每个环节都作了考虑，出现的问题也有了相应的处理方案，让服务保持一直可用——高可用。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>总结</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div>
+
+<ul>
+<li>Cluster/Distributed</li>
+<li>HA&nbsp;Proxy(Load Balancing, Failover etc.)</li>
+<li>Auto Scaling<div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px">
+
+</div></li>
+</ul>
+<p></p>
+<div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>我们如果能够做好上面的三点，那么搭建一个高可用的架构就不是什么难事了，虽然上面三点都是难点 :p</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>后面的文章中将逐个讲解难点的攻破与实现，搭建高可用web服务。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>参考资料</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em"><span style="line-height:1.428571em; font-size:18px"><br><br></span></span></div>
+
+<ul>
+<li>AWS官网：<a href="http://aws.amazon.com/" target="_blank" rel="external">http://aws.amazon.com</a></li>
+<li><p>AWS参考架构：<a href="http://aws.amazon.com/architecture/" target="_blank" rel="external">http://aws.amazon.com/architecture</a></p>
+</li>
+<li><p><a href="http://aws.amazon.com/architecture/" target="_blank" rel="external"></a></p>
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/12/28 23:22:03 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42222429)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1071 评论：8 [查看评论](http://blog.csdn.net/sweetvvck/article/details/42222429#comments)
+&lt;/div&gt;
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/19/译-从S3中导入数据到Dynamodb/" itemprop="url">
+                  [译]从S3中导入数据到Dynamodb
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-19T19:04:20+08:00" content="2014-12-19">
+              2014-12-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。</span><code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</span></div>
+
+<ul>
+<li><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">The destination table 已经存在。 (导入任务不会为你创建表)</span></span></li>
+<li><span style="font-size:13px">The destination table 与 source table 有相同的名称。</span></li>
+<li><span style="font-size:13px">The destination table 与 source table 有相同的结构。</span><br><div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个<em>Customer</em>&nbsp;表，它的主键是<em>CustomerId</em>，并且只有三个items (<em>CustomerId</em>&nbsp;1, 2, and 3)。如果要导入的文件中同样包含<em>CustomerID</em>&nbsp;为1,<br>2, and 3的items，这些在destination table中的items将会被导入文件中的数据替换。如果文件中还包含CustomerId为4的item，那么这个item会被加入到</span>destination table中。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">Destination table 可以在不同的AWS region。例如，假设你有个一个&nbsp;<em>Customer</em>&nbsp;table在US West (Oregon) region，然后将它的数据导出到了Amazon S3中。你可以将它导入到在&nbsp;EU (Ireland) region中有相同表明，相同主键的表中。这种做法被称为<br><em>cross-region</em>&nbsp;导出和导入。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px"></span></div></li>
+</ul>
+<p></p>
+<div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px"><strong>从S3导入数据到DynamoDB</strong></span></div>
+
+<ol>
+<li><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">登陆AWS管理控制台，然后打开dynamodb控制台：&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</span></span></li>
+<li><span style="font-size:13px">(可选) 如果你想做块区域导入，点击右上角的<span style="font-weight:bold">Select a Region</span>&nbsp;然后选择要导入的表的区域。控制台会显示该区域下的所有表。如果destination table不存在的话，你需要先创建它。</span></li>
+<li><span style="font-size:13px">在&nbsp;<span style="font-weight:bold">Amazon DynamoDB Tables</span>&nbsp;页面, 点击&nbsp;<span style="font-weight:bold">Export/Import</span>.</span></li>
+<li><span style="font-size:13px">在&nbsp;<span style="font-weight:bold">Export/Import</span>&nbsp;页面，选择一个你要导入的表，然后点击&nbsp;<span style="font-weight:bold">Import into DynamoDB</span>.</span></li>
+<li><span style="font-size:13px">在&nbsp;<span style="font-weight:bold">Create Import Table Data Pipeline</span>&nbsp;页面，按下面步骤操作：</span></li>
+<li><ol>
+<li><span style="font-size:13px"><span style="font-weight:bold">S3 Input Folder</span>&nbsp;文本框中输入导入文件对应的 Amazon S3 URI。例如:&nbsp;<code>s3://mybucket/exports</code>这个URI的规则应该是这样&nbsp;<code>s3://&lt;span style=&quot;color:rgb(255,0,0)&quot;&gt;&lt;code style=&quot;font-family:&#39;Courier New&#39;,Courier,mono&quot;&gt;bucketname</code></span>/<span style="color:rgb(255,0,0)"><code>folder</code></span><br>:</li>
+<li><ul>
+<li><span style="font-size:13px"><code>bucketname</code>&nbsp;是S3中bucket的名称</span></li>
+<li><span style="font-size:13px"><code>folder</code>&nbsp;表示存放要导入的文件的名称</span></li>
+</ul>
+<ol>
+<li><span style="font-size:13px">导入任务会通过指定的S3位置找到对应的文件。<code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br>Data Export File</a>&nbsp;中描述。</span></li>
+</ol>
+</li>
+<li><span style="font-size:13px">在 <span style="font-weight:bold">S3 Log Folder</span>&nbsp;文本框中输入一个S3 URI，导出过程的日志将被存储在相应的folder中。例如：<code>s3://mybucket/logs/</code></span></li>
+</ol>
+</li>
+</ol>
+<p><span style="font-weight:bold">S3 Log Folder</span>&nbsp;URI的&#26684;式和 <span style="font-weight:bold"><br>S3 Output Folder</span>的&#26684;式相同。</p>
+<pre><code>5.  &lt;span style=&quot;font-size:13px&quot;&gt;在&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;Throughput Rate&lt;/span&gt;&amp;nbsp;文本框中可选择一个百分比。这个比率表示在导出过程中会消耗读吞吐量的上限。例如，假设你要导出的表的读吞吐量是20，同时你设置的百分比是40%。那么导出时所消耗的吞吐量将不会超过8.
+</code></pre><p>如果你在导出多个表，这个 <span style="font-weight:bold">Throughput Rate</span>&nbsp;将会被应用到每个表中。</p>
+<pre><code>6.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Execution Timeout&lt;/span&gt;&amp;nbsp;文本框，输入导出任务的超时时长。如果导出任务在这个时长内还没执行完成，此任务会失败。&lt;/span&gt;
+7.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Send notifications to&lt;/span&gt;&amp;nbsp;文本框，输入一个email地址。在 pipeline被创建后，你将会收到一封email邀请订阅Amazon SNS；如果你接受了此邀请，在每次执行导出操作时你都将会收到email通知。&lt;/span&gt;
+8.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Data Pipeline Role&lt;/span&gt;, 选择&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;DataPipelineDefaultRole&lt;/span&gt;.&lt;/span&gt;
+9.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Resource Role&lt;/span&gt;, 选择&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;DataPipelineDefaultResourceRole&lt;/span&gt;&lt;/span&gt;
+</code></pre><ol>
+<li><p><span style="font-size:13px">确认好以上设置然后点击 <span style="font-weight:bold">Create Export Pipeline</span>.</span></p>
+<div><span style="font-size:13px">你的 pipeline 现在将被创建；这个过程可能会花费几分钟完成。要查看当前状态，移步&nbsp;<a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.ManagingPipelines.html" title="Managing Export and Import Pipelines" target="_blank" rel="external">Managing<br>Export and Import Pipelines</a>.</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">导入任务会在你的pipeline创建好后立即执行。</span></div><br><div></div>
+
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/12/19 19:04:20 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42030729)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1037 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/42030729#comments)
+&lt;/div&gt;
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/19/译-Aws-Dynamodb数据导出到S3/" itemprop="url">
+                  [译]Aws Dynamodb数据导出到S3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-19T11:55:21+08:00" content="2014-12-19">
+              2014-12-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div style="font-family:verdana,arial,sans-serif">本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。</div><br><div style="font-family:verdana,arial,sans-serif"><strong>注意</strong></div><br><div style="font-family:verdana,arial,sans-serif">如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。</div><br><div style="font-family:verdana,arial,sans-serif"><strong>从DynamoDB中导出数据到S3</strong></div>
+
+<ol>
+<li><span style="font-family:verdana,arial,sans-serif">登陆到AWS管理员控制台，打开DynamoDB console。&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</span></li>
+<li>在&nbsp;<span style="font-weight:bold">Amazon DynamoDB Tables</span>&nbsp;页面, 点击&nbsp;<span style="font-weight:bold">Export/Import</span>.</li>
+<li>在 <span style="font-weight:bold">Export/Import</span> 页面, 选择你想导出的表，然后点击 <span style="font-weight:bold"><br>Export from DynamoDB</span>.</li>
+<li>在&nbsp;<span style="font-weight:bold">Create Export Table Data Pipeline(s)</span>&nbsp;页面，按下面流程操作：</li>
+<li><ol>
+<li>在&nbsp;<span style="font-weight:bold">S3 Output Folder</span>&nbsp;文本框中填写 Amazon S3 URI，导出文件将存放在S3中相应的文件夹下。例如：<br><code>s3://mybucket/exports</code></li>
+</ol>
+</li>
+</ol>
+<p>这个URI的规则应该是这样&nbsp;<code>s3://&lt;span style=&quot;color:rgb(255,0,0)&quot;&gt;&lt;code style=&quot;font-family:&#39;Courier New&#39;,Courier,mono&quot;&gt;bucketname</code>/<span style="color:rgb(255,0,0)"><code>folder</code></span><br> :</p>
+<pre><code>2.  *   `bucketname`&amp;nbsp;是S3中bucket的名称
+    *   `folder`&amp;nbsp;表示此bucket下文件夹的名称。如果这个文件夹不存在，它将被自动创建。如果你不指定这个名称，它将被自动授予一个名字，名字的规则是：
+</code></pre><p><code>s3://&lt;span style=&quot;color:rgb(255,0,0)&quot;&gt;&lt;code style=&quot;font-family:&#39;Courier New&#39;,Courier,mono&quot;&gt;bucketname</code>/<span style="color:rgb(255,0,0)"><code>region</code></span>/<span style="color:rgb(255,0,0)"><code>tablename</code></span>.</p>
+<pre><code>3.  在 &lt;span style=&quot;font-weight:bold&quot;&gt;S3 Log Folder&lt;/span&gt;&amp;nbsp;文本框中输入一个S3 URI，导出过程的日志将被存储在相应的folder中。例如：`s3://mybucket/logs/`
+</code></pre><p><span style="font-weight:bold">S3 Log Folder</span>&nbsp;URI的&#26684;式和 <span style="font-weight:bold"><br>S3 Output Folder</span>的&#26684;式相同。</p>
+<pre><code>4.  在&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;Throughput Rate&lt;/span&gt;&amp;nbsp;文本框中可选择一个百分比。这个比率表示在导出过程中会消耗读吞吐量的上限。例如，假设你要导出的表的读吞吐量是20，同时你设置的百分比是40%。那么导出时所消耗的吞吐量将不会超过8.
+</code></pre><p>如果你在导出多个表，这个 <span style="font-weight:bold">Throughput Rate</span>&nbsp;将会被应用到每个表中。</p>
+<pre><code>5.  &lt;span style=&quot;font-weight:bold&quot;&gt;Execution Timeout&lt;/span&gt;&amp;nbsp;文本框，输入导出任务的超时时长。如果导出任务在这个时长内还没执行完成，此任务会失败。
+6.  &lt;span style=&quot;font-weight:bold&quot;&gt;Send notifications to&lt;/span&gt;&amp;nbsp;文本框，输入一个email地址。在 pipeline被创建后，你将会收到一封email邀请订阅Amazon SNS；如果你接受了此邀请，在每次执行导出操作时你都将会收到email通知。
+7.  &amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;Schedule&lt;/span&gt;&amp;nbsp;选项，选择下面其中一项：
+8.  *   &lt;span style=&quot;font-weight:bold&quot;&gt;One-time Export&lt;/span&gt;&amp;nbsp;—导出任务将在pipeline被创建后立即执行。
+    *   &lt;span style=&quot;font-weight:bold&quot;&gt;Daily Export&lt;/span&gt;&amp;nbsp;— 导出任务将会在你所指定的时刻执行，同时会在每天的那个时刻重复。
+
+    9.  &lt;span style=&quot;font-weight:bold&quot;&gt;Data Pipeline Role&lt;/span&gt;, 选择&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;DataPipelineDefaultRole&lt;/span&gt;.
+10.  &lt;span style=&quot;font-weight:bold&quot;&gt;Resource Role&lt;/span&gt;, 选择&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;DataPipelineDefaultResourceRole&lt;/span&gt;
+</code></pre><ol>
+<li><p>确认好以上设置然后点击&nbsp;<span style="font-weight:bold">Create Export Pipeline</span>.</p>
+<div style="font-family:verdana,arial,sans-serif">你的 pipeline 现在将被创建；这个过程可能会花费几分钟完成。要查看当前状态，移步&nbsp;<a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.ManagingPipelines.html" title="Managing Export and Import Pipelines" target="_blank" rel="external">Managing<br>Export and Import Pipelines</a>.</div><br><div style="font-family:verdana,arial,sans-serif">如果你选择的Schedule是 one-time export，导出任务将在pipeline 创建成功后立即执行。如果你选择的是daily export，导出任务将会在指定时刻执行，同时会在每天的那个时刻执行导出任务。</div><br><div style="font-family:verdana,arial,sans-serif">当导出任务结束，你可以到 <a href="http://console.aws.amazon.com/s3" target="_blank" rel="external"><br>Amazon S3 console</a>&nbsp;来查看导出文件。这个文件将会在以你的表名命名的文件夹中，而文件名将会是这种&#26684;式：&nbsp;<code>[YYYY-MM-DD_HH.MM](http://YYYY-MM-DD_HH.MM)。文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br>Data Export File</a>&nbsp;中描述。</div><br><div></div>
+
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/12/19 11:55:21 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42026517)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：1174 评论：1 [查看评论](http://blog.csdn.net/sweetvvck/article/details/42026517#comments)
+&lt;/div&gt;
+</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/14/转-js中-function-…-立即执行函数写法理解/" itemprop="url">
+                  [转]js中(function(){…})()立即执行函数写法理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-14T18:09:17+08:00" content="2014-11-14">
+              2014-11-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span style="font-size:18px"></span></p>
+<p>javascript和其他编程语言相比比较随意，所以javascript代码中充满各种奇葩的写法，有时雾里看花，当然，能理解各型各色的写法也是对javascript语言特性更进一步的深入理解。</p>
+<p>( function(){…} )()和( function (){…} () )是两种javascript立即执行函数的常见写法，最初我以为是一个括号包裹匿名函数，再在后面加个括号调用函数，最后达到函数定义后立即执行的目的，后来发现加括号的原因并非如此。要理解立即执行函数，需要先理解一些函数的基本概念。</p>
+<p><strong>函数声明、函数表达式、匿名函数</strong></p>
+<p>函数声明：function fnName () {…};使用function关键字声明一个函数，再指定一个函数名，叫函数声明。</p>
+<p>函数表达式 var fnName = function () {…};使用function关键字声明一个函数，但未给函数命名，最后将匿名函数赋予一个变量，叫函数表达式，这是最常见的函数表达式语法形式。</p>
+<p>匿名函数：function () {}; 使用function关键字声明一个函数，但未给函数命名，所以叫匿名函数，<strong>匿名函数属于函数表达式</strong>，匿名函数有很多作用，赋予一个变量则创建函数，赋予一个事件则成为事件处理程序或创建闭包等等。</p>
+<p>函数声明和函数表达式不同之处在于，一、Javascript引擎在解析javascript代码时会‘函数声明提升’（Function declaration Hoisting）当前执行环境（作用域）上的函数声明，而函数表达式必须等到Javascirtp引擎执行到它所在行时，才会从上而下一行一行地解析函数表达式，二、函数表达式后面可以加括号立即调用该函数，函数声明不可以，只能以fnName()形式调用 。以下是两者差别的两个例子。</p>
+<div style="color:rgb(51,51,51); font-family:'Century Gothic','Lucida Grande','Microsoft YaHei','Trebuchet MS',Helvetica,Georgia,sans-serif; font-size:13px"><br><div id="highlighter_330296" class="syntaxhighlighter  js" style="width:630px; margin:1em 0px!important; position:relative!important; overflow-x:auto!important; overflow-y:hidden!important; font-size:1em!important"><br><div class="toolbar" style="border:none!important; bottom:auto!important; float:none!important; height:11px!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:absolute!important; right:1px!important; top:1px!important; vertical-align:baseline!important; width:11px!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:10px!important; direction:ltr!important; z-index:10!important; color:white!important; background:rgb(45,150,189)!important"><br><a href="http://dengo.org/archives/1004#" target="_blank" rel="external">帮助</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:630px; margin:0px!important; padding:0px!important; border:0px!important; font-size:1em!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; direction:ltr!important; background:none!important"><br><tbody style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><tr style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><td class="gutter" style="padding:0px!important; border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:1em!important; direction:ltr!important; color:rgb(175,175,175)!important; background:none!important"><br><div class="line number1 index0 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>1</div><br><div class="line number2 index1 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>2</div><br><div class="line number3 index2 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>3</div><br><div class="line number4 index3 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>4</div><br><div class="line number5 index4 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>5</div><br><div class="line number6 index5 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>6</div><br><div class="line number7 index6 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>7</div><br><div class="line number8 index7 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>8</div><br><div class="line number9 index8 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>9</div><br><div class="line number10 index9 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>10</div><br><div class="line number11 index10 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>11</div><br></td><br><td class="code" style="width:591px; padding:0px!important; border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><div class="container" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:relative!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><div class="line number1 index0 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>fnName();</code></div><br><div class="line number2 index1 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>function</code><br><code>fnName(){</code></div><br><div class="line number3 index2 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``...</code></div><br><div class="line number4 index3 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}</code></div><br><div class="line number5 index4 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>//正常，因为‘提升’了函数声明，函数调用可在函数声明之前</code></div><br><div class="line number6 index5 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>&nbsp;</div><br><div class="line number7 index6 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>fnName();</code></div><br><div class="line number8 index7 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>var</code><br><code>fnName=``function``(){</code></div><br><div class="line number9 index8 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``...</code></div><br><div class="line number10 index9 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}</code></div><br><div class="line number11 index10 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>//报错，变量fnName还未保存对函数的引用，函数调用必须在函数表达式之后</code></div><br></div><br></td><br></tr><br></tbody><br></table><br></div><br></div>
+
+<div style="color:rgb(51,51,51); font-family:'Century Gothic','Lucida Grande','Microsoft YaHei','Trebuchet MS',Helvetica,Georgia,sans-serif; font-size:13px"><br><div id="highlighter_462616" class="syntaxhighlighter  js" style="width:630px; margin:1em 0px!important; position:relative!important; overflow-x:auto!important; overflow-y:hidden!important; font-size:1em!important"><br><div class="toolbar" style="border:none!important; bottom:auto!important; float:none!important; height:11px!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:absolute!important; right:1px!important; top:1px!important; vertical-align:baseline!important; width:11px!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:10px!important; direction:ltr!important; z-index:10!important; color:white!important; background:rgb(45,150,189)!important"><br><a href="http://dengo.org/archives/1004#" target="_blank" rel="external">帮助</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:630px; margin:0px!important; padding:0px!important; border:0px!important; font-size:1em!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; direction:ltr!important; background:none!important"><br><tbody style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><tr style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><td class="gutter" style="padding:0px!important; border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:1em!important; direction:ltr!important; color:rgb(175,175,175)!important; background:none!important"><br><div class="line number1 index0 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>1</div><br><div class="line number2 index1 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>2</div><br><div class="line number3 index2 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>3</div><br><div class="line number4 index3 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>4</div><br><div class="line number5 index4 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>5</div><br><div class="line number6 index5 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>6</div><br><div class="line number7 index6 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>7</div><br><div class="line number8 index7 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>8</div><br><div class="line number9 index8 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>9</div><br><div class="line number10 index9 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>10</div><br><div class="line number11 index10 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>11</div><br><div class="line number12 index11 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>12</div><br><div class="line number13 index12 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>13</div><br></td><br><td class="code" style="width:591px; padding:0px!important; border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><div class="container" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:relative!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><div class="line number1 index0 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>var</code><br><code>fnName=``function``(){</code></div><br><div class="line number2 index1 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``alert(``&#39;Hello
+ World&#39;``);</code></div><br><div class="line number3 index2 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}();</code></div><br><div class="line number4 index3 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>//函数表达式后面加括号，当javascript引擎解析到此处时能立即调用函数</code></div><br><div class="line number5 index4 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>function</code><br><code>fnName(){</code></div><br><div class="line number6 index5 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``alert(``&#39;Hello
+ World&#39;``);</code></div><br><div class="line number7 index6 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}();</code></div><br><div class="line number8 index7 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>//不会报错，但是javascript引擎只解析函数声明，忽略后面的括号，函数声明不会被调用</code></div><br><div class="line number9 index8 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>function``(){</code></div><br><div class="line number10 index9 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(``&#39;Hello
+ World&#39;``);&amp;nbsp;&amp;nbsp;&amp;nbsp;</code></div><br><div class="line number11 index10 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}();</code></div><br><div class="line number12 index11 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>//语法错误，虽然匿名函数属于函数表达式，但是未进行赋&amp;#20540;操作，</code></div><br><div class="line number13 index12 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>//所以javascript引擎将开头的function关键字当做函数声明，报错：要求需要一个函数名</code></div><br></div><br></td><br></tr><br></tbody><br></table><br></div><br></div>
+
+<p>在理解了一些函数基本概念后，回头看看( function(){…} )()和( function (){…} () )这两种立即执行函数的写法，最初我以为是一个括号包裹匿名函数，并后面加个括号立即调用函数，当时不知道为什么要加括号，后来明白，要在函数体后面加括号就能立即调用，则这个函数<strong>必须是函数表达式，不能是函数声明</strong>。</p>
+<div style="color:rgb(51,51,51); font-family:'Century Gothic','Lucida Grande','Microsoft YaHei','Trebuchet MS',Helvetica,Georgia,sans-serif; font-size:13px"><br><div id="highlighter_194825" class="syntaxhighlighter  js" style="width:630px; margin:1em 0px!important; position:relative!important; overflow-x:auto!important; overflow-y:hidden!important; font-size:1em!important"><br><div class="toolbar" style="border:none!important; bottom:auto!important; float:none!important; height:11px!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:absolute!important; right:1px!important; top:1px!important; vertical-align:baseline!important; width:11px!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:10px!important; direction:ltr!important; z-index:10!important; color:white!important; background:rgb(45,150,189)!important"><br><a href="http://dengo.org/archives/1004#" target="_blank" rel="external">帮助</a></div><br><table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:630px; margin:0px!important; padding:0px!important; border:0px!important; font-size:1em!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; direction:ltr!important; background:none!important"><br><tbody style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><tr style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><td class="gutter" style="padding:0px!important; border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:1em!important; direction:ltr!important; color:rgb(175,175,175)!important; background:none!important"><br><div class="line number1 index0 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>1</div><br><div class="line number2 index1 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>2</div><br><div class="line number3 index2 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>3</div><br><div class="line number4 index3 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>4</div><br><div class="line number5 index4 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>5</div><br><div class="line number6 index5 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>6</div><br><div class="line number7 index6 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>7</div><br><div class="line number8 index7 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>8</div><br><div class="line number9 index8 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>9</div><br><div class="line number10 index9 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>10</div><br><div class="line number11 index10 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>11</div><br><div class="line number12 index11 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>12</div><br><div class="line number13 index12 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>13</div><br><div class="line number14 index13 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>14</div><br><div class="line number15 index14 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>15</div><br><div class="line number16 index15 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>16</div><br><div class="line number17 index16 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>17</div><br><div class="line number18 index17 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>18</div><br><div class="line number19 index18 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>19</div><br><div class="line number20 index19 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>20</div><br><div class="line number21 index20 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>21</div><br><div class="line number22 index21 alt1" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>22</div><br><div class="line number23 index22 alt2" style="border-width:0px 3px 0px 0px!important; border-right-style:solid!important; border-right-color:rgb(45,150,189)!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 0.5em 0px 1em!important; position:static!important; right:auto!important; text-align:right!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>23</div><br></td><br><td class="code" style="width:591px; padding:0px!important; border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; font-family:Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><div class="container" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px!important; position:relative!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; background:none!important"><br><div class="line number1 index0 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>(``function``(a){</code></div><br><div class="line number2 index1 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(a);&amp;nbsp;&amp;nbsp;
+``//firebug输出123,使用（）运算符</code></div><br><div class="line number3 index2 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>})(123);</code></div><br><div class="line number4 index3 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>&nbsp;</div><br><div class="line number5 index4 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>(``function``(a){</code></div><br><div class="line number6 index5 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(a);&amp;nbsp;&amp;nbsp;
+``//firebug输出1234，使用（）运算符</code></div><br><div class="line number7 index6 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}(1234));</code></div><br><div class="line number8 index7 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>&nbsp;</div><br><div class="line number9 index8 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>!``function``(a){</code></div><br><div class="line number10 index9 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(a);&amp;nbsp;&amp;nbsp;
+``//firebug输出12345,使用！运算符</code></div><br><div class="line number11 index10 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}(12345);</code></div><br><div class="line number12 index11 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>&nbsp;</div><br><div class="line number13 index12 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;#43;``function``(a){</code></div><br><div class="line number14 index13 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(a);&amp;nbsp;&amp;nbsp;
+``//firebug输出123456,使用&amp;#43;运算符</code></div><br><div class="line number15 index14 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}(123456);</code></div><br><div class="line number16 index15 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>&nbsp;</div><br><div class="line number17 index16 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>-``function``(a){</code></div><br><div class="line number18 index17 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(a);&amp;nbsp;&amp;nbsp;
+``//firebug输出1234567,使用-运算符</code></div><br><div class="line number19 index18 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}(1234567);</code></div><br><div class="line number20 index19 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br>&nbsp;</div><br><div class="line number21 index20 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>var</code><br><code>fn=``function``(a){</code></div><br><div class="line number22 index21 alt1" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;``console.log(a);&amp;nbsp;&amp;nbsp;
+``//firebug输出12345678，使用=运算符</code></div><br><div class="line number23 index22 alt2" style="border:0px!important; bottom:auto!important; float:none!important; height:auto!important; left:auto!important; line-height:1.1em!important; margin:0px!important; outline:0px!important; overflow:visible!important; padding:0px 1em!important; position:static!important; right:auto!important; top:auto!important; vertical-align:baseline!important; width:auto!important; font-size:1em!important; direction:ltr!important; white-space:pre!important"><br><code>}(12345678)</code></div><br></div><br></td><br></tr><br></tbody><br></table><br></div><br></div>
+
+<p>可以看到输出结果，在function前面加！、&#43;、 -甚至是逗号等到都可以起到函数定义后立即执行的效果，而（）、！、&#43;、-、=等运算符，<strong>都将函数声明转换成函数表达式</strong>，消除了javascript引擎识别函数表达式和函数声明的歧义，告诉javascript引擎这是一个函数表达式，不是函数声明，可以在后面加括号，并立即执行函数的代码。</p>
+<p>加括号是最安全的做法，因为！、&#43;、-等运算符还会和函数的返回&#20540;进行运算，有时造成不必要的麻烦。</p>
+<p>不过这样的写法有什么用呢？</p>
+<p>javascript中没用私有作用域的概念，如果在多人开发的项目上，你在全局或局部作用域中声明了一些变量，可能会被其他人不小心用同名的变量给覆盖掉，根据javascript函数作用域链的特性，可以使用这种技术可以模仿一个私有作用域，用匿名函数作为一个“容器”，“容器”内部可以访问外部的变量，而外部环境不能访问“容器”内部的变量，所以( function(){…} )()内部定义的变量不会和外部的变量发生冲突，俗称“匿名包裹器”或“命名空间”。</p>
+<p>JQuery使用的就是这种方法，将JQuery代码包裹在( function (window,undefined){…jquery代码…} (window)中，在全局作用域中调用JQuery代码时，可以达到保护JQuery内部变量的作用。</p>
+<p>本文属个人理解整理，如有错误之处欢迎指出，文中观点参考于：</p>
+<p><em>《javascript权威指南》、《javascript高级程序设计》</em></p>
+<p><span style="font-size:18px"></span></p>
+<p></p>
+<p><span style="font-size:18px">转自：</span><a href="http://dengo.org/archives/1004" target="_blank" rel="external">js中(function(){…})()立即执行函数写法理解</a></p>
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/11/14 18:09:17 [原文链接](http://blog.csdn.net/sweetvvck/article/details/41121837)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：394 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/41121837#comments)
+&lt;/div&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 

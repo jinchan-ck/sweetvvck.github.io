@@ -59,16 +59,19 @@
 
 
 
-<meta name="description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在[ListView](http://developer.android.com/reference/android/widget/ListView.html),&amp;nbsp;[GridView](http://developer.android.com/reference/and">
+<meta name="description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,&amp;nbsp;GridView&amp;nbsp;和&amp;nbsp;ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
+内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[译]Android学习路线（三十三）缓存Bitmap">
 <meta property="og:url" content="http://sweetvvck.com/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/index.html">
 <meta property="og:site_name" content="Sweetvvck">
-<meta property="og:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在[ListView](http://developer.android.com/reference/android/widget/ListView.html),&amp;nbsp;[GridView](http://developer.android.com/reference/and">
-<meta property="og:updated_time" content="2016-01-22T16:00:18.000Z">
+<meta property="og:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,&amp;nbsp;GridView&amp;nbsp;和&amp;nbsp;ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
+内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bi">
+<meta property="og:updated_time" content="2016-01-22T16:35:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（三十三）缓存Bitmap">
-<meta name="twitter:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在[ListView](http://developer.android.com/reference/android/widget/ListView.html),&amp;nbsp;[GridView](http://developer.android.com/reference/and">
+<meta name="twitter:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,&amp;nbsp;GridView&amp;nbsp;和&amp;nbsp;ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
+内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bi">
 
 
 
@@ -274,14 +277,14 @@
       
 
       
-        <p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<code>[ListView](http://developer.android.com/reference/android/widget/ListView.html)</code>,&nbsp;<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;和&nbsp;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
+        <p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a>,&nbsp;<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">ViewPager</a>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
 <p>内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。</p>
 <p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。</p>
 <p>##<br>使用内存缓存</p>
 <hr>
-<p>内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。<code>[LruCache](http://developer.android.com/reference/android/util/LruCache.html)</code>&nbsp;类<br> (API等级4以上的低版本可以使用&nbsp;<a href="http://developer.android.com/reference/android/support/v4/util/LruCache.html" target="_blank" rel="external">Support Library</a>) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个<code>[LinkedHashMap](http://developer.android.com/reference/java/util/LinkedHashMap.html)</code>&nbsp;中，当缓存数量达到限制时将最久没有使用过的引用从缓存中剔除。</p>
-<p><strong>提示:</strong>&nbsp;在之前，流行的内存缓存实现使用的都是&nbsp;<code>[SoftReference](http://developer.android.com/reference/java/lang/ref/SoftReference.html)</code>&nbsp;或者&nbsp;<code>[WeakReference](http://developer.android.com/reference/java/lang/ref/WeakReference.html)</code>&nbsp;bitmap<br> 缓存，然而这样不被推荐。从Android 2.3 (API Level 9)开始，GC对soft/weak 引用的回收大大加强了，这回导致它们很快就失效了。&nbsp;</p>
-<p>要为<code>[LruCache](http://developer.android.com/reference/android/util/LruCache.html)</code>选择一个合适的大小，下面几点因素需要考虑：</p>
+<p>内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。<a href="http://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="external">LruCache</a>&nbsp;类<br> (API等级4以上的低版本可以使用&nbsp;<a href="http://developer.android.com/reference/android/support/v4/util/LruCache.html" target="_blank" rel="external">Support Library</a>) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个<a href="http://developer.android.com/reference/java/util/LinkedHashMap.html" target="_blank" rel="external">LinkedHashMap</a>&nbsp;中，当缓存数量达到限制时将最久没有使用过的引用从缓存中剔除。</p>
+<p><strong>提示:</strong>&nbsp;在之前，流行的内存缓存实现使用的都是&nbsp;<a href="http://developer.android.com/reference/java/lang/ref/SoftReference.html" target="_blank" rel="external">SoftReference</a>&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/java/lang/ref/WeakReference.html" target="_blank" rel="external">WeakReference</a>&nbsp;bitmap<br> 缓存，然而这样不被推荐。从Android 2.3 (API Level 9)开始，GC对soft/weak 引用的回收大大加强了，这回导致它们很快就失效了。&nbsp;</p>
+<p>要为<a href="http://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="external">LruCache</a>选择一个合适的大小，下面几点因素需要考虑：</p>
 <ul>
 <li>你的App所剩余的内存情况？</li>
 <li>一次在屏幕上会显示多少图片？有多少图片准备好在屏幕上显示？</li>
@@ -290,7 +293,7 @@
 <li>这些图片被访问的频度是多少？是否它们中的某些比剩余的访问频度高很多？如果是这样，你可能想要将这些高频访问的图片一直放在内存中，或者使用多个LruCache用于不同频度的bitmaps集合。</li>
 <li>你能够保持数量和质量的平衡吗？有时候保存大量的低分辨率bitmaps，然后在后台加载他们的高分辨率版本是很有效的做法。</li>
 </ul>
-<p>没有一个能够适用于所有app的LruCache的大小和使用方式，这要依据不同app的内存使用量和一些其他因素，经过分析后得出一个最佳方案。缓存太小只会带来额外的内存消耗而没有任何好处，然而缓存太大又有可能导致<code>java.lang.OutOfMemory</code>&nbsp;异常，得不偿失。</p>
+<p>没有一个能够适用于所有app的LruCache的大小和使用方式，这要依据不同app的内存使用量和一些其他因素，经过分析后得出一个最佳方案。缓存太小只会带来额外的内存消耗而没有任何好处，然而缓存太大又有可能导致java.lang.OutOfMemory&nbsp;异常，得不偿失。</p>
 <p>下面是为Bitmaps设置LruCache的示例：</p>
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
 
@@ -326,7 +329,7 @@
 &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="kwd" style="color:rgb(0,0,136)">get</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
 </span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
 
-<p><strong>提示:</strong>&nbsp;在本例中，app所分配内存的1/8用于缓存。在普通或者较高分辨率的设备中，缓存的大小大约为4MB (32/8)。一个在分辨率为800x480的设备上被图片覆盖，全屏显示的<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;，将会消耗大约1.5MB<br> (800<em>480</em>4 字节)内存，这样本例中的LruCache就能够缓存2.5页图片。</p>
+<p><strong>提示:</strong>&nbsp;在本例中，app所分配内存的1/8用于缓存。在普通或者较高分辨率的设备中，缓存的大小大约为4MB (32/8)。一个在分辨率为800x480的设备上被图片覆盖，全屏显示的<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>&nbsp;，将会消耗大约1.5MB<br> (800<em>480</em>4 字节)内存，这样本例中的LruCache就能够缓存2.5页图片。</p>
 <p>当加载bitmap到ImageView中时，LruCache会首先检查该bitmap是否已经缓存。如果已经找到对应对象就直接更新到ImageView中，否则就生成一个后台线程加载图片：</p>
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> loadBitmap</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> resId</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">ImageView</span><span class="pln" style="color:rgb(0,0,0)"> imageView</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> imageKey </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">valueOf</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">resId</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
@@ -341,7 +344,7 @@
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
 </span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
 
-<p><a href="http://developer.android.com/training/displaying-bitmaps/process-bitmap.html#BitmapWorkerTask" target="_blank" rel="external"><code>BitmapWorkerTask</code></a>&nbsp;同样需要被更新，加载对象到内存缓存：</p>
+<p><a href="http://developer.android.com/training/displaying-bitmaps/process-bitmap.html#BitmapWorkerTask" target="_blank" rel="external">BitmapWorkerTask</a>&nbsp;同样需要被更新，加载对象到内存缓存：</p>
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapWorkerTask</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">AsyncTask</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">Integer</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Void</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="com">// Decode image in background.</span><span class="pln" style="color:rgb(0,0,0)">
@@ -357,10 +360,10 @@
 
 <p>##<br>使用磁盘缓存</p>
 <hr>
-<p>内存缓存能够大大提升访问速度，然而你不能依赖这些缓存能够一直存在。像<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;这种拥有大量数据的组件会很快的填满内存缓存。你的App也会被被其他任务中断例如有人打电话过来，当你再次回到app时，它可能已经被杀死，同时内存缓存都被清理掉了，这些图片又需要再次被加载进来。</p>
+<p>内存缓存能够大大提升访问速度，然而你不能依赖这些缓存能够一直存在。像<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>&nbsp;这种拥有大量数据的组件会很快的填满内存缓存。你的App也会被被其他任务中断例如有人打电话过来，当你再次回到app时，它可能已经被杀死，同时内存缓存都被清理掉了，这些图片又需要再次被加载进来。</p>
 <p>磁盘缓存可以用于这些情况，将加载过的bitmaps持久化到磁盘中，减少加载那些已经不在内存中存在的图片的时间。当然，由于从磁盘读取的时间不能被预测，速度比从内存读取慢上许多并且需要再后台线程中加载。</p>
-<p><strong>提示:</strong>&nbsp;<code>[ContentProvider](http://developer.android.com/reference/android/content/ContentProvider.html)</code>&nbsp;可能更适合存放那些被频繁访问的图片，例如在相册应用中那样。</p>
-<p>下面使用了<code>DiskLruCache</code>&nbsp;的示例代码是从&nbsp;<a href="https://android.googlesource.com/platform/libcore/&#43;/jb-mr2-release/luni/src/main/java/libcore/io/DiskLruCache.java" target="_blank" rel="external">Android<br> source</a>中抽取出来的，同时加入了内存缓存：</p>
+<p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/ContentProvider.html" target="_blank" rel="external">ContentProvider</a>&nbsp;可能更适合存放那些被频繁访问的图片，例如在相册应用中那样。</p>
+<p>下面使用了DiskLruCache&nbsp;的示例代码是从&nbsp;<a href="https://android.googlesource.com/platform/libcore/&#43;/jb-mr2-release/luni/src/main/java/libcore/io/DiskLruCache.java" target="_blank" rel="external">Android<br> source</a>中抽取出来的，同时加入了内存缓存：</p>
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">DiskLruCache</span><span class="pln" style="color:rgb(0,0,0)"> mDiskLruCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
 </span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Object</span><span class="pln" style="color:rgb(0,0,0)"> mDiskCacheLock </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Object</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
 </span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">boolean</span><span class="pln" style="color:rgb(0,0,0)"> mDiskCacheStarting </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">true</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
@@ -462,8 +465,8 @@
 <p>##<br>处理配置变化（例如横竖屏切换）</p>
 <hr>
 <p>运行时配置发生配置变化，例如屏幕方向切换，导致Android系统使用新的配置重启activity。你想要做的是在发生这种情况时不要影响到缓存机制。</p>
-<p>幸运的是，在上面“使用内存缓存”那一节中讲解了一个很棒的内存缓存示例。这个缓存可以通过<code>[Fragment](http://developer.android.com/reference/android/app/Fragment.html)</code>&nbsp;传递给新的activity中。</p>
-<p>下面是使用Fragment保持&nbsp;<code>[LruCache](http://developer.android.com/reference/android/util/LruCache.html)</code>&nbsp;对象的示例代码：</p>
+<p>幸运的是，在上面“使用内存缓存”那一节中讲解了一个很棒的内存缓存示例。这个缓存可以通过<a href="http://developer.android.com/reference/android/app/Fragment.html" target="_blank" rel="external">Fragment</a>&nbsp;传递给新的activity中。</p>
+<p>下面是使用Fragment保持&nbsp;<a href="http://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="external">LruCache</a>&nbsp;对象的示例代码：</p>
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
 
 </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
