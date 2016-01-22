@@ -1,0 +1,1273 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sweetvvck" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明出处：http://blog.csdn.net/sweetvvck/article/details/38645297
+通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。
+了解过fragm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[原]Android学习路线（二十四）ActionBar Fragment运用最佳实践">
+<meta property="og:url" content="http://sweetvvck.com/2014/08/21/原-Android学习路线（二十四）ActionBar-Fragment运用最佳实践/index.html">
+<meta property="og:site_name" content="Sweetvvck">
+<meta property="og:description" content="转载请注明出处：http://blog.csdn.net/sweetvvck/article/details/38645297
+通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。
+了解过fragm">
+<meta property="og:image" content="http://img.blog.csdn.net/20140818082016785?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140818082105582?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140818083926546?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140821010348778?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140821024716201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140821024753703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140821024813359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2016-01-22T16:00:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[原]Android学习路线（二十四）ActionBar Fragment运用最佳实践">
+<meta name="twitter:description" content="转载请注明出处：http://blog.csdn.net/sweetvvck/article/details/38645297
+通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。
+了解过fragm">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> [原]Android学习路线（二十四）ActionBar Fragment运用最佳实践 | Sweetvvck </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sweetvvck</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [原]Android学习路线（二十四）ActionBar Fragment运用最佳实践
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-21T03:03:52+08:00" content="2014-08-21">
+              2014-08-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><span style="font-size:14px">转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645297" target="_blank" rel="external">http://blog.csdn.net/sweetvvck/article/details/38645297</a></span></p>
+<p><span style="font-size:14px">通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。</span></p>
+<p><span style="font-size:14px">了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客</span><span style="font-size:14px"><a href="http://blog.csdn.net/sweetvvck/article/details/38566871" target="_blank" rel="external">Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment</a>，下面的项目支持到API<br> Level最低为8，所以项目中也会使用到Support Library。</span></p>
+<p><span style="font-size:14px">作为一个有上进心的Android开发者，我们是希望项目的设计符合<strong>Android Design</strong>的。Android Design是Google官方推荐的应用设计原则，<span style="font-size:14px">不了解Android Design的同学可以去了解下，我这里有<a href="http://download.csdn.net/detail/sweetvvck/7835793" target="_blank" rel="external">官方翻译文档</a>。</span></span></p>
+<p><span style="font-size:14px">我发现“知乎”的App设计是符合Android Design的，那么我们的项目就来模仿知乎的主界面。首先看下效果图：</span></p>
+<p><span style="font-size:14px"><img src="http://img.blog.csdn.net/20140818082016785?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">&nbsp;<br> &nbsp; &nbsp; &nbsp;<img src="http://img.blog.csdn.net/20140818082105582?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></span></p>
+<p></p>
+<p><span style="font-size:14px">我们来分析一下这样的界面应该怎么实现，从上图可以看出“知乎”android端使用了action bar和drawerlayout，同时drawer中item切换主界面应该是fragment。</span></p>
+<p><span style="font-size:14px">新建一个工程FakeZhihu：</span></p>
+<p><span style="font-size:14px"><img src="http://img.blog.csdn.net/20140818083926546?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">&nbsp;&nbsp;<img src="http://img.blog.csdn.net/20140821010348778?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></span></p>
+<p></p>
+<p><span style="font-size:14px">&nbsp; &nbsp; &nbsp; 从上图可以看到，使用最新的adt插件创建android项目时，如果选择的Minimum Required SDK为8，而Target SDK大于它的话，系统会自动在项目中导入Support v4包；在创建项目向导最后一步可以选择Navigation Type，如果选择了Navigation Drawer，adt工具会在创建项目时自动生成DrawerLayout相关示例代码。但由于DrawerLayout是在高版本的API中出现的，因此adt工具会帮助导入Support<br> v7 appcompat包，这样DrawerLayout就可以兼容到Android2.2了。</span><span style="font-size:14px">没有使用最新版的adt工具也没有关系，我提供的demo里有Support v4包和Support v7包，大家可以直接使用。</span></p>
+<p><span style="font-size:14px"></span></p>
+<p></p>
+<p><span style="font-size:14px">&nbsp; &nbsp; &nbsp; 下面来看看代码如何实现，android默认的holo主题只提供两种色调，和官方的action bar比较可以看出“知乎”的action bar的颜色以及action bar上action item的颜色以及title的字体大小都是自定义的，那么我们来模仿它自定义一下action bar。</span></p>
+<p><span style="font-size:14px"></span></p>
+<p></p>
+<p><span style="font-size:14px">&nbsp; &nbsp; &nbsp; 首先我们打开res目录下的style文件，自定义一个主题和action bar的style，然后在自定义主题中引用自定义的action bar的style：</span></p>
+<p><span style="font-size:14px"></span></p>
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_1_8330842" class="html" name="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;!-- the theme applied to the application or activity --&gt;
+    &lt;style name=&quot;CustomActionBarTheme&quot;
+           parent=&quot;@style/Theme.AppCompat.Light.DarkActionBar&quot;&gt;
+        &lt;item name=&quot;android:actionBarStyle&quot;&gt;@style/MyActionBar&lt;/item&gt;
+
+        &lt;!-- Support library compatibility --&gt;
+        &lt;item name=&quot;actionBarStyle&quot;&gt;@style/MyActionBar&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;!-- ActionBar styles --&gt;
+    &lt;style name=&quot;MyActionBar&quot;
+           parent=&quot;@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse&quot;&gt;
+        &lt;item name=&quot;android:background&quot;&gt;@drawable/actionbar_background&lt;/item&gt;
+        &lt;item name=&quot;android:titleTextStyle&quot;&gt;@style/MyTitleStyle&lt;/item&gt;
+
+        &lt;!-- Support library compatibility --&gt;
+        &lt;item name=&quot;background&quot;&gt;@drawable/actionbar_background&lt;/item&gt;
+        &lt;item name=&quot;titleTextStyle&quot;&gt;@style/MyTitleStyle&lt;/item&gt;
+    &lt;/style&gt;
+    &lt;style name=&quot;MyTitleStyle&quot;
+           parent=&quot;@android:style/TextAppearance.Holo.Widget.ActionBar.Title.Inverse&quot;&gt;
+        &lt;item name=&quot;android:textSize&quot;&gt;20dp&lt;/item&gt;
+    &lt;/style&gt;
+&lt;/resources&gt;</pre>这里要注意的是<span style="color:#ff0000">**无论是在自定义主题还是自定义style时，要根据情况加上parent属性，如果没有加上相应的parent属性的话就不能使用父style中没有被覆盖的样式**</span>。具体如何设置action bar的style可以参考[
+ Android学习路线（九）为Action Bar添加Style](http://blog.csdn.net/sweetvvck/article/details/38409785)。
+
+<span style="font-size:14px">完成自定义主题和style后要记得在manifest文件中应用：</span>
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_2_6630166" class="html" name="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.sweetvvck.fakezhihu&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    &lt;uses-sdk
+        android:minSdkVersion=&quot;8&quot;
+        android:targetSdkVersion=&quot;19&quot; /&gt;
+
+    &lt;application
+        android:allowBackup=&quot;true&quot;
+        android:icon=&quot;@drawable/ic_launcher&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:theme=&quot;@style/CustomActionBarTheme&quot; &gt;
+        &lt;activity
+            android:name=&quot;com.sweetvvck.fakezhihu.MainActivity&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</pre>这里可以让整个应用都使用自定义的主题，也可以指定单个activity使用，使用android:theme属性来指定。
+
+<span style="font-size:14px">接下来要给app添加DrawerLayout了，修改MainActivity的布局文件，添加一个DrawerLayout，内容非常简单，其中包含一个Drawer和内容布局的Container：</span>
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_3_8026388" class="html" name="code">&lt;android.support.v4.widget.DrawerLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:id=&quot;@+id/drawer_layout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;com.sweetvvck.fakezhihu.MainActivity&quot; &gt;
+
+    &lt;FrameLayout
+        android:id=&quot;@+id/container&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;fragment
+        android:id=&quot;@+id/navigation_drawer&quot;
+        android:name=&quot;com.sweetvvck.fakezhihu.NavigationDrawerFragment&quot;
+        android:layout_width=&quot;@dimen/navigation_drawer_width&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_gravity=&quot;start&quot; /&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;
+</pre>注意，下面那个fragment就是app的Drawer，**其中的属性android:layout_gravity在这里表示Drawer从哪一侧划出，start代表左侧，end代表右侧；还可以定义两个fragment，然后一个左侧划出一个右侧划出**，DrawerLayout在之后会详细讲解，这里先简单了解如何使用。
+
+<span style="font-size:14px">创建完DrawerLayout布局后，我们来为Drawer定义一个fragment，我们可以看到知乎的Drawer中只是包含了一个ListView。这个ListView的第一项和其它项的布局不一样，我们可以想到用ListView加上headerView来实现，知道这些后，我们来创建一个NavigationDrawerFragment继承自Fragment，这个fragment的布局包含一个ListView：</span>
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_4_4754766" class="html" name="code">&lt;ListView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:background=&quot;#fff&quot;
+    android:choiceMode=&quot;singleChoice&quot;
+    android:divider=&quot;#c3c3c3&quot;
+    android:dividerHeight=&quot;0.5dp&quot;
+    tools:context=&quot;com.sweetvvck.fakezhihu.NavigationDrawerFragment&quot; /&gt;
+</pre>使用一个ArrayList来存放ListView的数据，定义一个DrawerListItem对象来存放每个Item的title和icon的资源ID：
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_5_8135855" class="html" style="font-size: 14px;" name="code">&lt;string-array name=&quot;item_title&quot;&gt;
+    &lt;item&gt;首页&lt;/item&gt;
+    &lt;item&gt;发现&lt;/item&gt;
+    &lt;item&gt;关注&lt;/item&gt;
+    &lt;item&gt;收藏&lt;/item&gt;
+    &lt;item&gt;草稿&lt;/item&gt;
+    &lt;item&gt;搜索&lt;/item&gt;
+    &lt;item&gt;提问&lt;/item&gt;
+    &lt;item&gt;设置&lt;/item&gt;
+&lt;/string-array&gt;</pre><pre code_snippet_id="455217" snippet_file_name="blog_20140821_6_2879366" class="java" name="code">String[] itemTitle = getResources().getStringArray(R.array.item_title);
+int[] itemIconRes = {
+  R.drawable.ic_drawer_home,
+  R.drawable.ic_drawer_explore,
+  R.drawable.ic_drawer_follow,
+  R.drawable.ic_drawer_collect,
+  R.drawable.ic_drawer_draft,
+  R.drawable.ic_drawer_search,
+  R.drawable.ic_drawer_question,
+  R.drawable.ic_drawer_setting};
+
+for (int i = 0; i &lt; itemTitle.length; i++) {
+    DrawerListItem item = new DrawerListItem(getResources().getDrawable(itemIconRes[i]), itemTitle[i]);
+    mData.add(item);
+
+}</pre>准备好数据后为该ListView设置Adapter，我们发现这个ListView是Single Choice模式的，并且每个Item被选中后会高亮。那么如何来实现这个功能呢？
+
+<span style="font-size:14px">实现这样的效果有两个步骤：</span>
+
+<span style="font-size:14px">&nbsp; &nbsp; &nbsp; 第一：在ListView中指定android:choiceMode=&quot;singleChoice&quot;；</span>
+
+<span style="font-size:14px">&nbsp; &nbsp; &nbsp; 第二：给ListView的Item的布局设置一个特殊的背景drawable，这个drawable包含当状态为activated时的背景和常态下的背景；同时这个item布局中的图片src和文字颜色也要坐相应的设置；</span>
+
+<span style="font-size:14px">item的背景：</span>
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_7_8179283" class="html" name="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/activated_background_color&quot; /&gt;
+    &lt;item android:drawable=&quot;@android:color/transparent&quot; /&gt;
+&lt;/selector&gt;</pre>图片的src，这里以home为例：
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_8_1003966" class="html" name="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:state_activated=&quot;true&quot; android:drawable=&quot;@drawable/ic_drawer_home_pressed&quot; /&gt;
+    &lt;item android:drawable=&quot;@drawable/ic_drawer_home_normal&quot; /&gt;
+&lt;/selector&gt;</pre>文字的颜色：
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_9_6336903" class="html" name="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!-- Copyright (C) 2011 Google Inc. All Rights Reserved. --&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:state_enabled=&quot;false&quot;
+        android:color=&quot;#ff999999&quot;/&gt;
+    &lt;item android:state_activated=&quot;true&quot;
+        android:color=&quot;@android:color/white&quot; /&gt;
+    &lt;item
+        android:color=&quot;#636363&quot; /&gt;
+&lt;/selector&gt;
+</pre>这样就能实现ListView点击Item高亮的效果了。
+
+<span style="font-size:14px">
+
+</span>
+
+<span style="font-size:14px">考虑到用户在第一次使用app的时候可能不知道有Drawer的存在，我们可以在app第一次被启动时让Drawer处于打开状态，之后再默认隐藏，**这是实际项目中常用的手段**，这里我们用sharedpreference来实现：</span>
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_10_764769" class="java" name="code">// 通过这个flag判断用户是否已经知道drawer了，第一次启动应用显示出drawer（抽屉），之后启动应用默认将其</pre><pre code_snippet_id="455217" snippet_file_name="blog_20140821_11_1401" class="java" name="code">SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);</pre>接下来，要实现Drawer的fragment和宿主activity之间的通讯，需要定义一个回调接口，并且在宿主activity中实现：
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_12_2269675" class="java" name="code">/**
+* 宿主activity要实现的回调接口</pre><pre code_snippet_id="455217" snippet_file_name="blog_20140821_13_7570375" class="java" name="code">* 用于activity与该fragment之间通讯
+*/
+public static interface NavigationDrawerCallbacks {
+    /**
+     * 当drawer中的某个item被选择是调用该方法
+    */
+    void onNavigationDrawerItemSelected(String title);
+}</pre><pre code_snippet_id="455217" snippet_file_name="blog_20140821_14_8203230" class="java" name="code">@Override
+public void onNavigationDrawerItemSelected(String title) {
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction ft = fragmentManager.beginTransaction();
+    currentFragment = fragmentManager.findFragmentByTag(title);
+    if(currentFragment == null) {
+        currentFragment = ContentFragment.newInstance(title);
+        ft.add(R.id.container, currentFragment, title);
+    }
+    if(lastFragment != null) {
+        ft.hide(lastFragment);
+    }
+    if(currentFragment.isDetached()){
+        ft.attach(currentFragment);
+    }
+    ft.show(currentFragment);
+    lastFragment = currentFragment;
+    ft.commit();
+    onSectionAttached(title);
+}</pre>具体如何来创建一个fragment以及如何实现fragment和activity之间的通讯，可以参考：[Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment](http://blog.csdn.net/sweetvvck/article/details/38566871)&nbsp;和&nbsp;[Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯](http://blog.csdn.net/sweetvvck/article/details/38569351)&nbsp;；完整的<span style="font-size:14px">NavigationDrawerFragment代码如下：</span>
+
+<span style="font-size:14px"></span>
+
+<pre code_snippet_id="455217" snippet_file_name="blog_20140821_15_7832736" class="java" name="code">package com.sweetvvck.fakezhihu;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+/**
+ * 用于管理交互和展示抽屉导航的Fragment。
+ * 参考&lt;a href=&quot;https://developer.android.com/design/patterns/navigation-drawer.html#Interaction&quot;&gt;
+ * 设计向导&lt;/a&gt; 
+ */
+public class NavigationDrawerFragment extends Fragment {
+
+    /**
+     * 存放选中item的位置
+     */
+    private static final String STATE_SELECTED_POSITION = &quot;selected_navigation_drawer_position&quot;;
+
+    /**
+     * 存放用户是否需要默认开启drawer的key
+     */
+    private static final String PREF_USER_LEARNED_DRAWER = &quot;navigation_drawer_learned&quot;;
+
+    /**
+     * 宿主activity实现的回调接口的引用
+     */
+    private NavigationDrawerCallbacks mCallbacks;
+
+    /**
+     * 将action bar和drawerlayout绑定的组件
+     */
+    private ActionBarDrawerToggle mDrawerToggle;
+
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerListView;
+    private View mFragmentContainerView;
+
+    private int mCurrentSelectedPosition = 0;
+    private boolean mFromSavedInstanceState;
+    private boolean mUserLearnedDrawer;
+    private List&lt;DrawerListItem&gt; mData = new ArrayList&lt;DrawerListItem&gt;();
+
+    public NavigationDrawerFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // 通过这个flag判断用户是否已经知道drawer了，第一次启动应用显示出drawer（抽屉），之后启动应用默认将其隐藏
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+
+        if (savedInstanceState != null) {
+            mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+            mFromSavedInstanceState = true;
+        }
+
+    }
+
+    @Override
+    public void onActivityCreated (Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // 设置该fragment拥有自己的actionbar action item
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        View headerView = inflater.inflate(R.layout.list_header, null);
+        mDrawerListView.addHeaderView(headerView);
+        mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+                selectItem(position);
+            }
+        });
+        String[] itemTitle = getResources().getStringArray(R.array.item_title);
+        int[] itemIconRes = {
+            R.drawable.ic_drawer_home,
+            R.drawable.ic_drawer_explore,
+            R.drawable.ic_drawer_follow,
+            R.drawable.ic_drawer_collect,
+            R.drawable.ic_drawer_draft,
+            R.drawable.ic_drawer_search,
+            R.drawable.ic_drawer_question,
+            R.drawable.ic_drawer_setting};
+
+        for (int i = 0; i &lt; itemTitle.length; i++) {
+            DrawerListItem item = new DrawerListItem(getResources().getDrawable(itemIconRes[i]), itemTitle[i]);
+            mData.add(item);
+
+        }
+        selectItem(mCurrentSelectedPosition);
+        DrawerListAdapter adapter = new DrawerListAdapter(this.getActivity(), mData);
+        mDrawerListView.setAdapter(adapter);
+        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+        return mDrawerListView;
+    }
+
+    public boolean isDrawerOpen() {
+        return mDrawerLayout != null &amp;&amp; mDrawerLayout.isDrawerOpen(mFragmentContainerView);
+    }
+
+    /**
+     * 设置导航drawer
+     *
+     * @param fragmentId   fragmentent的id
+     * @param drawerLayout fragment的容器
+     */
+    public void setUp(int fragmentId, DrawerLayout drawerLayout) {
+        mFragmentContainerView = getActivity().findViewById(fragmentId);
+        mDrawerLayout = drawerLayout;
+
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        //隐藏Action bar上的app icon
+        actionBar.setDisplayShowHomeEnabled(false);
+
+        mDrawerToggle = new ActionBarDrawerToggle(
+                getActivity(),                    /* 宿主 */
+                mDrawerLayout,                    /* DrawerLayout 对象 */
+                R.drawable.ic_drawer,             /* 替换actionbar上的&#39;Up&#39;图标 */
+                R.string.navigation_drawer_open,  
+                R.string.navigation_drawer_close
+        ) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                if (!isAdded()) {
+                    return;
+                }
+
+                getActivity().supportInvalidateOptionsMenu(); // 调用 onPrepareOptionsMenu()
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                if (!isAdded()) {
+                    return;
+                }
+
+                if (!mUserLearnedDrawer) {
+                    mUserLearnedDrawer = true;
+                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).commit();
+                }
+
+                getActivity().supportInvalidateOptionsMenu(); // 调用 onPrepareOptionsMenu()
+            }
+        };
+
+        // 如果是第一次进入应用，显示抽屉
+        if (!mUserLearnedDrawer &amp;&amp; !mFromSavedInstanceState) {
+            mDrawerLayout.openDrawer(mFragmentContainerView);
+        }
+
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    private void selectItem(int position) {
+        mCurrentSelectedPosition = position;
+        if (mDrawerListView != null) {
+            mDrawerListView.setItemChecked(position, true);
+        }
+        if (mDrawerLayout != null) {
+            mDrawerLayout.closeDrawer(mFragmentContainerView);
+        }
+        if (mCallbacks != null) {
+            if(mCurrentSelectedPosition == 0) {
+                mCallbacks.onNavigationDrawerItemSelected(getString(R.string.app_name));
+                return;
+            }
+            mCallbacks.onNavigationDrawerItemSelected(mData.get(position - 1).getTitle());
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallbacks = (NavigationDrawerCallbacks) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(&quot;Activity must implement NavigationDrawerCallbacks.&quot;);
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // 当系统配置改变时调用DrawerToggle的改变配置方法（例如横竖屏切换会回调此方法）
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //当抽屉打开时显示应用全局的actionbar设置
+        if (mDrawerLayout != null &amp;&amp; isDrawerOpen()) {
+            inflater.inflate(R.menu.global, menu);
+            showGlobalContextActionBar();
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_example) {
+            Toast.makeText(getActivity(), &quot;Example action.&quot;, Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 当抽屉打开时显示应用全局的actionbar设置
+     */
+    private void showGlobalContextActionBar() {
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        actionBar.setTitle(R.string.app_name);
+    }
+
+    private ActionBar getActionBar() {
+        return ((ActionBarActivity) getActivity()).getSupportActionBar();
+    }
+
+    /**
+     * 宿主activity要实现的回调接口
+     * 用于activity与该fragment之间通讯
+     */
+    public static interface NavigationDrawerCallbacks {
+        /**
+         * 当drawer中的某个item被选择是调用该方法
+         */
+        void onNavigationDrawerItemSelected(String title);
+    }
+
+}
+</pre>
+
+<p><span style="font-size:14px"></span></p>
+<p></p>
+<p>这样就完成模仿“知乎”主界面的demo的开发啦，来看看效果如何：</p>
+<p><span style="font-size:14px"></span></p>
+<p></p>
+<p><span style="font-size:14px"></span></p>
+<div style="text-align:center"><img src="http://img.blog.csdn.net/20140821024716201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">&nbsp;&nbsp;<img src="http://img.blog.csdn.net/20140821024753703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">&nbsp;&nbsp;<img src="http://img.blog.csdn.net/20140821024813359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></div>
+
+<p><span style="font-size:14px">怎么样，很像吧，Drawer是不是简直可以以假乱真了，哈哈。</span></p>
+<p><span style="font-size:14px">demo地址：<a href="http://download.csdn.net/detail/sweetvvck/7794083" target="_blank" rel="external">http://download.csdn.net/detail/sweetvvck/7794083</a></span></p>
+<p><span style="font-size:14px">其实demo中还有写知识点没有讲到，比如drawer划开时和关闭时action bar上的action item其实是不一样的，这时如何实现的呢？怎么设置action bar不现实logo/icon？选择Drawer中listview的item切换fragment可以每选择一次都replace一次fragment，但是这样每次都得重新创建一个fragment，如果fragment初始化较复杂就更占资源，此时可以配合使用add，hide，show来实现切换同时将以加载过的fragment缓存起来……由于篇幅原因，这些问题都会在之后的博客中详细讲到的~</span></p>
+<div style="top:0px">&#65279;&#65279;</div>
+
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/8/21 3:03:52 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645297)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：6955 评论：20 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645297#comments)
+&lt;/div&gt;
+</code></pre>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/15/译-Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯/" rel="next" title="[译]Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯">
+                <i class="fa fa-chevron-left"></i> [译]Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/26/原-Zookeeper集群搭建/" rel="prev" title="[原]Zookeeper集群搭建">
+                [原]Zookeeper集群搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/3828494?v=3&s=460"
+               alt="Sweetvvck" />
+          <p class="site-author-name" itemprop="name">Sweetvvck</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.v2ex.com/member/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> V2ex
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sweetvvck</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

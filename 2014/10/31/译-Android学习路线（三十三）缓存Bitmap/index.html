@@ -1,0 +1,954 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Sweetvvck" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在[ListView](http://developer.android.com/reference/android/widget/ListView.html),&amp;nbsp;[GridView](http://developer.android.com/reference/and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译]Android学习路线（三十三）缓存Bitmap">
+<meta property="og:url" content="http://sweetvvck.com/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/index.html">
+<meta property="og:site_name" content="Sweetvvck">
+<meta property="og:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在[ListView](http://developer.android.com/reference/android/widget/ListView.html),&amp;nbsp;[GridView](http://developer.android.com/reference/and">
+<meta property="og:updated_time" content="2016-01-22T16:00:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译]Android学习路线（三十三）缓存Bitmap">
+<meta name="twitter:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在[ListView](http://developer.android.com/reference/android/widget/ListView.html),&amp;nbsp;[GridView](http://developer.android.com/reference/and">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> [译]Android学习路线（三十三）缓存Bitmap | Sweetvvck </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sweetvvck</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [译]Android学习路线（三十三）缓存Bitmap
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-31T23:43:14+08:00" content="2014-10-31">
+              2014-10-31
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<code>[ListView](http://developer.android.com/reference/android/widget/ListView.html)</code>,&nbsp;<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;和&nbsp;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
+<p>内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。</p>
+<p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。</p>
+<p>##<br>使用内存缓存</p>
+<hr>
+<p>内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。<code>[LruCache](http://developer.android.com/reference/android/util/LruCache.html)</code>&nbsp;类<br> (API等级4以上的低版本可以使用&nbsp;<a href="http://developer.android.com/reference/android/support/v4/util/LruCache.html" target="_blank" rel="external">Support Library</a>) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个<code>[LinkedHashMap](http://developer.android.com/reference/java/util/LinkedHashMap.html)</code>&nbsp;中，当缓存数量达到限制时将最久没有使用过的引用从缓存中剔除。</p>
+<p><strong>提示:</strong>&nbsp;在之前，流行的内存缓存实现使用的都是&nbsp;<code>[SoftReference](http://developer.android.com/reference/java/lang/ref/SoftReference.html)</code>&nbsp;或者&nbsp;<code>[WeakReference](http://developer.android.com/reference/java/lang/ref/WeakReference.html)</code>&nbsp;bitmap<br> 缓存，然而这样不被推荐。从Android 2.3 (API Level 9)开始，GC对soft/weak 引用的回收大大加强了，这回导致它们很快就失效了。&nbsp;</p>
+<p>要为<code>[LruCache](http://developer.android.com/reference/android/util/LruCache.html)</code>选择一个合适的大小，下面几点因素需要考虑：</p>
+<ul>
+<li>你的App所剩余的内存情况？</li>
+<li>一次在屏幕上会显示多少图片？有多少图片准备好在屏幕上显示？</li>
+<li>设备的屏幕大小和密度？高分辨率例如密度为xhdpi的设备需要一个更大的缓存来在内存上保存相同数量的图片。</li>
+<li>这些Bitmaps的尺寸和配置，以及它们所需要消耗的内存大小。</li>
+<li>这些图片被访问的频度是多少？是否它们中的某些比剩余的访问频度高很多？如果是这样，你可能想要将这些高频访问的图片一直放在内存中，或者使用多个LruCache用于不同频度的bitmaps集合。</li>
+<li>你能够保持数量和质量的平衡吗？有时候保存大量的低分辨率bitmaps，然后在后台加载他们的高分辨率版本是很有效的做法。</li>
+</ul>
+<p>没有一个能够适用于所有app的LruCache的大小和使用方式，这要依据不同app的内存使用量和一些其他因素，经过分析后得出一个最佳方案。缓存太小只会带来额外的内存消耗而没有任何好处，然而缓存太大又有可能导致<code>java.lang.OutOfMemory</code>&nbsp;异常，得不偿失。</p>
+<p>下面是为Bitmaps设置LruCache的示例：</p>
+<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onCreate</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pln" style="color:rgb(0,0,0)"> savedInstanceState</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Get max available VM memory, exceeding this amount will throw an</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// OutOfMemory exception. Stored in kilobytes as LruCache takes an</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// int in its constructor.</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> maxMemory </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Runtime</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">getRuntime</span><span class="pun" style="color:rgb(102,102,0)">().</span><span class="pln" style="color:rgb(0,0,0)">maxMemory</span><span class="pun" style="color:rgb(102,102,0)">()</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">1024</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="com">// Use 1/8th of the available memory for this memory cache.</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> cacheSize </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> maxMemory </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">8</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; mMemoryCache </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;(</span><span class="pln" style="color:rgb(0,0,0)">cacheSize</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> sizeOf</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> key</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// The cache size will be measured in kilobytes rather than</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// number of items.</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">getByteCount</span><span class="pun" style="color:rgb(102,102,0)">()</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">1024</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">};</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> addBitmapToMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> key</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">getBitmapFromMemCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">==</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">put</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> getBitmapFromMemCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> key</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="kwd" style="color:rgb(0,0,136)">get</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+
+<p><strong>提示:</strong>&nbsp;在本例中，app所分配内存的1/8用于缓存。在普通或者较高分辨率的设备中，缓存的大小大约为4MB (32/8)。一个在分辨率为800x480的设备上被图片覆盖，全屏显示的<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;，将会消耗大约1.5MB<br> (800<em>480</em>4 字节)内存，这样本例中的LruCache就能够缓存2.5页图片。</p>
+<p>当加载bitmap到ImageView中时，LruCache会首先检查该bitmap是否已经缓存。如果已经找到对应对象就直接更新到ImageView中，否则就生成一个后台线程加载图片：</p>
+<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> loadBitmap</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> resId</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">ImageView</span><span class="pln" style="color:rgb(0,0,0)"> imageView</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> imageKey </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">valueOf</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">resId</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> getBitmapFromMemCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">imageKey</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">bitmap </span><span class="pun" style="color:rgb(102,102,0)">!=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; mImageView</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">setImageBitmap</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">bitmap</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">else</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; mImageView</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">setImageResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">R</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">drawable</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">image_placeholder</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">BitmapWorkerTask</span><span class="pln" style="color:rgb(0,0,0)"> task </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapWorkerTask</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mImageView</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; task</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">execute</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">resId</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+
+<p><a href="http://developer.android.com/training/displaying-bitmaps/process-bitmap.html#BitmapWorkerTask" target="_blank" rel="external"><code>BitmapWorkerTask</code></a>&nbsp;同样需要被更新，加载对象到内存缓存：</p>
+<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapWorkerTask</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">AsyncTask</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">Integer</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Void</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Decode image in background.</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> doInBackground</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Integer</span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> decodeSampledBitmapFromResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; getResources</span><span class="pun" style="color:rgb(102,102,0)">(),</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">],</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">100</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">100</span><span class="pun" style="color:rgb(102,102,0)">));</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; addBitmapToMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">valueOf</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">]),</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+
+<p>##<br>使用磁盘缓存</p>
+<hr>
+<p>内存缓存能够大大提升访问速度，然而你不能依赖这些缓存能够一直存在。像<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;这种拥有大量数据的组件会很快的填满内存缓存。你的App也会被被其他任务中断例如有人打电话过来，当你再次回到app时，它可能已经被杀死，同时内存缓存都被清理掉了，这些图片又需要再次被加载进来。</p>
+<p>磁盘缓存可以用于这些情况，将加载过的bitmaps持久化到磁盘中，减少加载那些已经不在内存中存在的图片的时间。当然，由于从磁盘读取的时间不能被预测，速度比从内存读取慢上许多并且需要再后台线程中加载。</p>
+<p><strong>提示:</strong>&nbsp;<code>[ContentProvider](http://developer.android.com/reference/android/content/ContentProvider.html)</code>&nbsp;可能更适合存放那些被频繁访问的图片，例如在相册应用中那样。</p>
+<p>下面使用了<code>DiskLruCache</code>&nbsp;的示例代码是从&nbsp;<a href="https://android.googlesource.com/platform/libcore/&#43;/jb-mr2-release/luni/src/main/java/libcore/io/DiskLruCache.java" target="_blank" rel="external">Android<br> source</a>中抽取出来的，同时加入了内存缓存：</p>
+<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">DiskLruCache</span><span class="pln" style="color:rgb(0,0,0)"> mDiskLruCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Object</span><span class="pln" style="color:rgb(0,0,0)"> mDiskCacheLock </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Object</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">boolean</span><span class="pln" style="color:rgb(0,0,0)"> mDiskCacheStarting </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">true</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> DISK_CACHE_SIZE </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">1024</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">*</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">1024</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">*</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">10</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="com">// 10MB</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> DISK_CACHE_SUBDIR </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="str" style="color:rgb(136,0,0)">&quot;thumbnails&quot;</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onCreate</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pln" style="color:rgb(0,0,0)"> savedInstanceState</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Initialize memory cache</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Initialize disk cache on background thread</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pln" style="color:rgb(0,0,0)"> cacheDir </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> getDiskCacheDir</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">this</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> DISK_CACHE_SUBDIR</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">InitDiskCacheTask</span><span class="pun" style="color:rgb(102,102,0)">().</span><span class="pln" style="color:rgb(0,0,0)">execute</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">cacheDir</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">InitDiskCacheTask</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">AsyncTask</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Void</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Void</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Void</span><span class="pln" style="color:rgb(0,0,0)"> doInBackground</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">synchronized</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mDiskCacheLock</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pln" style="color:rgb(0,0,0)"> cacheDir </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">];</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mDiskLruCache </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">DiskLruCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">open</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">cacheDir</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> DISK_CACHE_SIZE</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mDiskCacheStarting </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">false</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="com">// Finished initialization</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mDiskCacheLock</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">notifyAll</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="com">// Wake any waiting threads</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapWorkerTask</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">AsyncTask</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">Integer</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Void</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Decode image in background.</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> doInBackground</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Integer</span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> imageKey </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">valueOf</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">]);</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Check disk cache in background thread</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> getBitmapFromDiskCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">imageKey</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">bitmap </span><span class="pun" style="color:rgb(102,102,0)">==</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="com">// Not found in disk cache</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Process as normal</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> decodeSampledBitmapFromResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; getResources</span><span class="pun" style="color:rgb(102,102,0)">(),</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">params</span><span class="pun" style="color:rgb(102,102,0)">[</span><span class="lit" style="color:rgb(0,102,102)">0</span><span class="pun" style="color:rgb(102,102,0)">],</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">100</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">100</span><span class="pun" style="color:rgb(102,102,0)">));</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Add final bitmap to caches</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; addBitmapToCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">imageKey</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> addBitmapToCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> key</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Add to memory cache as before</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">getBitmapFromMemCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">==</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">put</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="com">// Also add to disk cache</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">synchronized</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mDiskCacheLock</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mDiskLruCache </span><span class="pun" style="color:rgb(102,102,0)">!=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">&amp;&amp;</span><span class="pln" style="color:rgb(0,0,0)"> mDiskLruCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="kwd" style="color:rgb(0,0,136)">get</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">==</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mDiskLruCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">put</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> bitmap</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> getBitmapFromDiskCache</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> key</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">synchronized</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mDiskCacheLock</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Wait while disk cache is started from background thread</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">while</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mDiskCacheStarting</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">try</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mDiskCacheLock</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">wait</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">catch</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">InterruptedException</span><span class="pln" style="color:rgb(0,0,0)"> e</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mDiskLruCache </span><span class="pun" style="color:rgb(102,102,0)">!=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> mDiskLruCache</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="kwd" style="color:rgb(0,0,136)">get</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">key</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="com">// Creates a unique subdirectory of the designated app cache directory. Tries to use external</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="com">// but if not mounted, falls back on internal storage.</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pln" style="color:rgb(0,0,0)"> getDiskCacheDir</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Context</span><span class="pln" style="color:rgb(0,0,0)"> context</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> uniqueName</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// Check if media is mounted or storage is built-in, if so, try and use external cache dir</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="com">// otherwise use internal cache dir</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> cachePath </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">Environment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">MEDIA_MOUNTED</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">equals</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Environment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">getExternalStorageState</span><span class="pun" style="color:rgb(102,102,0)">())</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">||</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">!</span><span class="pln" style="color:rgb(0,0,0)">isExternalStorageRemovable</span><span class="pun" style="color:rgb(102,102,0)">()</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">?</span><span class="pln" style="color:rgb(0,0,0)"> getExternalCacheDir</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">context</span><span class="pun" style="color:rgb(102,102,0)">).</span><span class="pln" style="color:rgb(0,0,0)">getPath</span><span class="pun" style="color:rgb(102,102,0)">()</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">:</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; context</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">getCacheDir</span><span class="pun" style="color:rgb(102,102,0)">().</span><span class="pln" style="color:rgb(0,0,0)">getPath</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">cachePath </span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">File</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">separator </span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="pln" style="color:rgb(0,0,0)"> uniqueName</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+
+<p><strong>提示:</strong>&nbsp;初始化磁盘缓存也需要磁盘操作，同样不能在主线程中执行。然而，这就意味着会有缓存没有初始化完就被使用的情况出现。要避免这种情况，在上面的实现代码中，使用了一个锁对象保证在磁盘缓存初始化完成前不能被使用。</p>
+<p>内存缓存在UI线程中检查，而磁盘缓存则在后台线程中检查。当一个图片被加载完成，它将被同时加入到内存和磁盘缓存，用于之后的使用。</p>
+<p>##<br>处理配置变化（例如横竖屏切换）</p>
+<hr>
+<p>运行时配置发生配置变化，例如屏幕方向切换，导致Android系统使用新的配置重启activity。你想要做的是在发生这种情况时不要影响到缓存机制。</p>
+<p>幸运的是，在上面“使用内存缓存”那一节中讲解了一个很棒的内存缓存示例。这个缓存可以通过<code>[Fragment](http://developer.android.com/reference/android/app/Fragment.html)</code>&nbsp;传递给新的activity中。</p>
+<p>下面是使用Fragment保持&nbsp;<code>[LruCache](http://developer.android.com/reference/android/util/LruCache.html)</code>&nbsp;对象的示例代码：</p>
+<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="kwd" style="color:rgb(0,0,136)">protected</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onCreate</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pln" style="color:rgb(0,0,0)"> savedInstanceState</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pln" style="color:rgb(0,0,0)"> retainFragment </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">findOrCreateRetainFragment</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">getFragmentManager</span><span class="pun" style="color:rgb(102,102,0)">());</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; mMemoryCache </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> retainFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">mRetainedCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">mMemoryCache </span><span class="pun" style="color:rgb(102,102,0)">==</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; mMemoryCache </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;(</span><span class="pln" style="color:rgb(0,0,0)">cacheSize</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="com">// Initialize cache here as usual</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; retainFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">mRetainedCache </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> mMemoryCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+</span><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Fragment</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">private</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> TAG </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="str" style="color:rgb(136,0,0)">&quot;RetainFragment&quot;</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">LruCache</span><span class="pun" style="color:rgb(102,102,0)">&lt;</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> mRetainedCache</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pun" style="color:rgb(102,102,0)">()</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{}</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pln" style="color:rgb(0,0,0)"> findOrCreateRetainFragment</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">FragmentManager</span><span class="pln" style="color:rgb(0,0,0)"> fm</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pln" style="color:rgb(0,0,0)"> fragment </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> fm</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">findFragmentByTag</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">TAG</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">fragment </span><span class="pun" style="color:rgb(102,102,0)">==</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">null</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fragment </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">RetainFragment</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fm</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">beginTransaction</span><span class="pun" style="color:rgb(102,102,0)">().</span><span class="pln" style="color:rgb(0,0,0)">add</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">fragment</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> TAG</span><span class="pun" style="color:rgb(102,102,0)">).</span><span class="pln" style="color:rgb(0,0,0)">commit</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> fragment</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+
+&nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onCreate</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pln" style="color:rgb(0,0,0)"> savedInstanceState</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">super</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">onCreate</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">savedInstanceState</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color:inherit"><span class="pln" style="color:rgb(0,0,0)">setRetainInstance</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">true</span><span class="pun" style="color:rgb(102,102,0)">);</span></span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+
+<pre><code>&lt;div&gt;
+    作者：sweetvvck 发表于2014/10/31 23:43:14 [原文链接](http://blog.csdn.net/sweetvvck/article/details/40664009)
+&lt;/div&gt;
+&lt;div&gt;
+阅读：373 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/40664009#comments)
+&lt;/div&gt;
+</code></pre>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/" rel="next" title="[译]Android学习路线（三十二）在非UI线程中处理Bitmap">
+                <i class="fa fa-chevron-left"></i> [译]Android学习路线（三十二）在非UI线程中处理Bitmap
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/11/14/转-js中-function-…-立即执行函数写法理解/" rel="prev" title="[转]js中(function(){…})()立即执行函数写法理解">
+                [转]js中(function(){…})()立即执行函数写法理解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars1.githubusercontent.com/u/3828494?v=3&s=460"
+               alt="Sweetvvck" />
+          <p class="site-author-name" itemprop="name">Sweetvvck</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.v2ex.com/member/sweetvvck" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> V2ex
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sweetvvck</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
