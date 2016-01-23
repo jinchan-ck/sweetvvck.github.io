@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,Fragment," />
 
 
 
@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。
 你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity">
-<meta property="og:updated_time" content="2016-01-22T16:00:18.000Z">
+<meta property="og:updated_time" content="2016-01-23T07:26:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯">
 <meta name="twitter:description" content="为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。
@@ -310,7 +310,7 @@
 &nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onAttach</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Activity</span><span class="pln" style="color:rgb(0,0,0)"> activity</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">super</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">onAttach</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">activity</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// This makes sure that the container activity has implemented</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// the callback interface. If not, it throws an exception</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">try</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
@@ -320,7 +320,7 @@
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="str" style="color:rgb(136,0,0)">&quot; must implement OnHeadlineSelectedListener&quot;</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; 
+&nbsp; &nbsp;
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
 </span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
 
@@ -339,7 +339,7 @@
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">MainActivity</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Activity</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">implements</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">HeadlinesFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">OnHeadlineSelectedListener</span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; 
+&nbsp; &nbsp;
 &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onArticleSelected</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> position</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// The user selected the headline of an article from the HeadlinesFragment</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Do something here to display that article</span><span class="pln" style="color:rgb(0,0,0)">
@@ -374,7 +374,7 @@
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pln" style="color:rgb(0,0,0)"> args </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; args</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">putInt</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">ArticleFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">ARG_POSITION</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> position</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">setArguments</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">args</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">FragmentTransaction</span><span class="pln" style="color:rgb(0,0,0)"> transaction </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> getSupportFragmentManager</span><span class="pun" style="color:rgb(102,102,0)">().</span><span class="pln" style="color:rgb(0,0,0)">beginTransaction</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Replace whatever is in the fragment_container view with this fragment,</span><span class="pln" style="color:rgb(0,0,0)">
@@ -399,6 +399,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Fragment/" rel="tag">#Fragment</a>
+          
+        </div>
       
 
       
@@ -497,7 +505,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

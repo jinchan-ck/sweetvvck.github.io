@@ -476,7 +476,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.com/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/"/>
     <id>http://sweetvvck.com/2014/12/31/译-Twemproxy来自Twitter的Redis代理/</id>
     <published>2014-12-31T14:35:41.000Z</published>
-    <updated>2016-01-22T16:00:18.000Z</updated>
+    <updated>2016-01-23T07:26:00.000Z</updated>
     <content type="html"><![CDATA[<pre style="margin-top:0px; margin-bottom:10px; padding:0px; border:0px; outline:0px; font-size:18px; font-family:Inconsolata,Courier; vertical-align:baseline; position:relative; left:0px; top:10px; white-space:pre-wrap; word-wrap:break-word; line-height:1.5">在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
 
 关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)
@@ -605,6 +605,10 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<pre style="margin-top:0px; margin-bottom:10px; padding:0px; border:0px; outline:0px; font-size:18px; font-family:Inconsolata,Courier; verti]]>
     </summary>
     
+      <category term="Redis" scheme="http://sweetvvck.com/tags/Redis/"/>
+    
+      <category term="Twemproxy" scheme="http://sweetvvck.com/tags/Twemproxy/"/>
+    
   </entry>
   
   <entry>
@@ -612,7 +616,7 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <link href="http://sweetvvck.com/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/"/>
     <id>http://sweetvvck.com/2014/12/28/原-设计高可用Web服务/</id>
     <published>2014-12-28T15:22:03.000Z</published>
-    <updated>2016-01-22T16:00:18.000Z</updated>
+    <updated>2016-01-23T07:25:23.000Z</updated>
     <content type="html"><![CDATA[<div></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/42222429" target="_blank" rel="external">设计高可用Web服务</a></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>什么是高可用</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div>
 
 <ul>
@@ -667,6 +671,8 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<div></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',san]]>
     </summary>
     
+      <category term="Web 架构" scheme="http://sweetvvck.com/tags/Web-%E6%9E%B6%E6%9E%84/"/>
+    
   </entry>
   
   <entry>
@@ -674,7 +680,7 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <link href="http://sweetvvck.com/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/"/>
     <id>http://sweetvvck.com/2014/12/19/译-从S3中导入数据到Dynamodb/</id>
     <published>2014-12-19T11:04:20.000Z</published>
-    <updated>2016-01-22T16:00:18.000Z</updated>
+    <updated>2016-01-23T07:28:00.000Z</updated>
     <content type="html"><![CDATA[<div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。</span><code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</span></div>
 
 <ul>
@@ -729,6 +735,8 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。</span><code>文件内部]]>
     </summary>
     
+      <category term="Aws" scheme="http://sweetvvck.com/tags/Aws/"/>
+    
   </entry>
   
   <entry>
@@ -736,7 +744,7 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <link href="http://sweetvvck.com/2014/12/19/%E8%AF%91-Aws-Dynamodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%88%B0S3/"/>
     <id>http://sweetvvck.com/2014/12/19/译-Aws-Dynamodb数据导出到S3/</id>
     <published>2014-12-19T03:55:21.000Z</published>
-    <updated>2016-01-22T16:00:18.000Z</updated>
+    <updated>2016-01-23T07:26:14.000Z</updated>
     <content type="html"><![CDATA[<div style="font-family:verdana,arial,sans-serif">本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。</div><br><div style="font-family:verdana,arial,sans-serif"><strong>注意</strong></div><br><div style="font-family:verdana,arial,sans-serif">如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。</div><br><div style="font-family:verdana,arial,sans-serif"><strong>从DynamoDB中导出数据到S3</strong></div>
 
 <ol>
@@ -781,6 +789,12 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <summary type="html">
     <![CDATA[<div style="font-family:verdana,arial,sans-serif">本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。</div><br><div style="font]]>
     </summary>
+    
+      <category term="Aws" scheme="http://sweetvvck.com/tags/Aws/"/>
+    
+      <category term="Dynamodb" scheme="http://sweetvvck.com/tags/Dynamodb/"/>
+    
+      <category term="S3" scheme="http://sweetvvck.com/tags/S3/"/>
     
   </entry>
   
@@ -843,7 +857,7 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/"/>
     <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/</id>
     <published>2014-10-31T15:43:14.000Z</published>
-    <updated>2016-01-22T16:35:15.000Z</updated>
+    <updated>2016-01-23T07:26:35.000Z</updated>
     <content type="html"><![CDATA[<p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a>,&nbsp;<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">ViewPager</a>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
 <p>内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。</p>
 <p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。</p>
@@ -1084,6 +1098,8 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html]]>
     </summary>
     
+      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+    
   </entry>
   
   <entry>
@@ -1091,7 +1107,7 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%BA%8C%EF%BC%89%E5%9C%A8%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%A4%84%E7%90%86Bitmap/"/>
     <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/</id>
     <published>2014-10-31T15:41:35.000Z</published>
-    <updated>2016-01-22T16:21:54.000Z</updated>
+    <updated>2016-01-23T07:26:42.000Z</updated>
     <content type="html"><![CDATA[<p><span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">如果图片源数据是从硬盘，网络或是其他非内存中读取的话，</span>在<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html" target="_blank" rel="external">高效地夹在大Bitmaps</a>中讨论的<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。</p>
 <p>本课介绍如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。</p>
 <p>##<br>使用AsyncTask</p>
@@ -1230,6 +1246,8 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<p><span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">如果图]]>
     </summary>
     
+      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+    
   </entry>
   
   <entry>
@@ -1237,7 +1255,7 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%80%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E5%8A%A0%E8%BD%BD%E5%A4%A7%E7%9A%84Bitmap/"/>
     <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/</id>
     <published>2014-10-31T15:40:38.000Z</published>
-    <updated>2016-01-22T16:35:45.000Z</updated>
+    <updated>2016-01-23T07:26:27.000Z</updated>
     <content type="html"><![CDATA[<p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。</p>
 <p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。</p>
@@ -1322,6 +1340,10 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事]]>
     </summary>
     
+      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+    
+      <category term="Bitmap" scheme="http://sweetvvck.com/tags/Bitmap/"/>
+    
   </entry>
   
   <entry>
@@ -1329,7 +1351,7 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
     <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/"/>
     <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/</id>
     <published>2014-10-31T15:39:24.000Z</published>
-    <updated>2016-01-22T16:00:18.000Z</updated>
+    <updated>2016-01-23T07:26:46.000Z</updated>
     <content type="html"><![CDATA[<div class="jd-descr" style="height:972px; color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)"><br><br>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：<br><br><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.<br><br>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：<br><br><em>   移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。
 </em>   Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;<a href="http://www.android.com/devices/detail/galaxy-nexus" target="_blank" rel="external">Galaxy Nexus</a>&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素)。如果这个bitmap使用的配置是&nbsp;<code>[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html)</code>&nbsp;(从Android2.3开始的默认配置)，那么加载这个图片到内存中需要占用19MB，这样马上就用光了某些设备的每个app的内存限制。<br><em>   Android app UI会频繁的需要多个bitmaps的一次载入。像&nbsp;<code>[ListView](http://developer.android.com/reference/android/widget/ListView.html)</code>,<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;以及&nbsp;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>&nbsp;这些组件通常都会一次在屏幕上显示多个bitmaps同时还会有更多的bitmaps在后台等待被显示。<br><br>##<br>课程
 
@@ -1345,6 +1367,8 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
     <summary type="html">
     <![CDATA[<div class="jd-descr" style="height:972px; color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-]]>
     </summary>
+    
+      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
     
   </entry>
   
@@ -1506,7 +1530,7 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
     <link href="http://sweetvvck.com/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
     <id>http://sweetvvck.com/2014/09/30/译-Android学习路线（二十六）Android数据存储/</id>
     <published>2014-09-30T15:56:52.000Z</published>
-    <updated>2016-01-22T16:27:31.000Z</updated>
+    <updated>2016-01-23T07:27:15.000Z</updated>
     <content type="html"><![CDATA[<p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" rel="external">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
 <ul>
 <li>使用shared preferences文件通过键&#20540;对保存简单数据类型</li>
@@ -1527,6 +1551,8 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
     <summary type="html">
     <![CDATA[<p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" r]]>
     </summary>
+    
+      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
     
   </entry>
   
@@ -2407,7 +2433,7 @@ public class NavigationDrawerFragment extends Fragment {
     <link href="http://sweetvvck.com/2014/08/15/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E8%BF%90%E7%94%A8Fragment%E6%9E%84%E5%BB%BA%E5%8A%A8%E6%80%81UI%E2%80%94%E2%80%94Fragment%E9%97%B4%E9%80%9A%E8%AE%AF/"/>
     <id>http://sweetvvck.com/2014/08/15/译-Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯/</id>
     <published>2014-08-14T16:07:26.000Z</published>
-    <updated>2016-01-22T16:00:18.000Z</updated>
+    <updated>2016-01-23T07:26:56.000Z</updated>
     <content type="html"><![CDATA[<p>为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。</p>
 <p>你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。</p>
 <p>##<br>定义一个接口</p>
@@ -2425,7 +2451,7 @@ public class NavigationDrawerFragment extends Fragment {
 &nbsp; &nbsp; </span><span class="lit" style="color:rgb(0,102,102)">@Override</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onAttach</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Activity</span><span class="pln" style="color:rgb(0,0,0)"> activity</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">super</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">onAttach</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">activity</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// This makes sure that the container activity has implemented</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// the callback interface. If not, it throws an exception</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">try</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
@@ -2435,7 +2461,7 @@ public class NavigationDrawerFragment extends Fragment {
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">&#43;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="str" style="color:rgb(136,0,0)">&quot; must implement OnHeadlineSelectedListener&quot;</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; 
+&nbsp; &nbsp;
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
 </span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
 
@@ -2454,7 +2480,7 @@ public class NavigationDrawerFragment extends Fragment {
 <pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">class</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">MainActivity</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">extends</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Activity</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">implements</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">HeadlinesFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">OnHeadlineSelectedListener</span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">...</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; 
+&nbsp; &nbsp;
 &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">void</span><span class="pln" style="color:rgb(0,0,0)"> onArticleSelected</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> position</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// The user selected the headline of an article from the HeadlinesFragment</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Do something here to display that article</span><span class="pln" style="color:rgb(0,0,0)">
@@ -2489,7 +2515,7 @@ public class NavigationDrawerFragment extends Fragment {
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pln" style="color:rgb(0,0,0)"> args </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bundle</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; args</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">putInt</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">ArticleFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">ARG_POSITION</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> position</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newFragment</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">setArguments</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">args</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">FragmentTransaction</span><span class="pln" style="color:rgb(0,0,0)"> transaction </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> getSupportFragmentManager</span><span class="pun" style="color:rgb(102,102,0)">().</span><span class="pln" style="color:rgb(0,0,0)">beginTransaction</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Replace whatever is in the fragment_container view with this fragment,</span><span class="pln" style="color:rgb(0,0,0)">
@@ -2514,6 +2540,10 @@ public class NavigationDrawerFragment extends Fragment {
     <![CDATA[<p>为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。</p>
 <p>你通常都希望一个f]]>
     </summary>
+    
+      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+    
+      <category term="Fragment" scheme="http://sweetvvck.com/tags/Fragment/"/>
     
   </entry>
   

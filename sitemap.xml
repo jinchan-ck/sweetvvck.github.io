@@ -3,12 +3,17 @@
 
     <sitemap>
         <loc>http://sweetvvck.com/post-sitemap.xml</loc>
-        <lastmod>2016-01-22T16:35:45.000Z</lastmod>
+        <lastmod>2016-01-23T07:28:00.000Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://sweetvvck.com/page-sitemap.xml</loc>
         <lastmod>2016-01-22T15:51:40.000Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>http://sweetvvck.com/tag-sitemap.xml</loc>
+        <lastmod>2016-01-23T07:25:23.000Z</lastmod>
     </sitemap>
 
 </sitemapindex>
