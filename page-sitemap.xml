@@ -7,6 +7,13 @@
     </url>
     
     <url>
+        <loc>http://sweetvvck.com/tags/index.html</loc>
+        <lastmod>2016-01-23T07:34:26.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>http://sweetvvck.com/about/index.html</loc>
         <lastmod>2016-01-22T15:51:40.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -16,20 +23,6 @@
     <url>
         <loc>http://sweetvvck.com/categories/index.html</loc>
         <lastmod>2016-01-22T15:46:14.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://sweetvvck.com/tags/index-1.html</loc>
-        <lastmod>2016-01-22T15:44:47.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://sweetvvck.com/tags/index.html</loc>
-        <lastmod>2016-01-22T15:43:34.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
