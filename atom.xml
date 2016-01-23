@@ -3,9 +3,9 @@
   <title><![CDATA[Sweetvvck]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://sweetvvck.com/"/>
+  <link href="http://sweetvvck.github.io/"/>
   <updated>2016-01-22T16:00:18.000Z</updated>
-  <id>http://sweetvvck.com/</id>
+  <id>http://sweetvvck.github.io/</id>
   
   <author>
     <name><![CDATA[Sweetvvck]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[[译]打造atom成为golang开发神器]]></title>
-    <link href="http://sweetvvck.com/2015/12/29/%E8%AF%91-%E6%89%93%E9%80%A0atom%E6%88%90%E4%B8%BAgolang%E5%BC%80%E5%8F%91%E7%A5%9E%E5%99%A8/"/>
-    <id>http://sweetvvck.com/2015/12/29/译-打造atom成为golang开发神器/</id>
+    <link href="http://sweetvvck.github.io/2015/12/29/%E8%AF%91-%E6%89%93%E9%80%A0atom%E6%88%90%E4%B8%BAgolang%E5%BC%80%E5%8F%91%E7%A5%9E%E5%99%A8/"/>
+    <id>http://sweetvvck.github.io/2015/12/29/译-打造atom成为golang开发神器/</id>
     <published>2015-12-28T16:37:30.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p>在我在Windows系统上开发的日子里，我使用IDE开发数年之久，例如Visual Basic IDE, Borland Delphi IDE, Visual C&#43;&#43; 和最后的Visual Studio；但当我在大约10年前转到Mac OS X下开发后，我放弃了上述所有的IDE。</p>
@@ -239,8 +239,8 @@ go get -u github.com/golang/lint/golint</pre>
   
   <entry>
     <title><![CDATA[[原]Gitflow实践]]></title>
-    <link href="http://sweetvvck.com/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/"/>
-    <id>http://sweetvvck.com/2015/12/16/原-Gitflow实践/</id>
+    <link href="http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://sweetvvck.github.io/2015/12/16/原-Gitflow实践/</id>
     <published>2015-12-15T17:14:03.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/50245147" target="_blank" rel="external">Gitflow实践</a></p>
@@ -294,8 +294,8 @@ go get -u github.com/golang/lint/golint</pre>
   
   <entry>
     <title><![CDATA[[原]Koa中间件方式实现API的Undo功能]]></title>
-    <link href="http://sweetvvck.com/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/"/>
-    <id>http://sweetvvck.com/2015/05/08/原-Koa中间件方式实现API的Undo功能/</id>
+    <link href="http://sweetvvck.github.io/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/"/>
+    <id>http://sweetvvck.github.io/2015/05/08/原-Koa中间件方式实现API的Undo功能/</id>
     <published>2015-05-08T15:12:05.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<h1 id="Koa_u4E2D_u95F4_u4EF6_u65B9_u5F0F_u5B9E_u73B0API_u7684Undo_u529F_u80FD"><a href="#Koa_u4E2D_u95F4_u4EF6_u65B9_u5F0F_u5B9E_u73B0API_u7684Undo_u529F_u80FD" class="headerlink" title="Koa中间件方式实现API的Undo功能"></a>Koa中间件方式实现API的Undo功能</h1><h2 id="API_u7684Undo_u529F_u80FD"><a href="#API_u7684Undo_u529F_u80FD" class="headerlink" title="API的Undo功能"></a>API的Undo功能</h2><p>使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：</p>
@@ -473,8 +473,8 @@ function delayNext(user, expired, context) {
   
   <entry>
     <title><![CDATA[[译]Twemproxy来自Twitter的Redis代理]]></title>
-    <link href="http://sweetvvck.com/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/"/>
-    <id>http://sweetvvck.com/2014/12/31/译-Twemproxy来自Twitter的Redis代理/</id>
+    <link href="http://sweetvvck.github.io/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/"/>
+    <id>http://sweetvvck.github.io/2014/12/31/译-Twemproxy来自Twitter的Redis代理/</id>
     <published>2014-12-31T14:35:41.000Z</published>
     <updated>2016-01-23T07:26:00.000Z</updated>
     <content type="html"><![CDATA[<pre style="margin-top:0px; margin-bottom:10px; padding:0px; border:0px; outline:0px; font-size:18px; font-family:Inconsolata,Courier; vertical-align:baseline; position:relative; left:0px; top:10px; white-space:pre-wrap; word-wrap:break-word; line-height:1.5">在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
@@ -605,16 +605,16 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<pre style="margin-top:0px; margin-bottom:10px; padding:0px; border:0px; outline:0px; font-size:18px; font-family:Inconsolata,Courier; verti]]>
     </summary>
     
-      <category term="Redis" scheme="http://sweetvvck.com/tags/Redis/"/>
+      <category term="Redis" scheme="http://sweetvvck.github.io/tags/Redis/"/>
     
-      <category term="Twemproxy" scheme="http://sweetvvck.com/tags/Twemproxy/"/>
+      <category term="Twemproxy" scheme="http://sweetvvck.github.io/tags/Twemproxy/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[原]设计高可用Web服务]]></title>
-    <link href="http://sweetvvck.com/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://sweetvvck.com/2014/12/28/原-设计高可用Web服务/</id>
+    <link href="http://sweetvvck.github.io/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://sweetvvck.github.io/2014/12/28/原-设计高可用Web服务/</id>
     <published>2014-12-28T15:22:03.000Z</published>
     <updated>2016-01-23T07:25:23.000Z</updated>
     <content type="html"><![CDATA[<div></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/42222429" target="_blank" rel="external">设计高可用Web服务</a></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br>高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。</div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><span style="line-height:1.428571em; font-size:18px"><span style="line-height:1.428571em"><strong>什么是高可用</strong></span></span></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',sans-serif; font-size:14px"><br><br></div>
@@ -671,14 +671,14 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<div></div><br><div style="margin:0px; padding:0px; border:0px; line-height:19.9999942779541px; font-family:Helvetica,Arial,'Droid Sans',san]]>
     </summary>
     
-      <category term="Web 架构" scheme="http://sweetvvck.com/tags/Web-%E6%9E%B6%E6%9E%84/"/>
+      <category term="Web 架构" scheme="http://sweetvvck.github.io/tags/Web-%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]从S3中导入数据到Dynamodb]]></title>
-    <link href="http://sweetvvck.com/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/"/>
-    <id>http://sweetvvck.com/2014/12/19/译-从S3中导入数据到Dynamodb/</id>
+    <link href="http://sweetvvck.github.io/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/"/>
+    <id>http://sweetvvck.github.io/2014/12/19/译-从S3中导入数据到Dynamodb/</id>
     <published>2014-12-19T11:04:20.000Z</published>
     <updated>2016-01-23T07:28:00.000Z</updated>
     <content type="html"><![CDATA[<div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。</span><code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</span></div>
@@ -735,14 +735,14 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。</span><code>文件内部]]>
     </summary>
     
-      <category term="Aws" scheme="http://sweetvvck.com/tags/Aws/"/>
+      <category term="Aws" scheme="http://sweetvvck.github.io/tags/Aws/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]Aws Dynamodb数据导出到S3]]></title>
-    <link href="http://sweetvvck.com/2014/12/19/%E8%AF%91-Aws-Dynamodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%88%B0S3/"/>
-    <id>http://sweetvvck.com/2014/12/19/译-Aws-Dynamodb数据导出到S3/</id>
+    <link href="http://sweetvvck.github.io/2014/12/19/%E8%AF%91-Aws-Dynamodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%88%B0S3/"/>
+    <id>http://sweetvvck.github.io/2014/12/19/译-Aws-Dynamodb数据导出到S3/</id>
     <published>2014-12-19T03:55:21.000Z</published>
     <updated>2016-01-23T07:26:14.000Z</updated>
     <content type="html"><![CDATA[<div style="font-family:verdana,arial,sans-serif">本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。</div><br><div style="font-family:verdana,arial,sans-serif"><strong>注意</strong></div><br><div style="font-family:verdana,arial,sans-serif">如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。</div><br><div style="font-family:verdana,arial,sans-serif"><strong>从DynamoDB中导出数据到S3</strong></div>
@@ -790,18 +790,18 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<div style="font-family:verdana,arial,sans-serif">本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。</div><br><div style="font]]>
     </summary>
     
-      <category term="Aws" scheme="http://sweetvvck.com/tags/Aws/"/>
+      <category term="Aws" scheme="http://sweetvvck.github.io/tags/Aws/"/>
     
-      <category term="Dynamodb" scheme="http://sweetvvck.com/tags/Dynamodb/"/>
+      <category term="Dynamodb" scheme="http://sweetvvck.github.io/tags/Dynamodb/"/>
     
-      <category term="S3" scheme="http://sweetvvck.com/tags/S3/"/>
+      <category term="S3" scheme="http://sweetvvck.github.io/tags/S3/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[转]js中(function(){…})()立即执行函数写法理解]]></title>
-    <link href="http://sweetvvck.com/2014/11/14/%E8%BD%AC-js%E4%B8%AD-function-%E2%80%A6-%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E5%86%99%E6%B3%95%E7%90%86%E8%A7%A3/"/>
-    <id>http://sweetvvck.com/2014/11/14/转-js中-function-…-立即执行函数写法理解/</id>
+    <link href="http://sweetvvck.github.io/2014/11/14/%E8%BD%AC-js%E4%B8%AD-function-%E2%80%A6-%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E5%86%99%E6%B3%95%E7%90%86%E8%A7%A3/"/>
+    <id>http://sweetvvck.github.io/2014/11/14/转-js中-function-…-立即执行函数写法理解/</id>
     <published>2014-11-14T10:09:17.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p><span style="font-size:18px"></span></p>
@@ -854,8 +854,8 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
   
   <entry>
     <title><![CDATA[[译]Android学习路线（三十三）缓存Bitmap]]></title>
-    <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/"/>
-    <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/</id>
+    <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/"/>
+    <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/</id>
     <published>2014-10-31T15:43:14.000Z</published>
     <updated>2016-01-23T07:26:35.000Z</updated>
     <content type="html"><![CDATA[<p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a>,&nbsp;<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">ViewPager</a>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
@@ -1098,14 +1098,14 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html]]>
     </summary>
     
-      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+      <category term="Android" scheme="http://sweetvvck.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]Android学习路线（三十二）在非UI线程中处理Bitmap]]></title>
-    <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%BA%8C%EF%BC%89%E5%9C%A8%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%A4%84%E7%90%86Bitmap/"/>
-    <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/</id>
+    <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%BA%8C%EF%BC%89%E5%9C%A8%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%A4%84%E7%90%86Bitmap/"/>
+    <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/</id>
     <published>2014-10-31T15:41:35.000Z</published>
     <updated>2016-01-23T07:26:42.000Z</updated>
     <content type="html"><![CDATA[<p><span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">如果图片源数据是从硬盘，网络或是其他非内存中读取的话，</span>在<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html" target="_blank" rel="external">高效地夹在大Bitmaps</a>中讨论的<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。</p>
@@ -1246,14 +1246,14 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
     <![CDATA[<p><span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">如果图]]>
     </summary>
     
-      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+      <category term="Android" scheme="http://sweetvvck.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]Android学习路线（三十一）高效地加载大的Bitmap]]></title>
-    <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%80%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E5%8A%A0%E8%BD%BD%E5%A4%A7%E7%9A%84Bitmap/"/>
-    <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/</id>
+    <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%80%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E5%8A%A0%E8%BD%BD%E5%A4%A7%E7%9A%84Bitmap/"/>
+    <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/</id>
     <published>2014-10-31T15:40:38.000Z</published>
     <updated>2016-01-23T07:26:27.000Z</updated>
     <content type="html"><![CDATA[<p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
@@ -1340,16 +1340,16 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事]]>
     </summary>
     
-      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+      <category term="Android" scheme="http://sweetvvck.github.io/tags/Android/"/>
     
-      <category term="Bitmap" scheme="http://sweetvvck.com/tags/Bitmap/"/>
+      <category term="Bitmap" scheme="http://sweetvvck.github.io/tags/Bitmap/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]Android学习路线（三十）高效地显示Bitmaps]]></title>
-    <link href="http://sweetvvck.com/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/"/>
-    <id>http://sweetvvck.com/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/</id>
+    <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/"/>
+    <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/</id>
     <published>2014-10-31T15:39:24.000Z</published>
     <updated>2016-01-23T07:26:46.000Z</updated>
     <content type="html"><![CDATA[<div class="jd-descr" style="height:972px; color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)"><br><br>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：<br><br><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.<br><br>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：<br><br><em>   移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。
@@ -1368,14 +1368,14 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
     <![CDATA[<div class="jd-descr" style="height:972px; color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-]]>
     </summary>
     
-      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+      <category term="Android" scheme="http://sweetvvck.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]Android学习路线（二十八）保存文件]]></title>
-    <link href="http://sweetvvck.com/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AB%EF%BC%89%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6/"/>
-    <id>http://sweetvvck.com/2014/09/30/译-Android学习路线（二十八）保存文件/</id>
+    <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AB%EF%BC%89%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6/"/>
+    <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十八）保存文件/</id>
     <published>2014-09-30T15:57:47.000Z</published>
     <updated>2016-01-22T16:25:06.000Z</updated>
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645095" target="_blank" rel="external">Android学习路线（二十八）保存文件</a></p>
@@ -1527,8 +1527,8 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
   
   <entry>
     <title><![CDATA[[译]Android学习路线（二十六）Android数据存储]]></title>
-    <link href="http://sweetvvck.com/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
-    <id>http://sweetvvck.com/2014/09/30/译-Android学习路线（二十六）Android数据存储/</id>
+    <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
+    <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十六）Android数据存储/</id>
     <published>2014-09-30T15:56:52.000Z</published>
     <updated>2016-01-23T07:27:15.000Z</updated>
     <content type="html"><![CDATA[<p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" rel="external">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
@@ -1552,14 +1552,14 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
     <![CDATA[<p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" r]]>
     </summary>
     
-      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+      <category term="Android" scheme="http://sweetvvck.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[[译]Android学习路线（二十七）键值对（SharedPreferences）存储]]></title>
-    <link href="http://sweetvvck.com/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%83%EF%BC%89%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88SharedPreferences%EF%BC%89%E5%AD%98%E5%82%A8/"/>
-    <id>http://sweetvvck.com/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/</id>
+    <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%83%EF%BC%89%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88SharedPreferences%EF%BC%89%E5%AD%98%E5%82%A8/"/>
+    <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/</id>
     <published>2014-09-30T15:56:29.000Z</published>
     <updated>2016-01-22T16:34:36.000Z</updated>
     <content type="html"><![CDATA[<p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
@@ -1615,8 +1615,8 @@ editor</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class=
   
   <entry>
     <title><![CDATA[[译]Android学习路线（二十九）保存数据到SQLite中]]></title>
-    <link href="http://sweetvvck.com/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B9%9D%EF%BC%89%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0SQLite%E4%B8%AD/"/>
-    <id>http://sweetvvck.com/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/</id>
+    <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B9%9D%EF%BC%89%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0SQLite%E4%B8%AD/"/>
+    <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/</id>
     <published>2014-09-30T15:55:32.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p><span style="">对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在<a href="http://developer.android.com/reference/android/database/sqlite/package-summary.html" target="_blank" rel="external"><span style="">android.database.sqlite</span></a>&nbsp;包中访问到。</span></p>
@@ -1777,8 +1777,8 @@ editor</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class=
   
   <entry>
     <title><![CDATA[[原]Android学习路线（二十五）全面理解Android Navigation逻辑]]></title>
-    <link href="http://sweetvvck.com/2014/08/27/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%BA%94%EF%BC%89%E5%85%A8%E9%9D%A2%E7%90%86%E8%A7%A3Android-Navigation%E9%80%BB%E8%BE%91/"/>
-    <id>http://sweetvvck.com/2014/08/27/原-Android学习路线（二十五）全面理解Android-Navigation逻辑/</id>
+    <link href="http://sweetvvck.github.io/2014/08/27/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%BA%94%EF%BC%89%E5%85%A8%E9%9D%A2%E7%90%86%E8%A7%A3Android-Navigation%E9%80%BB%E8%BE%91/"/>
+    <id>http://sweetvvck.github.io/2014/08/27/原-Android学习路线（二十五）全面理解Android-Navigation逻辑/</id>
     <published>2014-08-26T17:23:17.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p><span style="font-size:14px"></span></p>
@@ -1852,8 +1852,8 @@ editor</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class=
   
   <entry>
     <title><![CDATA[[原]Zookeeper集群搭建]]></title>
-    <link href="http://sweetvvck.com/2014/08/26/%E5%8E%9F-Zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/"/>
-    <id>http://sweetvvck.com/2014/08/26/原-Zookeeper集群搭建/</id>
+    <link href="http://sweetvvck.github.io/2014/08/26/%E5%8E%9F-Zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/"/>
+    <id>http://sweetvvck.github.io/2014/08/26/原-Zookeeper集群搭建/</id>
     <published>2014-08-26T02:05:51.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p><span style="font-size:14px">Zookeeper是Apache的一个开源项目，在集群管理中十分常用。它的集群搭建也十分简单，只需要简单的配置，集群的各个节点会完成自行通讯，自动选取Leader等。</span></p>
@@ -1876,8 +1876,8 @@ editor</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class=
   
   <entry>
     <title><![CDATA[[原]Android学习路线（二十四）ActionBar Fragment运用最佳实践]]></title>
-    <link href="http://sweetvvck.com/2014/08/21/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89ActionBar-Fragment%E8%BF%90%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
-    <id>http://sweetvvck.com/2014/08/21/原-Android学习路线（二十四）ActionBar-Fragment运用最佳实践/</id>
+    <link href="http://sweetvvck.github.io/2014/08/21/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89ActionBar-Fragment%E8%BF%90%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://sweetvvck.github.io/2014/08/21/原-Android学习路线（二十四）ActionBar-Fragment运用最佳实践/</id>
     <published>2014-08-20T19:03:52.000Z</published>
     <updated>2016-01-22T16:00:18.000Z</updated>
     <content type="html"><![CDATA[<p><span style="font-size:14px">转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645297" target="_blank" rel="external">http://blog.csdn.net/sweetvvck/article/details/38645297</a></span></p>
@@ -2430,8 +2430,8 @@ public class NavigationDrawerFragment extends Fragment {
   
   <entry>
     <title><![CDATA[[译]Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯]]></title>
-    <link href="http://sweetvvck.com/2014/08/15/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E8%BF%90%E7%94%A8Fragment%E6%9E%84%E5%BB%BA%E5%8A%A8%E6%80%81UI%E2%80%94%E2%80%94Fragment%E9%97%B4%E9%80%9A%E8%AE%AF/"/>
-    <id>http://sweetvvck.com/2014/08/15/译-Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯/</id>
+    <link href="http://sweetvvck.github.io/2014/08/15/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E8%BF%90%E7%94%A8Fragment%E6%9E%84%E5%BB%BA%E5%8A%A8%E6%80%81UI%E2%80%94%E2%80%94Fragment%E9%97%B4%E9%80%9A%E8%AE%AF/"/>
+    <id>http://sweetvvck.github.io/2014/08/15/译-Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯/</id>
     <published>2014-08-14T16:07:26.000Z</published>
     <updated>2016-01-23T07:26:56.000Z</updated>
     <content type="html"><![CDATA[<p>为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。</p>
@@ -2541,9 +2541,9 @@ public class NavigationDrawerFragment extends Fragment {
 <p>你通常都希望一个f]]>
     </summary>
     
-      <category term="Android" scheme="http://sweetvvck.com/tags/Android/"/>
+      <category term="Android" scheme="http://sweetvvck.github.io/tags/Android/"/>
     
-      <category term="Fragment" scheme="http://sweetvvck.com/tags/Fragment/"/>
+      <category term="Fragment" scheme="http://sweetvvck.github.io/tags/Fragment/"/>
     
   </entry>
   
