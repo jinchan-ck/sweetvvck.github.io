@@ -378,7 +378,10 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 	.donate_bar.hidden {
 		display: none;
 	}
-	.donate_bar a.btn_donate{
+	.donate_bar.center {
+		text-align: center;
+	}
+	.donate_bar a#btn_donate{
 		margin-top: 0.8em;
 		display: inline-block;
 		width: 82px;
@@ -392,7 +395,7 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 		-ms-transition: background 0s;
 		transition: background 0s;
 	}
-	.donate_bar a.btn_donate:hover{ background-position: 0px -82px; }
+	.donate_bar a#btn_donate:hover{ background-position: 0px -82px; }
 	.donate_bar .donate_txt {
 		display: block;
 		color: #9d9d9d;
@@ -402,7 +405,7 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 	</style>
 	<div class ="post-donate">
 		<div id="donate_board" class="donate_bar center">
-			<a id="btn_donate" class="btn_donate" href="/images/donate.png" title="Donate 打赏"></a>
+			<a id="btn_donate" href="/images/donate.png" class="fancybox" title="Donate 打赏"></a>
 			<span class="donate_txt">
 				&uarr;<br>
 				Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
