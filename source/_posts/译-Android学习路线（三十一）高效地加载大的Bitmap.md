@@ -10,25 +10,23 @@ date: 2014-10-31 23:40:38
 
 本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。
 
-##
-读取Bitmap的尺寸和类型
+##读取Bitmap的尺寸和类型
 
 * * *
 
 [BitmapFactory](http://developer.android.com/reference/android/graphics/BitmapFactory.html)&nbsp;类提供几种解码方法([decodeByteArray()](http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options)),&nbsp;[decodeFile()](http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeFile(java.lang.String, android.graphics.BitmapFactory.Options)),[decodeResource()](http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeResource(android.content.res.Resources, int, android.graphics.BitmapFactory.Options)),
- 等等.)来通过多种多样的资源文件创建&nbsp;[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&nbsp;异常。每种类型的解码方法都有额外的参数以让你通过[BitmapFactory.Options](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html)&nbsp;类指定解码的选项。在解码时设置[inJustDecodeBounds](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inJustDecodeBounds)&nbsp;属性为&nbsp;true&nbsp;能够避免内存分配，同时还能够获取到[outWidth](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outWidth),&nbsp;[outHeight](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outHeight)&nbsp;和&nbsp;[outMimeType](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outMimeType)&nbsp;的&#20540;，此时解码方法返回的bitmap对象为null。这种发式允许你在构建这个bitmap<span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">（和内存分配）</span>之前读取它的大小和类型。
+ 等等.)来通过多种多样的资源文件创建&nbsp;[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&nbsp;异常。每种类型的解码方法都有额外的参数以让你通过[BitmapFactory.Options](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html)&nbsp;类指定解码的选项。在解码时设置[inJustDecodeBounds](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inJustDecodeBounds)&nbsp;属性为&nbsp;true&nbsp;能够避免内存分配，同时还能够获取到[outWidth](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outWidth),&nbsp;[outHeight](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outHeight)&nbsp;和&nbsp;[outMimeType](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outMimeType)&nbsp;的&#20540;，此时解码方法返回的bitmap对象为null。这种发式允许你在构建这个bitmap（和内存分配）之前读取它的大小和类型。
 
-<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">Options</span><span class="pln" style="color:rgb(0,0,0)"> options </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">Options</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
-options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">inJustDecodeBounds </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">true</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-</span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">decodeResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">getResources</span><span class="pun" style="color:rgb(102,102,0)">(),</span><span class="pln" style="color:rgb(0,0,0)"> R</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">id</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">myimage</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
-</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> imageHeight </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">outHeight</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-</span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> imageWidth </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">outWidth</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-</span><span class="typ" style="color:rgb(102,0,102)">String</span><span class="pln" style="color:rgb(0,0,0)"> imageType </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">outMimeType</span><span class="pun" style="color:rgb(102,102,0)">;</span></pre>
+BitmapFactory.Options options = new BitmapFactory.Options();
+options.inJustDecodeBounds = true;
+BitmapFactory.decodeResource(getResources(), R.id.myimage, options);
+int imageHeight = options.outHeight;
+int imageWidth = options.outWidth;
+String imageType = options.outMimeType;
 
-<span style="color:#222222">为了避免</span>java.lang.OutOfMemory<span style="font-family:Roboto,sans-serif; color:#222222"><span style="font-size:14px; line-height:19px">&nbsp;异常，可以在每次解码它之前取得它的尺寸，除非你完全肯定这个图片源的大小的消耗能够在可用内存之内。</span></span>
+为了避免java.lang.OutOfMemory&nbsp;异常，可以在每次解码它之前取得它的尺寸，除非你完全肯定这个图片源的大小的消耗能够在可用内存之内。
 
-##
-在内存中加载图片的压缩版本
+##在内存中加载图片的压缩版本
 
 * * *
 
@@ -39,65 +37,64 @@ options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class
 *   要载入的目标[ImageView](http://developer.android.com/reference/android/widget/ImageView.html)&nbsp;或者UI组件的尺寸。
 *   当前设备的屏幕大小和密度。
 
-例如，如果一张图片要在一个ImageView中被展示成一个<span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">128x96像素的缩略图，那么加载一个</span>1024x768 像素的图片进内存是完全不&#20540;得的。
+例如，如果一张图片要在一个ImageView中被展示成一个128x96像素的缩略图，那么加载一个1024x768 像素的图片进内存是完全不&#20540;得的。
 
 告诉解码者压缩图片，加载一个压缩版图片进入内存，需要在[BitmapFactory.Options](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html)对象中设置&nbsp;[inSampleSize](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize)&nbsp;为&nbsp;true。例如，一个图片，分辨率为&nbsp;2048x1536以&nbsp;[inSampleSize](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize)&nbsp;＝
  4为参数被解码，将会产生一个分辨率大概为512x384的bitmap。加载它进内存只需要使用0.75MB 内存，而非加载完整图片所需的12MB (假定bitmap的配置为[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html))。下面是一个基于目标长度和宽度计算压缩图片尺寸&#20540;的方法：
 
-<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> calculateInSampleSize</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">Options</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> reqWidth</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> reqHeight</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="com">// Raw height and width of image</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> height </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">outHeight</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> width </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">outWidth</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> inSampleSize </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">1</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+public static int calculateInSampleSize(
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BitmapFactory.Options options, int reqWidth, int reqHeight) {
+&nbsp; &nbsp; // Raw height and width of image
+&nbsp; &nbsp; final int height = options.outHeight;
+&nbsp; &nbsp; final int width = options.outWidth;
+&nbsp; &nbsp; int inSampleSize = 1;
 
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">if</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">height </span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> reqHeight </span><span class="pun" style="color:rgb(102,102,0)">||</span><span class="pln" style="color:rgb(0,0,0)"> width </span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> reqWidth</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; if (height &gt; reqHeight || width &gt; reqWidth) {
 
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> halfHeight </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> height </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> halfWidth </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> width </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; final int halfHeight = height / 2;
+&nbsp; &nbsp; &nbsp; &nbsp; final int halfWidth = width / 2;
 
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Calculate the largest inSampleSize value that is a power of 2 and keeps both</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// height and width larger than the requested height and width.</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">while</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">((</span><span class="pln" style="color:rgb(0,0,0)">halfHeight </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> inSampleSize</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> reqHeight
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">&amp;&amp;</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">halfWidth </span><span class="pun" style="color:rgb(102,102,0)">/</span><span class="pln" style="color:rgb(0,0,0)"> inSampleSize</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">&gt;</span><span class="pln" style="color:rgb(0,0,0)"> reqWidth</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; inSampleSize </span><span class="pun" style="color:rgb(102,102,0)">*=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">2</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="pun" style="color:rgb(102,102,0)">}</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; &nbsp; &nbsp; // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+&nbsp; &nbsp; &nbsp; &nbsp; // height and width larger than the requested height and width.
+&nbsp; &nbsp; &nbsp; &nbsp; while ((halfHeight / inSampleSize) &gt; reqHeight
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; inSampleSize *= 2;
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; }
 
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> inSampleSize</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+&nbsp; &nbsp; return inSampleSize;
+}
 
 **Note:**&nbsp;A power of two value is calculated because the decoder uses a final value by rounding down to the nearest power of two, as per the&nbsp;[inSampleSize](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize)&nbsp;documentation.
 
 要使用这个方法，首先需要按照之前的方式获取图片的尺寸和类型，然后在通过计算出的&nbsp;[inSampleSize](http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize)&nbsp;&#20540;来生成bitmap：
 
-<a target="_blank" target="_blank" name="decodeSampledBitmapFromResource" style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)"></a><span style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)"></span>
-<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="kwd" style="color:rgb(0,0,136)">public</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">static</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">Bitmap</span><span class="pln" style="color:rgb(0,0,0)"> decodeSampledBitmapFromResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="typ" style="color:rgb(102,0,102)">Resources</span><span class="pln" style="color:rgb(0,0,0)"> res</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> resId</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> reqWidth</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">int</span><span class="pln" style="color:rgb(0,0,0)"> reqHeight</span><span class="pun" style="color:rgb(102,102,0)">)</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="pun" style="color:rgb(102,102,0)">{</span><span class="pln" style="color:rgb(0,0,0)">
 
-&nbsp; &nbsp; </span><span class="com">// First decode with inJustDecodeBounds=true to check dimensions</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">final</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">Options</span><span class="pln" style="color:rgb(0,0,0)"> options </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">new</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="typ" style="color:rgb(102,0,102)">Options</span><span class="pun" style="color:rgb(102,102,0)">();</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">inJustDecodeBounds </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">true</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">decodeResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">res</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> resId</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+&nbsp; &nbsp; &nbsp; &nbsp; int reqWidth, int reqHeight) {
 
-&nbsp; &nbsp; </span><span class="com">// Calculate inSampleSize</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">inSampleSize </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> calculateInSampleSize</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">options</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> reqWidth</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> reqHeight</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
+&nbsp; &nbsp; // First decode with inJustDecodeBounds=true to check dimensions
+&nbsp; &nbsp; final BitmapFactory.Options options = new BitmapFactory.Options();
+&nbsp; &nbsp; options.inJustDecodeBounds = true;
+&nbsp; &nbsp; BitmapFactory.decodeResource(res, resId, options);
 
-&nbsp; &nbsp; </span><span class="com">// Decode bitmap with inSampleSize set</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; options</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">inJustDecodeBounds </span><span class="pun" style="color:rgb(102,102,0)">=</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="kwd" style="color:rgb(0,0,136)">false</span><span class="pun" style="color:rgb(102,102,0)">;</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; </span><span class="kwd" style="color:rgb(0,0,136)">return</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="typ" style="color:rgb(102,0,102)">BitmapFactory</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">decodeResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">res</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> resId</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> options</span><span class="pun" style="color:rgb(102,102,0)">);</span><span class="pln" style="color:rgb(0,0,0)">
-</span><span class="pun" style="color:rgb(102,102,0)">}</span></pre>
+&nbsp; &nbsp; // Calculate inSampleSize
+&nbsp; &nbsp; options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+&nbsp; &nbsp; // Decode bitmap with inSampleSize set
+&nbsp; &nbsp; options.inJustDecodeBounds = false;
+&nbsp; &nbsp; return BitmapFactory.decodeResource(res, resId, options);
+}
 
 下面这种方式很简单的实现了加载一个很大的图片到一个100x100像素缩略图的ImageView中：
 
-<pre class="prettyprint" style="font-size:13px; margin-top:0px; margin-bottom:1em; color:rgb(0,102,0); line-height:1.5; padding:1em; overflow:auto; border:1px solid rgb(221,221,221); background:rgb(247,247,247)"><span class="pln" style="color:rgb(0,0,0)">mImageView</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">setImageBitmap</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">
-&nbsp; &nbsp; decodeSampledBitmapFromResource</span><span class="pun" style="color:rgb(102,102,0)">(</span><span class="pln" style="color:rgb(0,0,0)">getResources</span><span class="pun" style="color:rgb(102,102,0)">(),</span><span class="pln" style="color:rgb(0,0,0)"> R</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">id</span><span class="pun" style="color:rgb(102,102,0)">.</span><span class="pln" style="color:rgb(0,0,0)">myimage</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">100</span><span class="pun" style="color:rgb(102,102,0)">,</span><span class="pln" style="color:rgb(0,0,0)"> </span><span class="lit" style="color:rgb(0,102,102)">100</span><span class="pun" style="color:rgb(102,102,0)">));</span></pre>
+mImageView.setImageBitmap(
+&nbsp; &nbsp; decodeSampledBitmapFromResource(getResources(), R.id.myimage, 100, 100));
 
 你也可以使用类&#20284;的流程从其他图片源中解码bitmap，根据需要使用适当的解码方法[BitmapFactory.decode*](http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options))&nbsp;。
 
-            <div>
+
                 作者：sweetvvck 发表于2014/10/31 23:40:38 [原文链接](http://blog.csdn.net/sweetvvck/article/details/40663965)
-            </div>
-            <div>
+
+
             阅读：398 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/40663965#comments)
-            </div>

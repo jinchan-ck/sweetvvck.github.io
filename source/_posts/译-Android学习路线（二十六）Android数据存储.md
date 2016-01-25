@@ -10,17 +10,15 @@ date: 2014-09-30 23:56:52
 *   保存任意的文件到Android的文件系统中
 *   使用SQLite数据库
 
-##
-课程
+##课程
 
 * * *
 
-<dl style="color:rgb(34,34,34); font-family:Roboto,sans-serif; font-size:14px; line-height:19px; background-color:rgb(249,249,249)">
-<dt>**[保存键&#20540;对集合](http://developer.android.com/training/basics/data-storage/shared-preferences.html)**</dt><dd style="margin:0px 0px 10px 30px">学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。</dd><dt>**[保存文件](http://developer.android.com/training/basics/data-storage/files.html)**</dt><dd style="margin:0px 0px 10px 30px">学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。</dd><dt>**[保存数据到数据库](http://developer.android.com/training/basics/data-storage/databases.html)**</dt><dd style="margin:0px 0px 10px 30px">学习使用SQLite数据库读写结构化数据。</dd></dl>
 
-            <div>
+**[保存键&#20540;对集合](http://developer.android.com/training/basics/data-storage/shared-preferences.html)**学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。**[保存文件](http://developer.android.com/training/basics/data-storage/files.html)**学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。**[保存数据到数据库](http://developer.android.com/training/basics/data-storage/databases.html)**学习使用SQLite数据库读写结构化数据。
+
+
                 作者：sweetvvck 发表于2014/9/30 23:56:52 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645041)
-            </div>
-            <div>
+
+
             阅读：482 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645041#comments)
-            </div>

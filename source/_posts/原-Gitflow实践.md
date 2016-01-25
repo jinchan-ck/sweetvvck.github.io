@@ -1,6 +1,7 @@
 ---
 title: '[原]Gitflow实践'
-tags: []
+tags: [Git, Gitflow]
+category: [Git, 项目管理]
 date: 2015-12-16 01:14:03
 ---
 
@@ -36,7 +37,7 @@ Gitflow使用不同的分支表达了它在工作流中的不同概念：
 
 ### Gitflow具体流程
 
-上文提到，从项目启动到发布版本都能够使用gitflow管理，具体如何管理，下 main这张图表达的很清楚： 
+上文提到，从项目启动到发布版本都能够使用gitflow管理，具体如何管理，下 main这张图表达的很清楚：
 
 ![这里写图片描述](http://nvie.com/img/git-model@2x.png)
 
@@ -53,7 +54,7 @@ Gitflow使用不同的分支表达了它在工作流中的不同概念：
 
 ### 使用
 
-Gitflow workflow是由[Vincent Driessen](http://nvie.com/) 提出来的，要实现上述的工作流程需要使用到他创建的命令行工具[git-flow](https://github.com/nvie/gitflow) 具体如何使用请参考[git-flow 备忘清单](http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)。 
+Gitflow workflow是由[Vincent Driessen](http://nvie.com/) 提出来的，要实现上述的工作流程需要使用到他创建的命令行工具[git-flow](https://github.com/nvie/gitflow) 具体如何使用请参考[git-flow 备忘清单](http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)。
 
 另外，有一款git客户端软件[sourcetree](https://www.sourcetreeapp.com/) 集成了gitflow命令，提供了非常便捷的方式使用gitflow流程。
 
@@ -66,9 +67,8 @@ Gitflow workflow是由[Vincent Driessen](http://nvie.com/) 提出来的，要实
 1.  [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 2.  [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
 3.  [git-flow 备忘清单](http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)
-            <div>
+
                 作者：sweetvvck 发表于2015/12/16 1:14:03 [原文链接](http://blog.csdn.net/sweetvvck/article/details/50245147)
-            </div>
-            <div>
+
+
             阅读：508 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/50245147#comments)
-            </div>

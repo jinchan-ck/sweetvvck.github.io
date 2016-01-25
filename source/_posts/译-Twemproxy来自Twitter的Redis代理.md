@@ -4,7 +4,7 @@ tags: [Redis, Twemproxy]
 date: 2014-12-31 22:35:41
 ---
 
-<pre style="margin-top:0px; margin-bottom:10px; padding:0px; border:0px; outline:0px; font-size:18px; font-family:Inconsolata,Courier; vertical-align:baseline; position:relative; left:0px; top:10px; white-space:pre-wrap; word-wrap:break-word; line-height:1.5">在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
+在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
 
 关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)
 
@@ -80,14 +80,14 @@ redis2:&nbsp;
 
 有趣的是，针对同一组服务器你能同时有多个部署。然而在生产环境更适合使用多个示例以利用多核的能力。
 
-<span style="font-family:微软雅黑,Verdana,sans-serif,宋体; font-size:14px; line-height:22.3999996185303px"></span>单点失效？&nbsp;
+单点失效？&nbsp;
 ---&nbsp;
 
 还有另一件有趣的事情，使用这个部署并不意味着有单点失效问题，你可以通过运行多套twemproxy，让你的客户端连接到第一个可用的实例。&nbsp;
 
 通过使用twemproxy你基本上把分片逻辑和客户端进行了分离。在这种情况下，一个基本的客户端就可以实现目的，分片将完全由代理来处理。
 这是一个直接而安全的方法，个人观点。
-现在Redis Cluster还不成熟，twemproxy是大多数希望利用Redis集群的用户的好方法。也不要太激动，先看看这种方法的限制 ;)<span style="font-family:微软雅黑,Verdana,sans-serif,宋体; font-size:14px; line-height:22.3999996185303px"></span>
+现在Redis Cluster还不成熟，twemproxy是大多数希望利用Redis集群的用户的好方法。也不要太激动，先看看这种方法的限制 ;)
 
 不足
 ---
@@ -119,11 +119,10 @@ Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说
 ---
 这是个伟大的项目，鉴于Redis Cluster还未发布，我强烈建议有需求的Redis用户试一下Twemproxy
 我正打算将它链接到Redis项目网站上，因为我认为Twitter的伙计已经用他们的项目为Redis做了不小的贡献，所以...
-这是Twitter赢得荣誉！</pre>
+这是Twitter赢得荣誉！
 
-            <div>
+
                 作者：sweetvvck 发表于2014/12/31 22:35:41 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42302675)
-            </div>
-            <div>
+
+
             阅读：1373 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/42302675#comments)
-            </div>
