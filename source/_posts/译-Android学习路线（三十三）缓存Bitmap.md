@@ -10,7 +10,7 @@ date: 2014-10-31 23:43:14
 
 本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。
 
-##使用内存缓存
+## 使用内存缓存
 
 * * *
 
@@ -100,7 +100,7 @@ class BitmapWorkerTask extends AsyncTask&lt;Integer, Void, Bitmap&gt; {
   ...
 }
 ```
-##使用磁盘缓存
+## 使用磁盘缓存
 
 * * *
 
@@ -214,7 +214,7 @@ public static File getDiskCacheDir(Context context, String uniqueName) {
 
 内存缓存在UI线程中检查，而磁盘缓存则在后台线程中检查。当一个图片被加载完成，它将被同时加入到内存和磁盘缓存，用于之后的使用。
 
-##处理配置变化（例如横竖屏切换）
+## 处理配置变化（例如横竖屏切换）
 
 * * *
 

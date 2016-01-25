@@ -8,7 +8,7 @@ date: 2014-10-31 23:41:35
 
 本课介绍如何使用&nbsp;[AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html)&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。
 
-##使用AsyncTask
+## 使用AsyncTask
 
 * * *
 
@@ -52,7 +52,7 @@ public void loadBitmap(int resId, ImageView imageView) {
 &nbsp; &nbsp; task.execute(resId);
 }
 
-##处理并发
+## 处理并发
 
 * * *
 

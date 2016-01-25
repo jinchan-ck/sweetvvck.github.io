@@ -12,7 +12,7 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
 本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。
 
-##选择内部或外部存储
+## 选择内部或外部存储
 
 * * *
 
@@ -44,7 +44,7 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 **提示:**&nbsp;即使是apps默认会被安装在内部存储中，你也可以在你的app中的manifest文件中指定[android:installLocation](http://developer.android.com/guide/topics/manifest/manifest-element.html#install)&nbsp;属性，让你的app被安装在外部存储中。当apk的大小很大时，用户会非常希望这么做，他们会有一个远大于内部存储的外部存储空间。更多信息，请参阅[App
  Install Location](http://developer.android.com/guide/topics/data/install-location.html)。
 
-##获取外部存储权限
+## 获取外部存储权限
 
 * * *
 
@@ -69,7 +69,7 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
 保存文件到内部存储中并不需要权限。你的app一直拥有在内部存储目录下的读写权限。
 
-##保存一个文件到内部存储中
+## 保存一个文件到内部存储中
 
 * * *
 
@@ -111,7 +111,7 @@ public File getTempFile(Context context, String url) {
 
 **提示:**&nbsp;你的app的内部存储目录是由你的app包名指定。从技术上来说，如果你把这个文件的模式设置为可读，那么其他app就能够访问你的app的内部文件了。然而，这些其他的app必须知道你的app的包名以及内部文件的名字。如果你不特别地自定内部文件的可读或可写模式，那么别的应用也没有权限操作你的app中的内部文件。
 
-##保存一个文件到外部存储
+## 保存一个文件到外部存储
 
 * * *
 
@@ -181,7 +181,7 @@ public File getAlbumStorageDir(Context context, String albumName) {
 
 不管你使用的是可分享的[getExternalStoragePublicDirectory()](http://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String))&nbsp;方法，或者是私有的[getExternalFilesDir()](http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String))&nbsp;方法，使用系统所提供的目录名称（如&nbsp;[DIRECTORY_PICTURES](http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_PICTURES)）都很重要。这些目录名称将确保这些文件在系统中会被按照这些方式对待。例如，保存在[DIRECTORY_RINGTONES](http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_RINGTONES)&nbsp;中的文件将会被系统识别为手机铃声而非音乐。
 
-##查询剩余空间
+## 查询剩余空间
 
 * * *
 
@@ -191,7 +191,7 @@ public File getAlbumStorageDir(Context context, String albumName) {
 
 **提示:**&nbsp;在存储文件前检查可用空间不是必须操作。你可以直接保存文件，然后捕获[IOException](http://developer.android.com/reference/java/io/IOException.html)&nbsp;异常。你可以在你不知道要保存的数据有多大时使用这种方法。例如，你在保存文件前将PNG转变成JPEG，改变了文件的编码，你提前并不知道文件的大小。
 
-##删除一个文件
+## 删除一个文件
 
 * * *
 

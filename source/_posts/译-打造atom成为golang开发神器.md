@@ -15,7 +15,7 @@ Atom刚出来的时候我尝试使用了一下，但当时它并没有准备好�
 
 [https://atom.io/](https://atom.io/)
 
-##安装主题
+## 安装主题
 
 你一天将要花大部分时间看着代码，注视着你的编辑器，因此你总是必须要找到一个颜色搭配自然的主题，并且要能够让你的&#30524;睛觉得舒服。我认为这个因人而异，你需要找一个你最喜欢的。
 
@@ -27,11 +27,11 @@ Atom刚出来的时候我尝试使用了一下，但当时它并没有准备好�
 
 ![atom-editor](http://marcio.io/img/atom-editor.png)
 
-####monokai-seti
+####  monokai-seti
 
 *   [https://atom.io/packages/monokai-seti](https://atom.io/packages/monokai-seti)
 
-##安装开发专用字体
+##  安装开发专用字体
 
 我第一次打开atom想做的第一件事情是：安装一个我更喜欢的开发专用字体，我使用免费字体“Inconsolata”有一阵子了。
 
@@ -39,16 +39,16 @@ Atom刚出来的时候我尝试使用了一下，但当时它并没有准备好�
 
 你可以使用标准的编辑器设置很便捷的切换正在使用的字体。
 
-##安装开发语言包
+##  安装开发语言包
 
 Atom自带的标准包里涵盖了大部分开发语言。我做Go开发还差两个语言包，分别是Dockerfile语法和Google Protobuf语法，这两个在我的项目中大量被使用到。
 
 *   language-docker:&nbsp;[https://atom.io/packages/language-docker](https://atom.io/packages/language-docker)
 *   language-protobuf:&nbsp;[https://atom.io/packages/language-protobuf](https://atom.io/packages/language-protobuf)
 
-##安装插件
+##  安装插件
 
-####go-plus
+####  go-plus
 
 *   [https://atom.io/packages/go-plus](https://atom.io/packages/go-plus)
 
@@ -67,7 +67,7 @@ go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时�
 
 ![atom-go-plus-gutter-errors](http://marcio.io/img/atom-go-plus-gutter-errors.png)
 
-####go-rename
+#### go-rename
 
 *   [https://atom.io/packages/go-rename](https://atom.io/packages/go-rename)
 
@@ -81,7 +81,7 @@ go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时�
 *   vim-surround:&nbsp;[https://atom.io/packages/vim-surround](https://atom.io/packages/vim-surround)
 *   last-cursor-position:&nbsp;[https://atom.io/packages/last-cursor-position](https://atom.io/packages/last-cursor-position)
 
-#####在 Keymap 文件中定义一些快捷键：
+##### 在 Keymap 文件中定义一些快捷键：
 
 
 
@@ -101,9 +101,9 @@ go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时�
 
 还有一个VIM模块Easy-Motion上面没有说到，这是因为它和Atom 1.0不兼容，但是我相信很快就会有人来更新它或者在创建一个新版本。
 
-##自定义atom的TreeView
+## 自定义atom的TreeView
 
-####file-icons
+#### file-icons
 
 *   [https://atom.io/packages/file-icons](https://atom.io/packages/file-icons)
 
@@ -113,7 +113,7 @@ go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时�
 
 ![file-icons](http://marcio.io/img/file-icons.png)
 
-####应用一些自定义CSS
+#### 应用一些自定义CSS
 
 默认的TreeView行距有些过高，所以我想要修改css减少行间的padding。还有一个要修改的地方是，treeview的字体也要修改成我在编辑框中使用的字体，来保持样式的一致性。我通常使用Inconsolata
  。
@@ -141,7 +141,7 @@ go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时�
     padding-left:12px;
 }
 
-###代码片段(Code Snippets)
+### 代码片段(Code Snippets)
 
 大部分流行的编辑器和IDE都会使用code-completion针对不同语言的特定关键字自动补全代码。这样通常能够包含最常用的代码，但是离真正的补全还差一截。
 
@@ -172,7 +172,7 @@ go-plus有非常多的特性，但我在开发时最喜欢的是它能够实时�
 
 ![atom-complete-snippets](http://marcio.io/img/atom-complete-snippets.png)
 
-###Dash
+### Dash
 
 Dash是一个Mac OS X下的非常棒的商业软件，它能够让你在离线模式下实时访问150&#43;的API 文档。我在做Ruby开发时使用了几年时间，现在做go开发同样适用它。
 
@@ -182,11 +182,11 @@ Dash是一个Mac OS X下的非常棒的商业软件，它能够让你在离线�
 
 有一个Atom插件能够让你通过快捷键`CTRL-H`&nbsp;直接跳转动dash，这样查询选中方法的方法定义文档就非常方便了。
 
-####dash
+#### dash
 
 [https://atom.io/packages/dash](https://atom.io/packages/dash)
 
-##自定义编辑器样式
+## 自定义编辑器样式
 
 Atom有一个相比其它编辑器非常大的优点是，它能够通过食用css完全的自定义编辑器UI。如果你对atom不满意，几乎atom所有方面都能够被你自己修改和提高。
 
@@ -238,7 +238,7 @@ atom有一个让我很困扰的区域是原声的Symbols-View对话框，它的�
 
 ![atom-symbol-view-styles](http://marcio.io/img/atom-symbol-view-styles.png)
 
-###自定义行选中效果
+### 自定义行选中效果
 
 有个很有趣的插件叫 Hightlight-Line:
 
@@ -265,7 +265,7 @@ atom-text-editor::shadow {
     }
 }
 
-##为Go代码生成 Ctags
+## 为Go代码生成 Ctags
 
 自动补全在开发中是一个非常重要的功能，同时也让开发这非常困扰。它的提示必须非常好不然的话经常出现的不对的提示信息会非常的讨厌。当需要提示的时候却没有提示时更是烦上加烦。
 
@@ -285,7 +285,7 @@ gotags -tag-relative=true -R=true -sort=true -f=&quot;tags&quot; -fields=+l .
 
 ![atom-go-tags](http://marcio.io/img/atom-go-tags.png)
 
-##总结
+## 总结
 
 无论你是Sublime Text爱好者还是VIM粉丝，你都应该尝试使用一下1.0版本的atom。
 

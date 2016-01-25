@@ -8,7 +8,7 @@ date: 2014-08-15 00:07:26
 
 你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。
 
-##定义一个接口
+## 定义一个接口
 
 * * *
 
@@ -52,7 +52,7 @@ public class HeadlinesFragment extends ListFragment {
         mCallback.onArticleSelected(position);
     }
 
-##实现这个接口
+## 实现这个接口
 
 * * *
 
@@ -70,7 +70,7 @@ public static class MainActivity extends Activity
     }
 }
 ```
-##向Fragment传递消息
+## 向Fragment传递消息
 
 * * *
 

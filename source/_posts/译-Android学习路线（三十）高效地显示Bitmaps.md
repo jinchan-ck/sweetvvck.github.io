@@ -17,7 +17,7 @@ date: 2014-10-31 23:39:24
 *   Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;[Galaxy Nexus](http://www.android.com/devices/detail/galaxy-nexus)&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素)。如果这个bitmap使用的配置是&nbsp;`[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html)`&nbsp;(从Android2.3开始的默认配置)，那么加载这个图片到内存中需要占用19MB，这样马上就用光了某些设备的每个app的内存限制。
 *   Android app UI会频繁的需要多个bitmaps的一次载入。像&nbsp;`[ListView](http://developer.android.com/reference/android/widget/ListView.html)`,`[GridView](http://developer.android.com/reference/android/widget/GridView.html)`&nbsp;以及&nbsp;`[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)`&nbsp;这些组件通常都会一次在屏幕上显示多个bitmaps同时还会有更多的bitmaps在后台等待被显示。
 
-##课程
+## 课程
 
 * * *
 

@@ -13,17 +13,17 @@ date: 2015-12-16 01:14:03
 
 * * *
 
-## Git工作流
+##  Git工作流
 
 现在越来越多的项目开始使用git做为版本控制工具，我对版本控制工具的最初印象是：能把代码提交到远端让大家一起协作，能开分支，能回滚代码，能看到每次提交的修改等。不过git命令具体如何使用不是本文的重点(熟悉git可以参考[ GIT基本概念和用法总结](http://blog.csdn.net/sweetvvck/article/details/38414713) 和[ git - 简易指南](http://blog.csdn.net/sweetvvck/article/details/38548985))，本文的重点是在项目中如何使用git来高效清晰的处理开发协作，版本控制。Git的工作流其实就是对git在项目上的一个完整的使用方式归纳总结，比较流行的git工作流有：Gitflow Workflow, Centralized Workflow, Feature Branch Workflow, Forking Workflow。
 
 值得注意的是，这些workflow只是作为如何更好的使用git的指导方针，而非`"铁律"`，我们也可以根据具体项目来组合使用不同的workflow。本文重点讲解Gitflow Workflow，有想了解其他git工作流的可以参考这篇文章：[Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)。
 
-## Gitflow workflow
+##  Gitflow workflow
 
 Gitflow从功能开发到正式发布再到热修复等都有相应的策略管理，可以说是非常的完善，对于大型的项目也能够很好的管理。
 
-### Gitflow 分支
+###  Gitflow 分支
 
 Gitflow使用不同的分支表达了它在工作流中的不同概念：
 
@@ -35,7 +35,7 @@ Gitflow使用不同的分支表达了它在工作流中的不同概念：
 
 ![Gitflow分支](https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg)
 
-### Gitflow具体流程
+###  Gitflow具体流程
 
 上文提到，从项目启动到发布版本都能够使用gitflow管理，具体如何管理，下 main这张图表达的很清楚：
 
@@ -52,17 +52,17 @@ Gitflow使用不同的分支表达了它在工作流中的不同概念：
 
 ⚠️注意：feature与其它分支互不影响，不必要在发布新版本前完成所有feature，发布版本时也可以有feature开发同时进行。
 
-### 使用
+###  使用
 
 Gitflow workflow是由[Vincent Driessen](http://nvie.com/) 提出来的，要实现上述的工作流程需要使用到他创建的命令行工具[git-flow](https://github.com/nvie/gitflow) 具体如何使用请参考[git-flow 备忘清单](http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html)。
 
 另外，有一款git客户端软件[sourcetree](https://www.sourcetreeapp.com/) 集成了gitflow命令，提供了非常便捷的方式使用gitflow流程。
 
-## 总结
+##  总结
 
 熟练掌握和Gitflow workflow能够团队内项目协作开发流程更加规范化，更加清晰化，但是不必过于拘泥于其定义的流程，这类workflow只是使用git的指导方针，目的都是高效的使用git协作。
 
-## 参考资料
+##  参考资料
 
 1.  [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 2.  [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)

@@ -11,7 +11,7 @@ date: 2014-09-30 23:56:29
 **提示:**&nbsp;[SharedPreferences](http://developer.android.com/reference/android/content/SharedPreferences.html)&nbsp;APIs
  只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;[Preference](http://developer.android.com/reference/android/preference/Preference.html)&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;[Preference](http://developer.android.com/reference/android/preference/Preference.html)&nbsp;APIs的信息，请移步[Settings](http://developer.android.com/guide/topics/ui/settings.html)&nbsp;向导。
 
-##获取SharedPreferences的引用（句柄）
+## 获取SharedPreferences的引用（句柄）
 
 你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：
 
@@ -40,7 +40,7 @@ SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE
 **注意:**&nbsp;如果你使用&nbsp;[MODE_WORLD_READABLE](http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_READABLE)&nbsp;或者&nbsp;[MODE_WORLD_WRITEABLE](http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_WRITEABLE)模式创建了一个shared
  preference文件，那么任何其他知道这个文件标识的app都能够访问到你的数据。
 
-##向Shared Preferences中写入数据
+## 向Shared Preferences中写入数据
 
 * * *
 
@@ -53,7 +53,7 @@ SharedPreferences.Editor editor = sharedPref.edit();
 editor.putInt(getString(R.string.saved_high_score), newHighScore);
 editor.commit();
 ```
-##从Shared Preferences中读取数据
+## 从Shared Preferences中读取数据
 
 * * *
 
