@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="如果你又一个相对较小的键&amp;#20540;对数据想要保存，你应该使用SharedPreferences&amp;nbsp;APIs。一个SharedPreferences&amp;nbsp;对象指向一个包含键&amp;#20540;对的文件，它提供简单的方法来读写他们。每个SharedPreferences&amp;nbsp;文件系统框架管理，它们可以是私有的也可以被共享。
 本课将介绍如何使用SharedPreferences&amp;n">
-<meta property="og:updated_time" content="2016-01-25T19:57:21.000Z">
+<meta property="og:updated_time" content="2016-01-25T20:06:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（二十七）键值对（SharedPreferences）存储">
 <meta name="twitter:description" content="如果你又一个相对较小的键&amp;#20540;对数据想要保存，你应该使用SharedPreferences&amp;nbsp;APIs。一个SharedPreferences&amp;nbsp;对象指向一个包含键&amp;#20540;对的文件，它提供简单的方法来读写他们。每个SharedPreferences&amp;nbsp;文件系统框架管理，它们可以是私有的也可以被共享。
@@ -296,8 +296,7 @@
         <p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
 <p>本课将介绍如何使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs来存储和获取简单的数据。</p>
 <p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs<br> 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs的信息，请移步<a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank" rel="external">Settings</a>&nbsp;向导。</p>
-<p>##获取SharedPreferences的引用（句柄）</p>
-<p>你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：</p>
+<h2 id="u83B7_u53D6SharedPreferences_u7684_u5F15_u7528_uFF08_u53E5_u67C4_uFF09"><a href="#u83B7_u53D6SharedPreferences_u7684_u5F15_u7528_uFF08_u53E5_u67C4_uFF09" class="headerlink" title="获取SharedPreferences的引用（句柄）"></a>获取SharedPreferences的引用（句柄）</h2><p>你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>Use this if you need multiple shared preference files identified by name, which you specify with the first parameter. You can call this from any&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html" target="_blank" rel="external">Context</a>&nbsp;in<br>your app.</li>
 <li><p><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>如果你通过不同的名字保存了多个shared preference文件，那么你可以使用这个方法，这个方法的第一个参数即为文件名。你可以在应用中使用Context对象来调用它。</p>
@@ -311,12 +310,10 @@
 <p>作为替代，如果你只想要在你的activity中使用一个shared preference文件，你可以使用&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#getPreferences(int" target="_blank" rel="external">getPreferences()</a>)方法：</p>
 <p>SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</p>
 <p><strong>注意:</strong>&nbsp;如果你使用&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_READABLE" target="_blank" rel="external">MODE_WORLD_READABLE</a>&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_WRITEABLE" target="_blank" rel="external">MODE_WORLD_WRITEABLE</a>模式创建了一个shared<br> preference文件，那么任何其他知道这个文件标识的app都能够访问到你的数据。</p>
-<p>##向Shared Preferences中写入数据</p>
-<hr>
+<h2 id="u5411Shared_Preferences_u4E2D_u5199_u5165_u6570_u636E"><a href="#u5411Shared_Preferences_u4E2D_u5199_u5165_u6570_u636E" class="headerlink" title="向Shared Preferences中写入数据"></a>向Shared Preferences中写入数据</h2><hr>
 <p>要向shared preferences文件中写入数据，你需要调用SharedPreferences的edit()方法来创建一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html" target="_blank" rel="external">SharedPreferences.Editor</a>&nbsp;对象。</p>
 <p>传入键和&#20540;给你想要调用的方法，例如&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#putInt" target="_blank" rel="external">putInt()</a>&amp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#putStringjava.lang.String, java.lang.String" target="_blank" rel="external">putString()</a>。然后调用<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#commit(" target="_blank" rel="external">commit()</a>)&nbsp;方法来存储这些改变。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</span><br><span class="line">SharedPreferences.Editor editor = sharedPref.edit();</span><br><span class="line">editor.putInt(getString(R.string.saved_high_score), newHighScore);</span><br><span class="line">editor.commit();</span><br></pre></td></tr></table></figure></p>
-<p>##从Shared Preferences中读取数据</p>
-<hr>
+<h2 id="u4ECEShared_Preferences_u4E2D_u8BFB_u53D6_u6570_u636E"><a href="#u4ECEShared_Preferences_u4E2D_u8BFB_u53D6_u6570_u636E" class="headerlink" title="从Shared Preferences中读取数据"></a>从Shared Preferences中读取数据</h2><hr>
 <p>要从shared preferences文件中获取数据，可以调用getInt()或者getString()等方法，只需要提供你想要获得的&#20540;对应的key就可以了；你也可以选择再传入一个默认&#20540;，如果通过传入的key没有取道&#20540;将会返回这个默认&#20540;。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</span><br><span class="line"><span class="keyword">int</span> defaultValue = getResources().getInteger(R.string.saved_high_score_default);</span><br><span class="line"><span class="keyword">long</span> highScore = sharedPref.getInt(getString(R.string.saved_high_score), defaultValue);</span><br></pre></td></tr></table></figure></p>
 <pre><code>    作者：sweetvvck 发表于2014/9/30 23:56:29 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645065)
 
@@ -540,7 +537,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u83B7_u53D6SharedPreferences_u7684_u5F15_u7528_uFF08_u53E5_u67C4_uFF09"><span class="nav-number">1.</span> <span class="nav-text">获取SharedPreferences的引用（句柄）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5411Shared_Preferences_u4E2D_u5199_u5165_u6570_u636E"><span class="nav-number">2.</span> <span class="nav-text">向Shared Preferences中写入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4ECEShared_Preferences_u4E2D_u8BFB_u53D6_u6570_u636E"><span class="nav-number">3.</span> <span class="nav-text">从Shared Preferences中读取数据</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

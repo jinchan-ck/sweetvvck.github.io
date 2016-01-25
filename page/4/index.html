@@ -656,11 +656,10 @@ JMX enabled by defaultUsing config: /etc/zookeeper/conf/zoo.cfgM
           
           为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。
 你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。
-##定义一个接口
-
+定义一个接口
 要允许一个fragment和它的activity通讯，你可以在fragment类中定义一个接口，然后再activity中实现它。Fragment在onAttach()方法中获取这个接口的实现，这样之后就能够调用这些接口来达到和activity通讯的目的。
 下面是一个fragment和activity通讯的例子：
-123456789101112131415161718192021222324public class Headl
+123456789101112131415161718192021222324public class Headline
           ...
 
           <div class="post-more-link text-center">
