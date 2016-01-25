@@ -393,6 +393,245 @@ https://atom.io/
             
               
                 
+                <a class="post-title-link" href="/2015/12/16/原-Gitflow实践/" itemprop="url">
+                  [原]Gitflow实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-16T01:14:03+08:00" content="2015-12-16">
+              2015-12-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/项目管理/" itemprop="url" rel="index">
+                    <span itemprop="name">项目管理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/16/原-Gitflow实践/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/原-Gitflow实践/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          转载请注明出处：Gitflow实践
+Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。
+
+Git工作流现在越来越多的项目开始使用git做为版本控制工具，我对版本控制工具的最初印象是：能把代码提交到远端让大家一起协作，能开分支，能回滚代码，能看到每次提交的修改等。不过git命令具体如何使用不是本文的重点(熟悉git可以参考 GIT基本概念和用法总结 和 git - 简易指南)，本文的重点是在项目中如何使用git来高效清晰的处理开发协作，版本控制。Git的工作流其实就是对git在项目上的一个完整的使用方式归纳总结，比较流行的git工作流有：Gitflow Wo
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/16/原-Gitflow实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/08/原-Koa中间件方式实现API的Undo功能/" itemprop="url">
+                  [原]Koa中间件方式实现API的Undo功能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-08T23:12:05+08:00" content="2015-05-08">
+              2015-05-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/08/原-Koa中间件方式实现API的Undo功能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/08/原-Koa中间件方式实现API的Undo功能/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Koa中间件方式实现API的Undo功能API的Undo功能使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：
+
+
+当点击撤销时，之前执行的操作能够被还原，这种设计对于用户的误操作是一个非常棒的补救方案。
+之前听过一句有关交互设计的话说的非常好，不要在用户每做一步操作时弹出Alert让用户选择”确定”或者”取消”，更好的做法是执行操作，然后让用户能够Undo。
+实现API Undo的方案其实Undo是很老的技术，在编辑器中无处不在，只是在API设计中使用的还比较少。最近一直在使用Node开发，因此想使用Node实现一下API的Undo。
+首先要明确几点：
+
+并不是所有的API都需要Undo，比如获取数据的接口就完全没有Undo的必要（而且逻辑上也没办法做）
+只能针对用户最后一次操作进行Undo
+Undo是在用户维度的，用户不能Undo其他用户的操作
+
+传统方案(Plan A)：
+需要对所有
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/08/原-Koa中间件方式实现API的Undo功能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/12/31/译-Twemproxy来自Twitter的Redis代理/" itemprop="url">
                   [译]Twemproxy来自Twitter的Redis代理
                 </a>

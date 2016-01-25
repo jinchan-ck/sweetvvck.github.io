@@ -441,6 +441,306 @@ The destination table 与 source table 有相同的结构。Destination table不
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/" itemprop="url">
+                  [译]Android学习路线（三十三）缓存Bitmap
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-31T23:43:14+08:00" content="2014-10-31">
+              2014-10-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十三）缓存Bitmap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,GridView和ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
+内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。
+本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。
+使用内存缓存
+内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。LruCache类 (API等级4以上的低版本可以使用Support Library) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个LinkedHa
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/" itemprop="url">
+                  [译]Android学习路线（三十二）在非UI线程中处理Bitmap
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-31T23:41:35+08:00" content="2014-10-31">
+              2014-10-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在高效地夹在大Bitmaps中讨论的BitmapFactory.decode*)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。
+本课介绍如何使用&nbsp;AsyncTask&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。
+使用AsyncTask
+AsyncTask&nbsp;类提供了一个简单的方法来在后台线程处理任务，并且能够将处理结果在UI线程中返回。要使用它，需创建一个它的子类，然后覆盖几个必要的方法。下面这个例子向你展示如何使用&nbsp;AsyncTask&nbsp;和decodeSampledBitmapFromResource()将大bitmap加载到ImageView中：
+cla
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="url">
+                  [译]Android学习路线（三十一）高效地加载大的Bitmap
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-31T23:40:38+08:00" content="2014-10-31">
+              2014-10-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。
+假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。
+本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。
+读取Bitmap的尺寸和类型
+BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFile()),decodeResource()), 等等.)来通过多种多样的资源文件创建&nbsp;Bitmap&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&n
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
