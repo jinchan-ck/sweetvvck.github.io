@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, sweetvvck, nodejs, java, golang, android" />
+  <meta name="keywords" content="Git,Gitflow," />
 
 
 
@@ -69,7 +69,7 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow">
 <meta property="og:image" content="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg">
 <meta property="og:image" content="http://nvie.com/img/git-model@2x.png">
-<meta property="og:updated_time" content="2016-01-22T16:00:18.000Z">
+<meta property="og:updated_time" content="2016-01-25T19:49:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Gitflow实践">
 <meta name="twitter:description" content="转载请注明出处：Gitflow实践
@@ -268,6 +268,37 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/项目管理/" itemprop="url" rel="index">
+                    <span itemprop="name">项目管理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -310,7 +341,7 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 <li><strong>Hotfix分支基于Master分支创建，对线上版本的bug进行修复，完成后直接合并到master分支和develop分支</strong></li>
 </ul>
 <p><img src="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg" alt="Gitflow分支"></p>
-<h3 id="Gitflow_u5177_u4F53_u6D41_u7A0B"><a href="#Gitflow_u5177_u4F53_u6D41_u7A0B" class="headerlink" title="Gitflow具体流程"></a>Gitflow具体流程</h3><p>上文提到，从项目启动到发布版本都能够使用gitflow管理，具体如何管理，下 main这张图表达的很清楚： </p>
+<h3 id="Gitflow_u5177_u4F53_u6D41_u7A0B"><a href="#Gitflow_u5177_u4F53_u6D41_u7A0B" class="headerlink" title="Gitflow具体流程"></a>Gitflow具体流程</h3><p>上文提到，从项目启动到发布版本都能够使用gitflow管理，具体如何管理，下 main这张图表达的很清楚：</p>
 <p><img src="http://nvie.com/img/git-model@2x.png" alt="这里写图片描述"></p>
 <p>从上图可以看到，随着时间的推移：</p>
 <ol>
@@ -322,25 +353,30 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 <li>继续上面的流程</li>
 </ol>
 <p>⚠️注意：feature与其它分支互不影响，不必要在发布新版本前完成所有feature，发布版本时也可以有feature开发同时进行。</p>
-<h3 id="u4F7F_u7528"><a href="#u4F7F_u7528" class="headerlink" title="使用"></a>使用</h3><p>Gitflow workflow是由<a href="http://nvie.com/" target="_blank" rel="external">Vincent Driessen</a> 提出来的，要实现上述的工作流程需要使用到他创建的命令行工具<a href="https://github.com/nvie/gitflow" target="_blank" rel="external">git-flow</a> 具体如何使用请参考<a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a>。 </p>
+<h3 id="u4F7F_u7528"><a href="#u4F7F_u7528" class="headerlink" title="使用"></a>使用</h3><p>Gitflow workflow是由<a href="http://nvie.com/" target="_blank" rel="external">Vincent Driessen</a> 提出来的，要实现上述的工作流程需要使用到他创建的命令行工具<a href="https://github.com/nvie/gitflow" target="_blank" rel="external">git-flow</a> 具体如何使用请参考<a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a>。</p>
 <p>另外，有一款git客户端软件<a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">sourcetree</a> 集成了gitflow命令，提供了非常便捷的方式使用gitflow流程。</p>
 <h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>熟练掌握和Gitflow workflow能够团队内项目协作开发流程更加规范化，更加清晰化，但是不必过于拘泥于其定义的流程，这类workflow只是使用git的指导方针，目的都是高效的使用git协作。</p>
 <h2 id="u53C2_u8003_u8D44_u6599"><a href="#u53C2_u8003_u8D44_u6599" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">A successful Git branching model</a></li>
 <li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows" target="_blank" rel="external">Comparing Workflows</a></li>
-<li><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a><pre><code>&lt;div&gt;
-    作者：sweetvvck 发表于2015/12/16 1:14:03 [原文链接](http://blog.csdn.net/sweetvvck/article/details/50245147)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：508 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/50245147#comments)
-&lt;/div&gt;
+<li><p><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a></p>
+<pre><code>作者：sweetvvck 发表于2015/12/16 1:14:03 [原文链接](http://blog.csdn.net/sweetvvck/article/details/50245147)
 </code></pre></li>
 </ol>
-
+<pre><code>阅读：508 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/50245147#comments)
+</code></pre>
       
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag">#Git</a>
+          
+            <a href="/tags/Gitflow/" rel="tag">#Gitflow</a>
+          
+        </div>
       
 
       
@@ -467,21 +503,21 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

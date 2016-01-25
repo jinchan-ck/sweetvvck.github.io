@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, sweetvvck, nodejs, java, golang, android" />
+  <meta name="keywords" content="api,koa,undo," />
 
 
 
@@ -75,7 +75,7 @@
 之前听过一句有关交互设计的话说的非常好，不要在用户每做一步操作时弹出Alert让用户选择”确定">
 <meta property="og:image" content="http://img.blog.csdn.net/20150508220504487">
 <meta property="og:image" content="http://img.blog.csdn.net/20150508220843186">
-<meta property="og:updated_time" content="2016-01-22T16:00:18.000Z">
+<meta property="og:updated_time" content="2016-01-25T19:49:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Koa中间件方式实现API的Undo功能">
 <meta name="twitter:description" content="Koa中间件方式实现API的Undo功能API的Undo功能使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：
@@ -344,118 +344,118 @@
 <h2 id="u65B9_u6848_u5B9E_u73B0"><a href="#u65B9_u6848_u5B9E_u73B0" class="headerlink" title="方案实现"></a>方案实现</h2><p>通过上边的方案对比，我发现Plan A更简单、灵活，因此决定实现Plan A。</p>
 <p>使用过Koa的通许都知道，koa的中间件非常强大（类似Java web开发中的拦截器），它能够拦截所有请求并执行一些逻辑，例如计算API请求到响应时长等，这里我们就可以使用这个特性将需要Undo的API延迟执行。</p>
 <p>首先我们要设置Undo的超时时间，以及那些API需要Undo：</p>
-<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; apis = (options || {}).apis;
-&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; expired = (options || {}).expired || &lt;span class=&quot;hljs-number&quot;&gt;3000&lt;/span&gt;;`&lt;/pre&gt;
+<pre><code>var apis = (options || {}).apis;
+var expired = (options || {}).expired || 3000;`
 
 还要明确当前访问API的用户：
 
-&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+`/**
  * `x-identify-key` is used to identify the user of this request,
  * one user can not undo another`s request.
- */&lt;/span&gt;
+ */
 
-&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; user = context.header[&lt;span class=&quot;hljs-string&quot;&gt;&apos;x-identify-key&apos;&lt;/span&gt;];`&lt;/pre&gt;
+var user = context.header[&apos;x-identify-key&apos;];`
 
 然后延迟执行API逻辑：
 
-&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undo = &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; delayNext(user, expired, context);`&lt;/pre&gt;
+`var undo = yield delayNext(user, expired, context);`
 
 如果用户没有调用Undo接口，则执行逻辑，否则返回’undo’:
 
-&lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!undo) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
-&lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.body = &lt;span class=&quot;hljs-string&quot;&gt;&apos;undo&apos;&lt;/span&gt;;`&lt;/pre&gt;
+`if (!undo) { return yield next; }
+this.body = &apos;undo&apos;;`
 
 如果用户调用Undo接口，移除延迟执行的逻辑；调用其他接口则立即执行延迟的逻辑：
 
-&lt;pre class=&quot;prettyprint&quot;&gt;`clearTimeout(undoObj.timeoutId);
-&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (path === &lt;span class=&quot;hljs-string&quot;&gt;&apos;/undo&apos;&lt;/span&gt; &amp;amp;&amp;amp; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;method&lt;/span&gt; === &apos;&lt;span class=&quot;hljs-title&quot;&gt;POST&lt;/span&gt;&apos;) &lt;span class=&quot;hljs-comment&quot;&gt;{
+`clearTimeout(undoObj.timeoutId);
+if (path === &apos;/undo&apos; &amp;amp;&amp;amp; method === &apos;POST&apos;) {
   undoObj.delayFn.call(undoObj.context, true);
   context.body = &apos;done&apos;;
   return;
-}&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(undoObj.delayFn)&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;{
+} else if (undoObj.delayFn) {
   undoObj.delayFn.call(undoObj.context, false);
-}&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt;
+}`
 
 具体实现逻辑大概就这些，完整代码如下：
 
-&lt;pre class=&quot;prettyprint&quot;&gt;`
-&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+`
+/**
  * Store users&apos; undo context
- * 
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@type&lt;/span&gt; {Object}
- */&lt;/span&gt;
-&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undos = {};
+ *
+ * @type {Object}
+ */
+var undos = {};
 
-&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+/**
  * Expose `undo`
  *
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {Object} options Config object for undo
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@example&lt;/span&gt;
+ * @param {Object} options Config object for undo
+ * @example
  * {
  *   expired: 3000
  * }
- */&lt;/span&gt;
+ */
 module.exports = function (options) {
-  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; apis = (options || {}).apis;
-  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; expired = (options || {}).expired || &lt;span class=&quot;hljs-number&quot;&gt;3000&lt;/span&gt;;
+  var apis = (options || {}).apis;
+  var expired = (options || {}).expired || 3000;
 
-  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; function* (next) {
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; context = &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;;
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; path = context.path;
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; needUndo = &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;;
+  return function* (next) {
+    var context = this;
+    var path = context.path;
+    var needUndo = false;
 
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (apis &amp;amp;&amp;amp; Array.isArray(apis) &amp;amp;&amp;amp; apis.length) {
+    if (apis &amp;amp;&amp;amp; Array.isArray(apis) &amp;amp;&amp;amp; apis.length) {
       needUndo = apis.filter(function (api) {
-        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; path === api;
+        return path === api;
       }).length;
     }
 
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!needUndo &amp;amp;&amp;amp; path !== &lt;span class=&quot;hljs-string&quot;&gt;&apos;/undo&apos;&lt;/span&gt;) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+    if (!needUndo &amp;amp;&amp;amp; path !== &apos;/undo&apos;) { return yield next; }
 
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; method = context.method;
-    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+    var method = context.method;
+    /**
      * Can not undo get request.
-     */&lt;/span&gt;
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (method === &lt;span class=&quot;hljs-string&quot;&gt;&apos;GET&apos;&lt;/span&gt;) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
-    &lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+     */
+    if (method === &apos;GET&apos;) { return yield next; }
+    /**
      * &apos;x-identify-key&apos; is used to identify the user of this request,
      * one user can not undo another&apos;s request.
-     */&lt;/span&gt;
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; user = context.header[&lt;span class=&quot;hljs-string&quot;&gt;&apos;x-identify-key&apos;&lt;/span&gt;];
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!user) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
+     */
+    var user = context.header[&apos;x-identify-key&apos;];
+    if (!user) { return yield next; }
 
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undoObj = undos[user];
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (undoObj) {
+    var undoObj = undos[user];
+    if (undoObj) {
       clearTimeout(undoObj.timeoutId);
-      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (path === &lt;span class=&quot;hljs-string&quot;&gt;&apos;/undo&apos;&lt;/span&gt; &amp;amp;&amp;amp; method === &lt;span class=&quot;hljs-string&quot;&gt;&apos;POST&apos;&lt;/span&gt;) {
-        undoObj.delayFn.call(undoObj.context, &lt;span class=&quot;hljs-keyword&quot;&gt;true&lt;/span&gt;);
-        context.body = &lt;span class=&quot;hljs-string&quot;&gt;&apos;done&apos;&lt;/span&gt;;
-        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;;
-      } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (undoObj.delayFn) {
-        undoObj.delayFn.call(undoObj.context, &lt;span class=&quot;hljs-keyword&quot;&gt;false&lt;/span&gt;);
+      if (path === &apos;/undo&apos; &amp;amp;&amp;amp; method === &apos;POST&apos;) {
+        undoObj.delayFn.call(undoObj.context, true);
+        context.body = &apos;done&apos;;
+        return;
+      } else if (undoObj.delayFn) {
+        undoObj.delayFn.call(undoObj.context, false);
       }
     }
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; undo = &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; delayNext(user, expired, context);
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (!undo) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;yield&lt;/span&gt; next; }
-    &lt;span class=&quot;hljs-keyword&quot;&gt;this&lt;/span&gt;.body = &lt;span class=&quot;hljs-string&quot;&gt;&apos;undo&apos;&lt;/span&gt;;
+    var undo = yield delayNext(user, expired, context);
+    if (!undo) { return yield next; }
+    this.body = &apos;undo&apos;;
   };
 };
 
-&lt;span class=&quot;hljs-javadoc&quot;&gt;/**
+/**
  * Block the logic for specified ms.
  *
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {String} user The user&apos;s identity
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {String} expired The expired ms
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@param&lt;/span&gt; {Object} context The koa context object
- * &lt;span class=&quot;hljs-javadoctag&quot;&gt;@api&lt;/span&gt; private
- */&lt;/span&gt;
+ * @param {String} user The user&apos;s identity
+ * @param {String} expired The expired ms
+ * @param {Object} context The koa context object
+ * @api private
+ */
 function delayNext(user, expired, context) {
-  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; function (callback) {
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; delayFn = function (undo) {
+  return function (callback) {
+    var delayFn = function (undo) {
       delete undos[user];
-      callback(&lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;, undo);
+      callback(null, undo);
     };
-    &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; timeoutId = setTimeout(delayFn, expired);
+    var timeoutId = setTimeout(delayFn, expired);
     undos[user] = {
       timeoutId: timeoutId,
       delayFn: delayFn,
@@ -464,17 +464,25 @@ function delayNext(user, expired, context) {
   };
 }
 </code></pre><h2 id="u9879_u76EE_u76F8_u5173"><a href="#u9879_u76EE_u76F8_u5173" class="headerlink" title="项目相关"></a>项目相关</h2><p>目前此项目托管在Github上，<a href="https://github.com/sweetvvck/koa-undo" target="_blank" rel="external">https://github.com/sweetvvck/koa-undo</a>，koa-undo具体使用方法项目主页有详细介绍，感兴趣的同学欢迎提Issue、PR；同时koa-undo也发布到了Npm上，<a href="https://www.npmjs.com/package/koa-undo" target="_blank" rel="external">https://www.npmjs.com/package/koa-undo</a> ，欢迎大家使用。</p>
-<pre><code>&lt;div&gt;
-    作者：sweetvvck 发表于2015/5/8 23:12:05 [原文链接](http://blog.csdn.net/sweetvvck/article/details/45585997)
-&lt;/div&gt;
-&lt;div&gt;
+<pre><code>    作者：sweetvvck 发表于2015/5/8 23:12:05 [原文链接](http://blog.csdn.net/sweetvvck/article/details/45585997)
+
+
 阅读：730 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/45585997#comments)
-&lt;/div&gt;
 </code></pre>
       
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/api/" rel="tag">#api</a>
+          
+            <a href="/tags/koa/" rel="tag">#koa</a>
+          
+            <a href="/tags/undo/" rel="tag">#undo</a>
+          
+        </div>
       
 
       
@@ -601,21 +609,21 @@ function delayNext(user, expired, context) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

@@ -3,7 +3,7 @@
 
     <sitemap>
         <loc>http://sweetvvck.github.io/post-sitemap.xml</loc>
-        <lastmod>2016-01-23T07:28:00.000Z</lastmod>
+        <lastmod>2016-01-25T19:57:21.000Z</lastmod>
     </sitemap>
 
     <sitemap>
@@ -12,8 +12,13 @@
     </sitemap>
 
     <sitemap>
+        <loc>http://sweetvvck.github.io/category-sitemap.xml</loc>
+        <lastmod>2016-01-25T19:23:37.000Z</lastmod>
+    </sitemap>
+
+    <sitemap>
         <loc>http://sweetvvck.github.io/tag-sitemap.xml</loc>
-        <lastmod>2016-01-23T07:25:23.000Z</lastmod>
+        <lastmod>2016-01-25T19:23:37.000Z</lastmod>
     </sitemap>
 
 </sitemapindex>

@@ -230,11 +230,6 @@
 
     
     
-      
-      
-
-      
-    
 
     
       
@@ -307,12 +302,12 @@
       
         
           
-          本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&nbsp;中描述。我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
-
+          本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&nbsp;中描述。
+ 我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
 
 The destination table 已经存在。 (导入任务不会为你创建表)
 The destination table 与 source table 有相同的名称。
-The destination table 与 source table 有相同的结构。Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个Customer&nbsp;表，它的主键是CustomerId，并且只有三个items (CustomerId&nbsp;1, 2, and 3)。如果要导入的文件中同样包含C
+The destination table 与 source table 有相同的结构。Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个Customer&nbsp;表，它的主键是CustomerId，并且只有三个items (CustomerId&nbsp;1, 2, and 3)。如果要导入的文件中同样包含
           ...
 
           <div class="post-more-link text-center">
@@ -410,119 +405,16 @@ The destination table 与 source table 有相同的结构。Destination table不
           
           本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3
 
-
 登陆到AWS管理员控制台，打开DynamoDB console。&nbsp;https://console.aws.amazon.com/dynamodb/.
 在&nbsp;Amazon DynamoDB Tables&nbsp;页面, 点击&nbsp;Export/Import.
-在 Export/Import 页面, 选择你想导出的表，然后点击 Export from DynamoDB.
+在 Export/Import 页面, 选择你想导出的表，然后点击Export from DynamoDB.
 在&nbsp;Create Export Table Data Pipeline(s)&nbsp;页面，按下面流程操作：
 
-
+在&
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/12/19/译-Aws-Dynamodb数据导出到S3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/11/14/转-js中-function-…-立即执行函数写法理解/" itemprop="url">
-                  [转]js中(function(){…})()立即执行函数写法理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-11-14T18:09:17+08:00" content="2014-11-14">
-              2014-11-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/11/14/转-js中-function-…-立即执行函数写法理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/14/转-js中-function-…-立即执行函数写法理解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-javascript和其他编程语言相比比较随意，所以javascript代码中充满各种奇葩的写法，有时雾里看花，当然，能理解各型各色的写法也是对javascript语言特性更进一步的深入理解。
-( function(){…} )()和( function (){…} () )是两种javascript立即执行函数的常见写法，最初我以为是一个括号包裹匿名函数，再在后面加个括号调用函数，最后达到函数定义后立即执行的目的，后来发现加括号的原因并非如此。要理解立即执行函数，需要先理解一些函数的基本概念。
-函数声明、函数表达式、匿名函数
-函数声明：function fnName () {…};使用function关键字声明一个函数，再指定一个函数名，叫函数声明。
-函数表达式 var fnName = function () {…};使用function关键字声明一个函数，但未给函数命名，最后将匿名函数赋予一个变量，叫函数表达式，这是最常见的函数表达式语法形式。
-匿名函数：function () 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/11/14/转-js中-function-…-立即执行函数写法理解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -614,12 +506,12 @@ javascript和其他编程语言相比比较随意，所以javascript代码中充
       
         
           
-          加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,&nbsp;GridView&nbsp;和&nbsp;ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
+          加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,GridView和ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
 内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。
 本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。
 ##使用内存缓存
 
-内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。LruCache&nbsp;类 (API等级4以上的低版本可以使用&nbsp;Support Library) 是专用的缓存bitmaps
+内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。LruCache类 (API等级4以上的低版本可以使用Support Library) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个Linke
           ...
 
           <div class="post-more-link text-center">
@@ -746,6 +638,107 @@ AsyncTask&nbsp;类提供了一个简单的方法来在后台线程处理任务�
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="url">
+                  [译]Android学习路线（三十一）高效地加载大的Bitmap
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-10-31T23:40:38+08:00" content="2014-10-31">
+              2014-10-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。
+假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。
+本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。
+##读取Bitmap的尺寸和类型
+
+BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFile()),decodeResource()), 等等.)来通过多种多样的资源文件创建&nbsp;Bitmap&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemor
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -792,21 +785,21 @@ AsyncTask&nbsp;类提供了一个简单的方法来在后台线程处理任务�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

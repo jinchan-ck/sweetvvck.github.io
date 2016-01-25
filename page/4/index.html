@@ -230,112 +230,6 @@
 
     
     
-      
-      
-
-      
-    
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/" itemprop="url">
-                  [译]Android学习路线（二十九）保存数据到SQLite中
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-30T23:55:32+08:00" content="2014-09-30">
-              2014-09-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在android.database.sqlite&nbsp;包中访问到。
-定义一个&#26684;式和契约
-
-SQL数据库最主要的标准之一是其&#26684;式（Schema）：它用来声明数据库的组织。Schema可以通过你用来创建数据库的语句来表示。你会发现创建一个能够有条理地，明确指定schema布局的&quot;伙伴&quot;类(也被称为&quot;关系类&quot;)是非常有帮助的。
-关系类其实就是个定义常量的容器，这些常量包含URIs,tables以及colums的名称。这个关系类允许你在同一个包下的所有类中都能够访问。这样的话，你只要在这里改变一个列名，你的所有代码都会受影响。
-一个好的组织关系类的方法是，让你的关系类中对于整个数据库来说是全局可用的常量定义在关系类的
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
 
     
       
@@ -379,6 +273,25 @@ SQL数据库最主要的标准之一是其&#26684;式（Schema）：它用来声
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Native-app/" itemprop="url" rel="index">
+                    <span itemprop="name">Native app</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -408,16 +321,14 @@ SQL数据库最主要的标准之一是其&#26684;式（Schema）：它用来声
       
         
           
-          
-转载请注明出处：Android学习路线（二十五）全面理解Android Navigation逻辑
+          转载请注明出处：Android学习路线（二十五）全面理解Android Navigation逻辑
 应用导航的一致性是整体用户体验的重要组成部分，如果app的导航方式不一样，用户不能很快理解，那么这个应用会让用户有很大的挫败感，大大地影响了用户体验。
 Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改变。全面地理解“Back”以及“Up”的导航效果以及意义，能够大大地减少用户的学习时间，用户在使用过程中很快能够学习如何在应用的各个界面间的切换。
 Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。
 下图分别展示了“Back”和“Up”的示例：
 
-
 Up vs. Back
-Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一个列表，点击列表的Item进入B界面，这个时候，在B界
+Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一个列表，点击列表的Item进入B界面，这个时候，在B界面应
           ...
 
           <div class="post-more-link text-center">
@@ -484,6 +395,37 @@ Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一�
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/运维/架构/" itemprop="url" rel="index">
+                    <span itemprop="name">架构</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -515,7 +457,9 @@ Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一�
           
           Zookeeper是Apache的一个开源项目，在集群管理中十分常用。它的集群搭建也十分简单，只需要简单的配置，集群的各个节点会完成自行通讯，自动选取Leader等。
 更多关于zookeeper的信息和原理，可以参考这篇博文：ZooKeeper原理及使用
-Zookeeper的单机模式更加简单：&nbsp; &nbsp; &nbsp; 在Ubuntu系统下，只需要执行sudo apt-get install zookeeper安装，然后到安装目录下找到zkServer.sh脚本，执行./zkServer.sh start就启动了zookeeper的单机模式，通过这种方式安装的zookeeper的目录通常是/usr/share/zookeeper/。通过执行zkServer.sh status可以看到zookeeper的运行状态，这里使用的是单机模式，则会显示：JMX enabled by defaultUsing config: /etc/zookeeper/conf/zoo.cfgMod
+Zookeeper的单机模式更加简单：
+&nbsp; &nbsp; &nbsp; 在Ubuntu系统下，只需要执行sudo apt-get install zookeeper安装，然后到安装目录下找到zkServer.sh脚本，执行./zkServer.sh start就启动了zookeeper的单机模式，通过这种方式安装的zookeeper的目录通常是/usr/share/zookeeper/。通过执行zkServer.sh status可以看到zookeeper的运行状态，这里使用的是单机模式，则会显示：
+JMX enabled by defaultUsing config: /etc/zookeeper/conf/zoo.cfgM
           ...
 
           <div class="post-more-link text-center">
@@ -716,8 +660,7 @@ Zookeeper的单机模式更加简单：&nbsp; &nbsp; &nbsp; 在Ubuntu系统下�
 
 要允许一个fragment和它的activity通讯，你可以在fragment类中定义一个接口，然后再activity中实现它。Fragment在onAttach()方法中获取这个接口的实现，这样之后就能够调用这些接口来达到和activity通讯的目的。
 下面是一个fragment和activity通讯的例子：
-public class HeadlinesFragment extends ListFragment {
-&nb
+123456789101112131415161718192021222324public class Headl
           ...
 
           <div class="post-more-link text-center">
@@ -789,21 +732,21 @@ public class HeadlinesFragment extends ListFragment {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

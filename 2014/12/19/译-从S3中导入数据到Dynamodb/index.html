@@ -59,25 +59,25 @@
 
 
 
-<meta name="description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
+<meta name="description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。
+ 我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
 
-
-The destination table 已">
+The destination table">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[译]从S3中导入数据到Dynamodb">
 <meta property="og:url" content="http://sweetvvck.github.io/2014/12/19/译-从S3中导入数据到Dynamodb/index.html">
 <meta property="og:site_name" content="Sweetvvck">
-<meta property="og:description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
+<meta property="og:description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。
+ 我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
 
-
-The destination table 已">
-<meta property="og:updated_time" content="2016-01-23T07:28:00.000Z">
+The destination table">
+<meta property="og:updated_time" content="2016-01-25T19:18:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]从S3中导入数据到Dynamodb">
-<meta name="twitter:description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
+<meta name="twitter:description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。
+ 我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
 
-
-The destination table 已">
+The destination table">
 
 
 
@@ -299,56 +299,49 @@ The destination table 已">
       
 
       
-        <div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。</span><code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</span></div>
-
+        <p>本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。<code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</p>
+<p> 我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</p>
 <ul>
-<li><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">The destination table 已经存在。 (导入任务不会为你创建表)</span></span></li>
-<li><span style="font-size:13px">The destination table 与 source table 有相同的名称。</span></li>
-<li><span style="font-size:13px">The destination table 与 source table 有相同的结构。</span><br><div><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个<em>Customer</em>&nbsp;表，它的主键是<em>CustomerId</em>，并且只有三个items (<em>CustomerId</em>&nbsp;1, 2, and 3)。如果要导入的文件中同样包含<em>CustomerID</em>&nbsp;为1,<br>2, and 3的items，这些在destination table中的items将会被导入文件中的数据替换。如果文件中还包含CustomerId为4的item，那么这个item会被加入到</span>destination table中。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">Destination table 可以在不同的AWS region。例如，假设你有个一个&nbsp;<em>Customer</em>&nbsp;table在US West (Oregon) region，然后将它的数据导出到了Amazon S3中。你可以将它导入到在&nbsp;EU (Ireland) region中有相同表明，相同主键的表中。这种做法被称为<br><em>cross-region</em>&nbsp;导出和导入。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px"></span></div></li>
+<li>The destination table 已经存在。 (导入任务不会为你创建表)</li>
+<li>The destination table 与 source table 有相同的名称。</li>
+<li>The destination table 与 source table 有相同的结构。<br>Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个<em>Customer</em>&nbsp;表，它的主键是<em>CustomerId</em>，并且只有三个items (<em>CustomerId</em>&nbsp;1, 2, and 3)。如果要导入的文件中同样包含<em>CustomerID</em>&nbsp;为1,<br>2, and 3的items，这些在destination table中的items将会被导入文件中的数据替换。如果文件中还包含CustomerId为4的item，那么这个item会被加入到destination table中。<br>Destination table 可以在不同的AWS region。例如，假设你有个一个&nbsp;<em>Customer</em>&nbsp;table在US West (Oregon) region，然后将它的数据导出到了Amazon S3中。你可以将它导入到在&nbsp;EU (Ireland) region中有相同表明，相同主键的表中。这种做法被称为<br><em>cross-region</em>&nbsp;导出和导入。<br>注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。</li>
 </ul>
-<p></p>
-<div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px"><strong>从S3导入数据到DynamoDB</strong></span></div>
-
+<p><strong>从S3导入数据到DynamoDB</strong></p>
 <ol>
-<li><span style="font-size:13px"><span style="font-family:verdana,arial,sans-serif">登陆AWS管理控制台，然后打开dynamodb控制台：&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</span></span></li>
-<li><span style="font-size:13px">(可选) 如果你想做块区域导入，点击右上角的<span style="font-weight:bold">Select a Region</span>&nbsp;然后选择要导入的表的区域。控制台会显示该区域下的所有表。如果destination table不存在的话，你需要先创建它。</span></li>
-<li><span style="font-size:13px">在&nbsp;<span style="font-weight:bold">Amazon DynamoDB Tables</span>&nbsp;页面, 点击&nbsp;<span style="font-weight:bold">Export/Import</span>.</span></li>
-<li><span style="font-size:13px">在&nbsp;<span style="font-weight:bold">Export/Import</span>&nbsp;页面，选择一个你要导入的表，然后点击&nbsp;<span style="font-weight:bold">Import into DynamoDB</span>.</span></li>
-<li><span style="font-size:13px">在&nbsp;<span style="font-weight:bold">Create Import Table Data Pipeline</span>&nbsp;页面，按下面步骤操作：</span></li>
+<li>登陆AWS管理控制台，然后打开dynamodb控制台：&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</li>
+<li>(可选) 如果你想做块区域导入，点击右上角的Select a Region&nbsp;然后选择要导入的表的区域。控制台会显示该区域下的所有表。如果destination table不存在的话，你需要先创建它。</li>
+<li>在&nbsp;Amazon DynamoDB Tables&nbsp;页面, 点击&nbsp;Export/Import.</li>
+<li>在&nbsp;Export/Import&nbsp;页面，选择一个你要导入的表，然后点击&nbsp;Import into DynamoDB.</li>
+<li>在&nbsp;Create Import Table Data Pipeline&nbsp;页面，按下面步骤操作：</li>
 <li><ol>
-<li><span style="font-size:13px"><span style="font-weight:bold">S3 Input Folder</span>&nbsp;文本框中输入导入文件对应的 Amazon S3 URI。例如:&nbsp;<code>s3://mybucket/exports</code>这个URI的规则应该是这样&nbsp;<code>s3://&lt;span style=&quot;color:rgb(255,0,0)&quot;&gt;&lt;code style=&quot;font-family:&#39;Courier New&#39;,Courier,mono&quot;&gt;bucketname</code></span>/<span style="color:rgb(255,0,0)"><code>folder</code></span><br>:</li>
+<li>S3 Input Folder&nbsp;文本框中输入导入文件对应的 Amazon S3 URI。例如:&nbsp;<code>s3://mybucket/exports</code>这个URI的规则应该是这样&nbsp;<code>s3://&lt;code style=&quot;font-family:&#39;Courier New&#39;,Courier,mono&quot;&gt;bucketname</code>/<code>folder</code><br>:</li>
 <li><ul>
-<li><span style="font-size:13px"><code>bucketname</code>&nbsp;是S3中bucket的名称</span></li>
-<li><span style="font-size:13px"><code>folder</code>&nbsp;表示存放要导入的文件的名称</span></li>
+<li><code>bucketname</code>&nbsp;是S3中bucket的名称</li>
+<li><code>folder</code>&nbsp;表示存放要导入的文件的名称</li>
 </ul>
 <ol>
-<li><span style="font-size:13px">导入任务会通过指定的S3位置找到对应的文件。<code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br>Data Export File</a>&nbsp;中描述。</span></li>
+<li>导入任务会通过指定的S3位置找到对应的文件。<code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br>Data Export File</a>&nbsp;中描述。</li>
 </ol>
 </li>
-<li><span style="font-size:13px">在 <span style="font-weight:bold">S3 Log Folder</span>&nbsp;文本框中输入一个S3 URI，导出过程的日志将被存储在相应的folder中。例如：<code>s3://mybucket/logs/</code></span></li>
+<li>在 S3 Log Folder&nbsp;文本框中输入一个S3 URI，导出过程的日志将被存储在相应的folder中。例如：<code>s3://mybucket/logs/</code></li>
 </ol>
 </li>
 </ol>
-<p><span style="font-weight:bold">S3 Log Folder</span>&nbsp;URI的&#26684;式和 <span style="font-weight:bold"><br>S3 Output Folder</span>的&#26684;式相同。</p>
-<pre><code>5.  &lt;span style=&quot;font-size:13px&quot;&gt;在&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;Throughput Rate&lt;/span&gt;&amp;nbsp;文本框中可选择一个百分比。这个比率表示在导出过程中会消耗读吞吐量的上限。例如，假设你要导出的表的读吞吐量是20，同时你设置的百分比是40%。那么导出时所消耗的吞吐量将不会超过8.
-</code></pre><p>如果你在导出多个表，这个 <span style="font-weight:bold">Throughput Rate</span>&nbsp;将会被应用到每个表中。</p>
-<pre><code>6.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Execution Timeout&lt;/span&gt;&amp;nbsp;文本框，输入导出任务的超时时长。如果导出任务在这个时长内还没执行完成，此任务会失败。&lt;/span&gt;
-7.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Send notifications to&lt;/span&gt;&amp;nbsp;文本框，输入一个email地址。在 pipeline被创建后，你将会收到一封email邀请订阅Amazon SNS；如果你接受了此邀请，在每次执行导出操作时你都将会收到email通知。&lt;/span&gt;
-8.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Data Pipeline Role&lt;/span&gt;, 选择&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;DataPipelineDefaultRole&lt;/span&gt;.&lt;/span&gt;
-9.  &lt;span style=&quot;font-size:13px&quot;&gt;&lt;span style=&quot;font-weight:bold&quot;&gt;Resource Role&lt;/span&gt;, 选择&amp;nbsp;&lt;span style=&quot;font-weight:bold&quot;&gt;DataPipelineDefaultResourceRole&lt;/span&gt;&lt;/span&gt;
+<p>S3 Log Folder&nbsp;URI的&#26684;式和<br>S3 Output Folder的&#26684;式相同。</p>
+<pre><code>5.  在&amp;nbsp;Throughput Rate&amp;nbsp;文本框中可选择一个百分比。这个比率表示在导出过程中会消耗读吞吐量的上限。例如，假设你要导出的表的读吞吐量是20，同时你设置的百分比是40%。那么导出时所消耗的吞吐量将不会超过8.
+</code></pre><p>如果你在导出多个表，这个 Throughput Rate&nbsp;将会被应用到每个表中。</p>
+<pre><code>6.  Execution Timeout&amp;nbsp;文本框，输入导出任务的超时时长。如果导出任务在这个时长内还没执行完成，此任务会失败。
+7.  Send notifications to&amp;nbsp;文本框，输入一个email地址。在 pipeline被创建后，你将会收到一封email邀请订阅Amazon SNS；如果你接受了此邀请，在每次执行导出操作时你都将会收到email通知。
+8.  Data Pipeline Role, 选择&amp;nbsp;DataPipelineDefaultRole.
+9.  Resource Role, 选择&amp;nbsp;DataPipelineDefaultResourceRole
 </code></pre><ol>
-<li><p><span style="font-size:13px">确认好以上设置然后点击 <span style="font-weight:bold">Create Export Pipeline</span>.</span></p>
-<div><span style="font-size:13px">你的 pipeline 现在将被创建；这个过程可能会花费几分钟完成。要查看当前状态，移步&nbsp;<a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.ManagingPipelines.html" title="Managing Export and Import Pipelines" target="_blank" rel="external">Managing<br>Export and Import Pipelines</a>.</span></div><br><div style="font-family:verdana,arial,sans-serif"><span style="font-size:13px">导入任务会在你的pipeline创建好后立即执行。</span></div><br><div></div>
-
-<pre><code>&lt;div&gt;
-    作者：sweetvvck 发表于2014/12/19 19:04:20 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42030729)
-&lt;/div&gt;
-&lt;div&gt;
-阅读：1037 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/42030729#comments)
-&lt;/div&gt;
-</code></pre></li>
+<li>确认好以上设置然后点击 Create Export Pipeline.<br>你的 pipeline 现在将被创建；这个过程可能会花费几分钟完成。要查看当前状态，移步 <a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.ManagingPipelines.html" target="_blank" rel="external">Managing Export and Import Pipelines</a> “Managing Export and Import Pipelines”).<br>导入任务会在你的pipeline创建好后立即执行。</li>
 </ol>
-
+<pre><code>作者：sweetvvck 发表于2014/12/19 19:04:20
+[原文链接](http://blog.csdn.net/sweetvvck/article/details/42030729)
+阅读：1037 评论：0
+[查看评论](http://blog.csdn.net/sweetvvck/article/details/42030729#comments)
+</code></pre>
       
     </div>
 
@@ -485,21 +478,21 @@ The destination table 已">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

@@ -2,64 +2,120 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://sweetvvck.github.io/tags/Web-%E6%9E%B6%E6%9E%84/</loc>
-        <lastmod>2016-01-23T07:25:23.000Z</lastmod>
+        <loc>http://sweetvvck.github.io/tags/atom/</loc>
+        <lastmod>2016-01-25T19:23:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/tags/Redis/</loc>
-        <lastmod>2016-01-23T07:26:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/tags/Twemproxy/</loc>
-        <lastmod>2016-01-23T07:26:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/tags/Dynamodb/</loc>
-        <lastmod>2016-01-23T07:26:14.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/tags/S3/</loc>
-        <lastmod>2016-01-23T07:26:14.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/tags/Bitmap/</loc>
-        <lastmod>2016-01-23T07:26:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/tags/Fragment/</loc>
-        <lastmod>2016-01-23T07:26:56.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/tags/Android/</loc>
-        <lastmod>2016-01-23T07:27:15.000Z</lastmod>
+        <loc>http://sweetvvck.github.io/tags/golang/</loc>
+        <lastmod>2016-01-25T19:23:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://sweetvvck.github.io/tags/Aws/</loc>
-        <lastmod>2016-01-23T07:28:00.000Z</lastmod>
+        <lastmod>2016-01-25T19:47:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Dynamodb/</loc>
+        <lastmod>2016-01-25T19:47:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/S3/</loc>
+        <lastmod>2016-01-25T19:47:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Redis/</loc>
+        <lastmod>2016-01-25T19:47:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Twemproxy/</loc>
+        <lastmod>2016-01-25T19:47:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Web-%E6%9E%B6%E6%9E%84/</loc>
+        <lastmod>2016-01-25T19:47:18.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/zookeeper/</loc>
+        <lastmod>2016-01-25T19:48:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/koa/</loc>
+        <lastmod>2016-01-25T19:49:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/api/</loc>
+        <lastmod>2016-01-25T19:49:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/undo/</loc>
+        <lastmod>2016-01-25T19:49:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Git/</loc>
+        <lastmod>2016-01-25T19:49:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Gitflow/</loc>
+        <lastmod>2016-01-25T19:49:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Bitmap/</loc>
+        <lastmod>2016-01-25T19:56:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Android/</loc>
+        <lastmod>2016-01-25T19:57:10.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Fragment/</loc>
+        <lastmod>2016-01-25T19:57:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
