@@ -39,6 +39,16 @@
         {% if theme.sidebar !== 'remove' %}
           {% block sidebar %}{% endblock %}
         {% endif %}
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- first blood -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5355816823046841"
+             data-ad-slot="1535923015"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
     </main>
 

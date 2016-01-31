@@ -91,3 +91,7 @@ deploy:
   branch: master
   message:
 
+leancloud_visitors:
+  enable: true
+  app_id: lT3lO1Nw0l5r35n1QRjSpWlr-gzGzoHsz
+  app_key: A0ADM3Flk4OnaWKxIHsUMKL7
