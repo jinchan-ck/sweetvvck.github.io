@@ -230,11 +230,131 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/28/原-设计高可用Web服务/" itemprop="url">
+                  [原]设计高可用Web服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-28T23:22:03+08:00" content="2014-12-28">
+              2014-12-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/12/28/原-设计高可用Web服务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/28/原-设计高可用Web服务/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/12/28/原-设计高可用Web服务/" class="leancloud_visitors" data-flag-title="[原]设计高可用Web服务">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-    
+        
+          
+          转载请注明出处：设计高可用Web服务
+高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。
+什么是高可用
+
+可用性：在应用工作周期中可用时间的百分比
+不可用：应用无法访问，服务中断应用访问非常缓慢
+高可用：服务一直正常可用，快速响应
+
+Tags
+
+SPoF：单点故障
+
+Failover：故障转移
+
+Disaster Recovery：灾难恢复
+Load Balancing：负载均衡
+……
+
+说到高可用，我们常常会提到上面这些标签，也是设计高可用服务需要考虑和解决的点。下面我们来看看如何设计一个高可用的架构，如何来解决上面的问题，实现高可用。
+如何设计
+在服务架构时，我们不能相信任何一个环节是100%没问题的，服务的每个层级，使用的数据库，缓存，甚至是服务器本身，服务器放置的机房这些硬件环节都不
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/12/28/原-设计高可用Web服务/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -677,115 +797,6 @@ cla
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="url">
-                  [译]Android学习路线（三十一）高效地加载大的Bitmap
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-10-31T23:40:38+08:00" content="2014-10-31">
-              2014-10-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" class="leancloud_visitors" data-flag-title="[译]Android学习路线（三十一）高效地加载大的Bitmap">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。
-假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。
-本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。
-读取Bitmap的尺寸和类型
-BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFile()),decodeResource()), 等等.)来通过多种多样的资源文件创建&nbsp;Bitmap&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&n
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -832,21 +843,21 @@ BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFi
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
