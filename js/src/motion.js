@@ -1,5 +1,3 @@
-/* global NexT: true */
-
 $(document).ready(function () {
   NexT.motion = {};
 
@@ -281,7 +279,7 @@ $(document).ready(function () {
     },
 
     sidebar: function (integrator) {
-      if (CONFIG.sidebar.display === 'always') {
+      if (CONFIG.sidebar === 'always') {
         NexT.utils.displaySidebar();
       }
       integrator.next();

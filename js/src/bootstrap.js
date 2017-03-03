@@ -6,11 +6,14 @@ $(document).ready(function () {
 
   NexT.utils.isMobile() && window.FastClick.attach(document.body);
 
-  NexT.utils.lazyLoadPostsImages();
+  $('#posts').find('img').lazyload({
+    placeholder: '/images/loading.gif',
+    effect: 'fadeIn'
+  });
 
-  NexT.utils.registerESCKeyEvent();
-
-  NexT.utils.registerBackToTop();
+  $('.back-to-top').on('click', function () {
+    $('body').velocity('scroll');
+  });
 
   $('.site-nav-toggle button').on('click', function () {
     var $siteNav = $('.site-nav');
