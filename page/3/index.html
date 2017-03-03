@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -27,21 +27,51 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, sweetvvck, nodejs, java, golang, android" />
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -52,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -68,19 +98,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://sweetvvck.github.io/page/3/"/>
+
+
+
+
 
   <title> Sweetvvck </title>
 </head>
@@ -90,14 +136,11 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-41903878-1', 'auto');
-  ga('send', 'pageview');
-</script>
+
+
+
+
+
 
 
 
@@ -116,60 +159,44 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Sweetvvck</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sweetvvck</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -177,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -187,31 +214,21 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
-      
-      
       
     </ul>
   
 
   
 </nav>
+
+
 
  </div>
     </header>
@@ -222,16 +239,9 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-
-    
-
-    
-    
-
     
       
 
-  
   
 
   
@@ -239,6 +249,17 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sweetvvck">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sweetvvck">
+    </span>
 
     
       <header class="post-header">
@@ -260,41 +281,38 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-10-31T23:40:38+08:00" content="2014-10-31">
-              2014-10-31
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-31T23:40:38+08:00">
+                2014-10-31
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
-             <span id="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/" class="leancloud_visitors" data-flag-title="[译]Android学习路线（三十一）高效地加载大的Bitmap">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
+
         </div>
       </header>
     
@@ -308,23 +326,59 @@
       
         
           
-          图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。
-假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。
-本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。
-读取Bitmap的尺寸和类型
-BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFile()),decodeResource()), 等等.)来通过多种多样的资源文件创建&nbsp;Bitmap&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&n
-          ...
+            <p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
+<p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。</p>
+<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。</p>
+<h2 id="读取Bitmap的尺寸和类型"><a href="#读取Bitmap的尺寸和类型" class="headerlink" title="读取Bitmap的尺寸和类型"></a>读取Bitmap的尺寸和类型</h2><hr>
+<p><a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html" target="_blank" rel="external">BitmapFactory</a>&nbsp;类提供几种解码方法(<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeByteArray()</a>),&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeFile(java.lang.String, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeFile()</a>),<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeResource(android.content.res.Resources, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeResource()</a>),<br> 等等.)来通过多种多样的资源文件创建&nbsp;<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank" rel="external">Bitmap</a>&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&nbsp;异常。每种类型的解码方法都有额外的参数以让你通过<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html" target="_blank" rel="external">BitmapFactory.Options</a>&nbsp;类指定解码的选项。在解码时设置<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inJustDecodeBounds" target="_blank" rel="external">inJustDecodeBounds</a>&nbsp;属性为&nbsp;true&nbsp;能够避免内存分配，同时还能够获取到<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outWidth" target="_blank" rel="external">outWidth</a>,&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outHeight" target="_blank" rel="external">outHeight</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outMimeType" target="_blank" rel="external">outMimeType</a>&nbsp;的&#20540;，此时解码方法返回的bitmap对象为null。这种发式允许你在构建这个bitmap（和内存分配）之前读取它的大小和类型。</p>
+<p>BitmapFactory.Options options = new BitmapFactory.Options();<br>options.inJustDecodeBounds = true;<br>BitmapFactory.decodeResource(getResources(), R.id.myimage, options);<br>int imageHeight = options.outHeight;<br>int imageWidth = options.outWidth;<br>String imageType = options.outMimeType;</p>
+<p>为了避免java.lang.OutOfMemory&nbsp;异常，可以在每次解码它之前取得它的尺寸，除非你完全肯定这个图片源的大小的消耗能够在可用内存之内。</p>
+<h2 id="在内存中加载图片的压缩版本"><a href="#在内存中加载图片的压缩版本" class="headerlink" title="在内存中加载图片的压缩版本"></a>在内存中加载图片的压缩版本</h2><hr>
+<p>现在图片的尺寸已经知道了，我们就能够决定是否加载原图还是图片的缩小版本。下面有几点需要考虑:</p>
+<ul>
+<li>预估加载完整图片所需的内存使用量。</li>
+<li>你想要为加载此图片分配的内存的总量。</li>
+<li>要载入的目标<a href="http://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">ImageView</a>&nbsp;或者UI组件的尺寸。</li>
+<li>当前设备的屏幕大小和密度。</li>
+</ul>
+<p>例如，如果一张图片要在一个ImageView中被展示成一个128x96像素的缩略图，那么加载一个1024x768 像素的图片进内存是完全不&#20540;得的。</p>
+<p>告诉解码者压缩图片，加载一个压缩版图片进入内存，需要在<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html" target="_blank" rel="external">BitmapFactory.Options</a>对象中设置&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;为&nbsp;true。例如，一个图片，分辨率为&nbsp;2048x1536以&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;＝<br> 4为参数被解码，将会产生一个分辨率大概为512x384的bitmap。加载它进内存只需要使用0.75MB 内存，而非加载完整图片所需的12MB (假定bitmap的配置为<a href="http://developer.android.com/reference/android/graphics/Bitmap.Config.html" target="_blank" rel="external">ARGB_8888</a>)。下面是一个基于目标长度和宽度计算压缩图片尺寸&#20540;的方法：</p>
+<p>public static int calculateInSampleSize(<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BitmapFactory.Options options, int reqWidth, int reqHeight) {<br>&nbsp; &nbsp; // Raw height and width of image<br>&nbsp; &nbsp; final int height = options.outHeight;<br>&nbsp; &nbsp; final int width = options.outWidth;<br>&nbsp; &nbsp; int inSampleSize = 1;</p>
+<p>&nbsp; &nbsp; if (height &gt; reqHeight || width &gt; reqWidth) {</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; final int halfHeight = height / 2;<br>&nbsp; &nbsp; &nbsp; &nbsp; final int halfWidth = width / 2;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Calculate the largest inSampleSize value that is a power of 2 and keeps both<br>&nbsp; &nbsp; &nbsp; &nbsp; // height and width larger than the requested height and width.<br>&nbsp; &nbsp; &nbsp; &nbsp; while ((halfHeight / inSampleSize) &gt; reqHeight<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; inSampleSize *= 2;<br>&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; }</p>
+<p>&nbsp; &nbsp; return inSampleSize;<br>}</p>
+<p><strong>Note:</strong>&nbsp;A power of two value is calculated because the decoder uses a final value by rounding down to the nearest power of two, as per the&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;documentation.</p>
+<p>要使用这个方法，首先需要按照之前的方式获取图片的尺寸和类型，然后在通过计算出的&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;&#20540;来生成bitmap：</p>
+<p>public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,<br>&nbsp; &nbsp; &nbsp; &nbsp; int reqWidth, int reqHeight) {</p>
+<p>&nbsp; &nbsp; // First decode with inJustDecodeBounds=true to check dimensions<br>&nbsp; &nbsp; final BitmapFactory.Options options = new BitmapFactory.Options();<br>&nbsp; &nbsp; options.inJustDecodeBounds = true;<br>&nbsp; &nbsp; BitmapFactory.decodeResource(res, resId, options);</p>
+<p>&nbsp; &nbsp; // Calculate inSampleSize<br>&nbsp; &nbsp; options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);</p>
+<p>&nbsp; &nbsp; // Decode bitmap with inSampleSize set<br>&nbsp; &nbsp; options.inJustDecodeBounds = false;<br>&nbsp; &nbsp; return BitmapFactory.decodeResource(res, resId, options);<br>}</p>
+<p>下面这种方式很简单的实现了加载一个很大的图片到一个100x100像素缩略图的ImageView中：</p>
+<p>mImageView.setImageBitmap(<br>&nbsp; &nbsp; decodeSampledBitmapFromResource(getResources(), R.id.myimage, 100, 100));</p>
+<p>你也可以使用类&#20284;的流程从其他图片源中解码bitmap，根据需要使用适当的解码方法<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)&nbsp;。</p>
+<pre><code>    作者：sweetvvck 发表于2014/10/31 23:40:38 [原文链接](http://blog.csdn.net/sweetvvck/article/details/40663965)
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+
+阅读：398 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/40663965#comments)
+</code></pre>
+          
         
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -341,13 +395,23 @@ BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFi
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sweetvvck">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sweetvvck">
+    </span>
 
     
       <header class="post-header">
@@ -369,41 +433,38 @@ BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFi
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-10-31T23:39:24+08:00" content="2014-10-31">
-              2014-10-31
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-31T23:39:24+08:00">
+                2014-10-31
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
-             <span id="/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/" class="leancloud_visitors" data-flag-title="[译]Android学习路线（三十）高效地显示Bitmaps">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
+
         </div>
       </header>
     
@@ -417,24 +478,38 @@ BitmapFactory&nbsp;类提供几种解码方法(decodeByteArray()),&nbsp;decodeFi
       
         
           
-          学习如何使用常规的技术来加载[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app crash掉，并且跑出下面这个可怕的异常：
-java.lang.OutofMemoryError: bitmap size exceeds VM budget.
-下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：
+            <p>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：</p>
+<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.</p>
+<p>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：</p>
+<ul>
+<li>移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。</li>
+<li>Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;<a href="http://www.android.com/devices/detail/galaxy-nexus" target="_blank" rel="external">Galaxy Nexus</a>&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素)。如果这个bitmap使用的配置是&nbsp;<code>[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html)</code>&nbsp;(从Android2.3开始的默认配置)，那么加载这个图片到内存中需要占用19MB，这样马上就用光了某些设备的每个app的内存限制。</li>
+<li>Android app UI会频繁的需要多个bitmaps的一次载入。像&nbsp;<code>[ListView](http://developer.android.com/reference/android/widget/ListView.html)</code>,<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;以及&nbsp;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>&nbsp;这些组件通常都会一次在屏幕上显示多个bitmaps同时还会有更多的bitmaps在后台等待被显示。</li>
+</ul>
+<h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><hr>
+<p><strong>高效地加载大Bitmaps</strong>此课程带你学习如何解码大bitmaps而不溢出app的内存限制。<strong>在非UI线程处理Bitmaps</strong>Bitmap处理(重置大小，从远端下载等等)都不应该在主UI线程中出现。此课程带你学习如何使用AsyncTask在后台线程中处理bitmaps，同时也会扩展一些处理并发的知识。<strong>缓存Bitmaps</strong>此课程教你使用内存和磁盘来缓存bitmap来提高你的UI加载大量图片时的响应速度和流畅性。<strong>管理Bitmap内存</strong>此课程想你解释如何管理bitmap内存来最优化你的app的表现。<strong>在你的UI中展示Bitmaps</strong>此课程将想你展示如何加载多个bitmaps到类&#20284;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>&nbsp;和&nbsp;<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;的组件中，同时使用了后台线程和缓存。</p>
+<pre><code>    作者：sweetvvck 发表于2014/10/31 23:39:24 [原文链接](http://blog.csdn.net/sweetvvck/article/details/40663905)
 
-移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。
-Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;Galaxy Nexus&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素
-          ...
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+阅读：351 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/40663905#comments)
+</code></pre>
+          
         
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -451,13 +526,23 @@ Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十八）保存文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sweetvvck">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sweetvvck">
+    </span>
 
     
       <header class="post-header">
@@ -479,41 +564,38 @@ Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-30T23:57:47+08:00" content="2014-09-30">
-              2014-09-30
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-30T23:57:47+08:00">
+                2014-09-30
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/30/译-Android学习路线（二十八）保存文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/30/译-Android学习路线（二十八）保存文件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
-             <span id="/2014/09/30/译-Android学习路线（二十八）保存文件/" class="leancloud_visitors" data-flag-title="[译]Android学习路线（二十八）保存文件">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
+
         </div>
       </header>
     
@@ -527,27 +609,99 @@ Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例�
       
         
           
-          转载请注明出处：Android学习路线（二十八）保存文件
-Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。
-一个File&nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。
-本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。
-选择内部或外部存储
-所有的Android设备都由两个存储区域：“内部”和“外部”存储。这两个名字来源于早期的android版本，当时大多数设备提供“内部构建”（built-in）不可拆卸的内部存储，以及可拆卸的存储媒介，例如微型SD卡。一些设备也将持久化存储设备分为“内部”和“外部”两个部分，因此即使是没有可拆卸媒介的设备也会有两个存储区域，而API的行为与设备是否有可拆卸存储介质无关，下面总结了每个存储区域的相关要点。
-内部存储：
+            <p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645095" target="_blank" rel="external">Android学习路线（二十八）保存文件</a></p>
+<p>Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。</p>
+<p>一个<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。</p>
+<p>本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。</p>
+<h2 id="选择内部或外部存储"><a href="#选择内部或外部存储" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><hr>
+<p>所有的Android设备都由两个存储区域：“内部”和“外部”存储。这两个名字来源于早期的android版本，当时大多数设备提供“内部构建”（built-in）不可拆卸的内部存储，以及可拆卸的存储媒介，例如微型SD卡。一些设备也将持久化存储设备分为“内部”和“外部”两个部分，因此即使是没有可拆卸媒介的设备也会有两个存储区域，而API的行为与设备是否有可拆卸存储介质无关，下面总结了每个存储区域的相关要点。</p>
+<p><strong>内部存储：</strong></p>
+<ul>
+<li>任何时候都可用。</li>
+<li>默认情况下只有在你的app中才能访问。</li>
+<li>当用户卸载你的app，系统将移除该应用在内部存储中的所有文件。</li>
+</ul>
+<p>当你确定用户和其他app都不能访问到的情况下，内部存储是最佳选择。</p>
+<p><strong>外部存储：</strong></p>
+<ul>
+<li>它并不是任何时候都可用，因为用户能够像U盘一样使用它，同时它也可能随时被从设备上移除。</li>
+<li>它能被任何人访问，因此存储在这里的文件能够被其他app读取。</li>
+<li>当用户卸载你的app，系统只会在你将文件保存在<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;中时才会在这里移除你app中的文件。</li>
+</ul>
+<p>当你不需要控制文件的访问权限，同时你希望将文件和其他应用共享或者能够在电脑中访问到，那么外部存储是最好的选择。</p>
+<p><strong>提示:</strong>&nbsp;即使是apps默认会被安装在内部存储中，你也可以在你的app中的manifest文件中指定<a href="http://developer.android.com/guide/topics/manifest/manifest-element.html#install" target="_blank" rel="external">android:installLocation</a>&nbsp;属性，让你的app被安装在外部存储中。当apk的大小很大时，用户会非常希望这么做，他们会有一个远大于内部存储的外部存储空间。更多信息，请参阅<a href="http://developer.android.com/guide/topics/data/install-location.html" target="_blank" rel="external">App<br> Install Location</a>。</p>
+<h2 id="获取外部存储权限"><a href="#获取外部存储权限" class="headerlink" title="获取外部存储权限"></a>获取外部存储权限</h2><hr>
+<p>要能够在外部存储中写文件，你必须在manifest文件中申请&nbsp;<a href="http://developer.android.com/reference/android/Manifest.permission.html#WRITE_EXTERNAL_STORAGE" target="_blank" rel="external">WRITE_EXTERNAL_STORAGE</a>&nbsp;权限：</p>
+<p>&lt;manifest …&gt;<br>&nbsp; &nbsp; &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;<br>&nbsp; &nbsp; …<br>&lt;/manifest&gt;</p>
+<p><strong>注意:</strong>&nbsp;目前，所有的应用都有权限读取外部存储中的文件。然而，在之后的版本中将会改变。如果你的app需要读取外部存储中的文件（但是不需要写入），你需要声明<a href="http://developer.android.com/reference/android/Manifest.permission.html#READ_EXTERNAL_STORAGE" target="_blank" rel="external">READ_EXTERNAL_STORAGE</a>&nbsp;权限。这样来保证你的app能够像预期那样工作。</p>
+<p>&lt;manifest …&gt;<br>&nbsp; &nbsp; &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;<br>&nbsp; &nbsp; …<br>&lt;/manifest&gt;</p>
+<p>然而，如果你的app使用了<a href="http://developer.android.com/reference/android/Manifest.permission.html#WRITE_EXTERNAL_STORAGE" target="_blank" rel="external">WRITE_EXTERNAL_STORAGE</a>&nbsp;权限，那么它就同时拥有了读写权限。</p>
+<p>保存文件到内部存储中并不需要权限。你的app一直拥有在内部存储目录下的读写权限。</p>
+<h2 id="保存一个文件到内部存储中"><a href="#保存一个文件到内部存储中" class="headerlink" title="保存一个文件到内部存储中"></a>保存一个文件到内部存储中</h2><hr>
+<p>当保存文件到内部存储中时，你可以通过下面这两种方式获取一个合适的File对象：</p>
+<p><a href="http://developer.android.com/reference/android/content/Context.html#getFilesDir(" target="_blank" rel="external">getFilesDir()</a>)返回一个表示你的app在内部存储中的目录的<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象。<a href="http://developer.android.com/reference/android/content/Context.html#getCacheDir(" target="_blank" rel="external">getCacheDir()</a>)返回一个表示你的app在内部存储中的临时目录的<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象。确保在你不需要该缓存文件时将其删掉，同时要指定一个合理的缓存文件大小限制，因为当系统缺少运行空间时会在不发出警告的情况下将该目录的文件删除。</p>
+<p>要在上面两个目录之一中创建一个文件，你可以使用&nbsp;<a href="http://developer.android.com/reference/java/io/File.html#File(java.io.File, java.lang.String" target="_blank" rel="external">File()</a>)&nbsp;构造方法，传入前面获取到的File对象作为内部存储的目录。例如：</p>
+<p>File file = new File(context.getFilesDir(), filename);</p>
+<p>同样的，你还可以调用&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#openFileOutput(java.lang.String, int" target="_blank" rel="external">openFileOutput()</a>)&nbsp;方法来获取一个&nbsp;<a href="http://developer.android.com/reference/java/io/FileOutputStream.html" target="_blank" rel="external">FileOutputStream</a>&nbsp;，用于在你的内部存储中写入一个文件。例如，下面是如果像文件中写入一些文本：</p>
+<p>String filename = &quot;myfile&quot;;<br>String string = &quot;Hello world!&quot;;<br>FileOutputStream outputStream;</p>
+<p>try {<br>&nbsp; outputStream = openFileOutput(filename, Context.MODE_PRIVATE);<br>&nbsp; outputStream.write(string.getBytes());<br>&nbsp; outputStream.close();<br>} catch (Exception e) {<br>&nbsp; e.printStackTrace();<br>}</p>
+<p>再或者，如果你需要缓存一些文件，你应该使用<a href="http://developer.android.com/reference/java/io/File.html#createTempFile(java.lang.String, java.lang.String" target="_blank" rel="external">createTempFile()</a>)。例如，下面的方法通过URL萃取文件名，同时使用这个文件名在内部缓存目录下创建一个文件：</p>
+<p>public File getTempFile(Context context, String url) {<br>&nbsp; &nbsp; File file;<br>&nbsp; &nbsp; try {<br>&nbsp; &nbsp; &nbsp; &nbsp; String fileName = Uri.parse(url).getLastPathSegment();<br>&nbsp; &nbsp; &nbsp; &nbsp; file = File.createTempFile(fileName, null, context.getCacheDir());<br>&nbsp; &nbsp; catch (IOException e) {<br>&nbsp; &nbsp; &nbsp; &nbsp; // Error while creating file<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return file;<br>}</p>
+<p><strong>提示:</strong>&nbsp;你的app的内部存储目录是由你的app包名指定。从技术上来说，如果你把这个文件的模式设置为可读，那么其他app就能够访问你的app的内部文件了。然而，这些其他的app必须知道你的app的包名以及内部文件的名字。如果你不特别地自定内部文件的可读或可写模式，那么别的应用也没有权限操作你的app中的内部文件。</p>
+<h2 id="保存一个文件到外部存储"><a href="#保存一个文件到外部存储" class="headerlink" title="保存一个文件到外部存储"></a>保存一个文件到外部存储</h2><hr>
+<p>由于外部存储可以不可用——例如当用户将其移除——你需要在访问它之前判断它是否可用。你可以通过调用<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStorageState(" target="_blank" rel="external">getExternalStorageState()</a>)方法查询到它的可用状态。如果该方法返回的状态等于<a href="http://developer.android.com/reference/android/os/Environment.html#MEDIA_MOUNTED" target="_blank" rel="external">MEDIA_MOUNTED</a>，那么你就能够读写你的文件。例如，下面的方法可用于判断外部存储是否可用：</p>
+<p>/<em> Checks if external storage is available for read and write </em>/<br>public boolean isExternalStorageWritable() {<br>&nbsp; &nbsp; String state = Environment.getExternalStorageState();<br>&nbsp; &nbsp; if (Environment.MEDIA_MOUNTED.equals(state)) {<br>&nbsp; &nbsp; &nbsp; &nbsp; return true;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return false;<br>}</p>
+<p>/<em> Checks if external storage is available to at least read </em>/<br>public boolean isExternalStorageReadable() {<br>&nbsp; &nbsp; String state = Environment.getExternalStorageState();<br>&nbsp; &nbsp; if (Environment.MEDIA_MOUNTED.equals(state) ||<br>&nbsp; &nbsp; &nbsp; &nbsp; Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {<br>&nbsp; &nbsp; &nbsp; &nbsp; return true;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return false;<br>}</p>
+<p>即使外部存储中的文件可以被用户或者其他app修改，对于下面两种类型的文件同样有合适的情况被保存在这里：</p>
+<p>公共文件需要被所有app或者用户访问到的文件。当你卸载你的app，你希望用户留下这些文件。</p>
+<p>例如，你的app拍下的照片或者其他下载文件。</p>
+<p>私有文件文件隶属于你的app，并且应道在用户写在你的app是被删除。即使是这些文件在技术上来讲能够被用户或者其他app访问，实际上它在你的app外部是不会提供任何数据的。当你的app被卸载，系统将会删除你的app在外部存储中的所有私有目录。</p>
+<p>例如，通过你的app下载的资源，或者临时的多媒体文件。</p>
+<p>如果你希望在外部存储中保存公有文件，使用&nbsp;<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String" target="_blank" rel="external">getExternalStoragePublicDirectory()</a>)&nbsp;方法来获得一个&nbsp;<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象。这个方法会接收一个参数作为对应文件类型要存放的位置。例如<a href="http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_MUSIC" target="_blank" rel="external">DIRECTORY_MUSIC</a>&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_PICTURES" target="_blank" rel="external">DIRECTORY_PICTURES</a></p>
+<p>public File getAlbumStorageDir(String albumName) {<br>&nbsp; &nbsp; // Get the directory for the user’s public pictures directory.<br>&nbsp; &nbsp; File file = new File(Environment.getExternalStoragePublicDirectory(<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Environment.DIRECTORY_PICTURES), albumName);<br>&nbsp; &nbsp; if (!file.mkdirs()) {<br>&nbsp; &nbsp; &nbsp; &nbsp; Log.e(LOG_TAG, &quot;Directory not created&quot;);<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return file;<br>}</p>
+<p>如果你想要在外部存储中保存私有文件，那么你可以通过调用<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法来获取合适的文件目录对象，同时传入一个名字来指定目录的类型。每个通过这种方式调用获得的目录，都会在应用被卸载时被清除。</p>
+<p>例如，下面是如何创建一个独立的相册目录：</p>
+<p>public File getAlbumStorageDir(Context context, String albumName) {<br>&nbsp; &nbsp; // Get the directory for the app’s private pictures directory.<br>&nbsp; &nbsp; File file = new File(context.getExternalFilesDir(<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Environment.DIRECTORY_PICTURES), albumName);<br>&nbsp; &nbsp; if (!file.mkdirs()) {<br>&nbsp; &nbsp; &nbsp; &nbsp; Log.e(LOG_TAG, &quot;Directory not created&quot;);<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return file;<br>}</p>
+<p>如果没有合适的预定义的子目录名字适合你的文件，你可以调用&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法，同时传入null。它会返回外部存储中你的app对应的私有目录。</p>
+<p>要记住通过&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法创建的目录将会在app卸载时被删除。如果这些文件需要在应用卸载后被保存，当你的应用再次安装时能够访问到，你需要调用<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String" target="_blank" rel="external">getExternalStoragePublicDirectory()</a>)方法。</p>
+<p>不管你使用的是可分享的<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String" target="_blank" rel="external">getExternalStoragePublicDirectory()</a>)&nbsp;方法，或者是私有的<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法，使用系统所提供的目录名称（如&nbsp;<a href="http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_PICTURES" target="_blank" rel="external">DIRECTORY_PICTURES</a>）都很重要。这些目录名称将确保这些文件在系统中会被按照这些方式对待。例如，保存在<a href="http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_RINGTONES" target="_blank" rel="external">DIRECTORY_RINGTONES</a>&nbsp;中的文件将会被系统识别为手机铃声而非音乐。</p>
+<h2 id="查询剩余空间"><a href="#查询剩余空间" class="headerlink" title="查询剩余空间"></a>查询剩余空间</h2><hr>
+<p>如果你知道你要保存的数据的大小，这样你就可以判断出是否有足够的空间避免导致&nbsp;<a href="http://developer.android.com/reference/java/io/IOException.html" target="_blank" rel="external">IOException</a>&nbsp;异常，可通过调用<a href="http://developer.android.com/reference/java/io/File.html#getFreeSpace(" target="_blank" rel="external">getFreeSpace()</a>)&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/java/io/File.html#getTotalSpace(" target="_blank" rel="external">getTotalSpace()</a>)方法来获取剩余空间的大小。这两个方法各自返回此时的可用空间大侠和存储卷中总共的空间大小。这个方法同样可以在开始就避免占满整个存储空间。</p>
+<p>然而，系统并不能确保你能够写入通过<a href="http://developer.android.com/reference/java/io/File.html#getFreeSpace(" target="_blank" rel="external">getFreeSpace()</a>)方法返回的数据大小。如果它返回的大小比你要写入的数据大小大几兆，或者文件系统还有90%的剩余空间，那么执行保存是安全的。否则，你不应该存储这些数据。</p>
+<p><strong>提示:</strong>&nbsp;在存储文件前检查可用空间不是必须操作。你可以直接保存文件，然后捕获<a href="http://developer.android.com/reference/java/io/IOException.html" target="_blank" rel="external">IOException</a>&nbsp;异常。你可以在你不知道要保存的数据有多大时使用这种方法。例如，你在保存文件前将PNG转变成JPEG，改变了文件的编码，你提前并不知道文件的大小。</p>
+<h2 id="删除一个文件"><a href="#删除一个文件" class="headerlink" title="删除一个文件"></a>删除一个文件</h2><hr>
+<p>你要记得在文件不需要被使用时将其删除。最直接的删除方法调用文件对象的<a href="http://developer.android.com/reference/java/io/File.html#delete(" target="_blank" rel="external">delete()</a>)&nbsp;方法删除它本身。</p>
+<p>myFile.delete();</p>
+<p>如果文件被保存在内部存储中，你同样可以使用Context定位然后调用<a href="http://developer.android.com/reference/android/content/Context.html#deleteFile(java.lang.String" target="_blank" rel="external">deleteFile()</a>)方法删除文件：</p>
+<p>myContext.deleteFile(fileName);</p>
+<p><strong>提示:</strong>&nbsp;当用户卸载你的app，系统将会删除下面内容：</p>
+<ul>
+<li>所有你的app保存在内部存储中的数据</li>
+<li>所有通过调用<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)方法保存在外部存储中的数据。</li>
+</ul>
+<p>然而，你手动删除通过<a href="http://developer.android.com/reference/android/content/Context.html#getCacheDir(" target="_blank" rel="external">getCacheDir()</a>)&nbsp;方法生成的文件，当这些文件不再需要被使用到时。</p>
+<pre><code>    作者：sweetvvck 发表于2014/9/30 23:57:47 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645095)
 
-任何时候
-          ...
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/30/译-Android学习路线（二十八）保存文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+阅读：582 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645095#comments)
+</code></pre>
+          
         
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -564,13 +718,23 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十六）Android数据存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sweetvvck">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sweetvvck">
+    </span>
 
     
       <header class="post-header">
@@ -592,41 +756,38 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-30T23:56:52+08:00" content="2014-09-30">
-              2014-09-30
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-30T23:56:52+08:00">
+                2014-09-30
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/30/译-Android学习路线（二十六）Android数据存储/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/30/译-Android学习路线（二十六）Android数据存储/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
-             <span id="/2014/09/30/译-Android学习路线（二十六）Android数据存储/" class="leancloud_visitors" data-flag-title="[译]Android学习路线（二十六）Android数据存储">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
+
         </div>
       </header>
     
@@ -640,27 +801,36 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
       
         
           
-          大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;onPause())&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：
+            <p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" rel="external">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
+<ul>
+<li>使用shared preferences文件通过键&#20540;对保存简单数据类型</li>
+<li>保存任意的文件到Android的文件系统中</li>
+<li>使用SQLite数据库</li>
+</ul>
+<h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><hr>
+<p><strong><a href="http://developer.android.com/training/basics/data-storage/shared-preferences.html" target="_blank" rel="external">保存键&#20540;对集合</a></strong>学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。<strong><a href="http://developer.android.com/training/basics/data-storage/files.html" target="_blank" rel="external">保存文件</a></strong>学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。<strong><a href="http://developer.android.com/training/basics/data-storage/databases.html" target="_blank" rel="external">保存数据到数据库</a></strong>学习使用SQLite数据库读写结构化数据。</p>
+<pre><code>    作者：sweetvvck 发表于2014/9/30 23:56:52 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645041)
 
-使用shared preferences文件通过键&#20540;对保存简单数据类型
-保存任意的文件到Android的文件系统中
-使用SQLite数据库
 
-课程
-保存键&#20540;对集合学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。保存文件学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。保存数据到数据库学习使用SQLite数据库读写结构化数据。
-    作者：sweetvvck 发表于2014/9/30 23:56:52 [原文链接](http://blog.csdn.net/sweetvvck/article/detail
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/30/译-Android学习路线（二十六）Android数据存储/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+阅读：482 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645041#comments)
+</code></pre>
+          
         
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -677,13 +847,23 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sweetvvck">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sweetvvck">
+    </span>
 
     
       <header class="post-header">
@@ -705,41 +885,38 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-30T23:56:29+08:00" content="2014-09-30">
-              2014-09-30
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-30T23:56:29+08:00">
+                2014-09-30
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
-             <span id="/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/" class="leancloud_visitors" data-flag-title="[译]Android学习路线（二十七）键值对（SharedPreferences）存储">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
+
         </div>
       </header>
     
@@ -753,22 +930,50 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
       
         
           
-          如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用SharedPreferences&nbsp;APIs。一个SharedPreferences&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个SharedPreferences&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。
-本课将介绍如何使用SharedPreferences&nbsp;APIs来存储和获取简单的数据。
-提示:&nbsp;SharedPreferences&nbsp;APIs 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;Preference&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;Preference&nbsp;APIs的信息，请移步Settings&nbsp;向导。
-获取SharedPreferences的引用（句柄）你可以通过下面任意一种方式创建一个新的shared 
-          ...
+            <p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
+<p>本课将介绍如何使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs来存储和获取简单的数据。</p>
+<p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs<br> 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs的信息，请移步<a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank" rel="external">Settings</a>&nbsp;向导。</p>
+<h2 id="获取SharedPreferences的引用（句柄）"><a href="#获取SharedPreferences的引用（句柄）" class="headerlink" title="获取SharedPreferences的引用（句柄）"></a>获取SharedPreferences的引用（句柄）</h2><p>你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：</p>
+<ul>
+<li><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>Use this if you need multiple shared preference files identified by name, which you specify with the first parameter. You can call this from any&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html" target="_blank" rel="external">Context</a>&nbsp;in<br>your app.</li>
+<li><p><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>如果你通过不同的名字保存了多个shared preference文件，那么你可以使用这个方法，这个方法的第一个参数即为文件名。你可以在应用中使用Context对象来调用它。</p>
+</li>
+<li><p><a href="http://developer.android.com/reference/android/app/Activity.html#getPreferences(int" target="_blank" rel="external">getPreferences()</a>)&nbsp;—<br>如果你只需要在这个activity中使用一个shared preference文件，那么你可以在activity中调用这个方法。因为这个方法会返回属于这个activity的一个默认的shared preference文件，你不需要为它提供一个名字。</p>
+</li>
+</ul>
+<p>例如，以下的方法会在 &nbsp;<a href="http://developer.android.com/reference/android/app/Fragment.html" target="_blank" rel="external">Fragment</a>&nbsp;中被执行。它在内部访问了一个shared<br> preferences文件，这个文件被&nbsp;R.string.preference_file_key&nbsp;这个字符串指定，并且它是被私有模式（private mode）打开的，因此只能被你的app访问。</p>
+<p>Context context = getActivity();<br>SharedPreferences sharedPref = context.getSharedPreferences(<br>&nbsp; &nbsp; &nbsp; &nbsp; getString(R.string.preference_file_key), Context.MODE_PRIVATE);</p>
+<p>当为你的shared preference文件命名时，你应当使用一个唯一的标识，例如&quot;com.example.myapp.PREFERENCE_FILE_KEY&quot;</p>
+<p>作为替代，如果你只想要在你的activity中使用一个shared preference文件，你可以使用&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#getPreferences(int" target="_blank" rel="external">getPreferences()</a>)方法：</p>
+<p>SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</p>
+<p><strong>注意:</strong>&nbsp;如果你使用&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_READABLE" target="_blank" rel="external">MODE_WORLD_READABLE</a>&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_WRITEABLE" target="_blank" rel="external">MODE_WORLD_WRITEABLE</a>模式创建了一个shared<br> preference文件，那么任何其他知道这个文件标识的app都能够访问到你的数据。</p>
+<h2 id="向Shared-Preferences中写入数据"><a href="#向Shared-Preferences中写入数据" class="headerlink" title="向Shared Preferences中写入数据"></a>向Shared Preferences中写入数据</h2><hr>
+<p>要向shared preferences文件中写入数据，你需要调用SharedPreferences的edit()方法来创建一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html" target="_blank" rel="external">SharedPreferences.Editor</a>&nbsp;对象。</p>
+<p>传入键和&#20540;给你想要调用的方法，例如&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#putInt" target="_blank" rel="external">putInt()</a>&amp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#putStringjava.lang.String, java.lang.String" target="_blank" rel="external">putString()</a>。然后调用<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#commit(" target="_blank" rel="external">commit()</a>)&nbsp;方法来存储这些改变。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div><div class="line">SharedPreferences.Editor editor = sharedPref.edit();</div><div class="line">editor.putInt(getString(R.string.saved_high_score), newHighScore);</div><div class="line">editor.commit();</div></pre></td></tr></table></figure></p>
+<h2 id="从Shared-Preferences中读取数据"><a href="#从Shared-Preferences中读取数据" class="headerlink" title="从Shared Preferences中读取数据"></a>从Shared Preferences中读取数据</h2><hr>
+<p>要从shared preferences文件中获取数据，可以调用getInt()或者getString()等方法，只需要提供你想要获得的&#20540;对应的key就可以了；你也可以选择再传入一个默认&#20540;，如果通过传入的key没有取道&#20540;将会返回这个默认&#20540;。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div><div class="line"><span class="keyword">int</span> defaultValue = getResources().getInteger(R.string.saved_high_score_default);</div><div class="line"><span class="keyword">long</span> highScore = sharedPref.getInt(getString(R.string.saved_high_score), defaultValue);</div></pre></td></tr></table></figure></p>
+<pre><code>    作者：sweetvvck 发表于2014/9/30 23:56:29 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645065)
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+
+阅读：765 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645065#comments)
+</code></pre>
+          
         
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -782,7 +987,6 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
 
     
-
   </section>
 
   
@@ -791,7 +995,7 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
   </nav>
 
 
-
+          
           </div>
           
 
@@ -817,35 +1021,48 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="https://avatars1.githubusercontent.com/u/3828494?v=3&s=460"
+               src="/images/avatar.gif"
                alt="Sweetvvck" />
           <p class="site-author-name" itemprop="name">Sweetvvck</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">20</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">9</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">标签</span>
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
 
         </nav>
 
@@ -860,50 +1077,20 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/sweetvvck" target="_blank">
-                  
-                    <i class="fa fa-github"></i> GitHub
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/sweetvvck" target="_blank">
-                  
-                    <i class="fa fa-twitter"></i> Twitter
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/sweetvvck" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.v2ex.com/member/sweetvvck" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> V2ex
-                  
-                </a>
-              </span>
-            
-          
         </div>
 
         
         
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+        
+        
+
+        
+
 
       </section>
+
+      
 
       
 
@@ -912,127 +1099,95 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
 
 
         
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- first blood -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5355816823046841"
-             data-ad-slot="1535923015"
-             data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<div class="copyright" >
+        <div class="copyright" >
   
-  &copy;  2016 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sweetvvck</span>
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
 
 <div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
-<div class="powered-by">
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
-</div>
-<div class="theme-info">
-<span id="busuanzi_container_site_uv">
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-</span>
-</div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
   </div>
 
   
 
-
-  
-
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
 
-  
-  
-
-  
-
-  
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
 
 
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sweetvvck"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
@@ -1040,101 +1195,58 @@ Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。�
   
 
   
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("lT3lO1Nw0l5r35n1QRjSpWlr-gzGzoHsz", "A0ADM3Flk4OnaWKxIHsUMKL7");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
+  
 
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+  
 
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
+  
 
 
-
+  
 
 </body>
 </html>

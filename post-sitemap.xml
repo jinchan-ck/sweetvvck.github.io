@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/</loc>
+        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://sweetvvck.github.io/2016/08/01/how-does-javascript-work/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,23 +31,15 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2014/08/21/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89ActionBar-Fragment%E8%BF%90%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
-        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/</loc>
-        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://sweetvvck.github.io/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/</loc>
+        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/2014/08/21/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89ActionBar-Fragment%E8%BF%90%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,14 +63,6 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/</loc>
-        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -80,6 +72,14 @@
 
     <url>
         <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%BA%8C%EF%BC%89%E5%9C%A8%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%A4%84%E7%90%86Bitmap/</loc>
+        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
