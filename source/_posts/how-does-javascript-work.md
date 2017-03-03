@@ -39,7 +39,7 @@ Javascript 程序的异步由其运行时环境提供，通过`event loop`实现
 单说`Javascript 是如何工作的`其实不太准确，应该说`Javascript 在其运行时环境上是如何工作的`才对，Node 和 Chrome 都是 Javascript 的运行时环境，它们使用相同的  JavaScript 引擎(V8)，都应用基于 `event loop` 的并发模型( Chrome 内核使用了 libevent 而 Node 则基于 libuv )，那么 Javascript 在这样的运行时环境下是如何工作的呢？
 
 是时候祭出这张图了
-![](https://nzsg3jhu3.qnssl.com/r81d48xfnzqicexy3xlayvi.png)
+![](https://pub.int64ago.org/5couq20oh7kfu8ebqpvi.png)
 > 此图来自Philip Roberts的演讲[《Help, I'm stuck in an event-loop》](http://vimeo.com/96425312)
 
 这张图讲的是 Javascript 在浏览器中的工作原理，在 Node 中也差不多，很具有代表性。
