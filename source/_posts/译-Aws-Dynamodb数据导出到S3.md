@@ -10,7 +10,7 @@ date: 2014-12-19 11:55:21
 [
 Creating IAM Roles for AWS Data Pipeline](http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles "Creating IAM Roles for AWS Data Pipeline")。
 **从DynamoDB中导出数据到S3**
-
+<!--more-->
 1.  登陆到AWS管理员控制台，打开DynamoDB console。&nbsp;[https://console.aws.amazon.com/dynamodb/](https://console.aws.amazon.com/dynamodb/).
 2.  在&nbsp;Amazon DynamoDB Tables&nbsp;页面, 点击&nbsp;Export/Import.
 3.  在 Export/Import 页面, 选择你想导出的表，然后点击

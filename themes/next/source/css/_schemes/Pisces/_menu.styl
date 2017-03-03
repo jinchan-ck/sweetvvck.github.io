@@ -15,7 +15,6 @@
 .menu .menu-item {
   display: block;
   margin: 0;
-  list-style: none;
 
   a {
     position: relative;
@@ -33,7 +32,6 @@
   }
 
   br { display: none; }
-  .fa { margin-right: 5px; }
 }
 
 .menu-item-active a {
@@ -57,8 +55,11 @@
 }
 
 .site-nav-toggle {
-  top: 20px;
   left: 20px;
+  top: 50%;
+
+  -webkit-transform:  translateY(-50%);
+  transform:  translateY(-50%);
 
   +tablet() {
     display: block;

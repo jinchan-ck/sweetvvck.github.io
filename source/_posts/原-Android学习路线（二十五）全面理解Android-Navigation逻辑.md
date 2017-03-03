@@ -14,7 +14,7 @@ date: 2014-08-27 01:23:17
 Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改变。全面地理解“Back”以及“Up”的导航效果以及意义，能够大大地减少用户的学习时间，用户在使用过程中很快能够学习如何在应用的各个界面间的切换。
 
 Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。
-
+<!--more-->
 下图分别展示了“Back”和“Up”的示例：
 
 ![](http://img.blog.csdn.net/20140826002202399?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)

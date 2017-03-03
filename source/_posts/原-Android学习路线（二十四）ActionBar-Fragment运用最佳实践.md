@@ -10,7 +10,7 @@ date: 2014-08-21 03:03:52
 
 了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客[Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment](http://blog.csdn.net/sweetvvck/article/details/38566871)，下面的项目支持到API
  Level最低为8，所以项目中也会使用到Support Library。
-
+<!--more-->
 作为一个有上进心的Android开发者，我们是希望项目的设计符合**Android Design**的。Android Design是Google官方推荐的应用设计原则，不了解Android Design的同学可以去了解下，我这里有[官方翻译文档](http://download.csdn.net/detail/sweetvvck/7835793)。
 
 我发现“知乎”的App设计是符合Android Design的，那么我们的项目就来模仿知乎的主界面。首先看下效果图：

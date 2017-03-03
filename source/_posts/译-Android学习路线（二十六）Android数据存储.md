@@ -14,7 +14,7 @@ date: 2014-09-30 23:56:52
 
 * * *
 
-
+<!--more-->
 **[保存键&#20540;对集合](http://developer.android.com/training/basics/data-storage/shared-preferences.html)**学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。**[保存文件](http://developer.android.com/training/basics/data-storage/files.html)**学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。**[保存数据到数据库](http://developer.android.com/training/basics/data-storage/databases.html)**学习使用SQLite数据库读写结构化数据。
 
 

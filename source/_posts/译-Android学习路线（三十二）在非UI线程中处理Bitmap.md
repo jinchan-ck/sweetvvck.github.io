@@ -7,7 +7,7 @@ date: 2014-10-31 23:41:35
 如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在[高效地夹在大Bitmaps](http://developer.android.com/training/displaying-bitmaps/load-bitmap.html)中讨论的[BitmapFactory.decode*](http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options))方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。
 
 本课介绍如何使用&nbsp;[AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html)&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。
-
+<!--more-->
 ## 使用AsyncTask
 
 * * *

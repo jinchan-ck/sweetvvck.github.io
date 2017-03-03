@@ -16,7 +16,7 @@ categories: [编程语言, Javascript]
 
 ## Javascript 引擎与运行时环境
 Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行，例如 Chrome, Node。
-
+<!--more-->
 ## 为什么设计为单线程？
 > JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？这样能提高效率啊。
 JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？

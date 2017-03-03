@@ -10,7 +10,7 @@ date: 2014-10-31 23:39:24
  crash掉，并且跑出下面这个可怕的异常：
 
 `java.lang.OutofMemoryError: bitmap size exceeds VM budget`.
-
+<!--more-->
 下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：
 
 *   移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。

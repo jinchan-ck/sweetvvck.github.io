@@ -20,7 +20,7 @@ Zookeeper的单机模式更加简单：
 JMX enabled by default
 Using config: /etc/zookeeper/conf/zoo.cfg
 Mode: standalone
-
+<!--more-->
 &nbsp; &nbsp; &nbsp; 如果是在其他的Linux系统（CentOS）上，执行：
 
 wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz

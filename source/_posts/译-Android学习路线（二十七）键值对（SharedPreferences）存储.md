@@ -10,7 +10,7 @@ date: 2014-09-30 23:56:29
 
 **提示:**&nbsp;[SharedPreferences](http://developer.android.com/reference/android/content/SharedPreferences.html)&nbsp;APIs
  只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;[Preference](http://developer.android.com/reference/android/preference/Preference.html)&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;[Preference](http://developer.android.com/reference/android/preference/Preference.html)&nbsp;APIs的信息，请移步[Settings](http://developer.android.com/guide/topics/ui/settings.html)&nbsp;向导。
-
+<!--more-->
 ## 获取SharedPreferences的引用（句柄）
 
 你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：

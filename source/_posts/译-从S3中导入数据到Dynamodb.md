@@ -18,7 +18,7 @@ Destination table 可以在不同的AWS region。例如，假设你有个一个&
 _cross-region_&nbsp;导出和导入。
 注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。
 
-
+<!--more-->
 
 **从S3导入数据到DynamoDB**
 
