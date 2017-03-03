@@ -31,7 +31,7 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/</loc>
+        <loc>http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -39,7 +39,7 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/</loc>
+        <loc>http://sweetvvck.github.io/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -63,23 +63,15 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/</loc>
-        <lastmod>2016-01-27T16:08:15.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/</loc>
-        <lastmod>2016-01-27T16:08:15.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%80%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E5%8A%A0%E8%BD%BD%E5%A4%A7%E7%9A%84Bitmap/</loc>
+        <lastmod>2016-01-27T16:08:15.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -103,7 +95,7 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</loc>
+        <loc>http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -135,6 +127,14 @@
     </url>
 
     <url>
+        <loc>http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</loc>
+        <lastmod>2016-01-27T16:08:15.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://sweetvvck.github.io/2014/12/19/%E8%AF%91-Aws-Dynamodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%88%B0S3/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -143,7 +143,7 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/</loc>
+        <loc>http://sweetvvck.github.io/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -151,7 +151,7 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/</loc>
+        <loc>http://sweetvvck.github.io/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/</loc>
         <lastmod>2016-01-27T16:08:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
