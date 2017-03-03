@@ -101,7 +101,7 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。
 一个File&amp;nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。
 本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linu">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:27:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（二十八）保存文件">
 <meta name="twitter:description" content="转载请注明出处：Android学习路线（二十八）保存文件
@@ -387,7 +387,8 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 <p>Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。</p>
 <p>一个<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。</p>
 <p>本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。</p>
-<h2 id="选择内部或外部存储"><a href="#选择内部或外部存储" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><hr>
+<h2 id="选择内部或外部存储"><a href="#选择内部或外部存储" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><a id="more"></a>
+<hr>
 <p>所有的Android设备都由两个存储区域：“内部”和“外部”存储。这两个名字来源于早期的android版本，当时大多数设备提供“内部构建”（built-in）不可拆卸的内部存储，以及可拆卸的存储媒介，例如微型SD卡。一些设备也将持久化存储设备分为“内部”和“外部”两个部分，因此即使是没有可拆卸媒介的设备也会有两个存储区域，而API的行为与设备是否有可拆卸存储介质无关，下面总结了每个存储区域的相关要点。</p>
 <p><strong>内部存储：</strong></p>
 <ul>

@@ -996,13 +996,14 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AB%EF%BC%89%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十八）保存文件/</id>
     <published>2014-09-30T15:57:47.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:27:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645095" target="_blank" rel="external">Android学习路线（二十八）保存文件</a></p>
 <p>Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。</p>
 <p>一个<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。</p>
 <p>本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。</p>
-<h2 id="选择内部或外部存储"><a href="#选择内部或外部存储" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><hr>
+<h2 id="选择内部或外部存储"><a href="#选择内部或外部存储" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><a id="more"></a>
+<hr>
 <p>所有的Android设备都由两个存储区域：“内部”和“外部”存储。这两个名字来源于早期的android版本，当时大多数设备提供“内部构建”（built-in）不可拆卸的内部存储，以及可拆卸的存储媒介，例如微型SD卡。一些设备也将持久化存储设备分为“内部”和“外部”两个部分，因此即使是没有可拆卸媒介的设备也会有两个存储区域，而API的行为与设备是否有可拆卸存储介质无关，下面总结了每个存储区域的相关要点。</p>
 <p><strong>内部存储：</strong></p>
 <ul>
@@ -1077,8 +1078,11 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38645095&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习路线（二十八）保存文件&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;
+      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38645095&quot;&gt;Android学习路线（二十八）保存文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。&lt;/p&gt;
+&lt;p&gt;一个&lt;a href=&quot;http://developer.android.com/reference/java/io/File.html&quot;&gt;File&lt;/a&gt;&amp;nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。&lt;/p&gt;
+&lt;p&gt;本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。&lt;/p&gt;
+&lt;h2 id=&quot;选择内部或外部存储&quot;&gt;&lt;a href=&quot;#选择内部或外部存储&quot; class=&quot;headerlink&quot; title=&quot;选择内部或外部存储&quot;&gt;&lt;/a&gt;选择内部或外部存储&lt;/h2&gt;
     
     </summary>
     
