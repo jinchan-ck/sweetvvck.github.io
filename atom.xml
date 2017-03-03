@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sweetvvck.github.io/"/>
-  <updated>2017-03-03T02:34:26.000Z</updated>
+  <updated>2017-03-03T09:22:05.000Z</updated>
   <id>http://sweetvvck.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sweetvvck.github.io/2016/08/01/how-does-javascript-work/"/>
     <id>http://sweetvvck.github.io/2016/08/01/how-does-javascript-work/</id>
     <published>2016-08-01T03:30:11.000Z</published>
-    <updated>2017-03-03T02:34:26.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Javascript-定义"><a href="#Javascript-定义" class="headerlink" title="Javascript 定义"></a>Javascript 定义</h2><ul>
 <li>单线程</li>
@@ -92,7 +92,7 @@
     <link href="http://sweetvvck.github.io/2015/12/29/%E8%AF%91-%E6%89%93%E9%80%A0atom%E6%88%90%E4%B8%BAgolang%E5%BC%80%E5%8F%91%E7%A5%9E%E5%99%A8/"/>
     <id>http://sweetvvck.github.io/2015/12/29/译-打造atom成为golang开发神器/</id>
     <published>2015-12-28T16:37:30.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>在我在Windows系统上开发的日子里，我使用IDE开发数年之久，例如Visual Basic IDE, Borland Delphi IDE, Visual C&#43;&#43; 和最后的Visual Studio；但当我在大约10年前转到Mac OS X下开发后，我放弃了上述所有的IDE。</p>
 <p>我刚进入Mac编程世界的时候使用的是当时表现极好的Textmate编辑器。它是一个开发代码飞快的编辑器，拥有很好的语法高亮，拓展模块以及代码片段(code snippets)，让我再次感觉非常高产。经过几年的衰退期，由于它没有继续更新了，很多人转向了Sublime Text和传统的VIM编辑器了。</p>
@@ -262,7 +262,7 @@ padding-bottom: .0em;
     <link href="http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/"/>
     <id>http://sweetvvck.github.io/2015/12/16/原-Gitflow实践/</id>
     <published>2015-12-15T17:14:03.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/50245147" target="_blank" rel="external">Gitflow实践</a></p>
 <h1 id="Gitflow实践"><a href="#Gitflow实践" class="headerlink" title="Gitflow实践"></a>Gitflow实践</h1><p>这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。</p>
@@ -327,7 +327,7 @@ padding-bottom: .0em;
     <link href="http://sweetvvck.github.io/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/"/>
     <id>http://sweetvvck.github.io/2015/05/08/原-Koa中间件方式实现API的Undo功能/</id>
     <published>2015-05-08T15:12:05.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Koa中间件方式实现API的Undo功能"><a href="#Koa中间件方式实现API的Undo功能" class="headerlink" title="Koa中间件方式实现API的Undo功能"></a>Koa中间件方式实现API的Undo功能</h1><h2 id="API的Undo功能"><a href="#API的Undo功能" class="headerlink" title="API的Undo功能"></a>API的Undo功能</h2><p>使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：</p>
 <p><img src="http://img.blog.csdn.net/20150508220504487" alt=""></p>
@@ -515,7 +515,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/"/>
     <id>http://sweetvvck.github.io/2014/12/31/译-Twemproxy来自Twitter的Redis代理/</id>
     <published>2014-12-31T14:35:41.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。</p>
 <p>关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)</p>
@@ -567,7 +567,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/"/>
     <id>http://sweetvvck.github.io/2014/12/28/原-设计高可用Web服务/</id>
     <published>2014-12-28T15:22:03.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/42222429" target="_blank" rel="external">设计高可用Web服务</a></p>
 <p>高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。</p>
@@ -648,7 +648,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/"/>
     <id>http://sweetvvck.github.io/2014/12/19/译-从S3中导入数据到Dynamodb/</id>
     <published>2014-12-19T11:04:20.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。<code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</p>
 <p> 我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</p>
@@ -710,7 +710,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/19/%E8%AF%91-Aws-Dynamodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%88%B0S3/"/>
     <id>http://sweetvvck.github.io/2014/12/19/译-Aws-Dynamodb数据导出到S3/</id>
     <published>2014-12-19T03:55:21.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。<br><strong>注意</strong><br>如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。<br><strong>从DynamoDB中导出数据到S3</strong></p>
 <ol>
@@ -768,7 +768,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/</id>
     <published>2014-10-31T15:43:14.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a>,<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>和<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">ViewPager</a>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
 <p>内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。</p>
@@ -822,7 +822,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%BA%8C%EF%BC%89%E5%9C%A8%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%A4%84%E7%90%86Bitmap/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/</id>
     <published>2014-10-31T15:41:35.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html" target="_blank" rel="external">高效地夹在大Bitmaps</a>中讨论的<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。</p>
 <p>本课介绍如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。</p>
@@ -876,7 +876,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%80%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E5%8A%A0%E8%BD%BD%E5%A4%A7%E7%9A%84Bitmap/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/</id>
     <published>2014-10-31T15:40:38.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。</p>
@@ -934,7 +934,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/</id>
     <published>2014-10-31T15:39:24.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：</p>
 <p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.</p>
@@ -968,7 +968,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AB%EF%BC%89%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十八）保存文件/</id>
     <published>2014-09-30T15:57:47.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645095" target="_blank" rel="external">Android学习路线（二十八）保存文件</a></p>
 <p>Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。</p>
@@ -1062,7 +1062,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十六）Android数据存储/</id>
     <published>2014-09-30T15:56:52.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" rel="external">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
 <ul>
@@ -1094,7 +1094,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%83%EF%BC%89%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88SharedPreferences%EF%BC%89%E5%AD%98%E5%82%A8/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/</id>
     <published>2014-09-30T15:56:29.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
 <p>本课将介绍如何使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs来存储和获取简单的数据。</p>
@@ -1138,7 +1138,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B9%9D%EF%BC%89%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0SQLite%E4%B8%AD/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/</id>
     <published>2014-09-30T15:55:32.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在<a href="http://developer.android.com/reference/android/database/sqlite/package-summary.html" target="_blank" rel="external">android.database.sqlite</a> 包中访问到。</p>
 <p>定义一个&#26684;式和契约</p>
@@ -1195,7 +1195,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/08/27/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%BA%94%EF%BC%89%E5%85%A8%E9%9D%A2%E7%90%86%E8%A7%A3Android-Navigation%E9%80%BB%E8%BE%91/"/>
     <id>http://sweetvvck.github.io/2014/08/27/原-Android学习路线（二十五）全面理解Android-Navigation逻辑/</id>
     <published>2014-08-26T17:23:17.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38832809" target="_blank" rel="external">Android学习路线（二十五）全面理解Android Navigation逻辑</a></p>
 <p>应用导航的一致性是整体用户体验的重要组成部分，如果app的导航方式不一样，用户不能很快理解，那么这个应用会让用户有很大的挫败感，大大地影响了用户体验。</p>
@@ -1260,7 +1260,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/08/26/%E5%8E%9F-Zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/"/>
     <id>http://sweetvvck.github.io/2014/08/26/原-Zookeeper集群搭建/</id>
     <published>2014-08-26T02:05:51.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>Zookeeper是Apache的一个开源项目，在集群管理中十分常用。它的集群搭建也十分简单，只需要简单的配置，集群的各个节点会完成自行通讯，自动选取Leader等。</p>
 <p>更多关于zookeeper的信息和原理，可以参考这篇博文：<a href="http://blog.csdn.net/sweetvvck/article/details/38262965" target="_blank" rel="external">ZooKeeper原理及使用</a></p>
@@ -1333,7 +1333,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/08/21/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89ActionBar-Fragment%E8%BF%90%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
     <id>http://sweetvvck.github.io/2014/08/21/原-Android学习路线（二十四）ActionBar-Fragment运用最佳实践/</id>
     <published>2014-08-20T19:03:52.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645297" target="_blank" rel="external">http://blog.csdn.net/sweetvvck/article/details/38645297</a></p>
 <p>通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。</p>
@@ -1599,7 +1599,7 @@ return true;
     <link href="http://sweetvvck.github.io/2014/08/15/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E8%BF%90%E7%94%A8Fragment%E6%9E%84%E5%BB%BA%E5%8A%A8%E6%80%81UI%E2%80%94%E2%80%94Fragment%E9%97%B4%E9%80%9A%E8%AE%AF/"/>
     <id>http://sweetvvck.github.io/2014/08/15/译-Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯/</id>
     <published>2014-08-14T16:07:26.000Z</published>
-    <updated>2016-01-27T16:08:15.000Z</updated>
+    <updated>2017-03-03T09:22:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。</p>
 <p>你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。</p>
