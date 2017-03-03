@@ -99,7 +99,7 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow">
 <meta property="og:image" content="https://www.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg">
 <meta property="og:image" content="http://nvie.com/img/git-model@2x.png">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Gitflow实践">
 <meta name="twitter:description" content="转载请注明出处：Gitflow实践
@@ -414,7 +414,7 @@ Gitflow实践这两周在和别的团队的两个小伙伴开发新项目，他�
 
       
         <p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/50245147" target="_blank" rel="external">Gitflow实践</a></p>
-<h1 id="Gitflow实践"><a href="#Gitflow实践" class="headerlink" title="Gitflow实践"></a>Gitflow实践</h1><p>这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。</p>
+<h1 id="Gitflow实践"><a href="#Gitflow实践" class="headerlink" title="Gitflow实践"></a>Gitflow实践</h1><p>这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。<br><a id="more"></a></p>
 <hr>
 <h2 id="Git工作流"><a href="#Git工作流" class="headerlink" title="Git工作流"></a>Git工作流</h2><p>现在越来越多的项目开始使用git做为版本控制工具，我对版本控制工具的最初印象是：能把代码提交到远端让大家一起协作，能开分支，能回滚代码，能看到每次提交的修改等。不过git命令具体如何使用不是本文的重点(熟悉git可以参考<a href="http://blog.csdn.net/sweetvvck/article/details/38414713" target="_blank" rel="external"> GIT基本概念和用法总结</a> 和<a href="http://blog.csdn.net/sweetvvck/article/details/38548985" target="_blank" rel="external"> git - 简易指南</a>)，本文的重点是在项目中如何使用git来高效清晰的处理开发协作，版本控制。Git的工作流其实就是对git在项目上的一个完整的使用方式归纳总结，比较流行的git工作流有：Gitflow Workflow, Centralized Workflow, Feature Branch Workflow, Forking Workflow。</p>
 <p>值得注意的是，这些workflow只是作为如何更好的使用git的指导方针，而非<code>&quot;铁律&quot;</code>，我们也可以根据具体项目来组合使用不同的workflow。本文重点讲解Gitflow Workflow，有想了解其他git工作流的可以参考这篇文章：<a href="https://www.atlassian.com/git/tutorials/comparing-workflows" target="_blank" rel="external">Comparing Workflows</a>。</p>

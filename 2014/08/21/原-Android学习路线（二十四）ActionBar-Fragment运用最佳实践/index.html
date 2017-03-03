@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20140821024716201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20140821024753703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20140821024813359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Android学习路线（二十四）ActionBar Fragment运用最佳实践">
 <meta name="twitter:description" content="转载请注明出处：http://blog.csdn.net/sweetvvck/article/details/38645297
@@ -390,8 +390,7 @@
       
         <p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645297" target="_blank" rel="external">http://blog.csdn.net/sweetvvck/article/details/38645297</a></p>
 <p>通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。</p>
-<p>了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客<a href="http://blog.csdn.net/sweetvvck/article/details/38566871" target="_blank" rel="external">Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment</a>，下面的项目支持到API<br> Level最低为8，所以项目中也会使用到Support Library。</p>
-<p>作为一个有上进心的Android开发者，我们是希望项目的设计符合<strong>Android Design</strong>的。Android Design是Google官方推荐的应用设计原则，不了解Android Design的同学可以去了解下，我这里有<a href="http://download.csdn.net/detail/sweetvvck/7835793" target="_blank" rel="external">官方翻译文档</a>。</p>
+<p>了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客<a href="http://blog.csdn.net/sweetvvck/article/details/38566871" target="_blank" rel="external">Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment</a>，下面的项目支持到API<br> Level最低为8，所以项目中也会使用到Support Library。<br><a id="more"></a><br>作为一个有上进心的Android开发者，我们是希望项目的设计符合<strong>Android Design</strong>的。Android Design是Google官方推荐的应用设计原则，不了解Android Design的同学可以去了解下，我这里有<a href="http://download.csdn.net/detail/sweetvvck/7835793" target="_blank" rel="external">官方翻译文档</a>。</p>
 <p>我发现“知乎”的App设计是符合Android Design的，那么我们的项目就来模仿知乎的主界面。首先看下效果图：</p>
 <p><img src="http://img.blog.csdn.net/20140818082016785?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">&nbsp;<br> &nbsp; &nbsp; &nbsp;<img src="http://img.blog.csdn.net/20140818082105582?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <p>我们来分析一下这样的界面应该怎么实现，从上图可以看出“知乎”android端使用了action bar和drawerlayout，同时drawer中item切换主界面应该是fragment。</p>

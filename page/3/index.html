@@ -376,44 +376,16 @@
 
       
         
-          
-            <p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
+          <p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。</p>
-<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。</p>
-<h2 id="读取Bitmap的尺寸和类型"><a href="#读取Bitmap的尺寸和类型" class="headerlink" title="读取Bitmap的尺寸和类型"></a>读取Bitmap的尺寸和类型</h2><hr>
-<p><a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html" target="_blank" rel="external">BitmapFactory</a>&nbsp;类提供几种解码方法(<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeByteArray()</a>),&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeFile(java.lang.String, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeFile()</a>),<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeResource(android.content.res.Resources, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeResource()</a>),<br> 等等.)来通过多种多样的资源文件创建&nbsp;<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank" rel="external">Bitmap</a>&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&nbsp;异常。每种类型的解码方法都有额外的参数以让你通过<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html" target="_blank" rel="external">BitmapFactory.Options</a>&nbsp;类指定解码的选项。在解码时设置<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inJustDecodeBounds" target="_blank" rel="external">inJustDecodeBounds</a>&nbsp;属性为&nbsp;true&nbsp;能够避免内存分配，同时还能够获取到<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outWidth" target="_blank" rel="external">outWidth</a>,&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outHeight" target="_blank" rel="external">outHeight</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outMimeType" target="_blank" rel="external">outMimeType</a>&nbsp;的&#20540;，此时解码方法返回的bitmap对象为null。这种发式允许你在构建这个bitmap（和内存分配）之前读取它的大小和类型。</p>
-<p>BitmapFactory.Options options = new BitmapFactory.Options();<br>options.inJustDecodeBounds = true;<br>BitmapFactory.decodeResource(getResources(), R.id.myimage, options);<br>int imageHeight = options.outHeight;<br>int imageWidth = options.outWidth;<br>String imageType = options.outMimeType;</p>
-<p>为了避免java.lang.OutOfMemory&nbsp;异常，可以在每次解码它之前取得它的尺寸，除非你完全肯定这个图片源的大小的消耗能够在可用内存之内。</p>
-<h2 id="在内存中加载图片的压缩版本"><a href="#在内存中加载图片的压缩版本" class="headerlink" title="在内存中加载图片的压缩版本"></a>在内存中加载图片的压缩版本</h2><hr>
-<p>现在图片的尺寸已经知道了，我们就能够决定是否加载原图还是图片的缩小版本。下面有几点需要考虑:</p>
-<ul>
-<li>预估加载完整图片所需的内存使用量。</li>
-<li>你想要为加载此图片分配的内存的总量。</li>
-<li>要载入的目标<a href="http://developer.android.com/reference/android/widget/ImageView.html" target="_blank" rel="external">ImageView</a>&nbsp;或者UI组件的尺寸。</li>
-<li>当前设备的屏幕大小和密度。</li>
-</ul>
-<p>例如，如果一张图片要在一个ImageView中被展示成一个128x96像素的缩略图，那么加载一个1024x768 像素的图片进内存是完全不&#20540;得的。</p>
-<p>告诉解码者压缩图片，加载一个压缩版图片进入内存，需要在<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html" target="_blank" rel="external">BitmapFactory.Options</a>对象中设置&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;为&nbsp;true。例如，一个图片，分辨率为&nbsp;2048x1536以&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;＝<br> 4为参数被解码，将会产生一个分辨率大概为512x384的bitmap。加载它进内存只需要使用0.75MB 内存，而非加载完整图片所需的12MB (假定bitmap的配置为<a href="http://developer.android.com/reference/android/graphics/Bitmap.Config.html" target="_blank" rel="external">ARGB_8888</a>)。下面是一个基于目标长度和宽度计算压缩图片尺寸&#20540;的方法：</p>
-<p>public static int calculateInSampleSize(<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BitmapFactory.Options options, int reqWidth, int reqHeight) {<br>&nbsp; &nbsp; // Raw height and width of image<br>&nbsp; &nbsp; final int height = options.outHeight;<br>&nbsp; &nbsp; final int width = options.outWidth;<br>&nbsp; &nbsp; int inSampleSize = 1;</p>
-<p>&nbsp; &nbsp; if (height &gt; reqHeight || width &gt; reqWidth) {</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; final int halfHeight = height / 2;<br>&nbsp; &nbsp; &nbsp; &nbsp; final int halfWidth = width / 2;</p>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; // Calculate the largest inSampleSize value that is a power of 2 and keeps both<br>&nbsp; &nbsp; &nbsp; &nbsp; // height and width larger than the requested height and width.<br>&nbsp; &nbsp; &nbsp; &nbsp; while ((halfHeight / inSampleSize) &gt; reqHeight<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; inSampleSize *= 2;<br>&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; }</p>
-<p>&nbsp; &nbsp; return inSampleSize;<br>}</p>
-<p><strong>Note:</strong>&nbsp;A power of two value is calculated because the decoder uses a final value by rounding down to the nearest power of two, as per the&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;documentation.</p>
-<p>要使用这个方法，首先需要按照之前的方式获取图片的尺寸和类型，然后在通过计算出的&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inSampleSize" target="_blank" rel="external">inSampleSize</a>&nbsp;&#20540;来生成bitmap：</p>
-<p>public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,<br>&nbsp; &nbsp; &nbsp; &nbsp; int reqWidth, int reqHeight) {</p>
-<p>&nbsp; &nbsp; // First decode with inJustDecodeBounds=true to check dimensions<br>&nbsp; &nbsp; final BitmapFactory.Options options = new BitmapFactory.Options();<br>&nbsp; &nbsp; options.inJustDecodeBounds = true;<br>&nbsp; &nbsp; BitmapFactory.decodeResource(res, resId, options);</p>
-<p>&nbsp; &nbsp; // Calculate inSampleSize<br>&nbsp; &nbsp; options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);</p>
-<p>&nbsp; &nbsp; // Decode bitmap with inSampleSize set<br>&nbsp; &nbsp; options.inJustDecodeBounds = false;<br>&nbsp; &nbsp; return BitmapFactory.decodeResource(res, resId, options);<br>}</p>
-<p>下面这种方式很简单的实现了加载一个很大的图片到一个100x100像素缩略图的ImageView中：</p>
-<p>mImageView.setImageBitmap(<br>&nbsp; &nbsp; decodeSampledBitmapFromResource(getResources(), R.id.myimage, 100, 100));</p>
-<p>你也可以使用类&#20284;的流程从其他图片源中解码bitmap，根据需要使用适当的解码方法<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)&nbsp;。</p>
-<pre><code>    作者：sweetvvck 发表于2014/10/31 23:40:38 [原文链接](http://blog.csdn.net/sweetvvck/article/details/40663965)
-
-
-阅读：398 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/40663965#comments)
-</code></pre>
-          
+<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -549,23 +521,15 @@
 
       
         
-          
-            <p>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：</p>
-<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.</p>
-<p>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：</p>
-<ul>
-<li>移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。</li>
-<li>Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;<a href="http://www.android.com/devices/detail/galaxy-nexus" target="_blank" rel="external">Galaxy Nexus</a>&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素)。如果这个bitmap使用的配置是&nbsp;<code>[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html)</code>&nbsp;(从Android2.3开始的默认配置)，那么加载这个图片到内存中需要占用19MB，这样马上就用光了某些设备的每个app的内存限制。</li>
-<li>Android app UI会频繁的需要多个bitmaps的一次载入。像&nbsp;<code>[ListView](http://developer.android.com/reference/android/widget/ListView.html)</code>,<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;以及&nbsp;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>&nbsp;这些组件通常都会一次在屏幕上显示多个bitmaps同时还会有更多的bitmaps在后台等待被显示。</li>
-</ul>
-<h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><hr>
-<p><strong>高效地加载大Bitmaps</strong>此课程带你学习如何解码大bitmaps而不溢出app的内存限制。<strong>在非UI线程处理Bitmaps</strong>Bitmap处理(重置大小，从远端下载等等)都不应该在主UI线程中出现。此课程带你学习如何使用AsyncTask在后台线程中处理bitmaps，同时也会扩展一些处理并发的知识。<strong>缓存Bitmaps</strong>此课程教你使用内存和磁盘来缓存bitmap来提高你的UI加载大量图片时的响应速度和流畅性。<strong>管理Bitmap内存</strong>此课程想你解释如何管理bitmap内存来最优化你的app的表现。<strong>在你的UI中展示Bitmaps</strong>此课程将想你展示如何加载多个bitmaps到类&#20284;<code>[ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)</code>&nbsp;和&nbsp;<code>[GridView](http://developer.android.com/reference/android/widget/GridView.html)</code>&nbsp;的组件中，同时使用了后台线程和缓存。</p>
-<pre><code>    作者：sweetvvck 发表于2014/10/31 23:39:24 [原文链接](http://blog.csdn.net/sweetvvck/article/details/40663905)
-
-
-阅读：351 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/40663905#comments)
-</code></pre>
-          
+          <p>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：</p>
+<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -914,21 +878,20 @@
 
       
         
-          
-            <p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" rel="external">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
+          <p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
 <ul>
 <li>使用shared preferences文件通过键&#20540;对保存简单数据类型</li>
 <li>保存任意的文件到Android的文件系统中</li>
 <li>使用SQLite数据库</li>
 </ul>
 <h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><hr>
-<p><strong><a href="http://developer.android.com/training/basics/data-storage/shared-preferences.html" target="_blank" rel="external">保存键&#20540;对集合</a></strong>学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。<strong><a href="http://developer.android.com/training/basics/data-storage/files.html" target="_blank" rel="external">保存文件</a></strong>学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。<strong><a href="http://developer.android.com/training/basics/data-storage/databases.html" target="_blank" rel="external">保存数据到数据库</a></strong>学习使用SQLite数据库读写结构化数据。</p>
-<pre><code>    作者：sweetvvck 发表于2014/9/30 23:56:52 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645041)
-
-
-阅读：482 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645041#comments)
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/30/译-Android学习路线（二十六）Android数据存储/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1064,35 +1027,16 @@
 
       
         
-          
-            <p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
-<p>本课将介绍如何使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs来存储和获取简单的数据。</p>
-<p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs<br> 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs的信息，请移步<a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank" rel="external">Settings</a>&nbsp;向导。</p>
-<h2 id="获取SharedPreferences的引用（句柄）"><a href="#获取SharedPreferences的引用（句柄）" class="headerlink" title="获取SharedPreferences的引用（句柄）"></a>获取SharedPreferences的引用（句柄）</h2><p>你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：</p>
-<ul>
-<li><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>Use this if you need multiple shared preference files identified by name, which you specify with the first parameter. You can call this from any&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html" target="_blank" rel="external">Context</a>&nbsp;in<br>your app.</li>
-<li><p><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>如果你通过不同的名字保存了多个shared preference文件，那么你可以使用这个方法，这个方法的第一个参数即为文件名。你可以在应用中使用Context对象来调用它。</p>
-</li>
-<li><p><a href="http://developer.android.com/reference/android/app/Activity.html#getPreferences(int" target="_blank" rel="external">getPreferences()</a>)&nbsp;—<br>如果你只需要在这个activity中使用一个shared preference文件，那么你可以在activity中调用这个方法。因为这个方法会返回属于这个activity的一个默认的shared preference文件，你不需要为它提供一个名字。</p>
-</li>
-</ul>
-<p>例如，以下的方法会在 &nbsp;<a href="http://developer.android.com/reference/android/app/Fragment.html" target="_blank" rel="external">Fragment</a>&nbsp;中被执行。它在内部访问了一个shared<br> preferences文件，这个文件被&nbsp;R.string.preference_file_key&nbsp;这个字符串指定，并且它是被私有模式（private mode）打开的，因此只能被你的app访问。</p>
-<p>Context context = getActivity();<br>SharedPreferences sharedPref = context.getSharedPreferences(<br>&nbsp; &nbsp; &nbsp; &nbsp; getString(R.string.preference_file_key), Context.MODE_PRIVATE);</p>
-<p>当为你的shared preference文件命名时，你应当使用一个唯一的标识，例如&quot;com.example.myapp.PREFERENCE_FILE_KEY&quot;</p>
-<p>作为替代，如果你只想要在你的activity中使用一个shared preference文件，你可以使用&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#getPreferences(int" target="_blank" rel="external">getPreferences()</a>)方法：</p>
-<p>SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</p>
-<p><strong>注意:</strong>&nbsp;如果你使用&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_READABLE" target="_blank" rel="external">MODE_WORLD_READABLE</a>&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#MODE_WORLD_WRITEABLE" target="_blank" rel="external">MODE_WORLD_WRITEABLE</a>模式创建了一个shared<br> preference文件，那么任何其他知道这个文件标识的app都能够访问到你的数据。</p>
-<h2 id="向Shared-Preferences中写入数据"><a href="#向Shared-Preferences中写入数据" class="headerlink" title="向Shared Preferences中写入数据"></a>向Shared Preferences中写入数据</h2><hr>
-<p>要向shared preferences文件中写入数据，你需要调用SharedPreferences的edit()方法来创建一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html" target="_blank" rel="external">SharedPreferences.Editor</a>&nbsp;对象。</p>
-<p>传入键和&#20540;给你想要调用的方法，例如&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#putInt" target="_blank" rel="external">putInt()</a>&amp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#putStringjava.lang.String, java.lang.String" target="_blank" rel="external">putString()</a>。然后调用<a href="http://developer.android.com/reference/android/content/SharedPreferences.Editor.html#commit(" target="_blank" rel="external">commit()</a>)&nbsp;方法来存储这些改变。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div><div class="line">SharedPreferences.Editor editor = sharedPref.edit();</div><div class="line">editor.putInt(getString(R.string.saved_high_score), newHighScore);</div><div class="line">editor.commit();</div></pre></td></tr></table></figure></p>
-<h2 id="从Shared-Preferences中读取数据"><a href="#从Shared-Preferences中读取数据" class="headerlink" title="从Shared Preferences中读取数据"></a>从Shared Preferences中读取数据</h2><hr>
-<p>要从shared preferences文件中获取数据，可以调用getInt()或者getString()等方法，只需要提供你想要获得的&#20540;对应的key就可以了；你也可以选择再传入一个默认&#20540;，如果通过传入的key没有取道&#20540;将会返回这个默认&#20540;。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);</div><div class="line"><span class="keyword">int</span> defaultValue = getResources().getInteger(R.string.saved_high_score_default);</div><div class="line"><span class="keyword">long</span> highScore = sharedPref.getInt(getString(R.string.saved_high_score), defaultValue);</div></pre></td></tr></table></figure></p>
-<pre><code>    作者：sweetvvck 发表于2014/9/30 23:56:29 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645065)
-
-
-阅读：765 评论：0 [查看评论](http://blog.csdn.net/sweetvvck/article/details/38645065#comments)
-</code></pre>
-          
+          <p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
+<p>本课将介绍如何使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html">SharedPreferences</a>&nbsp;APIs来存储和获取简单的数据。</p>
+<p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.html">SharedPreferences</a>&nbsp;APIs<br> 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html">Preference</a>&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html">Preference</a>&nbsp;APIs的信息，请移步<a href="http://developer.android.com/guide/topics/ui/settings.html">Settings</a>&nbsp;向导。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

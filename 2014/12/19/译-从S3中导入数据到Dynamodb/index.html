@@ -101,7 +101,7 @@ The destination table">
  我们称之前导出数据的原始表为source table，数据将要被导入的表为destination table。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：
 
 The destination table">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]从S3中导入数据到Dynamodb">
 <meta name="twitter:description" content="本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。文件内部结构会在Verify Data Export File&amp;nbsp;中描述。
@@ -390,6 +390,7 @@ The destination table">
 <li>The destination table 与 source table 有相同的名称。</li>
 <li>The destination table 与 source table 有相同的结构。<br>Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个<em>Customer</em>&nbsp;表，它的主键是<em>CustomerId</em>，并且只有三个items (<em>CustomerId</em>&nbsp;1, 2, and 3)。如果要导入的文件中同样包含<em>CustomerID</em>&nbsp;为1,<br>2, and 3的items，这些在destination table中的items将会被导入文件中的数据替换。如果文件中还包含CustomerId为4的item，那么这个item会被加入到destination table中。<br>Destination table 可以在不同的AWS region。例如，假设你有个一个&nbsp;<em>Customer</em>&nbsp;table在US West (Oregon) region，然后将它的数据导出到了Amazon S3中。你可以将它导入到在&nbsp;EU (Ireland) region中有相同表明，相同主键的表中。这种做法被称为<br><em>cross-region</em>&nbsp;导出和导入。<br>注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。</li>
 </ul>
+<a id="more"></a>
 <p><strong>从S3导入数据到DynamoDB</strong></p>
 <ol>
 <li>登陆AWS管理控制台，然后打开dynamodb控制台：&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</li>

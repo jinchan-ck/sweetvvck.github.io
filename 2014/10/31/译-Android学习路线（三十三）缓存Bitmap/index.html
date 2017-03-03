@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,GridView和ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
 内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（三十三）缓存Bitmap">
 <meta name="twitter:description" content="加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在ListView,GridView和ViewPager中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。
@@ -379,7 +379,7 @@
       
         <p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a>,<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>和<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">ViewPager</a>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
 <p>内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。</p>
-<p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。</p>
+<p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。<br><a id="more"></a></p>
 <h2 id="使用内存缓存"><a href="#使用内存缓存" class="headerlink" title="使用内存缓存"></a>使用内存缓存</h2><hr>
 <p>内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。<a href="http://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="external">LruCache</a>类<br> (API等级4以上的低版本可以使用<a href="http://developer.android.com/reference/android/support/v4/util/LruCache.html" target="_blank" rel="external">Support Library</a>) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个<a href="http://developer.android.com/reference/java/util/LinkedHashMap.html" target="_blank" rel="external">LinkedHashMap</a>中，当缓存数量达到限制时将最久没有使用过的引用从缓存中剔除。</p>
 <p><strong>提示:</strong>在之前，流行的内存缓存实现使用的都是<a href="http://developer.android.com/reference/java/lang/ref/SoftReference.html" target="_blank" rel="external">SoftReference</a>或者<a href="http://developer.android.com/reference/java/lang/ref/WeakReference.html" target="_blank" rel="external">WeakReference</a>bitmap<br> 缓存，然而这样不被推荐。从Android 2.3 (API Level 9)开始，GC对soft/weak 引用的回收大大加强了，这回导致它们很快就失效了。</p>

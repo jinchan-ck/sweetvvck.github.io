@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sweetvvck.github.io/"/>
-  <updated>2017-03-03T09:22:05.000Z</updated>
+  <updated>2017-03-03T11:24:53.000Z</updated>
   <id>http://sweetvvck.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sweetvvck.github.io/2016/08/01/how-does-javascript-work/"/>
     <id>http://sweetvvck.github.io/2016/08/01/how-does-javascript-work/</id>
     <published>2016-08-01T03:30:11.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:24:53.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Javascript-定义"><a href="#Javascript-定义" class="headerlink" title="Javascript 定义"></a>Javascript 定义</h2><ul>
 <li>单线程</li>
@@ -29,7 +29,7 @@
 <li>基于原型的面线对象</li>
 <li>脚本语言</li>
 </ul>
-<h2 id="Javascript-引擎与运行时环境"><a href="#Javascript-引擎与运行时环境" class="headerlink" title="Javascript 引擎与运行时环境"></a>Javascript 引擎与运行时环境</h2><p>Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行，例如 Chrome, Node。</p>
+<h2 id="Javascript-引擎与运行时环境"><a href="#Javascript-引擎与运行时环境" class="headerlink" title="Javascript 引擎与运行时环境"></a>Javascript 引擎与运行时环境</h2><p>Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行，例如 Chrome, Node。<br><a id="more"></a></p>
 <h2 id="为什么设计为单线程？"><a href="#为什么设计为单线程？" class="headerlink" title="为什么设计为单线程？"></a>为什么设计为单线程？</h2><blockquote>
 <p>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？这样能提高效率啊。<br>JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？<br>所以，为了避免复杂性，从一诞生，JavaScript就是单线程，这已经成了这门语言的核心特征，将来也不会改变。<br>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。<br>摘自 <a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a></p>
 </blockquote>
@@ -68,7 +68,12 @@
     
       &lt;h2 id=&quot;Javascript-定义&quot;&gt;&lt;a href=&quot;#Javascript-定义&quot; class=&quot;headerlink&quot; title=&quot;Javascript 定义&quot;&gt;&lt;/a&gt;Javascript 定义&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;单线程&lt;/li&gt;
-&lt;li&gt;异步 IO&lt;/
+&lt;li&gt;异步 IO&lt;/li&gt;
+&lt;li&gt;并发&lt;/li&gt;
+&lt;li&gt;基于原型的面线对象&lt;/li&gt;
+&lt;li&gt;脚本语言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Javascript-引擎与运行时环境&quot;&gt;&lt;a href=&quot;#Javascript-引擎与运行时环境&quot; class=&quot;headerlink&quot; title=&quot;Javascript 引擎与运行时环境&quot;&gt;&lt;/a&gt;Javascript 引擎与运行时环境&lt;/h2&gt;&lt;p&gt;Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行，例如 Chrome, Node。&lt;br&gt;
     
     </summary>
     
@@ -92,12 +97,12 @@
     <link href="http://sweetvvck.github.io/2015/12/29/%E8%AF%91-%E6%89%93%E9%80%A0atom%E6%88%90%E4%B8%BAgolang%E5%BC%80%E5%8F%91%E7%A5%9E%E5%99%A8/"/>
     <id>http://sweetvvck.github.io/2015/12/29/译-打造atom成为golang开发神器/</id>
     <published>2015-12-28T16:37:30.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>在我在Windows系统上开发的日子里，我使用IDE开发数年之久，例如Visual Basic IDE, Borland Delphi IDE, Visual C&#43;&#43; 和最后的Visual Studio；但当我在大约10年前转到Mac OS X下开发后，我放弃了上述所有的IDE。</p>
 <p>我刚进入Mac编程世界的时候使用的是当时表现极好的Textmate编辑器。它是一个开发代码飞快的编辑器，拥有很好的语法高亮，拓展模块以及代码片段(code snippets)，让我再次感觉非常高产。经过几年的衰退期，由于它没有继续更新了，很多人转向了Sublime Text和传统的VIM编辑器了。</p>
 <p>Atom刚出来的时候我尝试使用了一下，但当时它并没有准备好。而最近几天它正式发布官方1.0版本后我决定再次试用一下，我很高兴我又试用了下atom。</p>
-<p><a href="https://atom.io/" target="_blank" rel="external">https://atom.io/</a></p>
+<p><a href="https://atom.io/" target="_blank" rel="external">https://atom.io/</a><br><a id="more"></a></p>
 <h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><p>你一天将要花大部分时间看着代码，注视着你的编辑器，因此你总是必须要找到一个颜色搭配自然的主题，并且要能够让你的&#30524;睛觉得舒服。我认为这个因人而异，你需要找一个你最喜欢的。</p>
 <p>我现在一直使用的主题是One Dark UI Theme和Monokai-Seti Syntax theme(译者注：atom的主题分为UI主题和语法主题)，我很享受使用这样的主题搭配。</p>
 <p><img src="http://marcio.io/img/atom-theme.png" alt="atom-theme"></p>
@@ -242,7 +247,10 @@ padding-bottom: .0em;
     
     <summary type="html">
     
-      &lt;p&gt;在我在Windows系统上开发的日子里，我使用IDE开发数年之久，例如Visual Basic IDE, Borland Delphi IDE, Visual C&amp;#43;&amp;#43; 和最后的Visual Studio；但当我在大约10年前转到Mac OS X下开发后，我放
+      &lt;p&gt;在我在Windows系统上开发的日子里，我使用IDE开发数年之久，例如Visual Basic IDE, Borland Delphi IDE, Visual C&amp;#43;&amp;#43; 和最后的Visual Studio；但当我在大约10年前转到Mac OS X下开发后，我放弃了上述所有的IDE。&lt;/p&gt;
+&lt;p&gt;我刚进入Mac编程世界的时候使用的是当时表现极好的Textmate编辑器。它是一个开发代码飞快的编辑器，拥有很好的语法高亮，拓展模块以及代码片段(code snippets)，让我再次感觉非常高产。经过几年的衰退期，由于它没有继续更新了，很多人转向了Sublime Text和传统的VIM编辑器了。&lt;/p&gt;
+&lt;p&gt;Atom刚出来的时候我尝试使用了一下，但当时它并没有准备好。而最近几天它正式发布官方1.0版本后我决定再次试用一下，我很高兴我又试用了下atom。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://atom.io/&quot;&gt;https://atom.io/&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
@@ -262,10 +270,10 @@ padding-bottom: .0em;
     <link href="http://sweetvvck.github.io/2015/12/16/%E5%8E%9F-Gitflow%E5%AE%9E%E8%B7%B5/"/>
     <id>http://sweetvvck.github.io/2015/12/16/原-Gitflow实践/</id>
     <published>2015-12-15T17:14:03.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/50245147" target="_blank" rel="external">Gitflow实践</a></p>
-<h1 id="Gitflow实践"><a href="#Gitflow实践" class="headerlink" title="Gitflow实践"></a>Gitflow实践</h1><p>这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。</p>
+<h1 id="Gitflow实践"><a href="#Gitflow实践" class="headerlink" title="Gitflow实践"></a>Gitflow实践</h1><p>这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。<br><a id="more"></a></p>
 <hr>
 <h2 id="Git工作流"><a href="#Git工作流" class="headerlink" title="Git工作流"></a>Git工作流</h2><p>现在越来越多的项目开始使用git做为版本控制工具，我对版本控制工具的最初印象是：能把代码提交到远端让大家一起协作，能开分支，能回滚代码，能看到每次提交的修改等。不过git命令具体如何使用不是本文的重点(熟悉git可以参考<a href="http://blog.csdn.net/sweetvvck/article/details/38414713" target="_blank" rel="external"> GIT基本概念和用法总结</a> 和<a href="http://blog.csdn.net/sweetvvck/article/details/38548985" target="_blank" rel="external"> git - 简易指南</a>)，本文的重点是在项目中如何使用git来高效清晰的处理开发协作，版本控制。Git的工作流其实就是对git在项目上的一个完整的使用方式归纳总结，比较流行的git工作流有：Gitflow Workflow, Centralized Workflow, Feature Branch Workflow, Forking Workflow。</p>
 <p>值得注意的是，这些workflow只是作为如何更好的使用git的指导方针，而非<code>&quot;铁律&quot;</code>，我们也可以根据具体项目来组合使用不同的workflow。本文重点讲解Gitflow Workflow，有想了解其他git工作流的可以参考这篇文章：<a href="https://www.atlassian.com/git/tutorials/comparing-workflows" target="_blank" rel="external">Comparing Workflows</a>。</p>
@@ -306,8 +314,8 @@ padding-bottom: .0em;
     
     <summary type="html">
     
-      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/50245147&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gitflow实践&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Gitflo
+      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/50245147&quot;&gt;Gitflow实践&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Gitflow实践&quot;&gt;&lt;a href=&quot;#Gitflow实践&quot; class=&quot;headerlink&quot; title=&quot;Gitflow实践&quot;&gt;&lt;/a&gt;Gitflow实践&lt;/h1&gt;&lt;p&gt;这两周在和别的团队的两个小伙伴开发新项目，他们团队刚刚成立不久，各种规范还没跟上，于是我便各种安利我们团队的工作流，其中代码管理方面我就推荐他们使用gitflow。在给他们讲gitflow的过程中我发现他们不是很理解这种工作方式，或者说不太明白为什么要这样做，为了加深自己对gitflow的理解我觉得有必要记录一下，也让正在学习使用gitflow的同学们有个初步的了解。&lt;br&gt;
     
     </summary>
     
@@ -327,13 +335,13 @@ padding-bottom: .0em;
     <link href="http://sweetvvck.github.io/2015/05/08/%E5%8E%9F-Koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0API%E7%9A%84Undo%E5%8A%9F%E8%83%BD/"/>
     <id>http://sweetvvck.github.io/2015/05/08/原-Koa中间件方式实现API的Undo功能/</id>
     <published>2015-05-08T15:12:05.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:24.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Koa中间件方式实现API的Undo功能"><a href="#Koa中间件方式实现API的Undo功能" class="headerlink" title="Koa中间件方式实现API的Undo功能"></a>Koa中间件方式实现API的Undo功能</h1><h2 id="API的Undo功能"><a href="#API的Undo功能" class="headerlink" title="API的Undo功能"></a>API的Undo功能</h2><p>使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：</p>
 <p><img src="http://img.blog.csdn.net/20150508220504487" alt=""></p>
 <p><img src="http://img.blog.csdn.net/20150508220843186" alt=""></p>
 <p>当点击撤销时，之前执行的操作能够被还原，这种设计对于用户的误操作是一个非常棒的补救方案。</p>
-<p>之前听过一句有关交互设计的话说的非常好，不要在用户每做一步操作时弹出Alert让用户选择”确定”或者”取消”，更好的做法是执行操作，然后让用户能够Undo。</p>
+<p>之前听过一句有关交互设计的话说的非常好，不要在用户每做一步操作时弹出Alert让用户选择”确定”或者”取消”，更好的做法是执行操作，然后让用户能够Undo。<br><a id="more"></a></p>
 <h2 id="实现API-Undo的方案"><a href="#实现API-Undo的方案" class="headerlink" title="实现API Undo的方案"></a>实现API Undo的方案</h2><p>其实Undo是很老的技术，在编辑器中无处不在，只是在API设计中使用的还比较少。最近一直在使用Node开发，因此想使用Node实现一下API的Undo。</p>
 <p>首先要明确几点：</p>
 <ul>
@@ -497,7 +505,11 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Koa中间件方式实现API的Undo功能&quot;&gt;&lt;a href=&quot;#Koa中间件方式实现API的Undo功能&quot; class=&quot;headerlink&quot; title=&quot;Koa中间件方式实现API的Undo功能&quot;&gt;&lt;/a&gt;Koa中间件方式实现API的Undo功能&lt;/h1&gt;&lt;
+      &lt;h1 id=&quot;Koa中间件方式实现API的Undo功能&quot;&gt;&lt;a href=&quot;#Koa中间件方式实现API的Undo功能&quot; class=&quot;headerlink&quot; title=&quot;Koa中间件方式实现API的Undo功能&quot;&gt;&lt;/a&gt;Koa中间件方式实现API的Undo功能&lt;/h1&gt;&lt;h2 id=&quot;API的Undo功能&quot;&gt;&lt;a href=&quot;#API的Undo功能&quot; class=&quot;headerlink&quot; title=&quot;API的Undo功能&quot;&gt;&lt;/a&gt;API的Undo功能&lt;/h2&gt;&lt;p&gt;使用过Gmail或者163邮箱的同学会经常看到，当对邮件进行一些操作时会出现一个类似Toast的提示（大致意思是：操作已经完成，是否撤销）如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150508220504487&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150508220843186&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当点击撤销时，之前执行的操作能够被还原，这种设计对于用户的误操作是一个非常棒的补救方案。&lt;/p&gt;
+&lt;p&gt;之前听过一句有关交互设计的话说的非常好，不要在用户每做一步操作时弹出Alert让用户选择”确定”或者”取消”，更好的做法是执行操作，然后让用户能够Undo。&lt;br&gt;
     
     </summary>
     
@@ -515,14 +527,14 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/31/%E8%AF%91-Twemproxy%E6%9D%A5%E8%87%AATwitter%E7%9A%84Redis%E4%BB%A3%E7%90%86/"/>
     <id>http://sweetvvck.github.io/2014/12/31/译-Twemproxy来自Twitter的Redis代理/</id>
     <published>2014-12-31T14:35:41.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。</p>
 <p>关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)</p>
 <p>这也是为什么集群会成为Redis在2013年的焦点，并且，最终Redis 2.6的发布表现出了很好的稳定性和成熟度，现在正是时候来关注Redis Cluster, Redis Sentinel, 以及一些其它期待已久的改进。</p>
 <p>然而现实状况是，Redis Cluster目前仍然没有发布，正式版还需要几个月的工作。但是我们的用户已经需要将数据分片到不同的实例上来做负载均衡，更重要的是为数据获得更大的内存存储。</p>
 <p>目前保底的结局方案是客户端分片。客户端分片有很多好处，例如：在客户端和节点之间没有中间层，这就意味着它是一个扩展性很好的设置（主要是线性扩展）。然而要稳定的实现（客户端分片）需要进行一些优化，需要一个同步客户端配置的方式，也需要客户端支持一致性哈希或其它分区算法。</p>
-<p>有一个重大消息来自Twitter，世界最大的Redis集群之一部署在Twitter用于为用户提供时间轴数据。所以毫不奇怪这篇文章讨论的项目来自Twitter Open Source部门。</p>
+<p>有一个重大消息来自Twitter，世界最大的Redis集群之一部署在Twitter用于为用户提供时间轴数据。所以毫不奇怪这篇文章讨论的项目来自Twitter Open Source部门。<br><a id="more"></a></p>
 <h2 id="Twemproxy"><a href="#Twemproxy" class="headerlink" title="Twemproxy"></a>Twemproxy</h2><p>Twemproxy是一个快速的单线程代理程序，支持Memcached ASCII协议和更新的Redis协议：&nbsp;</p>
 <p>它全部用C写成，使用Apache 2.0 License授权。&nbsp;<br>项目在Linux上可以工作，而在OSX上无法编译，因为它依赖了epoll API.<br>我的测试环境为Ubuntu 12.04桌面版。&nbsp;</p>
 <p>好吧，闲话少叙。twemproxy到底做了什么？（注：我将关注Redis到部分，但是该项目也可以对memcached做相同到事情）&nbsp;</p>
@@ -551,7 +563,11 @@ function delayNext(user, expired, context) {
     <summary type="html">
     
       &lt;p&gt;在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。&lt;/p&gt;
-&lt;p&gt;关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多
+&lt;p&gt;关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)&lt;/p&gt;
+&lt;p&gt;这也是为什么集群会成为Redis在2013年的焦点，并且，最终Redis 2.6的发布表现出了很好的稳定性和成熟度，现在正是时候来关注Redis Cluster, Redis Sentinel, 以及一些其它期待已久的改进。&lt;/p&gt;
+&lt;p&gt;然而现实状况是，Redis Cluster目前仍然没有发布，正式版还需要几个月的工作。但是我们的用户已经需要将数据分片到不同的实例上来做负载均衡，更重要的是为数据获得更大的内存存储。&lt;/p&gt;
+&lt;p&gt;目前保底的结局方案是客户端分片。客户端分片有很多好处，例如：在客户端和节点之间没有中间层，这就意味着它是一个扩展性很好的设置（主要是线性扩展）。然而要稳定的实现（客户端分片）需要进行一些优化，需要一个同步客户端配置的方式，也需要客户端支持一致性哈希或其它分区算法。&lt;/p&gt;
+&lt;p&gt;有一个重大消息来自Twitter，世界最大的Redis集群之一部署在Twitter用于为用户提供时间轴数据。所以毫不奇怪这篇文章讨论的项目来自Twitter Open Source部门。&lt;br&gt;
     
     </summary>
     
@@ -567,10 +583,11 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/28/%E5%8E%9F-%E8%AE%BE%E8%AE%A1%E9%AB%98%E5%8F%AF%E7%94%A8Web%E6%9C%8D%E5%8A%A1/"/>
     <id>http://sweetvvck.github.io/2014/12/28/原-设计高可用Web服务/</id>
     <published>2014-12-28T15:22:03.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:23:41.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/42222429" target="_blank" rel="external">设计高可用Web服务</a></p>
 <p>高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。</p>
+<a id="more"></a>
 <p><strong>什么是高可用</strong></p>
 <ul>
 <li>可用性：在应用工作周期中可用时间的百分比</li>
@@ -633,8 +650,8 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/42222429&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;设计高可用Web服务&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;高可用的设计可以说是
+      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/42222429&quot;&gt;设计高可用Web服务&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;高可用的设计可以说是web服务架构的目标，如果服务达不到高可用，万一出现故障将会对产品带来重大的负面影响。高可用的架构就是能够让服务在任何情况下都能正常响应，比如双十一的淘宝，面对激增的洪峰照样正常工作；而聚美三周年时服务器的宕机恰好是高可用的反例。&lt;/p&gt;
     
     </summary>
     
@@ -648,7 +665,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/19/%E8%AF%91-%E4%BB%8ES3%E4%B8%AD%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0Dynamodb/"/>
     <id>http://sweetvvck.github.io/2014/12/19/译-从S3中导入数据到Dynamodb/</id>
     <published>2014-12-19T11:04:20.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。<code>文件内部结构会在</code><a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html" target="_blank" rel="external">Verify<br> Data Export File</a>&nbsp;中描述。</p>
 <p> 我们称之前导出数据的原始表为<em>source table</em>，数据将要被导入的表为<em>destination table</em>。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：</p>
@@ -657,6 +674,7 @@ function delayNext(user, expired, context) {
 <li>The destination table 与 source table 有相同的名称。</li>
 <li>The destination table 与 source table 有相同的结构。<br>Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个<em>Customer</em>&nbsp;表，它的主键是<em>CustomerId</em>，并且只有三个items (<em>CustomerId</em>&nbsp;1, 2, and 3)。如果要导入的文件中同样包含<em>CustomerID</em>&nbsp;为1,<br>2, and 3的items，这些在destination table中的items将会被导入文件中的数据替换。如果文件中还包含CustomerId为4的item，那么这个item会被加入到destination table中。<br>Destination table 可以在不同的AWS region。例如，假设你有个一个&nbsp;<em>Customer</em>&nbsp;table在US West (Oregon) region，然后将它的数据导出到了Amazon S3中。你可以将它导入到在&nbsp;EU (Ireland) region中有相同表明，相同主键的表中。这种做法被称为<br><em>cross-region</em>&nbsp;导出和导入。<br>注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。</li>
 </ul>
+<a id="more"></a>
 <p><strong>从S3导入数据到DynamoDB</strong></p>
 <ol>
 <li>登陆AWS管理控制台，然后打开dynamodb控制台：&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</li>
@@ -696,7 +714,13 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。&lt;code&gt;文件内部结构会在&lt;/code&gt;&lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-impo
+      &lt;p&gt;本节假设你已经从Dynamodb中导出过数据，并且导出的文件以及被存入S3。&lt;code&gt;文件内部结构会在&lt;/code&gt;&lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-importexport-ddb-pipelinejson-verifydata2.html&quot;&gt;Verify&lt;br&gt; Data Export File&lt;/a&gt;&amp;nbsp;中描述。&lt;/p&gt;
+&lt;p&gt; 我们称之前导出数据的原始表为&lt;em&gt;source table&lt;/em&gt;，数据将要被导入的表为&lt;em&gt;destination table&lt;/em&gt;。你可以将S3中的导出文件导入到dynamodb的表中，但是要先确保满足下面条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The destination table 已经存在。 (导入任务不会为你创建表)&lt;/li&gt;
+&lt;li&gt;The destination table 与 source table 有相同的名称。&lt;/li&gt;
+&lt;li&gt;The destination table 与 source table 有相同的结构。&lt;br&gt;Destination table不一定要是空的。然而，导入进程会替换掉表中有相同主键的数据。例如，你有一个&lt;em&gt;Customer&lt;/em&gt;&amp;nbsp;表，它的主键是&lt;em&gt;CustomerId&lt;/em&gt;，并且只有三个items (&lt;em&gt;CustomerId&lt;/em&gt;&amp;nbsp;1, 2, and 3)。如果要导入的文件中同样包含&lt;em&gt;CustomerID&lt;/em&gt;&amp;nbsp;为1,&lt;br&gt;2, and 3的items，这些在destination table中的items将会被导入文件中的数据替换。如果文件中还包含CustomerId为4的item，那么这个item会被加入到destination table中。&lt;br&gt;Destination table 可以在不同的AWS region。例如，假设你有个一个&amp;nbsp;&lt;em&gt;Customer&lt;/em&gt;&amp;nbsp;table在US West (Oregon) region，然后将它的数据导出到了Amazon S3中。你可以将它导入到在&amp;nbsp;EU (Ireland) region中有相同表明，相同主键的表中。这种做法被称为&lt;br&gt;&lt;em&gt;cross-region&lt;/em&gt;&amp;nbsp;导出和导入。&lt;br&gt;注意到AWS管理控制台允许你一次导出多个表的数据。但是，不同的是，你一次只能导入一个表。&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -710,9 +734,9 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/12/19/%E8%AF%91-Aws-Dynamodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%88%B0S3/"/>
     <id>http://sweetvvck.github.io/2014/12/19/译-Aws-Dynamodb数据导出到S3/</id>
     <published>2014-12-19T03:55:21.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p>本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。<br><strong>注意</strong><br>如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。<br><strong>从DynamoDB中导出数据到S3</strong></p>
+    <content type="html"><![CDATA[<p>本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。<br><strong>注意</strong><br>如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。<br><strong>从DynamoDB中导出数据到S3</strong><br><a id="more"></a></p>
 <ol>
 <li>登陆到AWS管理员控制台，打开DynamoDB console。&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</li>
 <li>在&nbsp;Amazon DynamoDB Tables&nbsp;页面, 点击&nbsp;Export/Import.</li>
@@ -750,7 +774,7 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。&lt;br&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;br&gt;如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个I
+      &lt;p&gt;本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。&lt;br&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;br&gt;如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步&lt;br&gt;&lt;a href=&quot;http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles&quot; title=&quot;Creating IAM Roles for AWS Data Pipeline&quot;&gt;&lt;br&gt;Creating IAM Roles for AWS Data Pipeline&lt;/a&gt;。&lt;br&gt;&lt;strong&gt;从DynamoDB中导出数据到S3&lt;/strong&gt;&lt;br&gt;
     
     </summary>
     
@@ -768,11 +792,11 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%89%EF%BC%89%E7%BC%93%E5%AD%98Bitmap/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十三）缓存Bitmap/</id>
     <published>2014-10-31T15:43:14.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在<a href="http://developer.android.com/reference/android/widget/ListView.html" target="_blank" rel="external">ListView</a>,<a href="http://developer.android.com/reference/android/widget/GridView.html" target="_blank" rel="external">GridView</a>和<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">ViewPager</a>中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。</p>
 <p>内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。</p>
-<p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。</p>
+<p>本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。<br><a id="more"></a></p>
 <h2 id="使用内存缓存"><a href="#使用内存缓存" class="headerlink" title="使用内存缓存"></a>使用内存缓存</h2><hr>
 <p>内存缓存是通过消耗珍贵的app内存资源来提供快速访问bitmaps的功能。<a href="http://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="external">LruCache</a>类<br> (API等级4以上的低版本可以使用<a href="http://developer.android.com/reference/android/support/v4/util/LruCache.html" target="_blank" rel="external">Support Library</a>) 是专用的缓存bitmaps的，它将最近使用的bitmaps的强引用保存在一个<a href="http://developer.android.com/reference/java/util/LinkedHashMap.html" target="_blank" rel="external">LinkedHashMap</a>中，当缓存数量达到限制时将最久没有使用过的引用从缓存中剔除。</p>
 <p><strong>提示:</strong>在之前，流行的内存缓存实现使用的都是<a href="http://developer.android.com/reference/java/lang/ref/SoftReference.html" target="_blank" rel="external">SoftReference</a>或者<a href="http://developer.android.com/reference/java/lang/ref/WeakReference.html" target="_blank" rel="external">WeakReference</a>bitmap<br> 缓存，然而这样不被推荐。从Android 2.3 (API Level 9)开始，GC对soft/weak 引用的回收大大加强了，这回导致它们很快就失效了。</p>
@@ -808,7 +832,9 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在&lt;a href=&quot;http://developer.android.com/reference/android/widget/ListView.html
+      &lt;p&gt;加载一个bitmap到UI上是很简单的，然而，如果要一次加载一个大的图片集事情就变的复杂了许多。在多数情况下（例如在使用在&lt;a href=&quot;http://developer.android.com/reference/android/widget/ListView.html&quot;&gt;ListView&lt;/a&gt;,&lt;a href=&quot;http://developer.android.com/reference/android/widget/GridView.html&quot;&gt;GridView&lt;/a&gt;和&lt;a href=&quot;http://developer.android.com/reference/android/support/v4/view/ViewPager.html&quot;&gt;ViewPager&lt;/a&gt;中），屏幕上的图片以及将要滚动到屏幕的图片的总数大体上是无限的。&lt;/p&gt;
+&lt;p&gt;内存使用量可以通过回收不在屏幕上显示的子View来保持较低的状态。在不保持引用长期有效的情况下，GC也会将这些加载过的bitmaps回收。 这样做其实很好，但是要保持一个流畅快速响应的UI，你可能想要避免每次都重复的加载图片近内存。在这种情况下，磁盘加上内存双重缓存能够帮上大忙，它能够让相同的图片快速复用。&lt;/p&gt;
+&lt;p&gt;本课介绍使用加载大量图片的情况下使用磁盘内存缓存来提升UI的响应速度和流畅度。&lt;br&gt;
     
     </summary>
     
@@ -822,10 +848,10 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%BA%8C%EF%BC%89%E5%9C%A8%E9%9D%9EUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%A4%84%E7%90%86Bitmap/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/</id>
     <published>2014-10-31T15:41:35.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html" target="_blank" rel="external">高效地夹在大Bitmaps</a>中讨论的<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。</p>
-<p>本课介绍如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。</p>
+<p>本课介绍如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。<br><a id="more"></a></p>
 <h2 id="使用AsyncTask"><a href="#使用AsyncTask" class="headerlink" title="使用AsyncTask"></a>使用AsyncTask</h2><hr>
 <p><a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;类提供了一个简单的方法来在后台线程处理任务，并且能够将处理结果在UI线程中返回。要使用它，需创建一个它的子类，然后覆盖几个必要的方法。下面这个例子向你展示如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;和<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html#decodeSampledBitmapFromResource" target="_blank" rel="external"><code>decodeSampledBitmapFromResource()</code></a>将大bitmap加载到ImageView中：</p>
 <p>class BitmapWorkerTask extends AsyncTask&lt;Integer, Void, Bitmap&gt; {<br>&nbsp; &nbsp; private final WeakReference&lt;ImageView&gt; imageViewReference;<br>&nbsp; &nbsp; private int data = 0;</p>
@@ -862,7 +888,8 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/load-bitmap.html&quot; target=&quot;_blank&quot; rel=&quot;exte
+      &lt;p&gt;如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/load-bitmap.html&quot;&gt;高效地夹在大Bitmaps&lt;/a&gt;中讨论的&lt;a href=&quot;http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options&quot;&gt;BitmapFactory.decode*&lt;/a&gt;)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。&lt;/p&gt;
+&lt;p&gt;本课介绍如何使用&amp;nbsp;&lt;a href=&quot;http://developer.android.com/reference/android/os/AsyncTask.html&quot;&gt;AsyncTask&lt;/a&gt;&amp;nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。&lt;br&gt;
     
     </summary>
     
@@ -876,11 +903,11 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%E4%B8%80%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E5%8A%A0%E8%BD%BD%E5%A4%A7%E7%9A%84Bitmap/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十一）高效地加载大的Bitmap/</id>
     <published>2014-10-31T15:40:38.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。</p>
-<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。</p>
+<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。<br><a id="more"></a></p>
 <h2 id="读取Bitmap的尺寸和类型"><a href="#读取Bitmap的尺寸和类型" class="headerlink" title="读取Bitmap的尺寸和类型"></a>读取Bitmap的尺寸和类型</h2><hr>
 <p><a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html" target="_blank" rel="external">BitmapFactory</a>&nbsp;类提供几种解码方法(<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeByteArray()</a>),&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeFile(java.lang.String, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeFile()</a>),<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeResource(android.content.res.Resources, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeResource()</a>),<br> 等等.)来通过多种多样的资源文件创建&nbsp;<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank" rel="external">Bitmap</a>&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&nbsp;异常。每种类型的解码方法都有额外的参数以让你通过<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html" target="_blank" rel="external">BitmapFactory.Options</a>&nbsp;类指定解码的选项。在解码时设置<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inJustDecodeBounds" target="_blank" rel="external">inJustDecodeBounds</a>&nbsp;属性为&nbsp;true&nbsp;能够避免内存分配，同时还能够获取到<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outWidth" target="_blank" rel="external">outWidth</a>,&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outHeight" target="_blank" rel="external">outHeight</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outMimeType" target="_blank" rel="external">outMimeType</a>&nbsp;的&#20540;，此时解码方法返回的bitmap对象为null。这种发式允许你在构建这个bitmap（和内存分配）之前读取它的大小和类型。</p>
 <p>BitmapFactory.Options options = new BitmapFactory.Options();<br>options.inJustDecodeBounds = true;<br>BitmapFactory.decodeResource(getResources(), R.id.myimage, options);<br>int imageHeight = options.outHeight;<br>int imageWidth = options.outWidth;<br>String imageType = options.outMimeType;</p>
@@ -918,7 +945,8 @@ function delayNext(user, expired, context) {
     <summary type="html">
     
       &lt;p&gt;图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。&lt;/p&gt;
-&lt;p&gt;假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事
+&lt;p&gt;假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。&lt;/p&gt;
+&lt;p&gt;本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。&lt;br&gt;
     
     </summary>
     
@@ -934,11 +962,10 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/10/31/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%B8%89%E5%8D%81%EF%BC%89%E9%AB%98%E6%95%88%E5%9C%B0%E6%98%BE%E7%A4%BABitmaps/"/>
     <id>http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十）高效地显示Bitmaps/</id>
     <published>2014-10-31T15:39:24.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：</p>
-<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.</p>
-<p>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：</p>
+<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.<br><a id="more"></a><br>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：</p>
 <ul>
 <li>移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。</li>
 <li>Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;<a href="http://www.android.com/devices/detail/galaxy-nexus" target="_blank" rel="external">Galaxy Nexus</a>&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素)。如果这个bitmap使用的配置是&nbsp;<code>[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html)</code>&nbsp;(从Android2.3开始的默认配置)，那么加载这个图片到内存中需要占用19MB，这样马上就用光了某些设备的每个app的内存限制。</li>
@@ -954,7 +981,8 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;学习如何使用常规的技术来加载&lt;code&gt;[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&lt;/code&gt;&amp;nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果
+      &lt;p&gt;学习如何使用常规的技术来加载&lt;code&gt;[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&lt;/code&gt;&amp;nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app&lt;br&gt; crash掉，并且跑出下面这个可怕的异常：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;java.lang.OutofMemoryError: bitmap size exceeds VM budget&lt;/code&gt;.&lt;br&gt;
     
     </summary>
     
@@ -1062,7 +1090,7 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%89Android%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十六）Android数据存储/</id>
     <published>2014-09-30T15:56:52.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>大部分的Android应用都需要保存数据，甚至是为了让用户在&nbsp;<a href="http://developer.android.com/reference/android/app/Activity.html#onPause(" target="_blank" rel="external">onPause()</a>)&nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：</p>
 <ul>
@@ -1071,6 +1099,7 @@ function delayNext(user, expired, context) {
 <li>使用SQLite数据库</li>
 </ul>
 <h2 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h2><hr>
+<a id="more"></a>
 <p><strong><a href="http://developer.android.com/training/basics/data-storage/shared-preferences.html" target="_blank" rel="external">保存键&#20540;对集合</a></strong>学习使用shared preferences文件来通过键&#20540;对方式存储少量数据。<strong><a href="http://developer.android.com/training/basics/data-storage/files.html" target="_blank" rel="external">保存文件</a></strong>学习保存一个基本到文件，例如存储一个长序列并且通常会被顺序读取的数据。<strong><a href="http://developer.android.com/training/basics/data-storage/databases.html" target="_blank" rel="external">保存数据到数据库</a></strong>学习使用SQLite数据库读写结构化数据。</p>
 <pre><code>    作者：sweetvvck 发表于2014/9/30 23:56:52 [原文链接](http://blog.csdn.net/sweetvvck/article/details/38645041)
 
@@ -1080,7 +1109,13 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;大部分的Android应用都需要保存数据，甚至是为了让用户在&amp;nbsp;&lt;a href=&quot;http://developer.android.com/reference/android/app/Activity.html#onPause(&quot; target=&quot;_blank&quot; r
+      &lt;p&gt;大部分的Android应用都需要保存数据，甚至是为了让用户在&amp;nbsp;&lt;a href=&quot;http://developer.android.com/reference/android/app/Activity.html#onPause(&quot;&gt;onPause()&lt;/a&gt;)&amp;nbsp;时不至于丢失数据都需要保存信息。大多数一般的app同样需要保存用户设置的数据，而一些app则必须在文件或是数据库中管理大量的账号信息。本课将向你介绍Android中数据存储的主要方式，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用shared preferences文件通过键&amp;#20540;对保存简单数据类型&lt;/li&gt;
+&lt;li&gt;保存任意的文件到Android的文件系统中&lt;/li&gt;
+&lt;li&gt;使用SQLite数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;课程&quot;&gt;&lt;a href=&quot;#课程&quot; class=&quot;headerlink&quot; title=&quot;课程&quot;&gt;&lt;/a&gt;课程&lt;/h2&gt;&lt;hr&gt;
     
     </summary>
     
@@ -1094,11 +1129,11 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%83%EF%BC%89%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88SharedPreferences%EF%BC%89%E5%AD%98%E5%82%A8/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十七）键值对（SharedPreferences）存储/</id>
     <published>2014-09-30T15:56:29.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>如果你又一个相对较小的键&#20540;对数据想要保存，你应该使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs。一个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;对象指向一个包含键&#20540;对的文件，它提供简单的方法来读写他们。每个<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;文件系统框架管理，它们可以是私有的也可以被共享。</p>
 <p>本课将介绍如何使用<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs来存储和获取简单的数据。</p>
-<p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs<br> 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs的信息，请移步<a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank" rel="external">Settings</a>&nbsp;向导。</p>
+<p><strong>提示:</strong>&nbsp;<a href="http://developer.android.com/reference/android/content/SharedPreferences.html" target="_blank" rel="external">SharedPreferences</a>&nbsp;APIs<br> 只能被用来操作键&#20540;对类型数据，不要把它和&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&nbsp;<a href="http://developer.android.com/reference/android/preference/Preference.html" target="_blank" rel="external">Preference</a>&nbsp;APIs的信息，请移步<a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank" rel="external">Settings</a>&nbsp;向导。<br><a id="more"></a></p>
 <h2 id="获取SharedPreferences的引用（句柄）"><a href="#获取SharedPreferences的引用（句柄）" class="headerlink" title="获取SharedPreferences的引用（句柄）"></a>获取SharedPreferences的引用（句柄）</h2><p>你可以通过下面任意一种方式创建一个新的shared preference文件或者访问一个已经存在的shared preference文件：</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int" target="_blank" rel="external">getSharedPreferences()</a>)&nbsp;—<br>Use this if you need multiple shared preference files identified by name, which you specify with the first parameter. You can call this from any&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html" target="_blank" rel="external">Context</a>&nbsp;in<br>your app.</li>
@@ -1126,7 +1161,9 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;如果你又一个相对较小的键&amp;#20540;对数据想要保存，你应该使用&lt;a href=&quot;http://developer.android.com/reference/android/content/SharedPreferences.html&quot; target=&quot;_blank&quot; 
+      &lt;p&gt;如果你又一个相对较小的键&amp;#20540;对数据想要保存，你应该使用&lt;a href=&quot;http://developer.android.com/reference/android/content/SharedPreferences.html&quot;&gt;SharedPreferences&lt;/a&gt;&amp;nbsp;APIs。一个&lt;a href=&quot;http://developer.android.com/reference/android/content/SharedPreferences.html&quot;&gt;SharedPreferences&lt;/a&gt;&amp;nbsp;对象指向一个包含键&amp;#20540;对的文件，它提供简单的方法来读写他们。每个&lt;a href=&quot;http://developer.android.com/reference/android/content/SharedPreferences.html&quot;&gt;SharedPreferences&lt;/a&gt;&amp;nbsp;文件系统框架管理，它们可以是私有的也可以被共享。&lt;/p&gt;
+&lt;p&gt;本课将介绍如何使用&lt;a href=&quot;http://developer.android.com/reference/android/content/SharedPreferences.html&quot;&gt;SharedPreferences&lt;/a&gt;&amp;nbsp;APIs来存储和获取简单的数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提示:&lt;/strong&gt;&amp;nbsp;&lt;a href=&quot;http://developer.android.com/reference/android/content/SharedPreferences.html&quot;&gt;SharedPreferences&lt;/a&gt;&amp;nbsp;APIs&lt;br&gt; 只能被用来操作键&amp;#20540;对类型数据，不要把它和&amp;nbsp;&lt;a href=&quot;http://developer.android.com/reference/android/preference/Preference.html&quot;&gt;Preference&lt;/a&gt;&amp;nbsp;APIs弄混淆，Preference是用来帮助用户构建app设置界面的。更多关于&amp;nbsp;&lt;a href=&quot;http://developer.android.com/reference/android/preference/Preference.html&quot;&gt;Preference&lt;/a&gt;&amp;nbsp;APIs的信息，请移步&lt;a href=&quot;http://developer.android.com/guide/topics/ui/settings.html&quot;&gt;Settings&lt;/a&gt;&amp;nbsp;向导。&lt;br&gt;
     
     </summary>
     
@@ -1138,10 +1175,11 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/09/30/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B9%9D%EF%BC%89%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0SQLite%E4%B8%AD/"/>
     <id>http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/</id>
     <published>2014-09-30T15:55:32.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在<a href="http://developer.android.com/reference/android/database/sqlite/package-summary.html" target="_blank" rel="external">android.database.sqlite</a> 包中访问到。</p>
 <p>定义一个&#26684;式和契约</p>
+<a id="more"></a>
 <p>SQL数据库最主要的标准之一是其&#26684;式（Schema）：它用来声明数据库的组织。Schema可以通过你用来创建数据库的语句来表示。你会发现创建一个能够有条理地，明确指定schema布局的 “伙伴 “类(也被称为 “关系类 “)是非常有帮助的。</p>
 <p>关系类其实就是个定义常量的容器，这些常量包含URIs,tables以及colums的名称。这个关系类允许你在同一个包下的所有类中都能够访问。这样的话，你只要在这里改变一个列名，你的所有代码都会受影响。</p>
 <p>一个好的组织关系类的方法是，让你的关系类中对于整个数据库来说是全局可用的常量定义在关系类的顶级，然后为每个表在该类中建立内部类。</p>
@@ -1183,7 +1221,8 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在&lt;a href=&quot;http://developer.andro
+      &lt;p&gt;对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在&lt;a href=&quot;http://developer.android.com/reference/android/database/sqlite/package-summary.html&quot;&gt;android.database.sqlite&lt;/a&gt; 包中访问到。&lt;/p&gt;
+&lt;p&gt;定义一个&amp;#26684;式和契约&lt;/p&gt;
     
     </summary>
     
@@ -1195,13 +1234,12 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/08/27/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%BA%94%EF%BC%89%E5%85%A8%E9%9D%A2%E7%90%86%E8%A7%A3Android-Navigation%E9%80%BB%E8%BE%91/"/>
     <id>http://sweetvvck.github.io/2014/08/27/原-Android学习路线（二十五）全面理解Android-Navigation逻辑/</id>
     <published>2014-08-26T17:23:17.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38832809" target="_blank" rel="external">Android学习路线（二十五）全面理解Android Navigation逻辑</a></p>
 <p>应用导航的一致性是整体用户体验的重要组成部分，如果app的导航方式不一样，用户不能很快理解，那么这个应用会让用户有很大的挫败感，大大地影响了用户体验。</p>
 <p>Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改变。全面地理解“Back”以及“Up”的导航效果以及意义，能够大大地减少用户的学习时间，用户在使用过程中很快能够学习如何在应用的各个界面间的切换。</p>
-<p>Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。</p>
-<p>下图分别展示了“Back”和“Up”的示例：</p>
+<p>Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。<br><a id="more"></a><br>下图分别展示了“Back”和“Up”的示例：</p>
 <p><img src="http://img.blog.csdn.net/20140826002202399?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <h1 id="Up-vs-Back"><a href="#Up-vs-Back" class="headerlink" title="Up vs. Back"></a>Up vs. Back</h1><hr>
 <p>Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一个列表，点击列表的Item进入B界面，这个时候，在B界面应该要提供一个Up按钮，点击Up则应该返回到A界面。</p>
@@ -1244,7 +1282,10 @@ function delayNext(user, expired, context) {
     
     <summary type="html">
     
-      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38832809&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习路线（二十五）全面理解Android Navi
+      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38832809&quot;&gt;Android学习路线（二十五）全面理解Android Navigation逻辑&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;应用导航的一致性是整体用户体验的重要组成部分，如果app的导航方式不一样，用户不能很快理解，那么这个应用会让用户有很大的挫败感，大大地影响了用户体验。&lt;/p&gt;
+&lt;p&gt;Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改变。全面地理解“Back”以及“Up”的导航效果以及意义，能够大大地减少用户的学习时间，用户在使用过程中很快能够学习如何在应用的各个界面间的切换。&lt;/p&gt;
+&lt;p&gt;Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。&lt;br&gt;
     
     </summary>
     
@@ -1260,14 +1301,13 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/08/26/%E5%8E%9F-Zookeeper%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/"/>
     <id>http://sweetvvck.github.io/2014/08/26/原-Zookeeper集群搭建/</id>
     <published>2014-08-26T02:05:51.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>Zookeeper是Apache的一个开源项目，在集群管理中十分常用。它的集群搭建也十分简单，只需要简单的配置，集群的各个节点会完成自行通讯，自动选取Leader等。</p>
 <p>更多关于zookeeper的信息和原理，可以参考这篇博文：<a href="http://blog.csdn.net/sweetvvck/article/details/38262965" target="_blank" rel="external">ZooKeeper原理及使用</a></p>
 <p>Zookeeper的单机模式更加简单：</p>
 <p>&nbsp; &nbsp; &nbsp; 在Ubuntu系统下，只需要执行sudo apt-get install zookeeper安装，然后到安装目录下找到zkServer.sh脚本，执行./zkServer.sh start就启动了zookeeper的单机模式，通过这种方式安装的zookeeper的目录通常是/usr/share/zookeeper/。通过执行zkServer.sh status可以看到zookeeper的运行状态，这里使用的是单机模式，则会显示：</p>
-<p>JMX enabled by default<br>Using config: /etc/zookeeper/conf/zoo.cfg<br>Mode: standalone</p>
-<p>&nbsp; &nbsp; &nbsp; 如果是在其他的Linux系统（CentOS）上，执行：</p>
+<p>JMX enabled by default<br>Using config: /etc/zookeeper/conf/zoo.cfg<br>Mode: standalone<br><a id="more"></a><br>&nbsp; &nbsp; &nbsp; 如果是在其他的Linux系统（CentOS）上，执行：</p>
 <p>wget <a href="http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a><br>tar zxf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6/conf/</p>
 <p>这个目录下有一个zoo_sample.cfg文件，是官方提供的示例配置，执行：</p>
 <p>cp ./zoo_sample.cfg zoo.cfg</p>
@@ -1315,7 +1355,10 @@ function delayNext(user, expired, context) {
     <summary type="html">
     
       &lt;p&gt;Zookeeper是Apache的一个开源项目，在集群管理中十分常用。它的集群搭建也十分简单，只需要简单的配置，集群的各个节点会完成自行通讯，自动选取Leader等。&lt;/p&gt;
-&lt;p&gt;更多关于zookeeper的信息和原理，可以参考这篇博文：&lt;a href=&quot;http://b
+&lt;p&gt;更多关于zookeeper的信息和原理，可以参考这篇博文：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38262965&quot;&gt;ZooKeeper原理及使用&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Zookeeper的单机模式更加简单：&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 在Ubuntu系统下，只需要执行sudo apt-get install zookeeper安装，然后到安装目录下找到zkServer.sh脚本，执行./zkServer.sh start就启动了zookeeper的单机模式，通过这种方式安装的zookeeper的目录通常是/usr/share/zookeeper/。通过执行zkServer.sh status可以看到zookeeper的运行状态，这里使用的是单机模式，则会显示：&lt;/p&gt;
+&lt;p&gt;JMX enabled by default&lt;br&gt;Using config: /etc/zookeeper/conf/zoo.cfg&lt;br&gt;Mode: standalone&lt;br&gt;
     
     </summary>
     
@@ -1333,12 +1376,11 @@ function delayNext(user, expired, context) {
     <link href="http://sweetvvck.github.io/2014/08/21/%E5%8E%9F-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E5%9B%9B%EF%BC%89ActionBar-Fragment%E8%BF%90%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
     <id>http://sweetvvck.github.io/2014/08/21/原-Android学习路线（二十四）ActionBar-Fragment运用最佳实践/</id>
     <published>2014-08-20T19:03:52.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:25:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38645297" target="_blank" rel="external">http://blog.csdn.net/sweetvvck/article/details/38645297</a></p>
 <p>通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。</p>
-<p>了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客<a href="http://blog.csdn.net/sweetvvck/article/details/38566871" target="_blank" rel="external">Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment</a>，下面的项目支持到API<br> Level最低为8，所以项目中也会使用到Support Library。</p>
-<p>作为一个有上进心的Android开发者，我们是希望项目的设计符合<strong>Android Design</strong>的。Android Design是Google官方推荐的应用设计原则，不了解Android Design的同学可以去了解下，我这里有<a href="http://download.csdn.net/detail/sweetvvck/7835793" target="_blank" rel="external">官方翻译文档</a>。</p>
+<p>了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客<a href="http://blog.csdn.net/sweetvvck/article/details/38566871" target="_blank" rel="external">Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment</a>，下面的项目支持到API<br> Level最低为8，所以项目中也会使用到Support Library。<br><a id="more"></a><br>作为一个有上进心的Android开发者，我们是希望项目的设计符合<strong>Android Design</strong>的。Android Design是Google官方推荐的应用设计原则，不了解Android Design的同学可以去了解下，我这里有<a href="http://download.csdn.net/detail/sweetvvck/7835793" target="_blank" rel="external">官方翻译文档</a>。</p>
 <p>我发现“知乎”的App设计是符合Android Design的，那么我们的项目就来模仿知乎的主界面。首先看下效果图：</p>
 <p><img src="http://img.blog.csdn.net/20140818082016785?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">&nbsp;<br> &nbsp; &nbsp; &nbsp;<img src="http://img.blog.csdn.net/20140818082105582?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <p>我们来分析一下这样的界面应该怎么实现，从上图可以看出“知乎”android端使用了action bar和drawerlayout，同时drawer中item切换主界面应该是fragment。</p>
@@ -1587,7 +1629,9 @@ return true;
     
     <summary type="html">
     
-      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38645297&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/sweetvvck/a
+      &lt;p&gt;转载请注明出处：&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38645297&quot;&gt;http://blog.csdn.net/sweetvvck/article/details/38645297&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通过前面的几篇博客，大家看到了Google是如何解释action bar和fragment以及推荐的用法。俗话说没有demo的博客不是好博客，下面我会介绍一下action bar和fragment在实战中的应用，以及相关demo源码，希望和大家相互交流。&lt;/p&gt;
+&lt;p&gt;了解过fragment的同学们应该都知道，fragment是android 3.0版本才出现的的，因此如果要在支持android 3.0一下版本的工程中使用fragment的话是需要添加Support Library的。具体如何添加我就不再赘述，可以看我前面的博客&lt;a href=&quot;http://blog.csdn.net/sweetvvck/article/details/38566871&quot;&gt;Android学习路线（二十一）运用Fragment构建动态UI——创建一个Fragment&lt;/a&gt;，下面的项目支持到API&lt;br&gt; Level最低为8，所以项目中也会使用到Support Library。&lt;br&gt;
     
     </summary>
     
@@ -1599,10 +1643,10 @@ return true;
     <link href="http://sweetvvck.github.io/2014/08/15/%E8%AF%91-Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%EF%BC%88%E4%BA%8C%E5%8D%81%E4%B8%89%EF%BC%89%E8%BF%90%E7%94%A8Fragment%E6%9E%84%E5%BB%BA%E5%8A%A8%E6%80%81UI%E2%80%94%E2%80%94Fragment%E9%97%B4%E9%80%9A%E8%AE%AF/"/>
     <id>http://sweetvvck.github.io/2014/08/15/译-Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯/</id>
     <published>2014-08-14T16:07:26.000Z</published>
-    <updated>2017-03-03T09:22:05.000Z</updated>
+    <updated>2017-03-03T11:26:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。</p>
-<p>你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。</p>
+<p>你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。<br><a id="more"></a></p>
 <h2 id="定义一个接口"><a href="#定义一个接口" class="headerlink" title="定义一个接口"></a>定义一个接口</h2><hr>
 <p>要允许一个fragment和它的activity通讯，你可以在fragment类中定义一个接口，然后再activity中实现它。Fragment在onAttach()方法中获取这个接口的实现，这样之后就能够调用这些接口来达到和activity通讯的目的。</p>
 <p>下面是一个fragment和activity通讯的例子：</p>
@@ -1629,7 +1673,7 @@ public void onListItemClick(ListView l, View v, int position, long id) {
     <summary type="html">
     
       &lt;p&gt;为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。&lt;/p&gt;
-&lt;p&gt;你通常都希望一个f
+&lt;p&gt;你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。&lt;br&gt;
     
     </summary>
     

@@ -110,7 +110,7 @@ Javascript 引擎与运行时环境Javascript 引擎和运行时环境这两个�
 
 Javascript 引擎与运行时环境Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行">
 <meta property="og:image" content="https://pub.int64ago.org/5couq20oh7kfu8ebqpvi.png">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 工作原理">
 <meta name="twitter:description" content="Javascript 定义
@@ -437,7 +437,7 @@ Javascript 引擎与运行时环境Javascript 引擎和运行时环境这两个�
 <li>基于原型的面线对象</li>
 <li>脚本语言</li>
 </ul>
-<h2 id="Javascript-引擎与运行时环境"><a href="#Javascript-引擎与运行时环境" class="headerlink" title="Javascript 引擎与运行时环境"></a>Javascript 引擎与运行时环境</h2><p>Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行，例如 Chrome, Node。</p>
+<h2 id="Javascript-引擎与运行时环境"><a href="#Javascript-引擎与运行时环境" class="headerlink" title="Javascript 引擎与运行时环境"></a>Javascript 引擎与运行时环境</h2><p>Javascript 引擎和运行时环境这两个概念很容易被弄混，但它俩真不是一个东西。Javascript 引擎做的事情是实现 ECMAScript 标准，解释（或编译） Javascript 代码；而运行环境是包括引擎并提供一些类库让 Javascript 代码能够在其上运行，例如 Chrome, Node。<br><a id="more"></a></p>
 <h2 id="为什么设计为单线程？"><a href="#为什么设计为单线程？" class="headerlink" title="为什么设计为单线程？"></a>为什么设计为单线程？</h2><blockquote>
 <p>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。那么，为什么JavaScript不能有多个线程呢？这样能提高效率啊。<br>JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？<br>所以，为了避免复杂性，从一诞生，JavaScript就是单线程，这已经成了这门语言的核心特征，将来也不会改变。<br>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。<br>摘自 <a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a></p>
 </blockquote>

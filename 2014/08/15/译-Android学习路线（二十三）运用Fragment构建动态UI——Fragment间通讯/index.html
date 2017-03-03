@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。
 你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:26:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（二十三）运用Fragment构建动态UI——Fragment间通讯">
 <meta name="twitter:description" content="为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。
@@ -378,7 +378,7 @@
 
       
         <p>为了要重用Fragment的UI组件，你应该为它们每一个都构建一个完整独立的，模块化的组件来定义他自身的布局和行为。一旦你定义了这些可重用的Fragments，你可以通过activity关联它们同时通过应用逻辑连接它们来实现所有复杂的UI。</p>
-<p>你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。</p>
+<p>你通常都希望一个fragment能够和其他的fragment进行交互，例如基于用户的操作改变内容。所有的fragment之间的交流的完成都通过activity的关联。两个fragment之间一定不要直接交流。<br><a id="more"></a></p>
 <h2 id="定义一个接口"><a href="#定义一个接口" class="headerlink" title="定义一个接口"></a>定义一个接口</h2><hr>
 <p>要允许一个fragment和它的activity通讯，你可以在fragment类中定义一个接口，然后再activity中实现它。Fragment在onAttach()方法中获取这个接口的实现，这样之后就能够调用这些接口来达到和activity通讯的目的。</p>
 <p>下面是一个fragment和activity通讯的例子：</p>

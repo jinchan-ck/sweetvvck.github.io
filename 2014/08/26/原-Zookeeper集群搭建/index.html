@@ -101,7 +101,7 @@ Zookeeper的单机模式更加简单：
 更多关于zookeeper的信息和原理，可以参考这篇博文：ZooKeeper原理及使用
 Zookeeper的单机模式更加简单：
 &amp;nbsp; &amp;nbsp; &amp;nbsp; 在Ubuntu系统下，只需要执行sudo apt-get in">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Zookeeper集群搭建">
 <meta name="twitter:description" content="Zookeeper是Apache的一个开源项目，在集群管理中十分常用。它的集群搭建也十分简单，只需要简单的配置，集群的各个节点会完成自行通讯，自动选取Leader等。
@@ -420,8 +420,7 @@ Zookeeper的单机模式更加简单：
 <p>更多关于zookeeper的信息和原理，可以参考这篇博文：<a href="http://blog.csdn.net/sweetvvck/article/details/38262965" target="_blank" rel="external">ZooKeeper原理及使用</a></p>
 <p>Zookeeper的单机模式更加简单：</p>
 <p>&nbsp; &nbsp; &nbsp; 在Ubuntu系统下，只需要执行sudo apt-get install zookeeper安装，然后到安装目录下找到zkServer.sh脚本，执行./zkServer.sh start就启动了zookeeper的单机模式，通过这种方式安装的zookeeper的目录通常是/usr/share/zookeeper/。通过执行zkServer.sh status可以看到zookeeper的运行状态，这里使用的是单机模式，则会显示：</p>
-<p>JMX enabled by default<br>Using config: /etc/zookeeper/conf/zoo.cfg<br>Mode: standalone</p>
-<p>&nbsp; &nbsp; &nbsp; 如果是在其他的Linux系统（CentOS）上，执行：</p>
+<p>JMX enabled by default<br>Using config: /etc/zookeeper/conf/zoo.cfg<br>Mode: standalone<br><a id="more"></a><br>&nbsp; &nbsp; &nbsp; 如果是在其他的Linux系统（CentOS）上，执行：</p>
 <p>wget <a href="http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a><br>tar zxf zookeeper-3.4.6.tar.gz<br>cd zookeeper-3.4.6/conf/</p>
 <p>这个目录下有一个zoo_sample.cfg文件，是官方提供的示例配置，执行：</p>
 <p>cp ./zoo_sample.cfg zoo.cfg</p>

@@ -90,21 +90,18 @@
 
 
 <meta name="description" content="对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在android.database.sqlite 包中访问到。
-定义一个&amp;#26684;式和契约
-SQL数据库最主要的标准之一是其&amp;#26684;式（Schema）：它用来声明数据库的组织。">
+定义一个&amp;#26684;式和契约">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[译]Android学习路线（二十九）保存数据到SQLite中">
 <meta property="og:url" content="http://sweetvvck.github.io/2014/09/30/译-Android学习路线（二十九）保存数据到SQLite中/index.html">
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在android.database.sqlite 包中访问到。
-定义一个&amp;#26684;式和契约
-SQL数据库最主要的标准之一是其&amp;#26684;式（Schema）：它用来声明数据库的组织。">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+定义一个&amp;#26684;式和契约">
+<meta property="og:updated_time" content="2017-03-03T11:26:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（二十九）保存数据到SQLite中">
 <meta name="twitter:description" content="对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在android.database.sqlite 包中访问到。
-定义一个&amp;#26684;式和契约
-SQL数据库最主要的标准之一是其&amp;#26684;式（Schema）：它用来声明数据库的组织。">
+定义一个&amp;#26684;式和契约">
 
 
 
@@ -382,6 +379,7 @@ SQL数据库最主要的标准之一是其&amp;#26684;式（Schema）：它用�
       
         <p>对于可复用或者结构化的数据来说，把它们存储到数据库中是理想的方式。学习本课前你需要对通常的数据库有所了解，本课在此前提下会帮助你学习如何在android系统中操作SQLite数据库。你需要使用到的APIs都可以在<a href="http://developer.android.com/reference/android/database/sqlite/package-summary.html" target="_blank" rel="external">android.database.sqlite</a> 包中访问到。</p>
 <p>定义一个&#26684;式和契约</p>
+<a id="more"></a>
 <p>SQL数据库最主要的标准之一是其&#26684;式（Schema）：它用来声明数据库的组织。Schema可以通过你用来创建数据库的语句来表示。你会发现创建一个能够有条理地，明确指定schema布局的 “伙伴 “类(也被称为 “关系类 “)是非常有帮助的。</p>
 <p>关系类其实就是个定义常量的容器，这些常量包含URIs,tables以及colums的名称。这个关系类允许你在同一个包下的所有类中都能够访问。这样的话，你只要在这里改变一个列名，你的所有代码都会受影响。</p>
 <p>一个好的组织关系类的方法是，让你的关系类中对于整个数据库来说是全局可用的常量定义在关系类的顶级，然后为每个表在该类中建立内部类。</p>

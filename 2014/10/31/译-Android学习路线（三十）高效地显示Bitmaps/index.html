@@ -97,7 +97,7 @@ java.lang.OutofMemo">
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="学习如何使用常规的技术来加载[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&amp;nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app crash掉，并且跑出下面这个可怕的异常：
 java.lang.OutofMemo">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:26:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（三十）高效地显示Bitmaps">
 <meta name="twitter:description" content="学习如何使用常规的技术来加载[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)&amp;nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app crash掉，并且跑出下面这个可怕的异常：
@@ -378,8 +378,7 @@ java.lang.OutofMemo">
 
       
         <p>学习如何使用常规的技术来加载<code>[Bitmap](http://developer.android.com/reference/android/graphics/Bitmap.html)</code>&nbsp;对象，保持你的UI灵敏，同时避免溢出应用内存限制。如果你不注意，bitmaps能够很快地消费你的可用内存预算，让你的app<br> crash掉，并且跑出下面这个可怕的异常：</p>
-<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.</p>
-<p>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：</p>
+<p><code>java.lang.OutofMemoryError: bitmap size exceeds VM budget</code>.<br><a id="more"></a><br>下面有几个原因来说明在Android应用中加载bitmaps是很棘手的：</p>
 <ul>
 <li>移动设备的典型特征是系统资源有限。有些Android设备每个App可以小到仅有16M的可用内存。应用应该在这种内存限制下做优化。然而，很多设备已经可以配置到更高的限制。</li>
 <li>Bitmaps占用了很多内存，特别是色彩丰富的图片，像照片。例如，&nbsp;<a href="http://www.android.com/devices/detail/galaxy-nexus" target="_blank" rel="external">Galaxy Nexus</a>&nbsp;中的相机照出的相片有2592x1936 像素 (5 百万像素)。如果这个bitmap使用的配置是&nbsp;<code>[ARGB_8888](http://developer.android.com/reference/android/graphics/Bitmap.Config.html)</code>&nbsp;(从Android2.3开始的默认配置)，那么加载这个图片到内存中需要占用19MB，这样马上就用光了某些设备的每个app的内存限制。</li>

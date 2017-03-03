@@ -95,7 +95,7 @@
 <meta property="og:url" content="http://sweetvvck.github.io/2014/10/31/译-Android学习路线（三十二）在非UI线程中处理Bitmap/index.html">
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在高效地夹在大Bitmaps中讨论的BitmapFactory.decode*)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:26:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（三十二）在非UI线程中处理Bitmap">
 <meta name="twitter:description" content="如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在高效地夹在大Bitmaps中讨论的BitmapFactory.decode*)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。">
@@ -375,7 +375,7 @@
 
       
         <p>如果图片源数据是从硬盘，网络或是其他非内存中读取的话，在<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html" target="_blank" rel="external">高效地夹在大Bitmaps</a>中讨论的<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">BitmapFactory.decode*</a>)方法就不能在主线程（UI线程）中执行。这种数据加载进内存的时间是不可预测的，并且还要依赖各种其他因素（磁盘读取速度，网络速度，图片大小，CPU性能等等）。如果这些任务的其中之一阻塞了UI线程，那么系统就认为你的app处于无响应状态并且弹出对话框提示用户关闭app。</p>
-<p>本课介绍如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。</p>
+<p>本课介绍如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;在后台线程中处理bitmaps，同时粗略讲解如何处理并发事件。<br><a id="more"></a></p>
 <h2 id="使用AsyncTask"><a href="#使用AsyncTask" class="headerlink" title="使用AsyncTask"></a>使用AsyncTask</h2><hr>
 <p><a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;类提供了一个简单的方法来在后台线程处理任务，并且能够将处理结果在UI线程中返回。要使用它，需创建一个它的子类，然后覆盖几个必要的方法。下面这个例子向你展示如何使用&nbsp;<a href="http://developer.android.com/reference/android/os/AsyncTask.html" target="_blank" rel="external">AsyncTask</a>&nbsp;和<a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html#decodeSampledBitmapFromResource" target="_blank" rel="external"><code>decodeSampledBitmapFromResource()</code></a>将大bitmap加载到ImageView中：</p>
 <p>class BitmapWorkerTask extends AsyncTask&lt;Integer, Void, Bitmap&gt; {<br>&nbsp; &nbsp; private final WeakReference&lt;ImageView&gt; imageViewReference;<br>&nbsp; &nbsp; private int data = 0;</p>

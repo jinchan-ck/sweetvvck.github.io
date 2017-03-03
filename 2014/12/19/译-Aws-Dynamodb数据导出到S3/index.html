@@ -89,22 +89,16 @@
 
 
 
-<meta name="description" content="本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3
-
-登陆到AWS管理员控制">
+<meta name="description" content="本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[译]Aws Dynamodb数据导出到S3">
 <meta property="og:url" content="http://sweetvvck.github.io/2014/12/19/译-Aws-Dynamodb数据导出到S3/index.html">
 <meta property="og:site_name" content="Sweetvvck">
-<meta property="og:description" content="本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3
-
-登陆到AWS管理员控制">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:description" content="本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3">
+<meta property="og:updated_time" content="2017-03-03T11:26:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Aws Dynamodb数据导出到S3">
-<meta name="twitter:description" content="本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3
-
-登陆到AWS管理员控制">
+<meta name="twitter:description" content="本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。注意如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步Creating IAM Roles for AWS Data Pipeline。从DynamoDB中导出数据到S3">
 
 
 
@@ -380,7 +374,7 @@
       
 
       
-        <p>本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。<br><strong>注意</strong><br>如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。<br><strong>从DynamoDB中导出数据到S3</strong></p>
+        <p>本节将描述如何从一个或多个DynamoDB的表导出数据到S3的bucket中。在执行导出之前你需要提前创建好S3的bucket。<br><strong>注意</strong><br>如果你还没有使用过AWS Data Pipeline，在执行下面的流程前你需要先去创建两个IAM roles。更多信息，请移步<br><a href="http://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DataPipelineExportImport.Prereqs.html#DataPipelineExportImport.Prereqs.IAMRoles" title="Creating IAM Roles for AWS Data Pipeline" target="_blank" rel="external"><br>Creating IAM Roles for AWS Data Pipeline</a>。<br><strong>从DynamoDB中导出数据到S3</strong><br><a id="more"></a></p>
 <ol>
 <li>登陆到AWS管理员控制台，打开DynamoDB console。&nbsp;<a href="https://console.aws.amazon.com/dynamodb/" target="_blank" rel="external">https://console.aws.amazon.com/dynamodb/</a>.</li>
 <li>在&nbsp;Amazon DynamoDB Tables&nbsp;页面, 点击&nbsp;Export/Import.</li>

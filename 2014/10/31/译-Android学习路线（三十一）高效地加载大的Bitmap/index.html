@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Sweetvvck">
 <meta property="og:description" content="图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。
 假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Android学习路线（三十一）高效地加载大的Bitmap">
 <meta name="twitter:description" content="图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。
@@ -379,7 +379,7 @@
       
         <p>图片的大小形状千变万化。在很多情况下图片都比一个app的UI所需要展示的大小大很多。例如，系统的相册应用所展示的用系统相机拍摄的相片，这些相片比手机屏幕的分辨率大得多。</p>
 <p>假设你的app所使用的内存有限制，理想情况下你只想要在内存中加载一个较低分辨率的图片。同事这个低分辨率的图片要匹配用来显示它的UI组件的大小。高分辨率的图片并不能带来任何可见的好处，但是仍然会消耗珍贵的内存同时还会导致额外的性能开销。</p>
-<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。</p>
+<p>本课将会讲解如何在不溢出app内存限制的情况下通过在内存中加载小版本图片来解码大bitmaps。<br><a id="more"></a></p>
 <h2 id="读取Bitmap的尺寸和类型"><a href="#读取Bitmap的尺寸和类型" class="headerlink" title="读取Bitmap的尺寸和类型"></a>读取Bitmap的尺寸和类型</h2><hr>
 <p><a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html" target="_blank" rel="external">BitmapFactory</a>&nbsp;类提供几种解码方法(<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeByteArray(byte[], int, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeByteArray()</a>),&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeFile(java.lang.String, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeFile()</a>),<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.html#decodeResource(android.content.res.Resources, int, android.graphics.BitmapFactory.Options" target="_blank" rel="external">decodeResource()</a>),<br> 等等.)来通过多种多样的资源文件创建&nbsp;<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank" rel="external">Bitmap</a>&nbsp;。根据你的图片数据源选择一个最合适的解码方法。这些方法为bitmap分配内存，这样就很容易导致OutOfMemory&nbsp;异常。每种类型的解码方法都有额外的参数以让你通过<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html" target="_blank" rel="external">BitmapFactory.Options</a>&nbsp;类指定解码的选项。在解码时设置<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#inJustDecodeBounds" target="_blank" rel="external">inJustDecodeBounds</a>&nbsp;属性为&nbsp;true&nbsp;能够避免内存分配，同时还能够获取到<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outWidth" target="_blank" rel="external">outWidth</a>,&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outHeight" target="_blank" rel="external">outHeight</a>&nbsp;和&nbsp;<a href="http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html#outMimeType" target="_blank" rel="external">outMimeType</a>&nbsp;的&#20540;，此时解码方法返回的bitmap对象为null。这种发式允许你在构建这个bitmap（和内存分配）之前读取它的大小和类型。</p>
 <p>BitmapFactory.Options options = new BitmapFactory.Options();<br>options.inJustDecodeBounds = true;<br>BitmapFactory.decodeResource(getResources(), R.id.myimage, options);<br>int imageHeight = options.outHeight;<br>int imageWidth = options.outWidth;<br>String imageType = options.outMimeType;</p>

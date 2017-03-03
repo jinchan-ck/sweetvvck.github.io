@@ -99,7 +99,7 @@
 <meta property="og:description" content="在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
 关于这个项目的分布式我有一个很大的想法，在这个想法下，我不需要去对多线程版本的Redis做任何评估：在这个角度上对我来说，一个核就像是一台计算机，所以在多核上扩展就相当于分布在计算机之间的集群。多实例是一个无共享的架构。如果我们找到一个可用的方式来分片，那么所有事情就合理了。 :-)
 这也是为">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:26:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译]Twemproxy来自Twitter的Redis代理">
 <meta name="twitter:description" content="在大量用户大规模使用大型Redis节点的时候，目前从项目本身来看Redis基本上可以说是一个单例的业务。
@@ -385,7 +385,7 @@
 <p>这也是为什么集群会成为Redis在2013年的焦点，并且，最终Redis 2.6的发布表现出了很好的稳定性和成熟度，现在正是时候来关注Redis Cluster, Redis Sentinel, 以及一些其它期待已久的改进。</p>
 <p>然而现实状况是，Redis Cluster目前仍然没有发布，正式版还需要几个月的工作。但是我们的用户已经需要将数据分片到不同的实例上来做负载均衡，更重要的是为数据获得更大的内存存储。</p>
 <p>目前保底的结局方案是客户端分片。客户端分片有很多好处，例如：在客户端和节点之间没有中间层，这就意味着它是一个扩展性很好的设置（主要是线性扩展）。然而要稳定的实现（客户端分片）需要进行一些优化，需要一个同步客户端配置的方式，也需要客户端支持一致性哈希或其它分区算法。</p>
-<p>有一个重大消息来自Twitter，世界最大的Redis集群之一部署在Twitter用于为用户提供时间轴数据。所以毫不奇怪这篇文章讨论的项目来自Twitter Open Source部门。</p>
+<p>有一个重大消息来自Twitter，世界最大的Redis集群之一部署在Twitter用于为用户提供时间轴数据。所以毫不奇怪这篇文章讨论的项目来自Twitter Open Source部门。<br><a id="more"></a></p>
 <h2 id="Twemproxy"><a href="#Twemproxy" class="headerlink" title="Twemproxy"></a>Twemproxy</h2><p>Twemproxy是一个快速的单线程代理程序，支持Memcached ASCII协议和更新的Redis协议：&nbsp;</p>
 <p>它全部用C写成，使用Apache 2.0 License授权。&nbsp;<br>项目在Linux上可以工作，而在OSX上无法编译，因为它依赖了epoll API.<br>我的测试环境为Ubuntu 12.04桌面版。&nbsp;</p>
 <p>好吧，闲话少叙。twemproxy到底做了什么？（注：我将关注Redis到部分，但是该项目也可以对memcached做相同到事情）&nbsp;</p>

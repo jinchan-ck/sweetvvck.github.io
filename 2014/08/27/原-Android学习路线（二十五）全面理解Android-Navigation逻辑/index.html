@@ -106,7 +106,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
 <meta property="og:image" content="http://img.blog.csdn.net/20140827003353545?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20140827004907843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20140827011051401?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-03-03T09:22:05.000Z">
+<meta property="og:updated_time" content="2017-03-03T11:25:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[原]Android学习路线（二十五）全面理解Android Navigation逻辑">
 <meta name="twitter:description" content="转载请注明出处：Android学习路线（二十五）全面理解Android Navigation逻辑
@@ -413,8 +413,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
         <p>转载请注明出处：<a href="http://blog.csdn.net/sweetvvck/article/details/38832809" target="_blank" rel="external">Android学习路线（二十五）全面理解Android Navigation逻辑</a></p>
 <p>应用导航的一致性是整体用户体验的重要组成部分，如果app的导航方式不一样，用户不能很快理解，那么这个应用会让用户有很大的挫败感，大大地影响了用户体验。</p>
 <p>Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改变。全面地理解“Back”以及“Up”的导航效果以及意义，能够大大地减少用户的学习时间，用户在使用过程中很快能够学习如何在应用的各个界面间的切换。</p>
-<p>Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。</p>
-<p>下图分别展示了“Back”和“Up”的示例：</p>
+<p>Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。<br><a id="more"></a><br>下图分别展示了“Back”和“Up”的示例：</p>
 <p><img src="http://img.blog.csdn.net/20140826002202399?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <h1 id="Up-vs-Back"><a href="#Up-vs-Back" class="headerlink" title="Up vs. Back"></a>Up vs. Back</h1><hr>
 <p>Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一个列表，点击列表的Item进入B界面，这个时候，在B界面应该要提供一个Up按钮，点击Up则应该返回到A界面。</p>
