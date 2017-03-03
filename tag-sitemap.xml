@@ -51,13 +51,6 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/tags/zookeeper/</loc>
-        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://sweetvvck.github.io/tags/koa/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -79,7 +72,7 @@
     </url>
 
     <url>
-        <loc>http://sweetvvck.github.io/tags/Web-%E6%9E%B6%E6%9E%84/</loc>
+        <loc>http://sweetvvck.github.io/tags/zookeeper/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -87,6 +80,13 @@
 
     <url>
         <loc>http://sweetvvck.github.io/tags/Bitmap/</loc>
+        <lastmod>2017-03-03T09:22:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://sweetvvck.github.io/tags/Web-%E6%9E%B6%E6%9E%84/</loc>
         <lastmod>2017-03-03T09:22:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
