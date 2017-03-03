@@ -325,11 +325,11 @@
 <p>单点失效？&nbsp;<br>—&nbsp;</p>
 <p>还有另一件有趣的事情，使用这个部署并不意味着有单点失效问题，你可以通过运行多套twemproxy，让你的客户端连接到第一个可用的实例。&nbsp;</p>
 <p>通过使用twemproxy你基本上把分片逻辑和客户端进行了分离。在这种情况下，一个基本的客户端就可以实现目的，分片将完全由代理来处理。<br>这是一个直接而安全的方法，个人观点。<br>现在Redis Cluster还不成熟，twemproxy是大多数希望利用Redis集群的用户的好方法。也不要太激动，先看看这种方法的限制 ;)</p>
-<h2 id="u4E0D_u8DB3"><a href="#u4E0D_u8DB3" class="headerlink" title="不足"></a>不足</h2><p>我认为Twemproxy没有支持批量操作的命令和事物是对的。当然，AFAIK甚至比Redis cluster更严&#26684;，反而它对于相同的键允许批量操作。<br>但是恕我直言按照这种方式，分散的集群带来分散的效率，并且将这个挑战带给了早期的用户，而且花费了大量的资源，从大量的实例中汇总数据，得到仅仅是“能用”的结果，而且你将很快开始有严重的负载问题，因为你有太多的时间花费在数据的传输上。</p>
+<h2 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h2><p>我认为Twemproxy没有支持批量操作的命令和事物是对的。当然，AFAIK甚至比Redis cluster更严&#26684;，反而它对于相同的键允许批量操作。<br>但是恕我直言按照这种方式，分散的集群带来分散的效率，并且将这个挑战带给了早期的用户，而且花费了大量的资源，从大量的实例中汇总数据，得到仅仅是“能用”的结果，而且你将很快开始有严重的负载问题，因为你有太多的时间花费在数据的传输上。</p>
 <p>可是有一些批量操作命令还是支持了的。MGET和DEL是处理的非常好的。有趣的是MGET命令在不同的服务器之间切分请求并且返回一个结果。这一点相当酷，也许我以后不能有更好的性能（看以后的吧）。<br>无论如何，批量操作和事物的不支持的现状意味着Twemproxy不适用于每个人，特别像Redis cluster本身。特别是它显然不支持EVAL（我认为他们应该支持它！它是多通用的，EVAL被设计可以在代理中工作，是因为键的名字已经明确了）。</p>
-<h2 id="u6709_u5F85_u6539_u8FDB_u7684_u5730_u65B9"><a href="#u6709_u5F85_u6539_u8FDB_u7684_u5730_u65B9" class="headerlink" title="有待改进的地方"></a>有待改进的地方</h2><p>错误报告机制并不稳定，发送一个Redis不支持的命令会导致连接被关闭。比如从redis-cli只发送一个‘GET‘并不会报&quot;参数个数不正确”的错误，只会导致连接被挂起。<br>总体看来，服务器返回的其它错误都可以准确的传给客户端：<br>redis metal: 10000 &gt; get list<br>(错误)类型操作错误，键匹配了错误的&#20540;类型<br>另外一个我想要看到的特性是对自动故障恢复的支持。有很多种替代方案：<br>1) twemproxy已经能够监控实例错误信息、错误的数量、在检测出足够多的错误的情况下断开节点。但是很遗憾twemproxy不能够拿从节点作为替代方案，这样就可以发送一个SLAVE OFNOONE命令来弃用备用节点，而不用只是断开错误节点。这种情况下twemproxy才是一个具有高可用性的解决方案。<br>2) 或者，我希望twemproxy能够与Redis Sentinel一起协同工作，定期检查Sentinel配置，如果出现故障则更新服务端配置<br>3) 另外一种替代方案是提供一种热配置twemproxy的方式，一旦节点出故障，Redis Sentinel就能够切换ASAP代理配置<br>有很多种替代方案，总体来说，如果能够提供对HA(高可用性)的底层支持就非常棒了。</p>
-<h2 id="u6027_u80FD_26nbsp_3B"><a href="#u6027_u80FD_26nbsp_3B" class="headerlink" title="性能&nbsp;"></a>性能&nbsp;</h2><p>Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说你用的话最多损失20%的性能。<br>我对性能唯一的意见是可以有更高效的方法把IMHO MGET命令分发到实例之间<br>如果twemproxy与所有Redis实例的延迟很相&#20284;的话(很有可能)，在MGETs命令在同一时间发出的情况下，twemproxy很有可能会在同一时间接收到所有节点的命令，所以我希望看到的是当我在所有实例上运行MGET命令的时候，发送的数量和twemproxy接收到的数量是一致的，但是实际上twemproxy在一秒内只接收到了50%的MGET命令。也许是时候重构twemproxy的应答模块了。</p>
-<h2 id="u7ED3_u8BBA"><a href="#u7ED3_u8BBA" class="headerlink" title="结论"></a>结论</h2><p>这是个伟大的项目，鉴于Redis Cluster还未发布，我强烈建议有需求的Redis用户试一下Twemproxy<br>我正打算将它链接到Redis项目网站上，因为我认为Twitter的伙计已经用他们的项目为Redis做了不小的贡献，所以…<br>这是Twitter赢得荣誉！</p>
+<h2 id="有待改进的地方"><a href="#有待改进的地方" class="headerlink" title="有待改进的地方"></a>有待改进的地方</h2><p>错误报告机制并不稳定，发送一个Redis不支持的命令会导致连接被关闭。比如从redis-cli只发送一个‘GET‘并不会报&quot;参数个数不正确”的错误，只会导致连接被挂起。<br>总体看来，服务器返回的其它错误都可以准确的传给客户端：<br>redis metal: 10000 &gt; get list<br>(错误)类型操作错误，键匹配了错误的&#20540;类型<br>另外一个我想要看到的特性是对自动故障恢复的支持。有很多种替代方案：<br>1) twemproxy已经能够监控实例错误信息、错误的数量、在检测出足够多的错误的情况下断开节点。但是很遗憾twemproxy不能够拿从节点作为替代方案，这样就可以发送一个SLAVE OFNOONE命令来弃用备用节点，而不用只是断开错误节点。这种情况下twemproxy才是一个具有高可用性的解决方案。<br>2) 或者，我希望twemproxy能够与Redis Sentinel一起协同工作，定期检查Sentinel配置，如果出现故障则更新服务端配置<br>3) 另外一种替代方案是提供一种热配置twemproxy的方式，一旦节点出故障，Redis Sentinel就能够切换ASAP代理配置<br>有很多种替代方案，总体来说，如果能够提供对HA(高可用性)的底层支持就非常棒了。</p>
+<h2 id="性能-nbsp"><a href="#性能-nbsp" class="headerlink" title="性能&nbsp;"></a>性能&nbsp;</h2><p>Twemproxy很快，真的很快，接近直接与Redis通讯的速度。我敢说你用的话最多损失20%的性能。<br>我对性能唯一的意见是可以有更高效的方法把IMHO MGET命令分发到实例之间<br>如果twemproxy与所有Redis实例的延迟很相&#20284;的话(很有可能)，在MGETs命令在同一时间发出的情况下，twemproxy很有可能会在同一时间接收到所有节点的命令，所以我希望看到的是当我在所有实例上运行MGET命令的时候，发送的数量和twemproxy接收到的数量是一致的，但是实际上twemproxy在一秒内只接收到了50%的MGET命令。也许是时候重构twemproxy的应答模块了。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>这是个伟大的项目，鉴于Redis Cluster还未发布，我强烈建议有需求的Redis用户试一下Twemproxy<br>我正打算将它链接到Redis项目网站上，因为我认为Twitter的伙计已经用他们的项目为Redis做了不小的贡献，所以…<br>这是Twitter赢得荣誉！</p>
 <pre><code>    作者：sweetvvck 发表于2014/12/31 22:35:41 [原文链接](http://blog.csdn.net/sweetvvck/article/details/42302675)
 
 
@@ -560,7 +560,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Twemproxy"><span class="nav-number">1.</span> <span class="nav-text">Twemproxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E0D_u8DB3"><span class="nav-number">2.</span> <span class="nav-text">不足</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6709_u5F85_u6539_u8FDB_u7684_u5730_u65B9"><span class="nav-number">3.</span> <span class="nav-text">有待改进的地方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6027_u80FD_26nbsp_3B"><span class="nav-number">4.</span> <span class="nav-text">性能 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7ED3_u8BBA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Twemproxy"><span class="nav-number">1.</span> <span class="nav-text">Twemproxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不足"><span class="nav-number">2.</span> <span class="nav-text">不足</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有待改进的地方"><span class="nav-number">3.</span> <span class="nav-text">有待改进的地方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能-nbsp"><span class="nav-number">4.</span> <span class="nav-text">性能 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -593,8 +593,8 @@
 </script>
 <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>

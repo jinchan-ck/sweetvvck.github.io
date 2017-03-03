@@ -82,6 +82,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
 <meta name="twitter:description" content="转载请注明出处：Android学习路线（二十五）全面理解Android Navigation逻辑
 应用导航的一致性是整体用户体验的重要组成部分，如果app的导航方式不一样，用户不能很快理解，那么这个应用会让用户有很大的挫败感，大大地影响了用户体验。
 Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改变。全面地理解“Back”以及“Up”的导航效果以及意义，能够大大地减少用户的学习">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140826002202399?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
@@ -337,7 +338,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
 <p>Android 2.3以及它之前的系统都是通过“Back”按钮来为app导航的。在Android 3.0后出现的Actionbar则带来了另一种一致性的导航方式：“Up”，它位于Actionbar的最左边，通常由应用的Icon以及Title组成。</p>
 <p>下图分别展示了“Back”和“Up”的示例：</p>
 <p><img src="http://img.blog.csdn.net/20140826002202399?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<h1 id="Up_vs-_Back"><a href="#Up_vs-_Back" class="headerlink" title="Up vs. Back"></a>Up vs. Back</h1><hr>
+<h1 id="Up-vs-Back"><a href="#Up-vs-Back" class="headerlink" title="Up vs. Back"></a>Up vs. Back</h1><hr>
 <p>Up的导航逻辑是根据界面的层次结构决定的。例如A界面有一个列表，点击列表的Item进入B界面，这个时候，在B界面应该要提供一个Up按钮，点击Up则应该返回到A界面。</p>
 <p>如果一个界面是app的主界面，则这个界面是不需要提供Up按钮的，而Back按钮在所有的界面都会起作用。</p>
 <p>在应用中，Back的作用是返回到上一个界面中。如果把一个一个打开界面看成是入栈，那么点击Back按钮无疑代表着出栈，用户应该总是能够通过back操作找到上一个界面。</p>
@@ -347,7 +348,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
 <p>在手机的主界面点击Gmail应用，进入到Gmail主界面中，主界面包含邮件的会话列表，点击其中一个会话会进入会话的详情界面。在会话详情页上，上一个界面和该界面的上级界面都是会话列表界面，因此点击Back和Up的效果是相同的，都会回到会话列表界面。可以发现，会话列表式Gmail的主界面，所以这个界面上是没有Up按钮的，这个时候则可以通过点击Back回到手机的主界面上。</p>
 <p>Back除了能够处理这些界面间的切换，同时它还能处理一些统一界面上的导航逻辑，例如：</p>
 <p>点击Back能够让当前界面的对话框消失，还能解除当前界面的文字高亮，同时它还能隐藏输入键盘等。</p>
-<h2 id="u5355_u4E2A_u5E94_u7528_u5185_u90E8_u5BFC_u822A"><a href="#u5355_u4E2A_u5E94_u7528_u5185_u90E8_u5BFC_u822A" class="headerlink" title="单个应用内部导航"></a>单个应用内部导航</h2><p>当一个界面有很多入口时，在这个界面点击Up按钮应该回到进入到这个界面的相关界面，这样的效果和Back回到上一个界面的效果是相同的。例如设置界面，应用中可能有很多地方能够进入设置界面，此时点击Up和Back都会返回它的上一个界面。</p>
+<h2 id="单个应用内部导航"><a href="#单个应用内部导航" class="headerlink" title="单个应用内部导航"></a>单个应用内部导航</h2><p>当一个界面有很多入口时，在这个界面点击Up按钮应该回到进入到这个界面的相关界面，这样的效果和Back回到上一个界面的效果是相同的。例如设置界面，应用中可能有很多地方能够进入设置界面，此时点击Up和Back都会返回它的上一个界面。</p>
 <p>如果在一个界面内切换视图，例如一个界面包含ViewPager，虽然左右滑动导致界面上的视图更改，但是此界面在app的界面层级并没有改变，同时也没有创建新的导航历史，因此这样的操作时不会引起Up和Back有新 的行为的。</p>
 <p>例如：</p>
 <p><img src="http://img.blog.csdn.net/20140826010627726?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
@@ -360,7 +361,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
 <p>上过上面的讲解，我们可以大致了解Back和Up的不同作用与目的。用户进入到App，切换不同的界面，每个界面都会被加入到一个栈里，通常情况下Back的作用是返回到栈中的上一个界面；而Up与这个栈没有直接关系，除了应用主界面，其他界面都会有一个父级界面，Up的作用正是返回到当前界面的父级界面。</p>
 <p>然而，有些情况为了让Back的效果有更好的可预测性，我们应到手动向Back的界面栈中添加界面，这样用户就能更清楚是如何进入到当前界面的。例如，当点击Android桌面上的Widgets进入到一个非app主界面中，如果没有向界面栈中手动插入app的主界面，点击返回就直接退到了手机Home界面，这样的体验不太好；因此我们会做手动向栈中插入界面的操作。详情如下图所示：</p>
 <p><img src="http://img.blog.csdn.net/20140827004907843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3dlZXR2dmNr/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<h2 id="u8DE8_u5E94_u7528_u5BFC_u822A"><a href="#u8DE8_u5E94_u7528_u5BFC_u822A" class="headerlink" title="跨应用导航"></a><strong>跨应用导航</strong></h2><p>在同一个App中Back和Up各司其职，有相同的地方也有不同的地方；而在夸应用的情况下，Back和Up有更多的不同之处。</p>
+<h2 id="跨应用导航"><a href="#跨应用导航" class="headerlink" title="跨应用导航"></a><strong>跨应用导航</strong></h2><p>在同一个App中Back和Up各司其职，有相同的地方也有不同的地方；而在夸应用的情况下，Back和Up有更多的不同之处。</p>
 <p>要知道Back和Up跨App的导航效果，首先要知道下面三个概念：</p>
 <p>Activities：我们都知道，一个Activity是一个展示信息界面与用户交互的应用组件，而一个app可以看成包含多个activities的集合；而这些activities可以是app自身定义的也可以是对其他app中activity的重用；</p>
 <p>Task：Task表示用户一次完整操作的流程。例如用户打开某个应用，在应用的某个界面中点击分享内容，选择通过邮件方式分享；这样的一个过程称为task，可以看到这个过程是跨app的，这次task包含多个activities；</p>
@@ -598,7 +599,7 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Up_vs-_Back"><span class="nav-number">1.</span> <span class="nav-text">Up vs. Back</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5355_u4E2A_u5E94_u7528_u5185_u90E8_u5BFC_u822A"><span class="nav-number">1.1.</span> <span class="nav-text">单个应用内部导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u8DE8_u5E94_u7528_u5BFC_u822A"><span class="nav-number">1.2.</span> <span class="nav-text">跨应用导航</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Up-vs-Back"><span class="nav-number">1.</span> <span class="nav-text">Up vs. Back</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单个应用内部导航"><span class="nav-number">1.1.</span> <span class="nav-text">单个应用内部导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨应用导航"><span class="nav-number">1.2.</span> <span class="nav-text">跨应用导航</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -631,8 +632,8 @@ Android 3.0后，系统像大家介绍了其在全局导航表现上的重大改
 </script>
 <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>

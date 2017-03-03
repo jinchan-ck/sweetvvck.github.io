@@ -312,7 +312,7 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 <p>Android使用了一个类&#20284;其他平台的基于磁盘的文件系统。本课将介绍如何使用android的文件APIS来在这样的文件系统中读写文件。</p>
 <p>一个<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象适用于顺序读写大块数据，而不适用于随机存取。例如它适用于文件或者其他通过网络交换的数据。</p>
 <p>本课将想您介绍如何在app中处理基本的文件操作。在此之前，你需要对Linux文件系统以及标准的java文件apis有所了解。</p>
-<h2 id="u9009_u62E9_u5185_u90E8_u6216_u5916_u90E8_u5B58_u50A8"><a href="#u9009_u62E9_u5185_u90E8_u6216_u5916_u90E8_u5B58_u50A8" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><hr>
+<h2 id="选择内部或外部存储"><a href="#选择内部或外部存储" class="headerlink" title="选择内部或外部存储"></a>选择内部或外部存储</h2><hr>
 <p>所有的Android设备都由两个存储区域：“内部”和“外部”存储。这两个名字来源于早期的android版本，当时大多数设备提供“内部构建”（built-in）不可拆卸的内部存储，以及可拆卸的存储媒介，例如微型SD卡。一些设备也将持久化存储设备分为“内部”和“外部”两个部分，因此即使是没有可拆卸媒介的设备也会有两个存储区域，而API的行为与设备是否有可拆卸存储介质无关，下面总结了每个存储区域的相关要点。</p>
 <p><strong>内部存储：</strong></p>
 <ul>
@@ -329,14 +329,14 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 </ul>
 <p>当你不需要控制文件的访问权限，同时你希望将文件和其他应用共享或者能够在电脑中访问到，那么外部存储是最好的选择。</p>
 <p><strong>提示:</strong>&nbsp;即使是apps默认会被安装在内部存储中，你也可以在你的app中的manifest文件中指定<a href="http://developer.android.com/guide/topics/manifest/manifest-element.html#install" target="_blank" rel="external">android:installLocation</a>&nbsp;属性，让你的app被安装在外部存储中。当apk的大小很大时，用户会非常希望这么做，他们会有一个远大于内部存储的外部存储空间。更多信息，请参阅<a href="http://developer.android.com/guide/topics/data/install-location.html" target="_blank" rel="external">App<br> Install Location</a>。</p>
-<h2 id="u83B7_u53D6_u5916_u90E8_u5B58_u50A8_u6743_u9650"><a href="#u83B7_u53D6_u5916_u90E8_u5B58_u50A8_u6743_u9650" class="headerlink" title="获取外部存储权限"></a>获取外部存储权限</h2><hr>
+<h2 id="获取外部存储权限"><a href="#获取外部存储权限" class="headerlink" title="获取外部存储权限"></a>获取外部存储权限</h2><hr>
 <p>要能够在外部存储中写文件，你必须在manifest文件中申请&nbsp;<a href="http://developer.android.com/reference/android/Manifest.permission.html#WRITE_EXTERNAL_STORAGE" target="_blank" rel="external">WRITE_EXTERNAL_STORAGE</a>&nbsp;权限：</p>
 <p>&lt;manifest …&gt;<br>&nbsp; &nbsp; &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;<br>&nbsp; &nbsp; …<br>&lt;/manifest&gt;</p>
 <p><strong>注意:</strong>&nbsp;目前，所有的应用都有权限读取外部存储中的文件。然而，在之后的版本中将会改变。如果你的app需要读取外部存储中的文件（但是不需要写入），你需要声明<a href="http://developer.android.com/reference/android/Manifest.permission.html#READ_EXTERNAL_STORAGE" target="_blank" rel="external">READ_EXTERNAL_STORAGE</a>&nbsp;权限。这样来保证你的app能够像预期那样工作。</p>
 <p>&lt;manifest …&gt;<br>&nbsp; &nbsp; &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;<br>&nbsp; &nbsp; …<br>&lt;/manifest&gt;</p>
 <p>然而，如果你的app使用了<a href="http://developer.android.com/reference/android/Manifest.permission.html#WRITE_EXTERNAL_STORAGE" target="_blank" rel="external">WRITE_EXTERNAL_STORAGE</a>&nbsp;权限，那么它就同时拥有了读写权限。</p>
 <p>保存文件到内部存储中并不需要权限。你的app一直拥有在内部存储目录下的读写权限。</p>
-<h2 id="u4FDD_u5B58_u4E00_u4E2A_u6587_u4EF6_u5230_u5185_u90E8_u5B58_u50A8_u4E2D"><a href="#u4FDD_u5B58_u4E00_u4E2A_u6587_u4EF6_u5230_u5185_u90E8_u5B58_u50A8_u4E2D" class="headerlink" title="保存一个文件到内部存储中"></a>保存一个文件到内部存储中</h2><hr>
+<h2 id="保存一个文件到内部存储中"><a href="#保存一个文件到内部存储中" class="headerlink" title="保存一个文件到内部存储中"></a>保存一个文件到内部存储中</h2><hr>
 <p>当保存文件到内部存储中时，你可以通过下面这两种方式获取一个合适的File对象：</p>
 <p><a href="http://developer.android.com/reference/android/content/Context.html#getFilesDir(" target="_blank" rel="external">getFilesDir()</a>)返回一个表示你的app在内部存储中的目录的<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象。<a href="http://developer.android.com/reference/android/content/Context.html#getCacheDir(" target="_blank" rel="external">getCacheDir()</a>)返回一个表示你的app在内部存储中的临时目录的<a href="http://developer.android.com/reference/java/io/File.html" target="_blank" rel="external">File</a>&nbsp;对象。确保在你不需要该缓存文件时将其删掉，同时要指定一个合理的缓存文件大小限制，因为当系统缺少运行空间时会在不发出警告的情况下将该目录的文件删除。</p>
 <p>要在上面两个目录之一中创建一个文件，你可以使用&nbsp;<a href="http://developer.android.com/reference/java/io/File.html#File(java.io.File, java.lang.String" target="_blank" rel="external">File()</a>)&nbsp;构造方法，传入前面获取到的File对象作为内部存储的目录。例如：</p>
@@ -347,7 +347,7 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 <p>再或者，如果你需要缓存一些文件，你应该使用<a href="http://developer.android.com/reference/java/io/File.html#createTempFile(java.lang.String, java.lang.String" target="_blank" rel="external">createTempFile()</a>)。例如，下面的方法通过URL萃取文件名，同时使用这个文件名在内部缓存目录下创建一个文件：</p>
 <p>public File getTempFile(Context context, String url) {<br>&nbsp; &nbsp; File file;<br>&nbsp; &nbsp; try {<br>&nbsp; &nbsp; &nbsp; &nbsp; String fileName = Uri.parse(url).getLastPathSegment();<br>&nbsp; &nbsp; &nbsp; &nbsp; file = File.createTempFile(fileName, null, context.getCacheDir());<br>&nbsp; &nbsp; catch (IOException e) {<br>&nbsp; &nbsp; &nbsp; &nbsp; // Error while creating file<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return file;<br>}</p>
 <p><strong>提示:</strong>&nbsp;你的app的内部存储目录是由你的app包名指定。从技术上来说，如果你把这个文件的模式设置为可读，那么其他app就能够访问你的app的内部文件了。然而，这些其他的app必须知道你的app的包名以及内部文件的名字。如果你不特别地自定内部文件的可读或可写模式，那么别的应用也没有权限操作你的app中的内部文件。</p>
-<h2 id="u4FDD_u5B58_u4E00_u4E2A_u6587_u4EF6_u5230_u5916_u90E8_u5B58_u50A8"><a href="#u4FDD_u5B58_u4E00_u4E2A_u6587_u4EF6_u5230_u5916_u90E8_u5B58_u50A8" class="headerlink" title="保存一个文件到外部存储"></a>保存一个文件到外部存储</h2><hr>
+<h2 id="保存一个文件到外部存储"><a href="#保存一个文件到外部存储" class="headerlink" title="保存一个文件到外部存储"></a>保存一个文件到外部存储</h2><hr>
 <p>由于外部存储可以不可用——例如当用户将其移除——你需要在访问它之前判断它是否可用。你可以通过调用<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStorageState(" target="_blank" rel="external">getExternalStorageState()</a>)方法查询到它的可用状态。如果该方法返回的状态等于<a href="http://developer.android.com/reference/android/os/Environment.html#MEDIA_MOUNTED" target="_blank" rel="external">MEDIA_MOUNTED</a>，那么你就能够读写你的文件。例如，下面的方法可用于判断外部存储是否可用：</p>
 <p>/<em> Checks if external storage is available for read and write </em>/<br>public boolean isExternalStorageWritable() {<br>&nbsp; &nbsp; String state = Environment.getExternalStorageState();<br>&nbsp; &nbsp; if (Environment.MEDIA_MOUNTED.equals(state)) {<br>&nbsp; &nbsp; &nbsp; &nbsp; return true;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return false;<br>}</p>
 <p>/<em> Checks if external storage is available to at least read </em>/<br>public boolean isExternalStorageReadable() {<br>&nbsp; &nbsp; String state = Environment.getExternalStorageState();<br>&nbsp; &nbsp; if (Environment.MEDIA_MOUNTED.equals(state) ||<br>&nbsp; &nbsp; &nbsp; &nbsp; Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {<br>&nbsp; &nbsp; &nbsp; &nbsp; return true;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; return false;<br>}</p>
@@ -364,11 +364,11 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 <p>如果没有合适的预定义的子目录名字适合你的文件，你可以调用&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法，同时传入null。它会返回外部存储中你的app对应的私有目录。</p>
 <p>要记住通过&nbsp;<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法创建的目录将会在app卸载时被删除。如果这些文件需要在应用卸载后被保存，当你的应用再次安装时能够访问到，你需要调用<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String" target="_blank" rel="external">getExternalStoragePublicDirectory()</a>)方法。</p>
 <p>不管你使用的是可分享的<a href="http://developer.android.com/reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String" target="_blank" rel="external">getExternalStoragePublicDirectory()</a>)&nbsp;方法，或者是私有的<a href="http://developer.android.com/reference/android/content/Context.html#getExternalFilesDir(java.lang.String" target="_blank" rel="external">getExternalFilesDir()</a>)&nbsp;方法，使用系统所提供的目录名称（如&nbsp;<a href="http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_PICTURES" target="_blank" rel="external">DIRECTORY_PICTURES</a>）都很重要。这些目录名称将确保这些文件在系统中会被按照这些方式对待。例如，保存在<a href="http://developer.android.com/reference/android/os/Environment.html#DIRECTORY_RINGTONES" target="_blank" rel="external">DIRECTORY_RINGTONES</a>&nbsp;中的文件将会被系统识别为手机铃声而非音乐。</p>
-<h2 id="u67E5_u8BE2_u5269_u4F59_u7A7A_u95F4"><a href="#u67E5_u8BE2_u5269_u4F59_u7A7A_u95F4" class="headerlink" title="查询剩余空间"></a>查询剩余空间</h2><hr>
+<h2 id="查询剩余空间"><a href="#查询剩余空间" class="headerlink" title="查询剩余空间"></a>查询剩余空间</h2><hr>
 <p>如果你知道你要保存的数据的大小，这样你就可以判断出是否有足够的空间避免导致&nbsp;<a href="http://developer.android.com/reference/java/io/IOException.html" target="_blank" rel="external">IOException</a>&nbsp;异常，可通过调用<a href="http://developer.android.com/reference/java/io/File.html#getFreeSpace(" target="_blank" rel="external">getFreeSpace()</a>)&nbsp;或者&nbsp;<a href="http://developer.android.com/reference/java/io/File.html#getTotalSpace(" target="_blank" rel="external">getTotalSpace()</a>)方法来获取剩余空间的大小。这两个方法各自返回此时的可用空间大侠和存储卷中总共的空间大小。这个方法同样可以在开始就避免占满整个存储空间。</p>
 <p>然而，系统并不能确保你能够写入通过<a href="http://developer.android.com/reference/java/io/File.html#getFreeSpace(" target="_blank" rel="external">getFreeSpace()</a>)方法返回的数据大小。如果它返回的大小比你要写入的数据大小大几兆，或者文件系统还有90%的剩余空间，那么执行保存是安全的。否则，你不应该存储这些数据。</p>
 <p><strong>提示:</strong>&nbsp;在存储文件前检查可用空间不是必须操作。你可以直接保存文件，然后捕获<a href="http://developer.android.com/reference/java/io/IOException.html" target="_blank" rel="external">IOException</a>&nbsp;异常。你可以在你不知道要保存的数据有多大时使用这种方法。例如，你在保存文件前将PNG转变成JPEG，改变了文件的编码，你提前并不知道文件的大小。</p>
-<h2 id="u5220_u9664_u4E00_u4E2A_u6587_u4EF6"><a href="#u5220_u9664_u4E00_u4E2A_u6587_u4EF6" class="headerlink" title="删除一个文件"></a>删除一个文件</h2><hr>
+<h2 id="删除一个文件"><a href="#删除一个文件" class="headerlink" title="删除一个文件"></a>删除一个文件</h2><hr>
 <p>你要记得在文件不需要被使用时将其删除。最直接的删除方法调用文件对象的<a href="http://developer.android.com/reference/java/io/File.html#delete(" target="_blank" rel="external">delete()</a>)&nbsp;方法删除它本身。</p>
 <p>myFile.delete();</p>
 <p>如果文件被保存在内部存储中，你同样可以使用Context定位然后调用<a href="http://developer.android.com/reference/android/content/Context.html#deleteFile(java.lang.String" target="_blank" rel="external">deleteFile()</a>)方法删除文件：</p>
@@ -601,7 +601,7 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9009_u62E9_u5185_u90E8_u6216_u5916_u90E8_u5B58_u50A8"><span class="nav-number">1.</span> <span class="nav-text">选择内部或外部存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u83B7_u53D6_u5916_u90E8_u5B58_u50A8_u6743_u9650"><span class="nav-number">2.</span> <span class="nav-text">获取外部存储权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4FDD_u5B58_u4E00_u4E2A_u6587_u4EF6_u5230_u5185_u90E8_u5B58_u50A8_u4E2D"><span class="nav-number">3.</span> <span class="nav-text">保存一个文件到内部存储中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4FDD_u5B58_u4E00_u4E2A_u6587_u4EF6_u5230_u5916_u90E8_u5B58_u50A8"><span class="nav-number">4.</span> <span class="nav-text">保存一个文件到外部存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u67E5_u8BE2_u5269_u4F59_u7A7A_u95F4"><span class="nav-number">5.</span> <span class="nav-text">查询剩余空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5220_u9664_u4E00_u4E2A_u6587_u4EF6"><span class="nav-number">6.</span> <span class="nav-text">删除一个文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择内部或外部存储"><span class="nav-number">1.</span> <span class="nav-text">选择内部或外部存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取外部存储权限"><span class="nav-number">2.</span> <span class="nav-text">获取外部存储权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存一个文件到内部存储中"><span class="nav-number">3.</span> <span class="nav-text">保存一个文件到内部存储中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存一个文件到外部存储"><span class="nav-number">4.</span> <span class="nav-text">保存一个文件到外部存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询剩余空间"><span class="nav-number">5.</span> <span class="nav-text">查询剩余空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除一个文件"><span class="nav-number">6.</span> <span class="nav-text">删除一个文件</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -634,8 +634,8 @@ Android使用了一个类&amp;#20284;其他平台的基于磁盘的文件系统�
 </script>
 <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
