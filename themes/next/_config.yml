@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT, sweetvvck, nodejs, java, golang, android"
+keywords: "Hexo, NexT, nodejs, java, golang, android"
 
 language: zh-Hans
 
@@ -131,11 +131,11 @@ font:
 
 
 # Social links
-social:
-  GitHub: https://github.com/sweetvvck
-  Twitter: https://twitter.com/sweetvvck
-  Weibo: http://weibo.com/sweetvvck
-  V2ex: https://www.v2ex.com/member/sweetvvck
+#social:
+# GitHub: https://github.com/sweetvvck
+# Twitter: https://twitter.com/sweetvvck
+# Weibo: http://weibo.com/sweetvvck
+# V2ex: https://www.v2ex.com/member/sweetvvck
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
